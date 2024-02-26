@@ -36,13 +36,13 @@
                         <a class="nav-link" href="admin/index.php">Tracer Study</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="nav-link" href="#">Loker</a>
+                        <a class="nav-link" href="#">Career</a>
                     </li>
                     <li class="nav-item mx-1">
                         <a class="nav-link" href="admin/form.html">Questioner</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="rounded-pill btn btn-success text-light py-1 my-1" href="admin/login.php">Login</a>
+                        <a class="rounded-pill btn btn-success text-light py-1 my-1" href="login">Login</a>
                     </li>
                 </ul>
             </div>
