@@ -2,7 +2,7 @@
 
 # Tracer Study
 
-Tracer study adalah studi pelacakan jejak lulusan/alumni yang dilakukan kepada alumni 2 tahun setelah lulus . Tracer study bertujuan untuk mengetahui <i>outcome</i> pendidikan dalam bentuk transisi dari dunia pendidikan tinggi ke dunia kerja, output pendidikan yaitu penilaian diri terhadap penguasaan dan pemerolehan kompetensi, proses pendidikan berupa evaluasi proses pembelajaran dan kontribusi pendidikan tinggi terhadap pemerolehan kompetensi serta input pendidikan berupa penggalian lebih lanjut terhadap informasi sosiobiografis lulusan.
+Tracer study adalah studi pelacakan jejak lulusan/alumni yang dilakukan kepada alumni 2 tahun setelah lulus. Tracer study bertujuan untuk mengetahui <i>outcome</i> pendidikan dalam bentuk transisi dari dunia pendidikan tinggi ke dunia kerja, <i>output</i> pendidikan yaitu penilaian diri terhadap penguasaan dan pemerolehan kompetensi, proses pendidikan berupa evaluasi proses pembelajaran dan kontribusi pendidikan tinggi terhadap pemerolehan kompetensi serta input pendidikan berupa penggalian lebih lanjut terhadap informasi sosiobiografis lulusan.
 
 ### Tujuan Tracer Study
 <ul>

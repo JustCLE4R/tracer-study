@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
   <title>Login Tracer Study</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
@@ -16,7 +19,7 @@
       @csrf
       <div class="field email @error('nim') shake @enderror" data-aos="fade-up" data-aos-duration="900">
         <div class="input-area">
-          <input type="text" name="nim" placeholder="NIM" oninput="validateNumericInput(this)" value="{{ !empty($errors) ? old('nim') : '' }}" maxlength="10">
+          <input type="text" name="nim" placeholder="NIM" oninput="validateNumericInput(this)" value="{{ $errors->has('nim') ? '' : old('nim') }}" maxlength="10">
           <i class="icon fas fa-envelope"></i>
           @error('nim')
             <i class="error error-icon fas fa-exclamation-circle"></i>

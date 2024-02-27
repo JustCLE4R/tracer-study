@@ -24,17 +24,18 @@ Route::get('/career', function () {
 });
 
 Route::get('/register', [RegisterController::class, 'index']);
-Route::get('login', [LoginController::class, 'index']);
-Route::post('login', [LoginController::class, 'authenticate']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('no-cache')->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/dashboard', function () {
   return view('dashboard.index');
-});
+})->middleware('no-cache')->middleware('auth')->name('dashboard');
 
 Route::get('/dashboard/tracer', function () {
   return view('dashboard.tracer');
-});
+})->middleware('no-cache')->middleware('auth');
 
 Route::get('/dashboard/career', function () {
   return view('dashboard.career');
-});
+})->middleware('no-cache')->middleware('auth');
