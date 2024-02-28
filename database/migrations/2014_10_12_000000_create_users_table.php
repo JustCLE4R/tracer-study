@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nim', 10)->unique();
-            $table->string('name');
+            $table->string('nama');
             $table->string('password');
+            $table->string('fakultas');
+            $table->string('program_studi');
             $table->rememberToken();
             $table->timestamps();
         });

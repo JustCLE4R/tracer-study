@@ -1,0 +1,313 @@
+[
+  {
+    "question": "Apakah anda telah mendapatkan pekerjaan?",
+    "qanswer": {
+      "a": "Waktu Tunggu <= 6 bulan",
+      "b": "Waktu tunggu dalam interval 6 - 18 bulan",
+      "c": "Lebih dari 18 bulan"
+    },
+    "category": "Bekerja",
+    "type": "radio"
+  },
+  {
+    "question": "Berapa rata-rata pendapatan anda per bulan dalam rupiah?",
+    "qanswer": {
+      "a": "Kurang dari Rp 1.000.000",
+      "b": "Rp 1.000.001 - Rp 3.000.000",
+      "c": "Rp 3.000.001 - Rp5.000.000",
+      "d": "Rp 5.000.001 - Rp 7.000.000",
+      "e": "Lebih dari Rp 7.000.000"
+    },
+    "category": "Bekerja",
+    "type": "radio"
+  },
+  {
+    "question": "Dimana lokasi tempat Anda bekerja?",
+    "qanswer": {
+      "a": "Provinsi (Daftar List Provinsi)",
+      "b": "Kabupaten/Kota (Daftar List Kabupaten/Kota)",
+      "c": "Alamat Lengkap Perusahaan"
+    },
+    "category": "Bekerja",
+    "type": "select"
+  },
+  {
+    "question": "Apa jenis perusahaan/instansi/institusi tempat anda bekerja sekarang?",
+    "qanswer": {
+      "a": "Instansi Pemerintah",
+      "b": "Organisasi Non-profit/Lembaga Swadaya Masyarakat",
+      "c": "Perusahaan Swasta",
+      "d": "Wiraswasta/perusahaan Sendiri",
+      "e": "BUMN/BUMD",
+      "f": "Institusi/Organisasi Multilateral",
+      "g": "Lainnya"
+    },
+    "category": "Bekerja",
+    "type": "radio"
+  },
+  {
+    "question": "Apa nama perusahaan/kantor tempat Anda bekerja?",
+    "qanswer": {},
+    "category": "Bekerja",
+    "type": "text"
+  },
+  {
+    "question": "Tuliskan Kontak Perusahaan tempat anda bekerja!",
+    "qanswer": {},
+    "category": "Bekerja",
+    "type": "text"
+  },
+  {
+    "question": "Penghasilan Anda Rata-rata perbulan",
+    "qanswer": {
+      "a": "< UMR",
+      "b": ">= UMR"
+    },
+    "category": "Bekerja",
+    "type": "radio"
+  },
+  {
+    "question": "Lingkup Tempat Kerja/Berwirausaha tempat anda bekerja",
+    "qanswer": {
+      "a": "Lokal/ Wilayah/ Berwirausaha tidak Berizin",
+      "b": "Nasional/ Berwirausaha Berizin",
+      "c": "Multinasiona/ Internasional"
+    },
+    "category": "Bekerja",
+    "type": "radio"
+  },
+  {
+    "question": "Bidang Usaha",
+    "qanswer": {
+      "a": "Pertanian, perikanan, dan kehutanan",
+      "b": "Pertambangan dan penggalian",
+      "c": "Industri pengolahan",
+      "d": "Pengadaaan listrik, gas, uap/air panas, dan udara dingin",
+      "e": "Pengelolaan air, pengolahan air limbah, pengelolaan dan daur ulang sampah, dan aktivitas remediasi",
+      "f": "Konstruksi",
+      "g": "Perdagangan besar dan eceran, reparasi dan perawatan mobil dan sepeda motor",
+      "h": "Pengangkutan dan pergudangan",
+      "i": "Penyediaan akomodasi dan penyediaan makanan dan minuman",
+      "j": "Informasi dan komunikasi",
+      "k": "Aktivitas keuangan dan asuransi",
+      "l": "Real estate",
+      "m": "Aktivitas profesional, ilmiah, dan teknis",
+      "n": "Aktivitas persewaan dan sewa guna usaha tanpa hak opsi, ketenagakerjaan, agen perjalanan dan penunjang usaha lainnya",
+      "o": "Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib",
+      "p": "Aktivitas Pendidikan",
+      "q": "Aktivitas kesehatan dan aktivitas sosial",
+      "r": "Kesenian, hiburan dan rekreasi",
+      "s": "Aktivitas jasa lainnya",
+      "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga",
+      "u": "Aktivitas badan internasional dan badan ekstra internasional lainnya"
+    },
+    "category": "Bekerja",
+    "type": "select"
+  },
+  {
+    "question": "Jabatan Pada Perusahaan tempat bekerja",
+    "qanswer": {},
+    "category": "Bekerja",
+    "type": "text"
+  },
+  {
+    "question": "Seberapa erat hubungan antara bidang studi dengan pekerjaan anda?",
+    "qanswer": {
+      "a": "Tinggi",
+      "b": "Sedang",
+      "c": "Rendah"
+    },
+    "category": "Bekerja",
+    "type": "radio"
+  },
+  {
+    "question": "Berapa perusahaan/instansi/institusi yang sudah anda lamar (lewat surat atau e-mail) sebelum anda memperoleh pekerjaan pertama?",
+    "qanswer": {},
+    "category": "Pencarian Pekerjaan",
+    "type": "number"
+  },
+  {
+    "question": "Tingkat pendidikan apa yang paling tepat/sesuai untuk pekerjaan anda saat ini?",
+    "qanswer": {
+      "a": "Setingkat Lebih Tinggi",
+      "b": "Erat tingkat Yang Sama",
+      "c": "Setingkat Lebih Rendah",
+      "d": "Tidak Perlu Pendidikan Tinggi"
+    },
+    "category": "Bekerja",
+    "type": "radio"
+  },
+  {
+    "question": "Berapa banyak perusahaan/instansi/institusi yang merespons lamaran anda?",
+    "qanswer": {},
+    "category": "Pencarian Pekerjaan",
+    "type": "number"
+  },
+  {
+    "question": "Berapa banyak perusahaan/instansi/institusi yang mengundang anda untuk wawancara?",
+    "qanswer": {},
+    "category": "Pencarian Pekerjaan",
+    "type": "number"
+  },
+  {
+    "question": "Jika menurut anda pekerjaan anda saat ini tidak sesuai dengan pendidikan anda, mengapa anda mengambilnya? Jawaban bisa lebih dari satu",
+    "qanswer": {
+      "a": "Pertanyaan Tidak Sesuai; Pekerjaan Saya Sekarang Sudah Sesuai Dengan Pendidikan Saya",
+      "b": "Saya Belum Mendapatkan Pekerjaan Yang Lebih Sesuai",
+      "c": "Di Pekerjaan Ini Saya Memeroleh Prospek Karir Yang Baik",
+      "d": "Saya Lebih Suka Bekerja Di Area Pekerjaan Yang Tidak Ada Hubungannya Dengan Pendidikan Saya",
+      "e": "Saya Dipromosikan Ke Posisi Yang Kurang Berhubungan Dengan Pendidikan Saya Dibanding Posisi Sebelumnya",
+      "f": "Saya Dapat Memeroleh Pendapatan Yang Lebih Tinggi Di Pekerjaan Ini",
+      "g": "Pekerjaan Saya Saat Ini Lebih Aman/terjamin/secure",
+      "h": "Pekerjaan Saya Saat Ini Lebih Menarik",
+      "i": "Pekerjaan Saya Saat Ini Lebih Memungkinkan Saya Mengambil Pekerjaan Tambahan/jadwal Yang Fleksibel Dll",
+      "j": "Pekerjaan Saya Saat Ini Lokasinya Lebih Dekat Dari Rumah Saya",
+      "k": "Pekerjaan Saya Saat Ini Dapat Lebih Menjamin Kebutuhan Keluarga Saya",
+      "l": "Pada Awal Meniti Karir Ini Saya Harus Menerima Pekerjaan Yang Tidak Berhubungan Dengan Pendidikan Saya",
+      "m": "Lainnya"
+    },
+    "category": "Bekerja",
+    "type": "checkbox"
+  },
+  {
+    "question": "Bagaimana anda mencari pekerjaan tersebut? Jawaban bisa lebih dari satu",
+    "qanswer": {
+      "a": "Melalui Iklan Di Koran/majalah/brosur",
+      "b": "Melamar Ke Perusahaan Tanpa Mengetahui Lowongan Yang Ada",
+      "c": "Pergi Ke Bursa/pameran Kerja",
+      "d": "Mencari Lewat Internet/iklan Online/milis",
+      "e": "Dihubungi Oleh Perusahaan",
+      "f": "Menghubungi Kemenakertrans",
+      "g": "Menghubungi Agen Tenaga Kerja Komersial/swasta",
+      "h": "Memeroleh Informasi Dari Pusat/kantor Pengembangan Karir Fakultas/universitas",
+      "i": "Menghubungi Kantor Kemahasiswaan/hubungan Alumni",
+      "j": "Membangun Jejaring (network) Sejak Masih Kuliah",
+      "k": "Melalui Relasi (misalnya Dosen/orang Tua/saudara/teman Dll)",
+      "l": "Membangun Bisnis Sendiri",
+      "m": "Melalui Penempatan Kerja Atau Magang",
+      "n": "Bekerja Di Tempat Yang Sama Dengan Tempat Kerja Semasa Kuliah",
+      "o": "Lainnya"
+    },
+    "category": "Bekerja",
+    "type": "checkbox"
+  },
+  {
+    "question": "Sebutkan Nama Usaha Anda!",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "text"
+  },
+  {
+    "question": "Tingkat / Ukuran Tempat Bekerja",
+    "qanswer": {
+      "a": "Lokal",
+      "b": "Nasional",
+      "c": "Multinasional"
+    },
+    "category": "Wiraswasta",
+    "type": "radio"
+  },
+  {
+    "question": "Bidang Usaha",
+    "qanswer": {
+      "a": "Pertanian, perikanan, dan kehutanan",
+      "b": "Pertambangan dan penggalian",
+      "c": "Industri pengolahan",
+      "d": "Pengadaaan listrik, gas, uap/air panas, dan udara dingin",
+      "e": "Pengelolaan air, pengolahan air limbah, pengelolaan dan daur ulang sampah, dan aktivitas remediasi",
+      "f": "Konstruksi",
+      "g": "Perdagangan besar dan eceran, reparasi dan perawatan mobil dan sepeda motor",
+      "h": "Pengangkutan dan pergudangan",
+      "i": "Penyediaan akomodasi dan penyediaan makanan dan minuman",
+      "j": "Informasi dan komunikasi",
+      "k": "Aktivitas keuangan dan asuransi",
+      "l": "Real estate",
+      "m": "Aktivitas profesional, ilmiah, dan teknis",
+      "n": "Aktivitas persewaan dan sewa guna usaha tanpa hak opsi, ketenagakerjaan, agen perjalanan dan penunjang usaha lainnya",
+      "o": "Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib",
+      "p": "Aktivitas Pendidikan",
+      "q": "Aktivitas kesehatan dan aktivitas sosial",
+      "r": "Kesenian, hiburan dan rekreasi",
+      "s": "Aktivitas jasa lainnya",
+      "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga",
+      "u": "Aktivitas badan internasional dan badan ekstra internasional lainnya"
+    },
+    "category": "Wiraswasta",
+    "type": "select"
+  },
+  {
+    "question": "Posisi / Jabatan Pekerjaan",
+    "qanswer": {
+      "a": "Pemilik",
+      "b": "Direktur",
+      "c": "Kepala Unit",
+      "d": "Supervisor",
+      "e": "Staff"
+    },
+    "category": "Wiraswasta",
+    "type": "radio"
+  },
+  {
+    "question": "Detail Pekerjaan",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "text"
+  },
+  {
+    "question": "Jumlah Pendapatan Perbulan",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "number"
+  },
+  {
+    "question": "Jumlah Pendapatan Bersih Perbulan",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "number"
+  },
+  {
+    "question": "Pemodal Saat ini (boleh lebih dari 1)",
+    "qanswer": {
+      "a": "Pribadi / Tabungan",
+      "b": "Bank",
+      "c": "Keluarga",
+      "d": "Investor"
+    },
+    "category": "Wiraswasta",
+    "type": "checkbox"
+  },
+  {
+    "question": "Kesesuaian Pekerjaan dengan Prodi",
+    "qanswer": {
+      "a": "Tinggi",
+      "b": "Sedang",
+      "c": "Rendah"
+    },
+    "category": "Wiraswasta",
+    "type": "radio"
+  },
+  {
+    "question": "Tanggal Mulai Berusaha",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "date"
+  },
+  {
+    "question": "Tanggal Akhir Usaha (jika masih berwirausaha klik “masih berwirausaha”)",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "akhir_usaha"
+  },
+  {
+    "question": "Provinsi (tempat usaha)",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "select"
+  },
+  {
+    "question": "Kabupaten (tempat usaha)",
+    "qanswer": {},
+    "category": "Wiraswasta",
+    "type": "select"
+  }
+]
