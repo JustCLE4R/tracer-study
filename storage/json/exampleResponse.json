@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "question": "tadi pagi makan apa?",
+    "qanswer": [{
+      "a": "Nasi Goreng",
+      "b": "Nasi Uduk",
+      "c": "Nasi Kucing",
+      "d": "Nasi Gila"
+    }],
+    "category": "Wiraswasta",
+    "type": "radiobutton"
+  },
+  {
+    "id": 2,
+    "question": "tadi pagi minum apa?",
+    "qanswer": [{
+      "a": "Jus Jeruk",
+      "b": "Jus Vokad",
+      "c": "Teh Manis",
+      "d": "Air Mineral"
+    }],
+    "category": "Wiraswasta",
+    "type": "checkbox"
+  }
+]
