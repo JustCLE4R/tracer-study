@@ -6,7 +6,7 @@
       "b": "Waktu tunggu dalam interval 6 - 18 bulan",
       "c": "Lebih dari 18 bulan"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "radio"
   },
   {
@@ -18,7 +18,7 @@
       "d": "Rp 5.000.001 - Rp 7.000.000",
       "e": "Lebih dari Rp 7.000.000"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "radio"
   },
   {
@@ -28,7 +28,7 @@
       "b": "Kabupaten/Kota (Daftar List Kabupaten/Kota)",
       "c": "Alamat Lengkap Perusahaan"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "select"
   },
   {
@@ -42,19 +42,19 @@
       "f": "Institusi/Organisasi Multilateral",
       "g": "Lainnya"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "radio"
   },
   {
     "question": "Apa nama perusahaan/kantor tempat Anda bekerja?",
     "qanswer": {},
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "text"
   },
   {
     "question": "Tuliskan Kontak Perusahaan tempat anda bekerja!",
     "qanswer": {},
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "text"
   },
   {
@@ -63,7 +63,7 @@
       "a": "< UMR",
       "b": ">= UMR"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "radio"
   },
   {
@@ -73,7 +73,7 @@
       "b": "Nasional/ Berwirausaha Berizin",
       "c": "Multinasiona/ Internasional"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "radio"
   },
   {
@@ -101,13 +101,13 @@
       "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga",
       "u": "Aktivitas badan internasional dan badan ekstra internasional lainnya"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "select"
   },
   {
     "question": "Jabatan Pada Perusahaan tempat bekerja",
     "qanswer": {},
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "text"
   },
   {
@@ -117,13 +117,13 @@
       "b": "Sedang",
       "c": "Rendah"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "radio"
   },
   {
     "question": "Berapa perusahaan/instansi/institusi yang sudah anda lamar (lewat surat atau e-mail) sebelum anda memperoleh pekerjaan pertama?",
     "qanswer": {},
-    "category": "Pencarian Pekerjaan",
+    "category": "bekerja",
     "type": "number"
   },
   {
@@ -134,19 +134,19 @@
       "c": "Setingkat Lebih Rendah",
       "d": "Tidak Perlu Pendidikan Tinggi"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "radio"
   },
   {
     "question": "Berapa banyak perusahaan/instansi/institusi yang merespons lamaran anda?",
     "qanswer": {},
-    "category": "Pencarian Pekerjaan",
+    "category": "bekerja",
     "type": "number"
   },
   {
     "question": "Berapa banyak perusahaan/instansi/institusi yang mengundang anda untuk wawancara?",
     "qanswer": {},
-    "category": "Pencarian Pekerjaan",
+    "category": "bekerja",
     "type": "number"
   },
   {
@@ -166,7 +166,7 @@
       "l": "Pada Awal Meniti Karir Ini Saya Harus Menerima Pekerjaan Yang Tidak Berhubungan Dengan Pendidikan Saya",
       "m": "Lainnya"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "checkbox"
   },
   {
@@ -188,13 +188,13 @@
       "n": "Bekerja Di Tempat Yang Sama Dengan Tempat Kerja Semasa Kuliah",
       "o": "Lainnya"
     },
-    "category": "Bekerja",
+    "category": "bekerja",
     "type": "checkbox"
   },
   {
     "question": "Sebutkan Nama Usaha Anda!",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "text"
   },
   {
@@ -204,7 +204,7 @@
       "b": "Nasional",
       "c": "Multinasional"
     },
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "radio"
   },
   {
@@ -232,7 +232,7 @@
       "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga",
       "u": "Aktivitas badan internasional dan badan ekstra internasional lainnya"
     },
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "select"
   },
   {
@@ -244,25 +244,25 @@
       "d": "Supervisor",
       "e": "Staff"
     },
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "radio"
   },
   {
     "question": "Detail Pekerjaan",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "text"
   },
   {
     "question": "Jumlah Pendapatan Perbulan",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "number"
   },
   {
     "question": "Jumlah Pendapatan Bersih Perbulan",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "number"
   },
   {
@@ -273,7 +273,7 @@
       "c": "Keluarga",
       "d": "Investor"
     },
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "checkbox"
   },
   {
@@ -283,31 +283,107 @@
       "b": "Sedang",
       "c": "Rendah"
     },
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "radio"
   },
   {
     "question": "Tanggal Mulai Berusaha",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "date"
   },
   {
     "question": "Tanggal Akhir Usaha (jika masih berwirausaha klik “masih berwirausaha”)",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "akhir_usaha"
   },
   {
     "question": "Provinsi (tempat usaha)",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "select"
   },
   {
     "question": "Kabupaten (tempat usaha)",
     "qanswer": {},
-    "category": "Wiraswasta",
+    "category": "wiraswasta",
     "type": "select"
+  },
+  {
+    "question": "Tingkat Pendidikan",
+    "qanswer": {
+      "a": "S1",
+      "b": "S2",
+      "c": "S3"
+    },
+    "category": "studi",
+    "type": "radio"
+  },
+  {
+    "question": "Program Studi",
+    "qanswer": {},
+    "category": "studi",
+    "type": "text"
+  },
+  {
+    "question": "Perguruan Tinggi",
+    "qanswer": {},
+    "category": "studi",
+    "type": "text"
+  },
+  {
+    "question": "Tanggal Surat Penerimaan Kuliah",
+    "qanswer": {},
+    "category": "studi",
+    "type": "date"
+  },
+  {
+    "question": "Tanggal Mulai Kuliah",
+    "qanswer": {},
+    "category": "studi",
+    "type": "date"
+  },
+  {
+    "question": "Status Saat Ini",
+    "qanswer": {
+      "a": "Masih Kuliah",
+      "b": "Sudah Selesai"
+    },
+    "category": "studi",
+    "type": "radio"
+  },
+  {
+    "question": "Apakah Program Studi yang Ditempuh Linier?",
+    "qanswer": {
+      "a": "Ya",
+      "b": "Tidak"
+    },
+    "category": "studi",
+    "type": "radio"
+  },
+  {
+    "question": "Negara (Tempat Kuliah)",
+    "qanswer": {},
+    "category": "studi",
+    "type": "select"
+  },
+  {
+    "question": "Provinsi (Tempat Kuliah)",
+    "qanswer": {},
+    "category": "studi",
+    "type": "text"
+  },
+  {
+    "question": "Kabupaten/Kota (Tempat Kuliah)",
+    "qanswer": {},
+    "category": "studi",
+    "type": "text"
+  },
+  {
+    "question": "Upload Bukti Tanda Terima Kuliah (Berupa: Kartu Pelajar / Bukti Diterima)",
+    "qanswer": {},
+    "category": "studi",
+    "type": "file"
   }
 ]

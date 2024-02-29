@@ -32,16 +32,16 @@ class LoginController extends Controller
     if(User::firstWhere('nim', $credential['nim']) == null && $studentData !== null){
       User::create($studentData);
     }
-
+    
     if(Auth::attempt(['nim' => $credential['nim'], 'password' => md5($credential['password'])])){
       $request->session()->regenerate();
-
+      
       return redirect()->intended('/dashboard');
     }
 
-    // if($studentData == null){
-    //   return redirect('/login')->with('error', 'NIM yang anda masukkan tidak ditemukan');
-    // }
+    if($studentData == null){
+      return redirect('/login')->with('error', 'NIM yang anda masukkan tidak ditemukan');
+    }
 
     return redirect('/login')->with('error', 'NIM atau password yang anda masukkan salah');
   }

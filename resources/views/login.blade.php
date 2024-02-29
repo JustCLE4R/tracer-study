@@ -15,6 +15,11 @@
 <body>
   <div class="wrapper" >
     <header data-aos="fade-up" data-aos-duration="800">Login</header>
+    @if (session()->has('error'))
+      <div class="alert alert-danger" role="alert">
+        {{ session()->get('error') }}
+      </div>
+    @endif
     <form action="/login" method="post">
       @csrf
       <div class="field email @error('nim') shake @enderror" data-aos="fade-up" data-aos-duration="900">
