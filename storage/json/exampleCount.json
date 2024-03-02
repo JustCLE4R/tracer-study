@@ -1,0 +1,20 @@
+{
+  "seluruhMahasiswaLulus": "567",
+  "Sains dan Teknologi": {
+    "jumlahLulus": "656",
+    "program_studi" : {
+      "Ilmu Komputer": "123",
+      "Sistem Informasi": "56",
+      "Matematika": "189",
+      "Biologi": "234"
+    }
+  },
+  "Fakultas Ekonomi dan Bisnis Islam": {
+    "jumlahLulus": "123",
+    "program_studi" : {
+      "Ekonomi Islam": "123",
+      "Perbanka Syariah": "56",
+      "Manajemen": "189"
+    }
+  }
+}

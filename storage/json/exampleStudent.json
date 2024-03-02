@@ -1,0 +1,23 @@
+
+{
+  "nim": "0701213127",
+  "password": "5f4dcc3b5aa765d61d8327deb882cf99",
+  "nama": "Dimas Yudistira",
+  "whatsapp": "081234567890",
+  "fakultas": "Sains dan Teknologi",
+  "program_studi" : "Ilmu Komputer",
+  "tahun_masuk": 2020,
+  "tanggal_lulus": "2024-01-01",
+  "tanggal_yudisium": "2024-01-01",
+  "tanggal_wisuda": "2024-01-01",
+  "ipk": 3.5,
+  "sks_kumulatif": 128,
+  "nomor_ktp": 1205051703030000,
+  "tempat_lahir": "Jakarta",
+  "tanggal_lahir": "2000-01-01",
+  "jenis_kelamin": "Pria",
+  "kewarganegaraan": "Indonesia",
+  "alamat": "Jl. T. Amir Hamzah",
+  "provinsi": "Sumatera Utara",
+  "kab/kota": "Langkat"
+}

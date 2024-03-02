@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\Http;
 
 class ApiIntegration extends Model
 {
-  public function getStudentData($nim){
-    $response = Http::get('https://jsonplaceholder.typicode.com/users/');
+  public function getStudentData(){
+    $response = Http::withHeaders([
+      'UINSU-KEY' => env('UINSU_KEY'),
+    ])->post('https://ws.uinsu.ac.id/portal/OtentikasiUser', [
+      'username' => '0701213127',
+      'password' => 'GemscooL123',
+    ]);
+
     return $response->json();
   }
 

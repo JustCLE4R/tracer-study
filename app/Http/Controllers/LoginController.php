@@ -14,6 +14,12 @@ class LoginController extends Controller
   }
 
   public function authenticate(Request $request){
+    $apiIntegration = new ApiIntegration();
+
+    dd(
+      $apiIntegration->getStudentData(1),
+    );
+
     $credential = $request->validate(
     [
       'nim' => 'required|size:10',
@@ -26,8 +32,8 @@ class LoginController extends Controller
     ]);
 
     // nunggu API mahasiswa
-    $apiIntegration = new ApiIntegration();
     $studentData = $apiIntegration->loadStaticJson($credential['nim']);
+
 
     if(User::firstWhere('nim', $credential['nim']) == null && $studentData !== null){
       User::create($studentData);
