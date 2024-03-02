@@ -35,6 +35,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/tracer', function () {
   return view('dashboard.tracer');
-})->middleware('no-cache')->middleware('auth');
+})->middleware('auth');
 
 Route::resource('/dashboard/career', CareerController::class)->middleware('no-cache')->middleware('auth');

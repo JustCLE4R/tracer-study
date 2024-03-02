@@ -58,6 +58,7 @@
 
   <!-- Custom Javascript -->
   <script src="{{ asset('js/dashboard.js') }}"></script>
+  <script src="{{ asset('js/form.js') }}"></script>
 </body>
 
 </html>

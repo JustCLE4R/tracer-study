@@ -302,13 +302,13 @@
     "question": "Provinsi (tempat usaha)",
     "qanswer": {},
     "category": "wiraswasta",
-    "type": "select"
+    "type": "provinsi"
   },
   {
     "question": "Kabupaten (tempat usaha)",
     "qanswer": {},
     "category": "wiraswasta",
-    "type": "select"
+    "type": "kabupaten"
   },
   {
     "question": "Tingkat Pendidikan",
@@ -366,7 +366,7 @@
     "question": "Negara (Tempat Kuliah)",
     "qanswer": {},
     "category": "studi",
-    "type": "select"
+    "type": "text"
   },
   {
     "question": "Provinsi (Tempat Kuliah)",
