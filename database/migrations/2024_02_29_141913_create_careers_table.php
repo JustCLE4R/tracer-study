@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('careers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->string('company_name');
             $table->string('position');
             $table->string('slug')->unique();
-            $table->string('company_name');
-            $table->string('url');
+            $table->string('url')->nullable();
             $table->text('description');
+            $table->text('excerpt');
             $table->string('image')->nullable();
             $table->timestamps();
         });

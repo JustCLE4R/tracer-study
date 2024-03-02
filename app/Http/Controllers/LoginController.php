@@ -16,10 +16,6 @@ class LoginController extends Controller
   public function authenticate(Request $request){
     $apiIntegration = new ApiIntegration();
 
-    dd(
-      $apiIntegration->getStudentData(1),
-    );
-
     $credential = $request->validate(
     [
       'nim' => 'required|size:10',
