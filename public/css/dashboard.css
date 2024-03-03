@@ -4,6 +4,14 @@
     --light: #f3f6f9;
     --dark: #191c24;
 }
+.page-item.active .page-link,
+.page-link.active {
+    z-index: 3;
+    color: white !important; /* warna teks untuk tombol aktif */
+    background-color: green !important; /* warna latar belakang untuk tombol aktif */
+    border-color: green !important; /* warna border untuk tombol aktif */
+}
+
 .title {
     display: flex;
     justify-content: center;

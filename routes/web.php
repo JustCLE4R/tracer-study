@@ -35,7 +35,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/tracer', function () {
   return view('dashboard.tracer');
-})->middleware('auth');
+});
 
 Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug']);
 
