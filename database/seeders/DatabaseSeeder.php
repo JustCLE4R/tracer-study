@@ -20,11 +20,18 @@ class DatabaseSeeder extends Seeder
     User::create([
       "nim" => "0701213127",
       "nama" => "Dimas Yudistira",
-      "password" => Hash::make(md5('password')),
+      "password" => Hash::make(md5('123')),
       "fakultas" => "Sains dan Teknologi",
       "program_studi" => "Ilmu Komputer",
     ]);
-    User::factory(5)->create();
+    User::create([
+      "nim" => "0701212165",
+      "nama" => "Paris Alvito",
+      "password" => Hash::make(md5('123')),
+      "fakultas" => "Sains dan Teknologi",
+      "program_studi" => "Ilmu Komputer",
+    ]);
+    User::factory(4)->create();
 
     Career::factory(20)->create();
 

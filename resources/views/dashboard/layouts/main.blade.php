@@ -64,7 +64,13 @@
 
   <!-- Custom Javascript -->
   <script src="{{ asset('js/dashboard.js') }}"></script>
-  <script src="{{ asset('js/form.js') }}"></script>
+  @if (Request::is('dashboard/tracer*'))
+    <script src="{{ asset('js/form.js') }}"></script>
+  @endif
+  
+  @if (Request::is('dashboard/career*'))
+    <script src="{{ asset('js/career.js') }}"></script>
+  @endif
 </body>
 
 </html>

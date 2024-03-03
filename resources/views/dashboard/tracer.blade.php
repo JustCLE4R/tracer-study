@@ -10,7 +10,8 @@
             <span class="h6">Isilah Instrumen Pusat Pengembangan Karir Mahasiswa Berikut Dibawah Ini Dengan Benar!</span>
           </div>
         </div>
-        <form action="" class="mt-4">
+        <form action="/dashboard/tracer" method="post" class="mt-4">
+          @csrf
           <div class="mb-3 col-lg-4 col-md-5 col-sm-12">
             <label for="filterTracer" class="form-label">Pilihlah status anda saat ini?</label>
             <select class="form-select " id="filterTracer" onchange="populateTracer(this.value)">

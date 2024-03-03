@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Career;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CareerController extends Controller
@@ -51,7 +52,6 @@ class CareerController extends Controller
     Career::create($validatedData);
 
     return redirect('/dashboard/career')->with('success', 'New career has been added!');
-
   }
 
   /**
@@ -59,6 +59,10 @@ class CareerController extends Controller
    */
   public function show(Career $career)
   {
+    if ($career->user_id !== auth()->user()->id) {
+      abort(403);
+    }
+
     return view('dashboard.careers.show', [
       'career' => $career
     ]);
@@ -69,7 +73,13 @@ class CareerController extends Controller
    */
   public function edit(Career $career)
   {
-    //
+    if ($career->user_id !== auth()->user()->id) {
+      abort(403);
+    }
+
+    return view('dashboard.careers.edit', [
+      'career' => $career
+    ]);
   }
 
   /**
@@ -77,7 +87,33 @@ class CareerController extends Controller
    */
   public function update(Request $request, Career $career)
   {
-    //
+    $rules = [
+      'company_name' => 'required',
+      'position' => 'required',
+      'url' => 'url|nullable',
+      'description' => 'required',
+      'image' => 'image|file|max:2048',
+    ];
+
+    if($request->slug != $career->slug) {
+      $rules['slug'] = 'required|unique:careers';
+    }
+
+    $validatedData = $request->validate($rules);
+
+    if ($request->file('image')) {
+      if ($request->oldImage) {
+        Storage::delete($request->oldImage);
+      }
+      $validatedData['image'] = $request->file('image')->store('careers-images');
+    }
+
+    $validatedData['user_id'] = auth()->user()->id;
+    $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 200);
+
+    $career->update($validatedData);
+
+    return redirect('/dashboard/career')->with('success', 'Career has been updated!');
   }
 
   /**
@@ -85,7 +121,12 @@ class CareerController extends Controller
    */
   public function destroy(Career $career)
   {
-    //
+    if($career->image) {
+      Storage::delete($career->image);
+    }
+    $career->delete();
+    
+    return redirect('/dashboard/career')->with('success', 'Career has been deleted!');
   }
 
   public function checkSlug(Request $request)

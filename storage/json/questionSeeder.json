@@ -385,5 +385,227 @@
     "qanswer": {},
     "category": "studi",
     "type": "file"
+  },
+  {
+    "question": "Nama",
+    "qanswer": "[]",
+    "category": "pimpinan",
+    "type": "text"
+  },
+  {
+    "question": "Jabatan",
+    "qanswer": "[]",
+    "category": "pimpinan",
+    "type": "text"
+  },
+  {
+    "question": "Nama Perusahaan",
+    "qanswer": "[]",
+    "category": "pimpinan",
+    "type": "text"
+  },
+  {
+    "question": "Alamat Perusahaan",
+    "qanswer": "[]",
+    "category": "pimpinan",
+    "type": "text"
+  },
+  {
+    "question": "Nomor Kontak Responden",
+    "qanswer": "[]",
+    "category": "pimpinan",
+    "type": "text"
+  },
+  {
+    "question": "Email Responden",
+    "qanswer": "[]",
+    "category": "pimpinan",
+    "type": "email"
+  },
+  {
+    "question": "Pada saat ini, pada tingkat mana kompetensi di bawah ini diperlukan dalam pekerjaan?",
+    "qanswer": {
+      "a":"Sangat Baik",
+      "b":"Baik",
+      "c":"Cukup",
+      "d":"Kurang"
+    },
+    "category": "pimpinan",
+    "type": "radio"
+  },
+  {
+    "question": "KEAHLIAN BERDASARKAN BIDANG ILMU",
+    "qanswer": {
+      "a":"Sangat Baik",
+      "b":"Baik",
+      "c":"Cukup",
+      "d":"Kurang"
+    },
+    "category": "pimpinan",
+    "type": "radio"
+  },
+  {
+    "question": "BAHASA INGGRIS",
+    "qanswer": {
+      "a":"Sangat Baik",
+      "b":"Baik",
+      "c":"Cukup",
+      "d":"Kurang"
+    },
+    "category": "pimpinan",
+    "type": "radio"
+  },
+  {
+    "question": "PENGGUNAAN TEKNOLOGI",
+    "qanswer": {
+      "a":"Sangat Baik",
+      "b":"Baik",
+      "c":"Cukup",
+      "d":"Kurang"
+    },
+    "category": "pimpinan",
+    "type": "radio"
+  },
+  {
+    "question": "KOMUNIKASI",
+    "qanswer": {
+      "a":"Sangat Baik",
+      "b":"Baik",
+      "c":"Cukup",
+      "d":"Kurang"
+    },
+    "category": "pimpinan",
+    "type": "radio"
+  },
+  {
+    "question": "KERJASAMA DALAM TIM",
+    "qanswer": {
+      "a":"Sangat Baik",
+      "b":"Baik",
+      "c":"Cukup",
+      "d":"Kurang"
+    },
+    "category": "pimpinan",
+    "type": "radio"
+  },
+  {
+    "question": "PENGEMBANGAN DIRI",
+    "qanswer": {
+      "a":"Sangat Baik",
+      "b":"Baik",
+      "c":"Cukup",
+      "d":"Kurang"
+    },
+    "category": "pimpinan",
+    "type": "radio"
+  },
+  {
+    "question": "Sebutkan sumberdana dalam pembiayaan kuliah? (Saat berkuliah di S1/D3)",
+    "qanswer": {
+      "1":"Biaya Sendiri/Keluarga",
+      "3":"Beasiswa BIDIKMISI /KIP",
+      "4":"Beasiswa PPA (Peningkatan Prestasi Akademik)",
+      "5":"Beasiswa Afirmasi",
+      "6":"Beasiswa Perusahaan/Swasta",
+      "7":"Lainnya"
+  },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Menurut Anda seberapa besar penekanan pada metode pembelajaran di bawah ini dilaksanakan di program studi anda?",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Perkuliahan",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Demonstrasi",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Partisipasi Dalam Proyek Riset",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Magang",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Praktikum",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Kerja Lapangan",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
+  },
+  {
+    "question": "Diskusi",
+    "qanswer": {
+      "1":"Sangat Besar",
+      "2":"Besar",
+      "3":"Cukup Besar",
+      "4":"Kurang",
+      "5":"Tidak Sama Sekali"
+    },
+    "category": "umum",
+    "type": "radio"
   }
 ]

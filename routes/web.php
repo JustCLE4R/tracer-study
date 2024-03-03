@@ -3,6 +3,7 @@
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TracerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,10 +34,12 @@ Route::get('/dashboard', function () {
   return view('dashboard.index');
 })->middleware('no-cache')->middleware('auth')->name('dashboard');
 
-Route::get('/dashboard/tracer', function () {
-  return view('dashboard.tracer');
-});
+Route::get('/dashboard/tracer', [TracerController::class, 'index']);
+Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
 
-Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug']);
 
-Route::resource('/dashboard/career', CareerController::class);
+
+
+Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug'])->middleware('auth');
+
+Route::resource('/dashboard/career', CareerController::class)->middleware('auth');
