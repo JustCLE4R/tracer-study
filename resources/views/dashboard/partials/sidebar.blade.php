@@ -19,7 +19,7 @@
       <a href="/" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Landing Page</a>
       <a href="/dashboard/tracer" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
       <a href="/dashboard/career" class="nav-link "><i class="fa fa-laptop me-2"></i>Loker</a>
-      <a href="#" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Fakultas</a>
+      <a href="/dashboard/perjalanan" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Perjalanan Karir</a>
       <a href="#" class="nav-link "><i class="far fa-file-alt me-2"></i>Laporan</a>
       <a href="/logout" class="nav-item nav-link"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
     </div>

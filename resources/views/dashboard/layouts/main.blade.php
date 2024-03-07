@@ -25,12 +25,17 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://cdn.lineicons.com/1.0.1/LineIcons.min.css'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600&amp;display=swap'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css'>
 
   {{-- Trix --}}
   <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
 
   <!-- Custom Stylesheet -->
   <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/timeline.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -52,6 +57,8 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://kit.fontawesome.com/fc596df623.js" crossorigin="anonymous"></script>
+
 
   <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
   <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>

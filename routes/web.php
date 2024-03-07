@@ -4,6 +4,7 @@ use App\Http\Controllers\CareerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TracerController;
+use App\Http\Controllers\PerjalananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +38,8 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/tracer', [TracerController::class, 'index']);
 Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
 
+// Perjalanan
+Route::get('/dashboard/perjalanan', [PerjalananController::class, 'index']);
 
 
 
