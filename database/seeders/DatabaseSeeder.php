@@ -4,9 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Career;
 use App\Models\User;
+use App\Models\Career;
 use App\Models\Question;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,15 +22,59 @@ class DatabaseSeeder extends Seeder
       "nim" => "0701213127",
       "nama" => "Dimas Yudistira",
       "password" => Hash::make(md5('123')),
-      "fakultas" => "Sains dan Teknologi",
-      "program_studi" => "Ilmu Komputer",
+      'program_studi' => 'Ilmu Komputer',
+      'fakultas' => 'Sains dan Teknologi',
+      'tingkat_pendidikan' => fake()->randomElement(['S1', 'S2', 'S3']),
+      'tahun_masuk' => fake()->year,
+      'tgl_lulus' => fake()->date,
+      'tgl_yudisium' => fake()->date,
+      'tgl_wisuda' => fake()->date,
+      'ipk' => fake()->randomFloat(2, 2.5, 4.0),
+      'sks_kumulatif' => fake()->numberBetween(90, 150),
+      'predikat_kelulusan' => fake()->randomElement(['A', 'B', 'C']),
+      'judul_tugas_akhir' => fake()->sentence,
+      'nomor_ktp' => fake()->unique()->randomNumber(8),
+      'tempat_lahir' => fake()->city,
+      'tanggal_lahir' => fake()->date,
+      'jenis_kelamin' => fake()->randomElement(['L', 'P']),
+      'kewarganegaraan' => 'Indonesia',
+      'provinsi' => fake()->state,
+      'kabupaten' => fake()->city,
+      'alamat' => fake()->address,
+      'telepon' => fake()->phoneNumber,
+      'email' => fake()->unique()->safeEmail,
+      'linkedin' => 'https://www.linkedin.com/in/' . fake()->userName,
+      'facebook' => 'https://www.facebook.com/' . fake()->userName,
+      'remember_token' => Str::random(10),
     ]);
     User::create([
       "nim" => "0701212165",
       "nama" => "Paris Alvito",
       "password" => Hash::make(md5('123')),
-      "fakultas" => "Sains dan Teknologi",
-      "program_studi" => "Ilmu Komputer",
+      'program_studi' => 'Ilmu Komputer',
+      'fakultas' => 'Sains dan Teknologi',
+      'tingkat_pendidikan' => fake()->randomElement(['S1', 'S2', 'S3']),
+      'tahun_masuk' => fake()->year,
+      'tgl_lulus' => fake()->date,
+      'tgl_yudisium' => fake()->date,
+      'tgl_wisuda' => fake()->date,
+      'ipk' => fake()->randomFloat(2, 2.5, 4.0),
+      'sks_kumulatif' => fake()->numberBetween(90, 150),
+      'predikat_kelulusan' => fake()->randomElement(['A', 'B', 'C']),
+      'judul_tugas_akhir' => fake()->sentence,
+      'nomor_ktp' => fake()->unique()->randomNumber(8),
+      'tempat_lahir' => fake()->city,
+      'tanggal_lahir' => fake()->date,
+      'jenis_kelamin' => fake()->randomElement(['L', 'P']),
+      'kewarganegaraan' => 'Indonesia',
+      'provinsi' => fake()->state,
+      'kabupaten' => fake()->city,
+      'alamat' => fake()->address,
+      'telepon' => fake()->phoneNumber,
+      'email' => fake()->unique()->safeEmail,
+      'linkedin' => 'https://www.linkedin.com/in/' . fake()->userName,
+      'facebook' => 'https://www.facebook.com/' . fake()->userName,
+      'remember_token' => Str::random(10),
     ]);
     User::factory(4)->create();
 

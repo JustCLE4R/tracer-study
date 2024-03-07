@@ -28,11 +28,28 @@ class LoginController extends Controller
     ]);
 
     // nunggu API mahasiswa
-    $studentData = $apiIntegration->loadStaticJson($credential['nim']);
+    $responseStatus = $apiIntegration->getStudentAuth($credential['nim'], $credential['password']);
 
+    if(User::firstWhere('nim', $credential['nim']) == null && isset($responseStatus['OtentikasiUser'][0]['status'])){
+      $authData = $responseStatus['OtentikasiUser'][0];
+      $dataFromAPI = $apiIntegration->getStudentData($credential['nim'])['DataMahasiswa'][0];
+      
+      $mhsData = [
+        'nim' => $authData['user'],
+        'password' => $authData['password'],
+        'nama' => $authData['nama_lengkap'],
+        'program_studi' => $authData['nama_prodi'],
+        'tahun_masuk' => $dataFromAPI['mhs_thn_masuk'],
+        'jenis_kelamin' => $dataFromAPI['mhs_jenis_kelamin'],
+        'alamat' => $dataFromAPI['mhs_alamat'],
+        'telepon' => $dataFromAPI['mhs_no_telp'],
+        'email' => $dataFromAPI['mhs_email'],
+        'tempat_lahir' => $dataFromAPI['mhs_tempat_lahir'],
+        'tanggal_lahir' => $dataFromAPI['mhs_tanggal_lahir'],
+      ];
 
-    if(User::firstWhere('nim', $credential['nim']) == null && $studentData !== null){
-      User::create($studentData);
+      return $mhsData;
+      // User::create($mhsData);
     }
     
     if(Auth::attempt(['nim' => $credential['nim'], 'password' => md5($credential['password'])])){
@@ -41,9 +58,9 @@ class LoginController extends Controller
       return redirect()->intended('/dashboard');
     }
 
-    if($studentData == null){
-      return redirect('/login')->with('error', 'NIM yang anda masukkan tidak ditemukan');
-    }
+    // if($authData == null){
+    //   return redirect('/login')->with('error', 'NIM yang anda masukkan tidak ditemukan');
+    // }
 
     return redirect('/login')->with('error', 'NIM atau password yang anda masukkan salah');
   }

@@ -39,7 +39,9 @@ Route::get('/dashboard/tracer', [TracerController::class, 'index']);
 Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
 
 // Perjalanan
-Route::get('/dashboard/perjalanan', [PerjalananController::class, 'index']);
+Route::get('/dashboard/perjalanan', function () {
+  return view('dashboard.perjalanan');
+});
 
 
 

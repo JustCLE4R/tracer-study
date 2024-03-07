@@ -9,12 +9,22 @@ use Illuminate\Support\Facades\Http;
 
 class ApiIntegration extends Model
 {
-  public function getStudentData(){
+  public function getStudentAuth($username, $password){
     $response = Http::withHeaders([
       'UINSU-KEY' => env('UINSU_KEY'),
     ])->post('https://ws.uinsu.ac.id/portal/OtentikasiUser', [
-      'username' => '0701213127',
-      'password' => 'GemscooL123',
+      'username' => $username,
+      'password' => $password,
+    ]);
+
+    return $response->json();
+  }
+
+  public function getStudentData($nim){
+    $response = Http::withHeaders([
+      'UINSU-KEY' => env('UINSU_KEY'),
+    ])->post('https://ws.uinsu.ac.id/portal/DataMahasiswa', [
+      'nim_mhs' => $nim
     ]);
 
     return $response->json();
