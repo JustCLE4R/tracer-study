@@ -15,13 +15,15 @@
     </a>
 
     <div class="navbar-nav w-100 ">
-      <a href="/dashboard" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-      <a href="/" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Landing Page</a>
-      <a href="/dashboard/tracer" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-      <a href="/dashboard/career" class="nav-link "><i class="fa fa-laptop me-2"></i>Loker</a>
-      <a href="/dashboard/perjalanan" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Perjalanan Karir</a>
-      <a href="#" class="nav-link "><i class="far fa-file-alt me-2"></i>Laporan</a>
-      <a href="/logout" class="nav-item nav-link"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
+      <a href="/dashboard" class="nav-item nav-link "><i class="bi bi-house-fill me-2 fs-5"></i>Dashboard</a>
+      <a href="/dashboard/profile" class="nav-item nav-link"><i class="bi bi-person-circle me-2 fs-5"></i>Profile</a>
+      <a href="/" class="nav-item nav-link"><i class="bi bi-speedometer2 me-2 fs-5"></i>Landing Page</a>
+      <a href="/dashboard/tracer" class="nav-item nav-link"><i class="bi bi-ui-checks me-2 fs-5"></i>Forms</a>
+      <a href="/dashboard/career" class="nav-link "><i class="bi bi-newspaper me-2 fs-5"></i>Loker</a>
+      <a href="/dashboard/perjalanan" class="nav-item nav-link"><i class="bi bi-person-fill-gear me-2 fs-5"></i>Perjalanan Karir</a>
+
+      <a href="#" class="nav-link "><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a>
+      <a href="/logout" class="nav-item nav-link"><i class="bi bi-box-arrow-right me-2 fs-5"></i>Logout</a>
     </div>
   </nav>
 </div>

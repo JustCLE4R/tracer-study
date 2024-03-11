@@ -1,4 +1,7 @@
 /********** Template CSS **********/
+*{
+    font-family:  "Open Sans" !important;
+}
 :root {
     --primary: #009cff;
     --light: #f3f6f9;

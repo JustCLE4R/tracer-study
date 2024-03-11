@@ -42,7 +42,12 @@ Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
 Route::get('/dashboard/perjalanan', function () {
   return view('dashboard.perjalanan');
 });
-
+Route::get('/dashboard/profile', function () {
+  return view('dashboard.profile');
+});
+Route::get('/dashboard/tambah-perjalanan', function () {
+  return view('dashboard.tambah-perjalanan');
+});
 
 
 Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug'])->middleware('auth');

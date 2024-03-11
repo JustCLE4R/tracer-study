@@ -5,9 +5,9 @@
 <div class="container-fluid pt-4 px-4">
   <div class="row g-4">
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light  rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
         data-aos-duration="1000">
-        <i class="fa fa-chart-line fa-3x text-primary"></i>
+        <i class="bi bi-mortarboard-fill fs-1 text-primary"></i>
         <div class="ms-3">
           <p data-aos="fade-left" data-aos-duration="1200" class="mb-2 ">Total Mahasiswa Lulus</p>
           <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0 ">18.456</h6>
@@ -15,9 +15,9 @@
       </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
         data-aos-duration="1000">
-        <i class="fa fa-chart-bar fa-3x text-primary"></i>
+        <i class="bi bi-person-workspace fs-1 text-primary"></i>
         <div class="ms-3">
           <p data-aos="fade-left" data-aos-duration="1200" class="mb-2">Total Mahasiswa Bekerja</p>
           <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0">12.921</h6>
@@ -25,9 +25,9 @@
       </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
         data-aos-duration="1000">
-        <i class="fa fa-chart-area fa-3x text-primary"></i>
+        <i class="bi bi-grid-1x2 fs-1 text-primary"></i>
         <div class="ms-3">
           <p data-aos="fade-left" data-aos-duration="1200" class="mb-2">Jumlah Fakultas UINSU</p>
           <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0">18</h6>
@@ -35,9 +35,9 @@
       </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
         data-aos-duration="1000">
-        <i class="fa fa-chart-pie fa-3x text-primary"></i>
+        <i class="bi bi-grid fs-1 text-primary"></i>
         <div class="ms-3">
           <p data-aos="fade-left" data-aos-duration="1200" class="mb-2">Jumlah Prodi UINSU</p>
           <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0">94</h6>
@@ -52,7 +52,7 @@
   <div class="row g-4">
 
     <div class="col-sm-12 col-xl-6">
-      <div class="bg-light rounded h-100 p-4">
+      <div class="bg-light  border-top border-success border-5 rounded h-100 p-4">
         <h6 class="mb-4 text-primary " data-aos="fade-left" data-aos-duration="1400">Mahasiswa Yang Sukses</h6>
         <div class="owl-carousel testimonial-carousel">
           <div class="testimonial-item text-center">
@@ -76,7 +76,7 @@
     </div>
 
     <div class="col-sm-12 col-xl-6">
-      <div class="bg-light rounded h-100 p-4">
+      <div class="bg-light  border-top border-success border-5 rounded h-100 p-4">
         <iframe data-aos="fade-up" data-aos-duration="1400" class="position-relative rounded w-100 h-100"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.4031529224258!2d98.58519047403404!3d3.493725950939795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x303125197f331eeb%3A0x1c418b38fc4ea5e!2sUINSU%20Medan%20Tuntungan%20Kampus%20IV!5e0!3m2!1sid!2sid!4v1708260701586!5m2!1sid!2sid"
           frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
@@ -95,7 +95,7 @@
   </div>
 
   <!-- Chart 1 -->
-  <div data-aos="fade-right" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light rounded m-3 px-3 py-3"
+  <div data-aos="fade-right" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 py-3"
     id="urutan2">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Jenis Kelamin Mahasiswa </span>
@@ -114,7 +114,7 @@
 
     <canvas data-aos="fade-up" data-aos-duration="1000" id="bar"></canvas>
   </div>
-  <div data-aos="fade-left" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light rounded m-3 px-3 py-3"
+  <div data-aos="fade-left" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 py-3"
     id="urutan3">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Keterangan </span>
@@ -126,7 +126,7 @@
 
   <!-- Chart 2 -->
   <div data-aos="fade-right" data-aos-duration="800"
-    class="col-lg-5 col-sm-12 shadow bg-light rounded m-3 px-3 pt-3 py-3" id="urutan5">
+    class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 pt-3 py-3" id="urutan5">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Keterangan </span>
       <a data-aos="fade-up" data-aos-duration="1200" href="" class="text-success">Show All</a>
@@ -134,7 +134,7 @@
     <div id="legend-container2"></div>
   </div>
   <div data-aos="fade-left" data-aos-duration="800"
-    class="col-lg-5 col-sm-12 shadow bg-light rounded m-3 px-3 pb-5 pt-3" id="urutan4">
+    class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 pb-5 pt-3" id="urutan4">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Total Mahasiswa Di Fakultas</span>
       <a data-aos="fade-up" data-aos-duration="1200" href="" class="text-success">Show All</a>
@@ -159,10 +159,9 @@
 
 {{-- table start --}}
 <div class="container-fluid pt-4 px-4 ms-0">
-  <div class="bg-light text-center rounded p-4">
+  <div class="bg-light  border-top border-success border-5 text-center rounded p-4">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Data Mahasiswa</span>
-      <a data-aos="fade-up" data-aos-duration="1200" href="" class="text-success">Show All</a>
     </div>
     <div class="table-responsive">
       <table class="table text-start align-middle table-bordered table-hover mb-0">
