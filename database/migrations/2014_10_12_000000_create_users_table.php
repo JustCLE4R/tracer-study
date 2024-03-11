@@ -19,29 +19,30 @@ return new class extends Migration
       // informasi akademik
       $table->string('program_studi');
       $table->string('fakultas');
-      $table->string('tingkat_pendidikan');
+      $table->string('strata');
       $table->year('tahun_masuk');
-      $table->date('tgl_lulus');
-      $table->date('tgl_yudisium');
-      $table->date('tgl_wisuda');
+      $table->date('tgl_lulus')->nullable()->default(null);
+      $table->date('tgl_yudisium')->nullable()->default(null);
+      $table->date('tgl_wisuda')->nullable()->default(null);
       $table->float('ipk');
       $table->integer('sks_kumulatif');
-      $table->char('predikat_kelulusan', 1);
-      $table->string('judul_tugas_akhir');
+      $table->string('predikat_kelulusan', 17);
+      $table->string('judul_tugas_akhir')->nullable();
       // informasi pribadi
-      $table->integer('nomor_ktp');
+      $table->string('foto');
+      $table->unsignedBigInteger('nomor_ktp');
       $table->string('tempat_lahir');
       $table->date('tanggal_lahir');
       $table->char('jenis_kelamin', 1);
       $table->string('kewarganegaraan');
-      $table->string('provinsi');
-      $table->string('kabupaten');
+      $table->string('provinsi')->nullable();
+      $table->string('kabupaten')->nullable();
       $table->string('alamat');
       // informasi kontak
       $table->string('telepon', 25);
       $table->string('email');
-      $table->string('linkedin');
-      $table->string('facebook');
+      $table->string('linkedin')->nullable();
+      $table->string('facebook')->nullable();
       $table->rememberToken();
       $table->timestamps();
     });

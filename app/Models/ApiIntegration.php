@@ -30,6 +30,16 @@ class ApiIntegration extends Model
     return $response->json();
   }
 
+  public function getALumniData($nim){
+    $response = Http::withHeaders([
+      'UINSU-KEY' => env('UINSU_KEY'),
+    ])->post('https://ws.uinsu.ac.id/portal/DataAlumni', [
+      'nim_mhs' => $nim
+    ]);
+
+    return $response->json();
+  }
+
   public function loadStaticJson($nim){
     $filePath = storage_path('json/student.json');
 

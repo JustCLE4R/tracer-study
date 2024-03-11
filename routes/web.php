@@ -26,7 +26,7 @@ Route::get('/career', function () {
   return view('career');
 });
 
-Route::get('/register', [RegisterController::class, 'index']);
+// Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->middleware('no-cache')->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
