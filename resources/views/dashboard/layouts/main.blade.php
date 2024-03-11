@@ -29,6 +29,9 @@
   <link rel='stylesheet' href='https://cdn.lineicons.com/1.0.1/LineIcons.min.css'>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600&amp;display=swap'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  
 
   {{-- Trix --}}
   <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
@@ -36,6 +39,7 @@
   <!-- Custom Stylesheet -->
   <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
   <link href="{{ asset('css/timeline.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -55,10 +59,9 @@
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="https://kit.fontawesome.com/fc596df623.js" crossorigin="anonymous"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
   <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
   <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
@@ -68,7 +71,12 @@
 
   {{-- trix --}}
   <script type="text/javascript" src="{{ asset('js/trix.js') }}"></script>
-
+  <script>    
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    });
+  </script>
   <!-- Custom Javascript -->
   <script src="{{ asset('js/dashboard.js') }}"></script>
   @if (Request::is('dashboard/tracer*'))

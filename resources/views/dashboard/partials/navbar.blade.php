@@ -1,24 +1,28 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
 
-  <a href="#" class="sidebar-toggler flex-shrink-0">
-    <i class="fa fa-bars text-success"></i>
+  <a href="#" class="sidebar-toggler flex-shrink-0 text-success">
+    <i class="bi bi-justify"></i>
   </a>
 
 
-  <div class="navbar-nav align-items-center ms-auto">
+  <div class="navbar-nav row justif-content-center align-items-center ms-auto m-2">
 
-    <div class="nav-item dropdown">
-      <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-        <img class="rounded-circle me-lg-2" src="/img/account.png" alt="" style="width: 40px; height: 40px;">
-        <span class="d-none d-lg-inline-flex">{{ Auth::user()->nama }}</span>
-      </a>
-      <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-        <a href="#" class="dropdown-item">My Profile</a>
-        <a href="#" class="dropdown-item">Settings</a>
-        <a href="login.html" class="dropdown-item">Log Out</a>
+      
+      <div class="col-8 text-end">
+        <a href="">
+          <span class="d-none text-success d-lg-inline-flex">{{ Auth::user()->nama }}</span>
+        </a>
       </div>
-    </div>
+      <div class="col-4 text-start">
+        <a href="#" class="">
+          <img class="rounded-circle " src="/img/account.png" alt="" width="40vh">        
+        </a>
+      </div>
+      
+
+    
   </div>
+
 </nav>
 <!-- Navbar End -->

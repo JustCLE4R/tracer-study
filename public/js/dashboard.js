@@ -139,7 +139,7 @@ legendItems.forEach(function (item) {
 
     // Menambahkan icon
     var icon = document.createElement("i");
-    icon.className = "fa-solid fa-square";
+    icon.className = "bi bi-circle-fill";
     icon.style.color = item.fillStyle;
 
     // Menambahkan margin untuk spasi antara ikon dan teks label
@@ -201,7 +201,7 @@ function showLegend(chart, containerId) {
 
         // Menambahkan icon
         var icon = document.createElement("i");
-        icon.className = "fa-solid fa-square";
+        icon.className = "bi bi-circle-fill";
         icon.style.color = item.fillStyle;
 
         // Menambahkan margin untuk spasi antara ikon dan teks label
@@ -228,4 +228,7 @@ function showLegend(chart, containerId) {
 // Menampilkan keterangan warna dan label dari diagram pie
 showLegend(myChart5, "urutan5", 2);
 // End Chart 2
+
+
+
 
