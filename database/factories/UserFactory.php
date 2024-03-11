@@ -36,7 +36,7 @@ class UserFactory extends Factory
       'tgl_wisuda' => fake()->date,
       'ipk' => fake()->randomFloat(2, 2.5, 4.0),
       'sks_kumulatif' => fake()->numberBetween(90, 150),
-      'predikat_kelulusan' => fake()->randomElement(['A', 'B', 'C']),
+      'predikat_kelulusan' => fake()->randomElement(['Terpuji', 'Sangat Baik', 'Baik']),
       'judul_tugas_akhir' => fake()->sentence,
       'foto' => fake()->imageUrl(640, 480, 'people', true),
       'nomor_ktp' => fake()->unique()->randomNumber(8),

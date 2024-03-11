@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ApiIntegration;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -29,50 +28,23 @@ class LoginController extends Controller
     ]);
 
     $authData = $apiIntegration->getStudentAuth($credential['nim'], $credential['password']);
-    $alumniData = $apiIntegration->getALumniData($credential['nim']);
+    $nonAlumniData = $apiIntegration->getStudentData($credential['nim']);
+    $alumniData = $apiIntegration->getAlumniData($credential['nim']);
 
-    if(User::firstWhere('nim', $credential['nim']) == null && !isset($authData['error'])){
-      dd($authData, $alumniData);
-      $authData = $authData['OtentikasiUser'][0];
-      $alumniData = $alumniData['DataAlumni'][0];
-
-
-      $mhsData = [
-        'nim' => $authData['user'],
-        'password' => $authData['password'],
-        'nama' => $authData['nama_lengkap'],
-        'program_studi' => $alumniData['PRODI'],
-        'fakultas' => $alumniData['FAKULTAS'],
-        'strata' => $alumniData['STRATA'],
-        'tahun_masuk' => $alumniData['mhs_angkatan'],
-        'ipk' => $alumniData['mhsIpkTranskrip'],
-        'sks_kumulatif' => $alumniData['mhsSksTranskrip'],
-        'predikat_kelulusan' => $this->calculatePredicate($alumniData['mhsIpkTranskrip']),
-        'judul_tugas_akhir' => $alumniData['JudulTA'],
-        'foto' => $alumniData['mhsFoto'],
-        'nomor_ktp' => $alumniData['nik'],
-        'tempat_lahir' => $alumniData['tempat_lahir'],
-        'tanggal_lahir' => $alumniData['tanggal_lahir'],
-        'jenis_kelamin' => $alumniData['jenis_kelamin'],
-        'kewarganegaraan' => $alumniData['kewarganegaraan'],
-        'alamat' => $alumniData['jalan'],
-        'telepon' => $alumniData['handphone'],
-        'email' => $alumniData['email'],
-      ];
-
-      dd($mhsData);
-      User::create($mhsData);
+    // cek ketersediaan API
+    if(isset($authData['modelError']) || isset($nonAlumniData['modelError']) || isset($alumniData['modelError'])){
+      return redirect('/login')->with('error', 'API Server Error');
     }
+
+    // cek ketersediaan data dan buat ke database
+    $apiIntegration->createWithMhsData($credential, $authData, $nonAlumniData, $alumniData);
     
+    // percobaan login (dengan nim) jika semuanya normal
     if(Auth::attempt(['nim' => $credential['nim'], 'password' => md5($credential['password'])])){
       $request->session()->regenerate();
       
       return redirect()->intended('/dashboard');
     }
-
-    // if($authData == null){
-    //   return redirect('/login')->with('error', 'NIM yang anda masukkan tidak ditemukan');
-    // }
 
     return redirect('/login')->with('error', 'NIM atau password yang anda masukkan salah');
   }
@@ -84,17 +56,5 @@ class LoginController extends Controller
     return redirect('/login');
   }
 
-  private function calculatePredicate($ipk){
-    if($ipk >= 3.51){
-      return 'Terpuji';
-    }else if($ipk >= 3.00){
-      return 'Sangat Memuaskan';
-    }else if($ipk >= 2.50){
-      return 'Memuaskan';
-    }else if($ipk >= 2.00){
-      return 'Baik';
-    }else{
-      return 'Cukup';
-    }
-  }
+
 }

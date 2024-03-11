@@ -1,80 +1,24 @@
 [
   {
-    "question": "Apakah anda telah mendapatkan pekerjaan?",
+    "question": "Kriteria Pekerjaan?",
     "qanswer": {
-      "a": "Waktu Tunggu <= 6 bulan",
-      "b": "Waktu tunggu dalam interval 6 - 18 bulan",
-      "c": "Lebih dari 18 bulan"
+      "a": "Instansi pemerintah (termasuk BUMN)",
+      "b": "Organisasi non-profit / lembaga swadaya masyarakat",
+      "c": "Perusahaan swasta"
     },
     "category": "bekerja",
-    "type": "radio"
+    "type": "fulltime"
   },
   {
-    "question": "Berapa rata-rata pendapatan anda per bulan dalam rupiah?",
+    "question": "Kriteria Pekerjaan?",
     "qanswer": {
-      "a": "Kurang dari Rp 1.000.000",
-      "b": "Rp 1.000.001 - Rp 3.000.000",
-      "c": "Rp 3.000.001 - Rp5.000.000",
-      "d": "Rp 5.000.001 - Rp 7.000.000",
-      "e": "Lebih dari Rp 7.000.000"
-    },
-    "category": "bekerja",
-    "type": "radio"
-  },
-  {
-    "question": "Dimana lokasi tempat Anda bekerja?",
-    "qanswer": {
-      "a": "Provinsi (Daftar List Provinsi)",
-      "b": "Kabupaten/Kota (Daftar List Kabupaten/Kota)",
-      "c": "Alamat Lengkap Perusahaan"
-    },
-    "category": "bekerja",
-    "type": "select"
-  },
-  {
-    "question": "Apa jenis perusahaan/instansi/institusi tempat anda bekerja sekarang?",
-    "qanswer": {
-      "a": "Instansi Pemerintah",
-      "b": "Organisasi Non-profit/Lembaga Swadaya Masyarakat",
+      "a": "Instansi pemerintah (termasuk BUMN)",
+      "b": "Organisasi non-profit / lembaga swadaya masyarakat",
       "c": "Perusahaan Swasta",
-      "d": "Wiraswasta/perusahaan Sendiri",
-      "e": "BUMN/BUMD",
-      "f": "Institusi/Organisasi Multilateral",
-      "g": "Lainnya"
+      "d": "Freelance (Self Employed) (termasuk Dai)"
     },
     "category": "bekerja",
-    "type": "radio"
-  },
-  {
-    "question": "Apa nama perusahaan/kantor tempat Anda bekerja?",
-    "qanswer": {},
-    "category": "bekerja",
-    "type": "text"
-  },
-  {
-    "question": "Tuliskan Kontak Perusahaan tempat anda bekerja!",
-    "qanswer": {},
-    "category": "bekerja",
-    "type": "text"
-  },
-  {
-    "question": "Penghasilan Anda Rata-rata perbulan",
-    "qanswer": {
-      "a": "< UMR",
-      "b": ">= UMR"
-    },
-    "category": "bekerja",
-    "type": "radio"
-  },
-  {
-    "question": "Lingkup Tempat Kerja/Berwirausaha tempat anda bekerja",
-    "qanswer": {
-      "a": "Lokal/ Wilayah/ Berwirausaha tidak Berizin",
-      "b": "Nasional/ Berwirausaha Berizin",
-      "c": "Multinasiona/ Internasional"
-    },
-    "category": "bekerja",
-    "type": "radio"
+    "type": "partime"
   },
   {
     "question": "Bidang Usaha",
@@ -98,104 +42,12 @@
       "q": "Aktivitas kesehatan dan aktivitas sosial",
       "r": "Kesenian, hiburan dan rekreasi",
       "s": "Aktivitas jasa lainnya",
-      "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga",
+      "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga yang digunakan untuk memenuhi kebutuhan sendiri yang digunakan untuk memenuhi kebutuhan sendiri",
       "u": "Aktivitas badan internasional dan badan ekstra internasional lainnya"
+
     },
     "category": "bekerja",
     "type": "select"
-  },
-  {
-    "question": "Jabatan Pada Perusahaan tempat bekerja",
-    "qanswer": {},
-    "category": "bekerja",
-    "type": "text"
-  },
-  {
-    "question": "Seberapa erat hubungan antara bidang studi dengan pekerjaan anda?",
-    "qanswer": {
-      "a": "Tinggi",
-      "b": "Sedang",
-      "c": "Rendah"
-    },
-    "category": "bekerja",
-    "type": "radio"
-  },
-  {
-    "question": "Berapa perusahaan/instansi/institusi yang sudah anda lamar (lewat surat atau e-mail) sebelum anda memperoleh pekerjaan pertama?",
-    "qanswer": {},
-    "category": "bekerja",
-    "type": "number"
-  },
-  {
-    "question": "Tingkat pendidikan apa yang paling tepat/sesuai untuk pekerjaan anda saat ini?",
-    "qanswer": {
-      "a": "Setingkat Lebih Tinggi",
-      "b": "Erat tingkat Yang Sama",
-      "c": "Setingkat Lebih Rendah",
-      "d": "Tidak Perlu Pendidikan Tinggi"
-    },
-    "category": "bekerja",
-    "type": "radio"
-  },
-  {
-    "question": "Berapa banyak perusahaan/instansi/institusi yang merespons lamaran anda?",
-    "qanswer": {},
-    "category": "bekerja",
-    "type": "number"
-  },
-  {
-    "question": "Berapa banyak perusahaan/instansi/institusi yang mengundang anda untuk wawancara?",
-    "qanswer": {},
-    "category": "bekerja",
-    "type": "number"
-  },
-  {
-    "question": "Jika menurut anda pekerjaan anda saat ini tidak sesuai dengan pendidikan anda, mengapa anda mengambilnya? Jawaban bisa lebih dari satu",
-    "qanswer": {
-      "a": "Pertanyaan Tidak Sesuai; Pekerjaan Saya Sekarang Sudah Sesuai Dengan Pendidikan Saya",
-      "b": "Saya Belum Mendapatkan Pekerjaan Yang Lebih Sesuai",
-      "c": "Di Pekerjaan Ini Saya Memeroleh Prospek Karir Yang Baik",
-      "d": "Saya Lebih Suka Bekerja Di Area Pekerjaan Yang Tidak Ada Hubungannya Dengan Pendidikan Saya",
-      "e": "Saya Dipromosikan Ke Posisi Yang Kurang Berhubungan Dengan Pendidikan Saya Dibanding Posisi Sebelumnya",
-      "f": "Saya Dapat Memeroleh Pendapatan Yang Lebih Tinggi Di Pekerjaan Ini",
-      "g": "Pekerjaan Saya Saat Ini Lebih Aman/terjamin/secure",
-      "h": "Pekerjaan Saya Saat Ini Lebih Menarik",
-      "i": "Pekerjaan Saya Saat Ini Lebih Memungkinkan Saya Mengambil Pekerjaan Tambahan/jadwal Yang Fleksibel Dll",
-      "j": "Pekerjaan Saya Saat Ini Lokasinya Lebih Dekat Dari Rumah Saya",
-      "k": "Pekerjaan Saya Saat Ini Dapat Lebih Menjamin Kebutuhan Keluarga Saya",
-      "l": "Pada Awal Meniti Karir Ini Saya Harus Menerima Pekerjaan Yang Tidak Berhubungan Dengan Pendidikan Saya",
-      "m": "Lainnya"
-    },
-    "category": "bekerja",
-    "type": "checkbox"
-  },
-  {
-    "question": "Bagaimana anda mencari pekerjaan tersebut? Jawaban bisa lebih dari satu",
-    "qanswer": {
-      "a": "Melalui Iklan Di Koran/majalah/brosur",
-      "b": "Melamar Ke Perusahaan Tanpa Mengetahui Lowongan Yang Ada",
-      "c": "Pergi Ke Bursa/pameran Kerja",
-      "d": "Mencari Lewat Internet/iklan Online/milis",
-      "e": "Dihubungi Oleh Perusahaan",
-      "f": "Menghubungi Kemenakertrans",
-      "g": "Menghubungi Agen Tenaga Kerja Komersial/swasta",
-      "h": "Memeroleh Informasi Dari Pusat/kantor Pengembangan Karir Fakultas/universitas",
-      "i": "Menghubungi Kantor Kemahasiswaan/hubungan Alumni",
-      "j": "Membangun Jejaring (network) Sejak Masih Kuliah",
-      "k": "Melalui Relasi (misalnya Dosen/orang Tua/saudara/teman Dll)",
-      "l": "Membangun Bisnis Sendiri",
-      "m": "Melalui Penempatan Kerja Atau Magang",
-      "n": "Bekerja Di Tempat Yang Sama Dengan Tempat Kerja Semasa Kuliah",
-      "o": "Lainnya"
-    },
-    "category": "bekerja",
-    "type": "checkbox"
-  },
-  {
-    "question": "Sebutkan Nama Usaha Anda!",
-    "qanswer": {},
-    "category": "wiraswasta",
-    "type": "text"
   },
   {
     "question": "Tingkat / Ukuran Tempat Bekerja",
@@ -204,35 +56,7 @@
       "b": "Nasional",
       "c": "Multinasional"
     },
-    "category": "wiraswasta",
-    "type": "radio"
-  },
-  {
-    "question": "Bidang Usaha",
-    "qanswer": {
-      "a": "Pertanian, perikanan, dan kehutanan",
-      "b": "Pertambangan dan penggalian",
-      "c": "Industri pengolahan",
-      "d": "Pengadaaan listrik, gas, uap/air panas, dan udara dingin",
-      "e": "Pengelolaan air, pengolahan air limbah, pengelolaan dan daur ulang sampah, dan aktivitas remediasi",
-      "f": "Konstruksi",
-      "g": "Perdagangan besar dan eceran, reparasi dan perawatan mobil dan sepeda motor",
-      "h": "Pengangkutan dan pergudangan",
-      "i": "Penyediaan akomodasi dan penyediaan makanan dan minuman",
-      "j": "Informasi dan komunikasi",
-      "k": "Aktivitas keuangan dan asuransi",
-      "l": "Real estate",
-      "m": "Aktivitas profesional, ilmiah, dan teknis",
-      "n": "Aktivitas persewaan dan sewa guna usaha tanpa hak opsi, ketenagakerjaan, agen perjalanan dan penunjang usaha lainnya",
-      "o": "Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib",
-      "p": "Aktivitas Pendidikan",
-      "q": "Aktivitas kesehatan dan aktivitas sosial",
-      "r": "Kesenian, hiburan dan rekreasi",
-      "s": "Aktivitas jasa lainnya",
-      "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga",
-      "u": "Aktivitas badan internasional dan badan ekstra internasional lainnya"
-    },
-    "category": "wiraswasta",
+    "category": "bekerja",
     "type": "select"
   },
   {
@@ -242,39 +66,23 @@
       "b": "Direktur",
       "c": "Kepala Unit",
       "d": "Supervisor",
-      "e": "Staff"
+      "e": "Staf",
+      "f": "Self Employed"
     },
-    "category": "wiraswasta",
-    "type": "radio"
+    "category": "bekerja",
+    "type": "select"
   },
   {
     "question": "Detail Pekerjaan",
     "qanswer": {},
-    "category": "wiraswasta",
+    "category": "bekerja",
     "type": "text"
   },
   {
     "question": "Jumlah Pendapatan Perbulan",
     "qanswer": {},
-    "category": "wiraswasta",
+    "category": "bekerja",
     "type": "number"
-  },
-  {
-    "question": "Jumlah Pendapatan Bersih Perbulan",
-    "qanswer": {},
-    "category": "wiraswasta",
-    "type": "number"
-  },
-  {
-    "question": "Pemodal Saat ini (boleh lebih dari 1)",
-    "qanswer": {
-      "a": "Pribadi / Tabungan",
-      "b": "Bank",
-      "c": "Keluarga",
-      "d": "Investor"
-    },
-    "category": "wiraswasta",
-    "type": "checkbox"
   },
   {
     "question": "Kesesuaian Pekerjaan dengan Prodi",
@@ -283,42 +91,193 @@
       "b": "Sedang",
       "c": "Rendah"
     },
-    "category": "wiraswasta",
-    "type": "radio"
+    "category": "bekerja",
+    "type": "select"
   },
   {
-    "question": "Tanggal Mulai Berusaha",
+    "question": "Tanggal Mulai Bekerja",
     "qanswer": {},
-    "category": "wiraswasta",
+    "category": "bekerja",
     "type": "date"
   },
   {
-    "question": "Tanggal Akhir Usaha (jika masih berwirausaha klik “masih berwirausaha”)",
+    "question": "Tanggal Akhir Kerja",
     "qanswer": {},
-    "category": "wiraswasta",
-    "type": "akhir_usaha"
+    "category": "bekerja",
+    "type": "date"
   },
   {
-    "question": "Provinsi (tempat usaha)",
+    "question": "Provinsi",
     "qanswer": {},
-    "category": "wiraswasta",
-    "type": "provinsi"
+    "category": "bekerja",
+    "type": "text"
   },
   {
-    "question": "Kabupaten (tempat usaha)",
+    "question": "Kabupaten",
     "qanswer": {},
-    "category": "wiraswasta",
-    "type": "kabupaten"
+    "category": "bekerja",
+    "type": "text"
+  },
+  {
+    "question": "Nama Perusahaan",
+    "qanswer": {},
+    "category": "info-perusahaan",
+    "type": "text"
+  },
+  {
+    "question": "Nama Atasan",
+    "qanswer": {},
+    "category": "info-perusahaan",
+    "type": "text"
+  },
+  {
+    "question": "Posisi / Jabatan Atasan",
+    "qanswer": {},
+    "category": "info-perusahaan",
+    "type": "text"
+  },
+  {
+    "question": "Nomor Telepon Atasan",
+    "qanswer": {},
+    "category": "info-perusahaan",
+    "type": "text"
+  },
+  {
+    "question": "Alamat Email Aktif Atasan",
+    "qanswer": {},
+    "category": "info-perusahaan",
+    "type": "email"
+  },
+  {
+    "question": "Nama Usaha",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "text"
+  },
+  {
+    "question": "Tingkat / Ukuran Tempat Bekerja",
+    "qanswer": {
+      "a": "Lokal",
+      "b": "Nasional",
+      "c": "Multinasional"
+    },
+    "category": "wirausaha",
+    "type": "text"
+  },
+  {
+    "question": "Bidang Usaha",
+    "qanswer": {
+      "a": "Pertanian, perikanan, dan kehutanan",
+      "b": "Pertambangan dan penggalian",
+      "c": "Industri pengolahan",
+      "d": "Pengadaaan listrik, gas, uap/air panas, dan udara dingin",
+      "e": "Pengelolaan air, pengolahan air limbah, pengelolaan dan daur ulang sampah, dan aktivitas remediasi",
+      "f": "Konstruksi",
+      "g": "Perdagangan besar dan eceran, reparasi dan perawatan mobil dan sepeda motor",
+      "h": "Pengangkutan dan pergudangan",
+      "i": "Penyediaan akomodasi dan penyediaan makanan dan minuman",
+      "j": "Informasi dan komunikasi",
+      "k": "Aktivitas keuangan dan asuransi",
+      "l": "Real estate",
+      "m": "Aktivitas profesional, ilmiah, dan teknis",
+      "n": "Aktivitas persewaan dan sewa guna usaha tanpa hak opsi, ketenagakerjaan, agen perjalanan dan penunjang usaha lainnya",
+      "o": "Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib",
+      "p": "Aktivitas Pendidikan",
+      "q": "Aktivitas kesehatan dan aktivitas sosial",
+      "r": "Kesenian, hiburan dan rekreasi",
+      "s": "Aktivitas jasa lainnya",
+      "t": "Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga yang digunakan untuk memenuhi kebutuhan sendiri yang digunakan untuk memenuhi kebutuhan sendiri",
+      "u": "Aktivitas badan internasional dan badan ekstra internasional lainnya"
+
+    },
+    "category": "wirausaha",
+    "type": "select"
+  },
+  {
+    "question": "Posisi / Jabatan Pekerjaan",
+    "qanswer": {
+      "a": "Pemilik",
+      "b": "Direktur",
+      "c": "Kepala Unit",
+      "d": "Supervisor",
+      "e": "Staf",
+      "f": "Self Employed"
+    },
+    "category": "wirausaha",
+    "type": "select"
+  },
+  {
+    "question": "Detail Pekerjaan",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "text"
+  },
+  {
+    "question": "Jumlah Pendapatan Perbulan (Omset Penjualan)",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "number"
+  },
+  {
+    "question": "Jumlah Pendapatan Bersih Perbulan",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "number"
+  },
+  {
+    "question": "Pemodal Saat Ini",
+    "qanswer": {
+      "a": "Pribadi / Tabungan",
+      "b": "Bank",
+      "c": "Keluarga",
+      "d": "Investor"
+
+    },
+    "category": "wirausaha",
+    "type": "number"
+  },
+  {
+    "question": "Kesesuaian Pekerjaan dengan Prodi",
+    "qanswer": {
+      "a": "Tinggi",
+      "b": "Sedang",
+      "c": "Rendah"
+    },
+    "category": "wirausaha",
+    "type": "select"
+  },
+  {
+    "question": "Tanggal Mulai Berusaha",
+    "qanswer":{},
+    "category": "wirausaha",
+    "type": "date"
+  },
+  {
+    "question": "Tanggal Akhir Berusaha",
+    "qanswer":{},
+    "category": "wirausaha",
+    "type": "date"
+  },
+  {
+    "question": "Provinsi",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "text"
+  },
+  {
+    "question": "Kabupaten",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "text"
   },
   {
     "question": "Tingkat Pendidikan",
     "qanswer": {
-      "a": "S1",
-      "b": "S2",
-      "c": "S3"
+      "a": "S2",
+      "b": "S3"
     },
     "category": "studi",
-    "type": "radio"
+    "type": "select"
   },
   {
     "question": "Program Studi",
@@ -336,13 +295,13 @@
     "question": "Tanggal Surat Penerimaan Kuliah",
     "qanswer": {},
     "category": "studi",
-    "type": "date"
+    "type": "text"
   },
   {
     "question": "Tanggal Mulai Kuliah",
     "qanswer": {},
     "category": "studi",
-    "type": "date"
+    "type": "text"
   },
   {
     "question": "Status Saat Ini",
@@ -351,261 +310,33 @@
       "b": "Sudah Selesai"
     },
     "category": "studi",
-    "type": "radio"
+    "type": "select"
   },
   {
-    "question": "Apakah Program Studi yang Ditempuh Linier?",
+    "question": "Program Studi Satu Linier",
     "qanswer": {
       "a": "Ya",
       "b": "Tidak"
     },
     "category": "studi",
-    "type": "radio"
+    "type": "select"
   },
   {
-    "question": "Negara (Tempat Kuliah)",
+    "question": "Negara",
     "qanswer": {},
     "category": "studi",
     "type": "text"
   },
   {
-    "question": "Provinsi (Tempat Kuliah)",
+    "question": "Provinsi",
     "qanswer": {},
     "category": "studi",
     "type": "text"
   },
   {
-    "question": "Kabupaten/Kota (Tempat Kuliah)",
+    "question": "Kabupaten",
     "qanswer": {},
     "category": "studi",
     "type": "text"
-  },
-  {
-    "question": "Upload Bukti Tanda Terima Kuliah (Berupa: Kartu Pelajar / Bukti Diterima)",
-    "qanswer": {},
-    "category": "studi",
-    "type": "file"
-  },
-  {
-    "question": "Nama",
-    "qanswer": "[]",
-    "category": "pimpinan",
-    "type": "text"
-  },
-  {
-    "question": "Jabatan",
-    "qanswer": "[]",
-    "category": "pimpinan",
-    "type": "text"
-  },
-  {
-    "question": "Nama Perusahaan",
-    "qanswer": "[]",
-    "category": "pimpinan",
-    "type": "text"
-  },
-  {
-    "question": "Alamat Perusahaan",
-    "qanswer": "[]",
-    "category": "pimpinan",
-    "type": "text"
-  },
-  {
-    "question": "Nomor Kontak Responden",
-    "qanswer": "[]",
-    "category": "pimpinan",
-    "type": "text"
-  },
-  {
-    "question": "Email Responden",
-    "qanswer": "[]",
-    "category": "pimpinan",
-    "type": "email"
-  },
-  {
-    "question": "Pada saat ini, pada tingkat mana kompetensi di bawah ini diperlukan dalam pekerjaan?",
-    "qanswer": {
-      "a":"Sangat Baik",
-      "b":"Baik",
-      "c":"Cukup",
-      "d":"Kurang"
-    },
-    "category": "pimpinan",
-    "type": "radio"
-  },
-  {
-    "question": "KEAHLIAN BERDASARKAN BIDANG ILMU",
-    "qanswer": {
-      "a":"Sangat Baik",
-      "b":"Baik",
-      "c":"Cukup",
-      "d":"Kurang"
-    },
-    "category": "pimpinan",
-    "type": "radio"
-  },
-  {
-    "question": "BAHASA INGGRIS",
-    "qanswer": {
-      "a":"Sangat Baik",
-      "b":"Baik",
-      "c":"Cukup",
-      "d":"Kurang"
-    },
-    "category": "pimpinan",
-    "type": "radio"
-  },
-  {
-    "question": "PENGGUNAAN TEKNOLOGI",
-    "qanswer": {
-      "a":"Sangat Baik",
-      "b":"Baik",
-      "c":"Cukup",
-      "d":"Kurang"
-    },
-    "category": "pimpinan",
-    "type": "radio"
-  },
-  {
-    "question": "KOMUNIKASI",
-    "qanswer": {
-      "a":"Sangat Baik",
-      "b":"Baik",
-      "c":"Cukup",
-      "d":"Kurang"
-    },
-    "category": "pimpinan",
-    "type": "radio"
-  },
-  {
-    "question": "KERJASAMA DALAM TIM",
-    "qanswer": {
-      "a":"Sangat Baik",
-      "b":"Baik",
-      "c":"Cukup",
-      "d":"Kurang"
-    },
-    "category": "pimpinan",
-    "type": "radio"
-  },
-  {
-    "question": "PENGEMBANGAN DIRI",
-    "qanswer": {
-      "a":"Sangat Baik",
-      "b":"Baik",
-      "c":"Cukup",
-      "d":"Kurang"
-    },
-    "category": "pimpinan",
-    "type": "radio"
-  },
-  {
-    "question": "Sebutkan sumberdana dalam pembiayaan kuliah? (Saat berkuliah di S1/D3)",
-    "qanswer": {
-      "1":"Biaya Sendiri/Keluarga",
-      "3":"Beasiswa BIDIKMISI /KIP",
-      "4":"Beasiswa PPA (Peningkatan Prestasi Akademik)",
-      "5":"Beasiswa Afirmasi",
-      "6":"Beasiswa Perusahaan/Swasta",
-      "7":"Lainnya"
-  },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Menurut Anda seberapa besar penekanan pada metode pembelajaran di bawah ini dilaksanakan di program studi anda?",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Perkuliahan",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Demonstrasi",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Partisipasi Dalam Proyek Riset",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Magang",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Praktikum",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Kerja Lapangan",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
-  },
-  {
-    "question": "Diskusi",
-    "qanswer": {
-      "1":"Sangat Besar",
-      "2":"Besar",
-      "3":"Cukup Besar",
-      "4":"Kurang",
-      "5":"Tidak Sama Sekali"
-    },
-    "category": "umum",
-    "type": "radio"
   }
 ]

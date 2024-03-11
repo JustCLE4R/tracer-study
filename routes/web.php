@@ -35,19 +35,20 @@ Route::get('/dashboard', function () {
   return view('dashboard.index');
 })->middleware('no-cache')->middleware('auth')->name('dashboard');
 
-Route::get('/dashboard/tracer', [TracerController::class, 'index']);
-Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
+Route::get('/dashboard/tracer', [TracerController::class, 'index'])->middleware('auth');
+Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer'])->middleware('auth');
+
+Route::get('/dashboard/profile', function () {
+  return view('dashboard.profile');
+})->middleware('auth');
 
 // Perjalanan
 Route::get('/dashboard/perjalanan', function () {
-  return view('dashboard.perjalanan');
-});
-Route::get('/dashboard/profile', function () {
-  return view('dashboard.profile');
-});
+  return view('dashboard.perjalanan-karir.perjalanan');
+})->middleware('auth');
 Route::get('/dashboard/tambah-perjalanan', function () {
-  return view('dashboard.tambah-perjalanan');
-});
+  return view('dashboard.perjalanan-karir.tambah-perjalanan');
+})->middleware('auth');
 
 
 Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug'])->middleware('auth');
