@@ -32,7 +32,7 @@ return new class extends Migration
       $table->string('foto')->nullable();
       $table->unsignedBigInteger('nomor_ktp')->nullable();
       $table->string('tempat_lahir');
-      $table->date('tanggal_lahir');
+      $table->date('tgl_lahir');
       $table->char('jenis_kelamin', 1);
       $table->string('kewarganegaraan')->nullable();
       $table->string('provinsi')->nullable();

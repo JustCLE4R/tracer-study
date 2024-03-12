@@ -7,10 +7,10 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
+              <img src="{{ Auth::user()->foto ? url('https://pmb.uinsu.ac.id/file/photo/' . Auth::user()->foto) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Admin" class="rounded-circle"
                 width="150">
               <div class="mt-3">
-                <h4>Paris Alvito</h4>
+            <h4>{{ Auth::user()->nama }}</h4>
               </div>
             </div>
             <div class="row mt-2 mb-1">
@@ -19,28 +19,28 @@
             <div class="row">
               <div class="col">
                 <h6 class="my-1"> <i class="bi bi-telephone-outbound-fill"></i> Telepon</h6>
-                <span class="text-secondary my-1">+62 812-6030-3320</span>
+                <span class="text-secondary my-1">{{ Auth::user()->telepon }}</span>
                 <hr>
               </div>
             </div>
             <div class="row ">
               <div class="col">
                 <h6 class="my-1 "> <i class="bi bi-envelope-at-fill"></i> Email</h6>
-                <span class="text-secondary my-1">alvinparis@gmail.com</span>
+                <span class="text-secondary my-1">{{ Auth::user()->email }}</span>
                 <hr>
               </div>
             </div>
             <div class="row ">
               <div class="col">
-                <h6 class="my-1"><i class="bi bi-linkedin"></i> Linkin</h6>
-                <span class="text-secondary my-1">@av_into</span>
+                <h6 class="my-1"><i class="bi bi-linkedin"></i> Linkedin</h6>
+                <span class="text-secondary my-1">{{ Auth::user()->linkedin ? Auth::user()->linkedin : 'Belum diisi' }}</span>
                 <hr>
               </div>
             </div>
             <div class="row ">
               <div class="col">
                 <h6 class="my-1"><i class="bi bi-facebook"></i> Facebook</h6>
-                <span class="text-secondary my-1">avinto</span>
+                <span class="text-secondary my-1">{{ Auth::user()->facebook ? Auth::user()->facebook : 'Belum diisi' }}</span>
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@
                 <h6 class="mb-0">NIM</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                0701212183
+                {{ Auth::user()->nim }}
               </div>
             </div>
             <hr>
@@ -68,7 +68,7 @@
                 <h6 class="mb-0">Nama</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Paris Alvito
+                {{ Auth::user()->nama }}
               </div>
             </div>
             <hr>
@@ -77,7 +77,7 @@
                 <h6 class="mb-0">Program Studi</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Ilmu Komputer
+                {{ Auth::user()->program_studi }}
               </div>
             </div>
             <hr>
@@ -86,7 +86,7 @@
                 <h6 class="mb-0">Fakultas</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Sains Dan Teknologi
+                {{ Auth::user()->fakultas ? Auth::user()->fakultas : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -95,7 +95,7 @@
                 <h6 class="mb-0">Tingkat Pendidikan</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                S1
+                {{ Auth::user()->strata ? Auth::user()->strata : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -104,7 +104,7 @@
                 <h6 class="mb-0">Tahun Angkatan</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                2021
+                {{ Auth::user()->tahun_masuk }}
               </div>
             </div>
             <hr>
@@ -113,7 +113,7 @@
                 <h6 class="mb-0">Tanggal Lulus</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                21 Juni 2025
+                {{ Auth::user()->tgl_lulus ? Auth::user()->tgl_lulus : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -122,7 +122,7 @@
                 <h6 class="mb-0">Tanggal Yudisium</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                10 Mei 2025
+                {{ Auth::user()->tgl_yudisium ? Auth::user()->tgl_yudisium : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -131,7 +131,7 @@
                 <h6 class="mb-0">Tanggal Wisuda</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                5 Agustus 2025
+                {{ Auth::user()->tgl_wisuda ? Auth::user()->tgl_wisuda : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -140,7 +140,7 @@
                 <h6 class="mb-0">IPK</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                3.70
+                {{ Auth::user()->ipk ? Auth::user()->ipk : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -149,7 +149,7 @@
                 <h6 class="mb-0">SKS Kumulatif</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                142
+                {{ Auth::user()->sks_kumulatif ? Auth::user()->sks_kumulatif : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -158,7 +158,7 @@
                 <h6 class="mb-0">Predikat Kelulusan</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Cum In Face
+                {{ Auth::user()->predikat_kelulusan ? Auth::user()->predikat_kelulusan : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -167,7 +167,7 @@
                 <h6 class="mb-0">Judul Tugas Akhir</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam.
+                {{ Auth::user()->judul_tugas_akhir ? Auth::user()->judul_tugas_akhir : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -182,7 +182,7 @@
                 <h6 class="mb-0">Nomor KTP</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                21089938129
+                {{ Auth::user()->nomor_ktp ? Auth::user()->nomor_ktp : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -191,7 +191,7 @@
                 <h6 class="mb-0">Tempat Lahir</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Bandung
+                {{ Auth::user()->tempat_lahir }}
               </div>
             </div>
             <hr>
@@ -200,7 +200,7 @@
                 <h6 class="mb-0">Tanggal Lahir</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                5 Mei 2003
+                {{ Auth::user()->tgl_lahir }}
               </div>
             </div>
             <hr>
@@ -209,11 +209,15 @@
                 <h6 class="mb-0">Jenis Kelamin</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Jantan
+                @if (Auth::user()->jenis_kelamin == 'L')
+                  Laki - Laki
+                @else
+                  Perempuan
+                @endif
               </div>
             </div>
             <hr>
-            <div class="row">
+            {{-- <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Status Pernikahan</h6>
               </div>
@@ -221,13 +225,13 @@
                 Lajang
               </div>
             </div>
-            <hr>
+            <hr> --}}
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Kewarganegaraan</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                Indonesia
+                {{ Auth::user()->kewarganegaraan ? Auth::user()->kewarganegaraan : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -237,9 +241,9 @@
               </div>
               <div class="col-sm-9 text-secondary">
                 <ul>
-                  <li class="mb-1">Provinsi : Sumatera Utara</li>
-                  <li class="my-1">Kabupaten/Kota : Medan</li>
-                  <li class="my-1">Kecamatan : Medan Deli</li>
+                  <li class="mb-1">Provinsi : {{ Auth::user()->provinsi ? Auth::user()->provinsi : 'Belum diisi' }}</li>
+                  <li class="my-1">Kabupaten/Kota : {{ Auth::user()->kabupaten ? Auth::user()->kabupaten : 'Belum diisi' }}</li>
+                  {{-- <li class="my-1">Kecamatan : {{ Auth::user()->kecamatan }}</li> --}}
                 </ul>
               </div>
             </div>
