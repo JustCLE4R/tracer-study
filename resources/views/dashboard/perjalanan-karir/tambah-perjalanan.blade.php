@@ -12,24 +12,42 @@
           </div>
         </div>
 
-       <div class="mb-3 col-lg-4 col-md-5 col-sm-12">
-        <label for="filterTracer" class="form-label text-secondary">Pilihlah status pekerjaan anda saat ini *</label>
-        <select class="form-select" id="filterTracer" onchange="handleStatusChange()">
-          <option hidden selected>Pilih Status</option>
-          <option value="bekerja">Bekerja</option>
-          <option value="wiraswasta">Wirausaha</option>
-          <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
-        </select>
+        <form action="">
+          <div class="mb-3 col-lg-4 col-md-5 col-sm-12">
+              <label for="filterTracer" class="form-label text-secondary">Pilihlah status pekerjaan anda saat ini *</label>
+              <select class="form-select" id="filterTracer" onchange="handleStatusChange()">
+                  <option hidden selected>Pilih Status</option>
+                  <option value="bekerja">Bekerja</option>
+                  <option value="wiraswasta">Wirausaha</option>
+                  <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
+              </select>
+      
+              <select class="form-select my-2" id="bekerjaSelect" style="display: none;" onchange="handleBekerjaChange()">
+                  <option hidden selected>Pilih Status Bekerja</option>
+                  <option value="fulltime">Fulltime</option>
+                  <option value="parttime">Partime</option>
+                  <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
+              </select>
+          </div>
+      
+          <div id="infoPerusahaanForm" style="display: none;">
+              <!-- ... (Elemen-elemen form informasi perusahaan) ... -->
+              <div class="mb-3">
+                  <label for="namaPerusahaan" class="form-label">Nama Perusahaan</label>
+                  <input type="text" class="form-control" id="namaPerusahaan" name="namaPerusahaan">
+              </div>
+      
+              <!-- ... (Tambahkan elemen form informasi perusahaan sesuai kebutuhan) ... -->
+          </div>
+      
+          <div class="row justify-content-between" id="dynamicForm">
+      
+          </div>
+      </form>
+      
 
-        <select class="form-select" id="bekerjaSelect" style="display: none;" onchange="handleBekerjaChange()">
-          <option hidden selected>Pilih Status Bekerja</option>
-          <option value="fulltime">Fulltime</option>
-          <option value="parttime">Partime</option>
-          <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
-        </select>
-      </div>
+    
 
-      <div class="row justify-content-between" id="dynamicForm"></div>
 
       {{-- <div class="row justify-content-between my-1">
         <div class="col-lg-4 col-md-6 col-sm-12 my-2">
