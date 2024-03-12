@@ -41,7 +41,7 @@ class UserFactory extends Factory
       'foto' => fake()->imageUrl(640, 480, 'people', true),
       'nomor_ktp' => fake()->unique()->randomNumber(8),
       'tempat_lahir' => fake()->city,
-      'tanggal_lahir' => fake()->date,
+      'tgl_lahir' => fake()->date,
       'jenis_kelamin' => fake()->randomElement(['L', 'P']),
       'kewarganegaraan' => 'Indonesia',
       'provinsi' => fake()->state,

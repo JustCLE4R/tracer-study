@@ -43,7 +43,7 @@
 						</div>
 	
 						<div class="col position-absolute bottom-0 end-0 mb-3 me-3">
-							<a href="/dashboard/tambah-perjalanan" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pendidikan</a>
+							<a href="/dashboard/perjalanan-karir/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pekerjaan</a>
 						</div>
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 						</div>
 	
 						<div class="col position-absolute bottom-0 end-0 mb-3 me-3">
-							<a href="/dashboard/tambah-perjalanan" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pekerjaan</a>
+							<a href="/dashboard/perjalanan-karir/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pendidikan</a>
 						</div>
 					</div>
 				</div>

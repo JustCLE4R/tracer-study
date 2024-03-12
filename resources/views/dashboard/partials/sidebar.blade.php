@@ -20,7 +20,7 @@
       <a href="/" class="nav-item nav-link"><i class="bi bi-speedometer2 me-2 fs-5"></i>Landing Page</a>
       <a href="/dashboard/tracer" class="nav-item nav-link"><i class="bi bi-ui-checks me-2 fs-5"></i>Forms</a>
       <a href="/dashboard/career" class="nav-link "><i class="bi bi-newspaper me-2 fs-5"></i>Loker</a>
-      <a href="/dashboard/perjalanan" class="nav-item nav-link"><i class="bi bi-person-fill-gear me-2 fs-5"></i>Perjalanan Karir</a>
+      <a href="/dashboard/perjalanan-karir" class="nav-item nav-link"><i class="bi bi-person-fill-gear me-2 fs-5"></i>Perjalanan Karir</a>
 
       <a href="#" class="nav-link "><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a>
       <a href="/logout" class="nav-item nav-link"><i class="bi bi-box-arrow-right me-2 fs-5"></i>Logout</a>
