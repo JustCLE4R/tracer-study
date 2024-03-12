@@ -24,7 +24,7 @@
       @csrf
       <div class="field email @error('nim') shake @enderror" data-aos="fade-up" data-aos-duration="900">
         <div class="input-area">
-          <input type="text" name="nim" placeholder="NIM" oninput="validateNumericInput(this)" value="{{ $errors->has('nim') ? '' : old('nim') }}" maxlength="10">
+          <input type="text" name="nim" placeholder="NIM" oninput="validateNumericInput(this)" value="{{ $errors->has('nim') ? '' : old('nim') }}" maxlength="12">
           <i class="icon fas fa-envelope"></i>
           @error('nim')
             <i class="error error-icon fas fa-exclamation-circle"></i>

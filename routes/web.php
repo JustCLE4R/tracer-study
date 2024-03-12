@@ -26,7 +26,7 @@ Route::get('/career', function () {
   return view('career');
 });
 
-Route::get('/register', [RegisterController::class, 'index']);
+// Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->middleware('no-cache')->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
@@ -35,18 +35,19 @@ Route::get('/dashboard', function () {
   return view('dashboard.index');
 })->middleware('no-cache')->middleware('auth')->name('dashboard');
 
-Route::get('/dashboard/tracer', [TracerController::class, 'index']);
-Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
+Route::get('/dashboard/tracer', [TracerController::class, 'index'])->middleware('auth');
+Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer'])->middleware('auth');
 
-// Perjalanan
-Route::get('/dashboard/perjalanan', function () {
-  return view('dashboard.perjalanan');
-})->middleware('auth');
 Route::get('/dashboard/profile', function () {
   return view('dashboard.profile');
 })->middleware('auth');
+
+// Perjalanan
+Route::get('/dashboard/perjalanan', function () {
+  return view('dashboard.perjalanan-karir.perjalanan');
+})->middleware('auth');
 Route::get('/dashboard/tambah-perjalanan', function () {
-  return view('dashboard.tambah-perjalanan');
+  return view('dashboard.perjalanan-karir.tambah-perjalanan');
 })->middleware('auth');
 
 
