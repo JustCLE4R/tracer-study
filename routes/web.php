@@ -41,6 +41,9 @@ Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer'])->m
 Route::get('/dashboard/profile', function () {
   return view('dashboard.profile');
 })->middleware('auth');
+Route::get('/dashboard/edit-profile', function () {
+  return view('dashboard.edit-profile');
+})->middleware('auth');
 
 // Perjalanan
 Route::get('/dashboard/perjalanan', function () {
@@ -49,6 +52,7 @@ Route::get('/dashboard/perjalanan', function () {
 Route::get('/dashboard/tambah-perjalanan', function () {
   return view('dashboard.perjalanan-karir.tambah-perjalanan');
 })->middleware('auth');
+
 
 
 Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug'])->middleware('auth');

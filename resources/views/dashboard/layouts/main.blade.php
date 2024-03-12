@@ -82,6 +82,10 @@
   @if (Request::is('dashboard/tracer*'))
     <script src="{{ asset('js/form.js') }}"></script>
   @endif
+
+
+  <script src="{{ asset('js/tambah-perjalanan.js') }}"></script>
+
   
   @if (Request::is('dashboard/career*'))
     <script src="{{ asset('js/career.js') }}"></script>

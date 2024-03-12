@@ -27,11 +27,6 @@
 
           <div class="row mt-4 justify-content-between">
             <div id="liveAlertPlaceholder"></div>
-            <div class="col-3">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination" style="display: none;"></ul>
-              </nav>
-            </div>
             <div class="col-lg-1 col-md-3 col-sm-4">
               <button id="liveAlertBtn" class="btn btn-success" style="display: none;">Kirim</button>
             </div>

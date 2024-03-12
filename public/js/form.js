@@ -72,53 +72,5 @@ function buildForm(questions, currentPage, itemsPerPage) {
   $('#dynamicForm').html(formContent);
 }
 
-function populateTracer(category, currentPage = 1) {
-  $.ajax({
-    url: "/api/questions/category/" + category,
-    type: "GET",
-    dataType: "json",
-    success: function (data) {
-      var totalItems = data.questions.length;
-      var itemsPerPage = 12;
-      var totalPages = Math.ceil(totalItems / itemsPerPage);
 
-      if (totalPages > 1) {
-        $('.pagination').show();
-      } else {
-        $('.pagination').hide();
-      }
-
-      if (currentPage < totalPages) {
-        $('#liveAlertBtn').hide();
-      } else {
-        $('#liveAlertBtn').show();
-      }
-
-      buildForm(data.questions, currentPage, itemsPerPage);
-
-      var paginationContent = '';
-
-      paginationContent += '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '">';
-      paginationContent += '<a class="page-link text-success" href="#" onclick="populateTracer(\'' + category + '\', ' + (currentPage - 1) + ')" aria-label="Previous">';
-      paginationContent += '<span aria-hidden="true">&laquo;</span>';
-      paginationContent += '</a>';
-      paginationContent += '</li>';
-
-      for (var i = 1; i <= totalPages; i++) {
-        paginationContent += '<li class="page-item ' + (currentPage === i ? 'active' : '') + '"><a class="page-link text-success" href="#" onclick="populateTracer(\'' + category + '\', ' + i + ')">' + i + '</a></li>';
-      }
-
-      paginationContent += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '">';
-      paginationContent += '<a class="page-link text-success" href="#" onclick="populateTracer(\'' + category + '\', ' + (currentPage + 1) + ')" aria-label="Next">';
-      paginationContent += '<span aria-hidden="true">&raquo;</span>';
-      paginationContent += '</a>';
-      paginationContent += '</li>';
-
-      $('.pagination').html(paginationContent);
-    },
-    error: function (error) {
-      console.log("Error fetching data:", error);
-    },
-  });
-}
 
