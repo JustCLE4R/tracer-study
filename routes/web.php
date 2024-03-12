@@ -41,13 +41,13 @@ Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
 // Perjalanan
 Route::get('/dashboard/perjalanan', function () {
   return view('dashboard.perjalanan');
-});
+})->middleware('auth');
 Route::get('/dashboard/profile', function () {
   return view('dashboard.profile');
-});
+})->middleware('auth');
 Route::get('/dashboard/tambah-perjalanan', function () {
   return view('dashboard.tambah-perjalanan');
-});
+})->middleware('auth');
 
 
 Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug'])->middleware('auth');
