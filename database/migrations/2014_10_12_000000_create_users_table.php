@@ -37,6 +37,7 @@ return new class extends Migration
       $table->string('kewarganegaraan')->nullable();
       $table->string('provinsi')->nullable();
       $table->string('kabupaten')->nullable();
+      $table->string('kecamatan')->nullable();
       $table->string('alamat');
       // informasi kontak
       $table->string('telepon', 25);

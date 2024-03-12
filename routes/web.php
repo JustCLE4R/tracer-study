@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\TracerController;
 use App\Http\Controllers\PerjalananKarirController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +30,9 @@ Route::get('/dashboard', fn() => view('dashboard.index'))->middleware(['no-cache
 Route::get('/dashboard/tracer', [TracerController::class, 'index'])->middleware('auth');
 Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer'])->middleware('auth');
 
-Route::get('/dashboard/profile', [fn() => view('dashboard.profile')])->middleware('auth');
-Route::get('/dashboard/edit-profile', function () {
-  return view('dashboard.edit-profile');
-})->middleware('auth');
+Route::get('/dashboard/profile', [UserController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/profile-edit', [UserController::class, 'edit'])->middleware('auth');
+Route::patch('/dashboard/profile-edit', [UserController::class, 'update'])->middleware('auth');
 
 Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug'])->middleware('auth');
 
