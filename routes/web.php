@@ -19,7 +19,8 @@ use App\Http\Controllers\UserController;
 */
 
 Route::view('/', 'landing');
-Route::get('/career', fn() => view('career'));
+Route::get('/career', [CareerController::class, 'publicIndex']);
+Route::get('/career/{career:slug}', [CareerController::class, 'publicShow']);
 
 Route::get('/login', [LoginController::class, 'index'])->middleware(['no-cache', 'guest'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware(['no-cache', 'guest']);

@@ -20,6 +20,12 @@ class CareerController extends Controller
     ]);
   }
 
+  public function publicIndex(){
+    return view('publicCareer.index', [
+      'careers' => Career::all()
+    ]);
+  }
+
   /**
    * Show the form for creating a new resource.
    */
@@ -64,6 +70,13 @@ class CareerController extends Controller
     }
 
     return view('dashboard.careers.show', [
+      'career' => $career
+    ]);
+  }
+
+  public function publicShow(Career $career)
+  {
+    return view('publicCareer.show', [
       'career' => $career
     ]);
   }

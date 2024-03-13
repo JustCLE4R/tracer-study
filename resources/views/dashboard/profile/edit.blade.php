@@ -109,12 +109,7 @@
                   <h6 class="mb-0">Fakultas</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control @error('fakultas') is-invalid @enderror" name="fakultas" value="{{ old('fakultas', Auth::user()->fakultas) }}">
-                  @error('fakultas')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  {{ Auth::user()->fakultas }}
                 </div>
               </div>
               <hr>
@@ -123,12 +118,7 @@
                   <h6 class="mb-0">Tingkat Pendidikan</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control @error('strata') is-invalid @enderror" name="strata" value="{{ old('strata', Auth::user()->strata) }}">
-                  @error('strata')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  {{ Auth::user()->strata }}
                 </div>
               </div>
               <hr>
@@ -188,12 +178,7 @@
                   <h6 class="mb-0">IPK</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  <input type="number" step="0.01" min="0" max="4.0" class="form-control @error('ipk') is-invalid @enderror" name="ipk" value="{{ old('ipk', Auth::user()->ipk) }}">
-                  @error('ipk')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  {{ Auth::user()->ipk }}
                 </div>
               </div>
               <hr>
@@ -202,12 +187,7 @@
                   <h6 class="mb-0">SKS Kumulatif</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control @error('sks_kumulatif') is-invalid @enderror" name="sks_kumulatif" value="{{ old('sks_kumulatif', Auth::user()->sks_kumulatif) }}">
-                  @error('sks_kumulatif')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  {{ Auth::user()->sks_kumulatif }}
                 </div>
               </div>
               <hr>
@@ -245,12 +225,7 @@
                   <h6 class="mb-0">Nomor KTP</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control @error('nomor_ktp') is-invalid @enderror" name="nomor_ktp" value="{{ old('nomor_ktp', Auth::user()->nomor_ktp) }}">
-                  @error('nomor_ktp')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  {{ Auth::user()->nomor_ktp }}
                 </div>
               </div>
               <hr>
@@ -299,12 +274,7 @@
                   <h6 class="mb-0">Kewarganegaraan</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control @error('kewarganegaraan') is-invalid @enderror" name="kewarganegaraan" value="{{ old('kewarganegaraan', Auth::user()->kewarganegaraan) }}">
-                  @error('kewarganegaraan')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  {{ Auth::user()->kewarganegaraan }}
                 </div>
               </div>
               <hr>
