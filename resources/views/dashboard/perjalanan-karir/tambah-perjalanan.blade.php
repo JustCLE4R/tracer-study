@@ -18,15 +18,14 @@
               <select class="form-select" id="filterTracer" onchange="handleStatusChange()">
                   <option hidden selected>Pilih Status</option>
                   <option value="bekerja">Bekerja</option>
-                  <option value="wirausaha">wirausaha</option>
+                  <option value="wiraswasta">Wirausaha</option>
                   <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
               </select>
-              
+      
               <select class="form-select my-2" id="bekerjaSelect" style="display: none;" onchange="handleBekerjaChange()">
                   <option hidden selected>Pilih Status Bekerja</option>
                   <option value="fulltime">Fulltime</option>
                   <option value="parttime">Partime</option>
-                  <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
               </select>
           </div>
       
