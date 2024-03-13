@@ -91,6 +91,8 @@ function loadQuestions(type) {
         var apiUrlBekerja = "http://127.0.0.1:8000/api/questions/category/bekerja";
         var apiUrlInfoPerusahaan = "http://127.0.0.1:8000/api/questions/category/info-perusahaan";
 
+
+
         $.when(
             $.ajax({ url: apiUrlBekerja, method: "GET", dataType: "json" }),
             $.ajax({ url: apiUrlInfoPerusahaan, method: "GET", dataType: "json" })
@@ -123,14 +125,15 @@ function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
         dynamicForm.append(colDiv);
     });
 
-    var infoPerusahaanDiv = $("<div>").addClass("col-12 mb-3");
+    var infoPerusahaanDiv = $("<div>").addClass("col-12 mb-3").attr("id", "infoPerusahaan");
     var infoPerusahaanSpan = $("<span>").addClass("h4").text("Informasi Perusahaan");
     infoPerusahaanDiv.append(infoPerusahaanSpan);
     dynamicForm.append(infoPerusahaanDiv);
 
     questionsInfoPerusahaan.forEach(function (question) {
         var colDiv = createQuestionElement(question);
-        dynamicForm.append(colDiv);
+        infoPerusahaanDiv.append(colDiv);
+        // dynamicForm.append(colDiv);
     });
 
     var buttonRow = $("<div>").addClass("row justify-content-end my-1");
@@ -149,12 +152,40 @@ function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
     dynamicForm.append(buttonRow);
 }
 
+function isFreelancer(value) {
+    console.log(value);
+    if (value === "d") {
+        $("#infoPerusahaan").css("display", "none");
+    } 
+    else {
+        $("#infoPerusahaan").css("display", "block");
+    }
+}
+
 function createQuestionElement(question) {
     var colDiv = $("<div>").addClass("col-lg-4 col-md-6 col-sm-12 my-2");
     var label = $("<label>").addClass("form-label text-secondary").text(question.question + " *");
     colDiv.append(label);
+    console.log(question.category);
 
-    if (question.type === "select") {
+    if(question.id === 2){
+        var select = $("<select>")
+        .addClass("form-select")
+        .attr("aria-label", "Default select example")
+        .attr("name", question.id)
+        .attr("onchange", "isFreelancer(this.value)");
+        var defaultOption = $("<option>").prop({ selected: true }).text("Pilih " + question.question);
+        select.append(defaultOption);
+        colDiv.append(select);
+
+        var qanswer = JSON.parse(question.qanswer);
+        $.each(qanswer, function (key, value) {
+            var option = $("<option>").val(key).text(value);
+            select.append(option);
+        });
+    }
+
+    if (question.type === "select" && question.id !== 2 ) {
         var select = $("<select>")
             .addClass("form-select")
             .attr("aria-label", "Default select example")
@@ -169,7 +200,7 @@ function createQuestionElement(question) {
         });
 
         colDiv.append(select);
-    } else if (question.type === "text" || question.type === "number" || question.type === "date") {
+    } else if (question.type === "text" || question.type === "number" || question.type === "date" ) {
         var input = $("<input>")
             .attr({ type: question.type, id: "formGroupExampleInput", name: question.id })
             .addClass("form-control");

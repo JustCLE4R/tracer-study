@@ -13,17 +13,18 @@ return new class extends Migration
   {
     Schema::create('pendidikans', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('user_id');
-      $table->string('tingkat_pendidikan', 2);
-      $table->string('program_studi');
-      $table->string('perguruan_tinggi');
-      $table->date('tgl_mulai_pendidikan');
-      $table->string('status_pendidikan');
-      $table->boolean('is_linear');
-      $table->string('negara_pendidikan');
-      $table->string('provinsi_pendidikan');
-      $table->string('kabupaten_pendidikan');
-      $table->string('bukti_pendidikan');
+      $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+      $table->boolean('is_studying')->default(1);
+      $table->string('tingkat_pendidikan', 2)->nullable();
+      $table->string('program_studi')->nullable();
+      $table->string('perguruan_tinggi')->nullable();
+      $table->date('tgl_mulai_pendidikan')->nullable();
+      $table->string('status_pendidikan')->nullable();
+      $table->boolean('is_linear')->nullable();
+      $table->string('negara_pendidikan')->nullable();
+      $table->string('provinsi_pendidikan')->nullable();
+      $table->string('kabupaten_pendidikan')->nullable();
+      $table->string('bukti_pendidikan')->nullable();
       $table->timestamps();
     });
   }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('wirausahas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('nama_usaha');
             $table->string('tingkat_tempat_bekerja', 13);
             $table->string('bidang_usaha', 1);

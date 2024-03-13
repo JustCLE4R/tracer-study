@@ -79,14 +79,15 @@
   </script>
   <!-- Custom Javascript -->
   <script src="{{ asset('js/dashboard.js') }}"></script>
+  
   @if (Request::is('dashboard/tracer*'))
     <script src="{{ asset('js/form.js') }}"></script>
   @endif
 
+  @if (Request::is('dashboard/perjalanan-karir*'))
+    <script src="{{ asset('js/tambah-perjalanan.js') }}"></script>
+  @endif
 
-  <script src="{{ asset('js/tambah-perjalanan.js') }}"></script>
-
-  
   @if (Request::is('dashboard/career*'))
     <script src="{{ asset('js/career.js') }}"></script>
   @endif

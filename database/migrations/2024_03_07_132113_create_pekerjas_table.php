@@ -13,20 +13,21 @@ return new class extends Migration
     {
         Schema::create('pekerjas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('status_pekerjaan'); //part time, full time
-            $table->string('kriteria_pekerjaan');
-            $table->string('bidang_usaha', 1);
-            $table->string('tingkat_tempat_bekerja', 13);
-            $table->string('jabatan');
-            $table->string('detail_pekerjaan');
-            $table->bigInteger('pendapatan'); 
-            $table->string('kesesuaian', 6); //kesesuaian dengan prodi
-            $table->date('tgl_mulai_kerja');
-            $table->date('tgl_akhir_kerja')->default(null)->nullable();
-            $table->string('provinsi_kerja');
-            $table->string('kabupaten_kerja');
-            $table->string('bukti_bekerja');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->boolean('is_bekerja')->default(1);
+            $table->string('status_pekerjaan')->nullable(); //part time, full time
+            $table->string('kriteria_pekerjaan')->nullable();
+            $table->string('bidang_usaha', 1)->nullable();
+            $table->string('tingkat_tempat_bekerja', 13)->nullable();
+            $table->string('jabatan')->nullable();
+            $table->string('detail_pekerjaan')->nullable();
+            $table->bigInteger('pendapatan')->nullable(); 
+            $table->string('kesesuaian', 6)->nullable(); //kesesuaian dengan prodi
+            $table->date('tgl_mulai_kerja')->nullable();
+            $table->date('tgl_akhir_kerja')->nullable();
+            $table->string('provinsi_kerja')->nullable();
+            $table->string('kabupaten_kerja')->nullable();
+            $table->string('bukti_bekerja')->nullable();
             $table->timestamps();
         });
     }

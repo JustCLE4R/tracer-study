@@ -26,7 +26,6 @@
                   <option hidden selected>Pilih Status Bekerja</option>
                   <option value="fulltime">Fulltime</option>
                   <option value="parttime">Partime</option>
-                  <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
               </select>
           </div>
       
