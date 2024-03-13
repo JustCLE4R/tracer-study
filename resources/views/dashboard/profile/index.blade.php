@@ -2,6 +2,12 @@
 @section('content')
 <div class="container">
   <div class="main-body">
+    @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> {{ session('success') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     <div class="row gutters-sm">
       <div class="col-md-4 mb-3">
         <div class="card">
@@ -113,7 +119,7 @@
                 <h6 class="mb-0">Tanggal Lulus</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{ Auth::user()->tgl_lulus ? Auth::user()->tgl_lulus : 'Belum diisi' }}
+                {{ Auth::user()->tgl_lulus ? \Carbon\Carbon::parse(Auth::user()->tgl_lulus)->format('d-m-Y') : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -122,7 +128,7 @@
                 <h6 class="mb-0">Tanggal Yudisium</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{ Auth::user()->tgl_yudisium ? Auth::user()->tgl_yudisium : 'Belum diisi' }}
+                {{ Auth::user()->tgl_yudisium ? \Carbon\Carbon::parse(Auth::user()->tgl_yudisium)->format('d-m-Y') : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -131,7 +137,7 @@
                 <h6 class="mb-0">Tanggal Wisuda</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{ Auth::user()->tgl_wisuda ? Auth::user()->tgl_wisuda : 'Belum diisi' }}
+                {{ Auth::user()->tgl_wisuda ? \Carbon\Carbon::parse(Auth::user()->tgl_wisuda)->format('d-m-Y') : 'Belum diisi' }}
               </div>
             </div>
             <hr>
@@ -200,7 +206,7 @@
                 <h6 class="mb-0">Tanggal Lahir</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{ Auth::user()->tgl_lahir }}
+                {{ \Carbon\Carbon::parse(Auth::user()->tgl_lahir)->format('d-m-Y') }}
               </div>
             </div>
             <hr>
@@ -243,14 +249,14 @@
                 <ul>
                   <li class="mb-1">Provinsi : {{ Auth::user()->provinsi ? Auth::user()->provinsi : 'Belum diisi' }}</li>
                   <li class="my-1">Kabupaten/Kota : {{ Auth::user()->kabupaten ? Auth::user()->kabupaten : 'Belum diisi' }}</li>
-                  {{-- <li class="my-1">Kecamatan : {{ Auth::user()->kecamatan }}</li> --}}
+                  <li class="my-1">Kecamatan : {{ Auth::user()->kecamatan ? Auth::user()->kecamatan : 'Belum diisi' }}</li>
+                  <li class="my-1">Alamat : {{ Auth::user()->alamat ? Auth::user()->alamat : 'Belum diisi' }}</li>
                 </ul>
               </div>
             </div>
-
             <div class="row mt-2">
               <div class="col-12 text-end">
-                <button class="btn btn-success"><i class="bi bi-pencil-square"></i> Perbaharui Data Diri</button>
+                <a href="/dashboard/profile-edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Perbaharui Data Diri</a>
               </div>
             </div>
           </div>
