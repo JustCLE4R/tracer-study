@@ -1,16 +1,16 @@
 [
   {
-    "question": "Kriteria Pekerjaan?",
+    "question": "Kriteria Pekerjaan",
     "qanswer": {
       "a": "Instansi pemerintah (termasuk BUMN)",
       "b": "Organisasi non-profit / lembaga swadaya masyarakat",
       "c": "Perusahaan swasta"
     },
     "category": "bekerja",
-    "type": "fulltime"
+    "type": "select"
   },
   {
-    "question": "Kriteria Pekerjaan?",
+    "question": "Kriteria Pekerjaan",
     "qanswer": {
       "a": "Instansi pemerintah (termasuk BUMN)",
       "b": "Organisasi non-profit / lembaga swadaya masyarakat",
@@ -18,7 +18,7 @@
       "d": "Freelance (Self Employed) (termasuk Dai)"
     },
     "category": "bekerja",
-    "type": "partime"
+    "type": "select"
   },
   {
     "question": "Bidang Usaha",
@@ -119,6 +119,12 @@
     "type": "text"
   },
   {
+    "question": "Foto/Bukti Telah Bekerja Berwirausaha",
+    "qanswer": {},
+    "category": "bekerja",
+    "type": "file"
+  },
+  {
     "question": "Nama Perusahaan",
     "qanswer": {},
     "category": "info-perusahaan",
@@ -148,6 +154,7 @@
     "category": "info-perusahaan",
     "type": "email"
   },
+  
   {
     "question": "Nama Usaha",
     "qanswer": {},
