@@ -31,8 +31,6 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css'>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
-  
-
   {{-- Trix --}}
   <link rel="stylesheet" type="text/css" href="{{ asset('css/trix.css') }}">
 
@@ -77,6 +75,7 @@
         return new bootstrap.Popover(popoverTriggerEl)
     });
   </script>
+
   <!-- Custom Javascript -->
   <script src="{{ asset('js/dashboard.js') }}"></script>
   
@@ -84,8 +83,12 @@
     <script src="{{ asset('js/form.js') }}"></script>
   @endif
 
-  @if (Request::is('dashboard/perjalanan-karir*'))
-    <script src="{{ asset('js/tambah-perjalanan.js') }}"></script>
+  @if (Request::is('dashboard/pekerja*'))
+    <script src="{{ asset('js/tambah-pekerjaan.js') }}"></script>
+  @endif
+
+  @if (Request::is('dashboard/pendidikan*'))
+    <script src="{{ asset('js/tambah-pendidikan.js') }}"></script>
   @endif
 
   @if (Request::is('dashboard/career*'))

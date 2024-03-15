@@ -1,8 +1,13 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-
 <div id="row" class="row justify-content-center p-3">
+	@if (session()->has('success'))
+	<div class="alert alert-success alert-dismissible fade show col-lg-10 mb-0" role="alert">
+		<strong>Success!</strong> {{ session('success') }}
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+	@endif
 	<div class="col-lg-5 col-md-7 col-sm-8 col-xs-8 p-2 m-3 position-relative">
 		<div class="accordion " id="accordionExample">
 			<div class="accordion-item">
@@ -43,7 +48,7 @@
 						</div>
 	
 						<div class="col position-absolute bottom-0 end-0 mb-3 me-3">
-							<a href="/dashboard/perjalanan-karir/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pekerjaan</a>
+							<a href="/dashboard/pekerja/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pekerjaan</a>
 						</div>
 					</div>
 				</div>
@@ -64,34 +69,42 @@
 						<div class="timeline pb-5">
 							<figcaption class="blockquote-footer text-success ms-2">Setelah Lulus </figcaption>
 							<!--first-->
-							@for ($i = 0; $i < 3; $i++)
+							
+									
+							
+							@foreach ($pendidikans as $pendidikan)
 							<div class="timeline__event animated fadeInUp delay-3s timeline__event--type1">
 								<div class="timeline__event__icon">
 									<i class="bi bi-mortarboard-fill"></i>
 								</div>
 								<div class="timeline__event__date">
-									Magister Informatika (UIN Sumatera Utara)
+									{{ $pendidikan->program_studi }} ({{ $pendidikan->perguruan_tinggi }})
 								</div>
 								<div class="timeline__event__content">
 									<div class="timeline__event__title">
-										Strata 2 (S2)
+										@if ($pendidikan->tingkat_pendidikan == 'a')
+											Strata 1 (S1)
+										@elseif ($pendidikan->tingkat_pendidikan == 'b')
+											Strata 2 (S2)
+										@else
+											Strata 3 (S3)
+										@endif
 									</div>
 									<div class="timeline__event__description">
-										<p>1 Agustus 2021 - Sekarang </p>
+										<p>{{ \Carbon\Carbon::parse($pendidikan->tgl_mulai_pendidikan)->translatedFormat('d F Y', 'id_ID') }}</p>
 									</div>
 	
 									<div class="col mt-2 float-end">
 										<a href="" class="text-success me-1"><i class="bi bi-pencil-square"></i></a>
 										<a href="" class="text-success"><i class="bi bi-trash3"></i></a>
 									</div>
-	
 								</div>
 							</div>
-							@endfor
+							@endforeach
 						</div>
 	
 						<div class="col position-absolute bottom-0 end-0 mb-3 me-3">
-							<a href="/dashboard/perjalanan-karir/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pendidikan</a>
+							<a href="/dashboard/pendidikan/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pendidikan</a>
 						</div>
 					</div>
 				</div>

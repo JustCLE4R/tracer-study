@@ -3,8 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CareerController;
-use App\Http\Controllers\TracerController;
+use App\Http\Controllers\PekerjaController;
+use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PerjalananKarirController;
+use App\Http\Controllers\TracerController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -27,6 +29,7 @@ Route::post('/login', [LoginController::class, 'authenticate'])->middleware(['no
 Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 Route::get('/dashboard', fn() => view('dashboard.index'))->middleware(['no-cache', 'auth'])->name('dashboard');
+Route::get('dashboard/perjalanan-karir', [PerjalananKarirController::class, 'index'])->middleware('auth'); //menampilkan semua karir dia
 
 Route::get('/dashboard/tracer', [TracerController::class, 'index'])->middleware('auth');
 Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer'])->middleware('auth');
@@ -37,5 +40,6 @@ Route::patch('/dashboard/profile-edit', [UserController::class, 'update'])->midd
 
 Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug'])->middleware('auth');
 
-Route::resource('/dashboard/perjalanan-karir', PerjalananKarirController::class)->middleware('auth');
+Route::resource('/dashboard/pekerja', PekerjaController::class)->middleware('auth');
+Route::resource('/dashboard/pendidikan', PendidikanController::class)->middleware('auth');
 Route::resource('/dashboard/career', CareerController::class)->middleware('auth');

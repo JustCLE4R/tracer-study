@@ -241,7 +241,7 @@
 
     },
     "category": "wirausaha",
-    "type": "number"
+    "type": "checkbox"
   },
   {
     "question": "Kesesuaian Pekerjaan dengan Prodi",
@@ -280,8 +280,9 @@
   {
     "question": "Tingkat Pendidikan",
     "qanswer": {
-      "a": "S2",
-      "b": "S3"
+      "a": "S1",
+      "b": "S2",
+      "c": "S3"
     },
     "category": "studi",
     "type": "select"
@@ -302,19 +303,19 @@
     "question": "Tanggal Surat Penerimaan Kuliah",
     "qanswer": {},
     "category": "studi",
-    "type": "text"
+    "type": "date"
   },
   {
     "question": "Tanggal Mulai Kuliah",
     "qanswer": {},
     "category": "studi",
-    "type": "text"
+    "type": "date"
   },
   {
     "question": "Status Saat Ini",
     "qanswer": {
-      "a": "Masih Kuliah",
-      "b": "Sudah Selesai"
+      "1": "Masih Kuliah",
+      "0": "Sudah Selesai"
     },
     "category": "studi",
     "type": "select"
@@ -322,8 +323,8 @@
   {
     "question": "Program Studi Satu Linier",
     "qanswer": {
-      "a": "Ya",
-      "b": "Tidak"
+      "1": "Ya",
+      "0": "Tidak"
     },
     "category": "studi",
     "type": "select"
@@ -345,5 +346,11 @@
     "qanswer": {},
     "category": "studi",
     "type": "text"
+  },
+  {
+    "question": "Upload Bukti tanda Terima Kuliah",
+    "qanswer": {},
+    "category": "studi",
+    "type": "file"
   }
 ]

@@ -14,12 +14,12 @@ return new class extends Migration
     Schema::create('pendidikans', function (Blueprint $table) {
       $table->id();
       $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-      $table->boolean('is_studying')->default(1);
-      $table->string('tingkat_pendidikan', 2)->nullable();
+      $table->char('tingkat_pendidikan', 1)->nullable();
       $table->string('program_studi')->nullable();
       $table->string('perguruan_tinggi')->nullable();
+      $table->date('tgl_surat_penerimaan_kuliah')->nullable();
       $table->date('tgl_mulai_pendidikan')->nullable();
-      $table->string('status_pendidikan')->nullable();
+      $table->boolean('is_studying')->nullable();
       $table->boolean('is_linear')->nullable();
       $table->string('negara_pendidikan')->nullable();
       $table->string('provinsi_pendidikan')->nullable();

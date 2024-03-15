@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->boolean('is_bekerja')->default(1);
-            $table->string('status_pekerjaan')->nullable(); //part time, full time
-            $table->string('kriteria_pekerjaan')->nullable();
-            $table->string('bidang_usaha', 1)->nullable();
-            $table->string('tingkat_tempat_bekerja', 13)->nullable();
-            $table->string('jabatan')->nullable();
+            $table->char('status_pekerjaan', 1)->nullable(); //part time, full time
+            $table->char('kriteria_pekerjaan', 1)->nullable();
+            $table->char('bidang_usaha', 1)->nullable();
+            $table->char('tingkat_tempat_bekerja', 1)->nullable();
+            $table->char('jabatan', 1)->nullable();
             $table->string('detail_pekerjaan')->nullable();
             $table->bigInteger('pendapatan')->nullable(); 
-            $table->string('kesesuaian', 6)->nullable(); //kesesuaian dengan prodi
+            $table->char('kesesuaian', 1)->nullable(); //kesesuaian dengan prodi
             $table->date('tgl_mulai_kerja')->nullable();
             $table->date('tgl_akhir_kerja')->nullable();
             $table->string('provinsi_kerja')->nullable();

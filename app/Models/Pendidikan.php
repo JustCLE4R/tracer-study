@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pendidikan extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
+  protected $guarded = [
+    "id"
+  ];
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 }
