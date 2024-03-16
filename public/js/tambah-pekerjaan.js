@@ -217,14 +217,13 @@ function createQuestionElement(question) {
     var colDiv = $("<div>").addClass("col-lg-4 col-md-6 col-sm-12 my-2");
     var label = $("<label>").addClass("form-label text-secondary").text(question.question + " *");
     colDiv.append(label);
-    console.log(question.category);
 
-    if(question.id === 2){
+    if (question.id === 2) {
         var select = $("<select>")
-        .addClass("form-select")
-        .attr("aria-label", "Default select example")
-        .attr("name", question.id)
-        .attr("onchange", "isFreelancer(this.value)");
+            .addClass("form-select")
+            .attr("aria-label", "Default select example")
+            .attr("name", question.id)
+            .attr("onchange", "isFreelancer(this.value)");
         var defaultOption = $("<option>").prop({ selected: true }).text("Pilih " + question.question);
         select.append(defaultOption);
         colDiv.append(select);
@@ -236,11 +235,11 @@ function createQuestionElement(question) {
         });
     }
 
-    if (question.type === "select" && question.id !== 2 ) {
+    if (question.type === "select" && question.id !== 2) {
         var select = $("<select>")
             .addClass("form-select")
             .attr("aria-label", "Default select example")
-            .attr("name", question.id);
+            .attr("name", question.question.toLowerCase().replace(/\s+/g, '-')); // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
         var defaultOption = $("<option>").prop({ selected: true }).text("Pilih " + question.question);
         select.append(defaultOption);
 
@@ -251,16 +250,16 @@ function createQuestionElement(question) {
         });
 
         colDiv.append(select);
-    } else if (question.type === "text" || question.type === "number" || question.type === "date" ) {
+    } else if (question.type === "text" || question.type === "number" || question.type === "date") {
         var input = $("<input>")
-            .attr({ type: question.type, id: "formGroupExampleInput", name: question.id })
+            .attr({ type: question.type, id: "formGroupExampleInput", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
             .addClass("form-control");
         colDiv.append(input);
     } else if (question.type === "file") {
         var fileInputContainer = $("<div>").addClass("d-flex align-items-center");
         var fileLabel = $("<label>").addClass("form-label text-secondary").text(question.question + " *");
         var fileInput = $("<input>")
-            .attr({ type: "file", id: "formGroupExampleFile", name: question.id })
+            .attr({ type: "file", id: "formGroupExampleFile", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
             .addClass("form-control");
         var fileInfoSpan = $("<span>").addClass("ms-2").attr({
             "data-bs-toggle": "popover",
@@ -276,16 +275,16 @@ function createQuestionElement(question) {
         colDiv.append(fileInputContainer);
     } else if (question.type === "email") {
         var inputEmail = $("<input>")
-            .attr({ type: "email", id: "formGroupExampleInput", name: question.id })
+            .attr({ type: "email", id: "formGroupExampleInput", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
             .addClass("form-control");
         colDiv.append(inputEmail);
-    }else if (question.type === "checkbox") {
+    } else if (question.type === "checkbox") {
         var checkboxDiv = $("<div>").addClass("form-check");
         var checkboxLabel = $("<label>").addClass("form-check-label").text("Benar");
         var checkboxInput = $("<input>")
-            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.id })
+            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
             .addClass("form-check-input");
-        
+
         checkboxDiv.append(checkboxInput);
         checkboxDiv.append(checkboxLabel);
         colDiv.append(checkboxDiv);
@@ -293,3 +292,4 @@ function createQuestionElement(question) {
 
     return colDiv;
 }
+
