@@ -19,12 +19,22 @@ function handleStatusChange() {
         }
         dynamicFormVisible = true;
         loadQuestions(bekerjaSelect.val());
+    } else if (filterTracer.val() === "wirausaha") {
+        bekerjaSelect.hide();
+        dynamicFormVisible = true;
+        loadQuestions("wirausaha");
+    } else if (filterTracer.val() === "Belum memungkinkan bekerja") {
+        bekerjaSelect.hide();
+        dynamicFormVisible = true;
+        loadQuestions("belum-kerja"); // Memuat pertanyaan untuk kategori belum-kerja
     } else {
         bekerjaSelect.hide();
         clearDynamicForm();
         dynamicFormVisible = false;
     }
 }
+
+
 
 function handleBekerjaChange() {
     var bekerjaSelect = $("#bekerjaSelect");
@@ -83,16 +93,57 @@ function buildDynamicFormWirausaha(questionsWirausaha) {
     buttonRow.append(buttonCol);
     dynamicForm.append(buttonRow);
 }
+function loadQuestionsBelumKerja() {
+    var apiUrlBelumKerja = "http://127.0.0.1:8000/api/questions/category/belum-kerja";
+
+    $.ajax({
+        url: apiUrlBelumKerja,
+        method: "GET",
+        dataType: "json",
+        success: function (dataBelumKerja) {
+            var questionsBelumKerja = dataBelumKerja.questions;
+            buildDynamicFormBelumKerja(questionsBelumKerja);
+        },
+        error: function (errorBelumKerja) {
+            console.error("Error fetching belum-kerja data:", errorBelumKerja);
+        }
+    });
+}
+
+function buildDynamicFormBelumKerja(questionsBelumKerja) {
+    clearDynamicForm();
+    var dynamicForm = $("#dynamicForm");
+
+    questionsBelumKerja.forEach(function (question) {
+        var colDiv = createQuestionElement(question);
+        dynamicForm.append(colDiv);
+    });
+
+    var buttonRow = $("<div>").addClass("row justify-content-end my-1");
+    var buttonCol = $("<div>").addClass("col-lg-5 col-md-8 col-sm-12 text-end");
+    var backButton = $("<a>")
+        .addClass("btn btn-secondary mx-1")
+        .attr("href", "/dashboard/perjalanan")
+        .html('<i class="bi bi-arrow-left-circle"></i> Kembali');
+    var saveButton = $("<button>")
+        .addClass("btn btn-success mx-1")
+        .html('<i class="bi bi-file-earmark-check"></i> Simpan');
+    
+    buttonCol.append(backButton);
+    buttonCol.append(saveButton);
+    buttonRow.append(buttonCol);
+    dynamicForm.append(buttonRow);
+}
+
 
 function loadQuestions(type) {
     if (type === "wirausaha") {
         loadQuestionsWirausaha();
+    } else if (type === "belum-kerja") {
+        loadQuestionsBelumKerja(); // Menambahkan pemanggilan untuk kategori belum-kerja
     } else {
         var apiUrlBekerja = "http://127.0.0.1:8000/api/questions/category/bekerja";
         var apiUrlInfoPerusahaan = "http://127.0.0.1:8000/api/questions/category/info-perusahaan";
-
-
-
         $.when(
             $.ajax({ url: apiUrlBekerja, method: "GET", dataType: "json" }),
             $.ajax({ url: apiUrlInfoPerusahaan, method: "GET", dataType: "json" })
@@ -125,7 +176,7 @@ function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
         dynamicForm.append(colDiv);
     });
 
-    var infoPerusahaanDiv = $("<div>").addClass("col-12 mb-3").attr("id", "infoPerusahaan");
+    var infoPerusahaanDiv = $("<div>").addClass("row mb-3").attr("id", "infoPerusahaan");
     var infoPerusahaanSpan = $("<span>").addClass("h4").text("Informasi Perusahaan");
     infoPerusahaanDiv.append(infoPerusahaanSpan);
     dynamicForm.append(infoPerusahaanDiv);
@@ -228,6 +279,16 @@ function createQuestionElement(question) {
             .attr({ type: "email", id: "formGroupExampleInput", name: question.id })
             .addClass("form-control");
         colDiv.append(inputEmail);
+    }else if (question.type === "checkbox") {
+        var checkboxDiv = $("<div>").addClass("form-check");
+        var checkboxLabel = $("<label>").addClass("form-check-label").text("Benar");
+        var checkboxInput = $("<input>")
+            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.id })
+            .addClass("form-check-input");
+        
+        checkboxDiv.append(checkboxInput);
+        checkboxDiv.append(checkboxLabel);
+        colDiv.append(checkboxDiv);
     }
 
     return colDiv;

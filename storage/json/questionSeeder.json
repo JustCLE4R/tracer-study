@@ -352,5 +352,11 @@
     "qanswer": {},
     "category": "studi",
     "type": "file"
+  },
+  {
+    "question": "Saya Belum Memiliki Pekerjaan",
+    "qanswer": {},
+    "category": "belum-kerja",
+    "type": "checkbox"
   }
 ]
