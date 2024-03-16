@@ -17,7 +17,7 @@ return new class extends Migration
       $table->char('tingkat_pendidikan', 1)->nullable();
       $table->string('program_studi')->nullable();
       $table->string('perguruan_tinggi')->nullable();
-      $table->date('tgl_surat_penerimaan_kuliah')->nullable();
+      $table->date('tgl_surat_penerimaan_pendidikan')->nullable();
       $table->date('tgl_mulai_pendidikan')->nullable();
       $table->boolean('is_studying')->nullable();
       $table->boolean('is_linear')->nullable();

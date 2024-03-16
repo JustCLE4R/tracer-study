@@ -10,8 +10,8 @@ class PerjalananKarirController extends Controller
 {
 	public function index(){
 		return view('dashboard.perjalanan-karir.index', [
-			'pekerjaans' => Pekerja::where('user_id', auth()->user()->id)->get(),
-			'pendidikans' => Pendidikan::where('user_id', auth()->user()->id)->get()
+			'pekerjaans' => Pekerja::where('user_id', auth()->user()->id)->orderBy('tgl_mulai_kerja', 'asc')->get(),
+			'pendidikans' => Pendidikan::where('user_id', auth()->user()->id)->orderBy('tingkat_pendidikan', 'asc')->get()
 		]);
 	}
 }

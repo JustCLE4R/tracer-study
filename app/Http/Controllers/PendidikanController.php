@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PendidikanController extends Controller
 {
@@ -29,17 +30,17 @@ class PendidikanController extends Controller
   public function store(Request $request)
   {
     $rules = $request->validate([
-      "tingkat_pendidikan" => "required",
+      "tingkat_pendidikan" => "required|in:a,b,c",
       "program_studi" => "required",
       "perguruan_tinggi" => "required",
-      "tanggal_surat_penerimaan_kuliah" => "required|date",
-      "tanggal_mulai_kuliah" => "required|date",
-      "status_saat_ini" => "required|in:0,1,2",
-      "program_studi_satu_linier" => "required|in:0,1",
-      "negara" => "required",
-      "provinsi" => "required",
-      "kabupaten" => "required",
-      "upload_bukti_tanda_terima_kuliah" => "required|image|file|mimes:jpeg,png,jpg|max:2048",
+      "tgl_surat_penerimaan_pendidikan" => "required|date",
+      "tgl_mulai_pendidikan" => "required|date",
+      "is_studying" => "required|in:0,1,2",
+      "is_linear" => "required|in:0,1",
+      "negara_pendidikan" => "required",
+      "provinsi_pendidikan" => "required",
+      "kabupaten_pendidikan" => "required",
+      "bukti_pendidikan" => "required|image|file|mimes:jpeg,png,jpg|max:2048",
     ],
     [
       'required' => ':attribute tidak boleh kosong',
@@ -53,36 +54,21 @@ class PendidikanController extends Controller
       'tingkat_pendidikan' => 'Tingkat Pendidikan',
       'program_studi' => 'Program Studi',
       'perguruan_tinggi' => 'Perguruan Tinggi',
-      'tanggal_surat_penerimaan_kuliah' => 'Tanggal Surat Penerimaan',
-      'tanggal_mulai_kuliah' => 'Tanggal Mulai Kuliah',
-      'status_saat_ini' => 'Status Saat Ini',
-      'program_studi_satu_linier' => 'Program Studi Satu Linier',
-      'negara' => 'Negara',
-      'provinsi' => 'Provinsi',
-      'kabupaten' => 'Kabupaten',
-      'upload_bukti_tanda_terima_kuliah' => 'Bukti Tanda Terima Kuliah'
-    ]
-  );
+      'tgl_surat_penerimaan_pendidikan' => 'Tanggal Surat Penerimaan',
+      'tgl_mulai_pendidikan' => 'Tanggal Mulai Kuliah',
+      'is_studying' => 'Status Saat Ini',
+      'is_linear' => 'Program Studi Satu Linier',
+      'negara_pendidikan' => 'Negara',
+      'provinsi_pendidikan' => 'Provinsi',
+      'kabupaten_pendidikan' => 'Kabupaten',
+      'bukti_pendidikan' => 'Bukti Tanda Terima Kuliah'
+    ]);
 
-  $rules['upload_bukti_tanda_terima_kuliah'] = $request->file('upload_bukti_tanda_terima_kuliah')->store('pendidikans-images');
+    $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('pendidikans-images');
+    $rules['user_id'] = auth()->user()->id;
 
-  $prepareData = [
-    'user_id' => auth()->user()->id,
-    'tingkat_pendidikan' => $rules['tingkat_pendidikan'],
-    'program_studi' => $rules['program_studi'],
-    'perguruan_tinggi' => $rules['perguruan_tinggi'],
-    'tgl_surat_penerimaan_kuliah' => $rules['tanggal_surat_penerimaan_kuliah'],
-    'tgl_mulai_pendidikan' => $rules['tanggal_mulai_kuliah'],
-    'is_studying' => $rules['status_saat_ini'],
-    'is_linear' => $rules['program_studi_satu_linier'],
-    'negara_pendidikan' => $rules['negara'],
-    'provinsi_pendidikan' => $rules['provinsi'],
-    'kabupaten_pendidikan' => $rules['kabupaten'],
-    'bukti_pendidikan' => $rules['upload_bukti_tanda_terima_kuliah'],
-  ];
-
-  Pendidikan::create($prepareData);
-  return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan baru telah ditambahkan!');
+    Pendidikan::create($rules);
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan baru telah ditambahkan!');
 
   }
 
@@ -91,7 +77,13 @@ class PendidikanController extends Controller
    */
   public function show(Pendidikan $pendidikan)
   {
-    //
+    if($pendidikan->user_id != auth()->user()->id){
+      return abort(403);
+    }
+
+    return view('dashboard.perjalanan-karir.pendidikan.show', [
+      'pendidikan' => $pendidikan
+    ]);
   }
 
   /**
@@ -99,7 +91,13 @@ class PendidikanController extends Controller
    */
   public function edit(Pendidikan $pendidikan)
   {
-    //
+    if($pendidikan->user_id != auth()->user()->id){
+      return abort(403);
+    }
+
+    return view('dashboard.perjalanan-karir.pendidikan.edit', [
+      'pendidikan' => $pendidikan
+    ]);
   }
 
   /**
@@ -107,7 +105,53 @@ class PendidikanController extends Controller
    */
   public function update(Request $request, Pendidikan $pendidikan)
   {
-    //
+    if($pendidikan->user_id != auth()->user()->id){
+      return abort(403);
+    }
+
+    $rules = $request->validate([
+      "tingkat_pendidikan" => "required|in:a,b,c",
+      "program_studi" => "required",
+      "perguruan_tinggi" => "required",
+      "tgl_surat_penerimaan_pendidikan" => "required|date",
+      "tgl_mulai_pendidikan" => "required|date",
+      "is_studying" => "required|in:0,1,2",
+      "is_linear" => "required|in:0,1",
+      "negara_pendidikan" => "required",
+      "provinsi_pendidikan" => "required",
+      "kabupaten_pendidikan" => "required",
+      "bukti_pendidikan" => "image|file|mimes:jpeg,png,jpg|max:2048",
+    ],
+    [
+      'required' => ':attribute tidak boleh kosong',
+      'date' => ':attribute harus berupa tanggal',
+      'in' => ':attribute tidak valid.',
+      'image' => ':attribute harus berupa gambar',
+      'mimes' => ':attribute harus berupa file dengan format :values',
+      'max' => ':attribute tidak boleh lebih dari :max kilobytes'
+    ],
+    [
+      'tingkat_pendidikan' => 'Tingkat Pendidikan',
+      'program_studi' => 'Program Studi',
+      'perguruan_tinggi' => 'Perguruan Tinggi',
+      'tgl_surat_penerimaan_pendidikan' => 'Tanggal Surat Penerimaan',
+      'tgl_mulai_pendidikan' => 'Tanggal Mulai Kuliah',
+      'is_studying' => 'Status Saat Ini',
+      'is_linear' => 'Program Studi Satu Linier',
+      'negara_pendidikan' => 'Negara',
+      'provinsi_pendidikan' => 'Provinsi',
+      'kabupaten_pendidikan' => 'Kabupaten',
+      'bukti_pendidikan' => 'Bukti Tanda Terima Kuliah'
+    ]);
+
+    if($rules['bukti_pendidikan']) {
+      Storage::delete($request->oldImage);
+      
+      $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('pendidikans-images');
+    }
+
+    $pendidikan->update($rules);
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan telah diperbarui!');
   }
 
   /**
@@ -115,6 +159,12 @@ class PendidikanController extends Controller
    */
   public function destroy(Pendidikan $pendidikan)
   {
-    //
+    if($pendidikan->user_id != auth()->user()->id){
+      return abort(403);
+    }
+
+    Storage::delete($pendidikan->bukti_pendidikan);
+    $pendidikan->delete();
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan telah dihapus!');
   }
 }

@@ -38,8 +38,8 @@
 									</div>
 	
 									<div class="col mt-2 float-end">
-										<a href="" class="text-success me-1"><i class="bi bi-pencil-square"></i></a>
-										<a href="" class="text-success"><i class="bi bi-trash3"></i></a>
+										<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
+										<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></a>
 									</div>
 	
 								</div>
@@ -47,7 +47,7 @@
 							@endfor
 						</div>
 	
-						<div class="col position-absolute bottom-0 end-0 mb-3 me-3">
+						<div class="col d-flex justify-content-end">
 							<a href="/dashboard/pekerja/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pekerjaan</a>
 						</div>
 					</div>
@@ -61,7 +61,7 @@
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="headingEducation">
 					<button class="accordion-button border-top border-success border-5 bg-light shadow rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEducation" aria-expanded="true" aria-controls="collapseEducation" style="background-color: #fff;">
-						<span class="h4 text-success p-2" style="font-weight: bold">Riwayat Pendidikan </span>
+						<span class="h4 text-success p-2" style="font-weight: bold">Riwayat Pendidikan</span>
 					</button>
 				</h2>
 				<div id="collapseEducation" class="accordion-collapse collapse show" aria-labelledby="headingEducation" data-bs-parent="#accordionEducation">
@@ -69,41 +69,43 @@
 						<div class="timeline pb-5">
 							<figcaption class="blockquote-footer text-success ms-2">Setelah Lulus </figcaption>
 							<!--first-->
-							
-									
-							
 							@foreach ($pendidikans as $pendidikan)
-							<div class="timeline__event animated fadeInUp delay-3s timeline__event--type1">
-								<div class="timeline__event__icon">
-									<i class="bi bi-mortarboard-fill"></i>
-								</div>
-								<div class="timeline__event__date">
-									{{ $pendidikan->program_studi }} ({{ $pendidikan->perguruan_tinggi }})
-								</div>
-								<div class="timeline__event__content">
-									<div class="timeline__event__title">
-										@if ($pendidikan->tingkat_pendidikan == 'a')
-											Strata 1 (S1)
-										@elseif ($pendidikan->tingkat_pendidikan == 'b')
-											Strata 2 (S2)
-										@else
-											Strata 3 (S3)
-										@endif
+								<div class="timeline__event animated fadeInUp delay-3s timeline__event--type1">
+									<div class="timeline__event__icon">
+										<i class="bi bi-mortarboard-fill"></i>
 									</div>
-									<div class="timeline__event__description">
-										<p>{{ \Carbon\Carbon::parse($pendidikan->tgl_mulai_pendidikan)->translatedFormat('d F Y', 'id_ID') }}</p>
+									<div class="timeline__event__date">
+										{{ $pendidikan->program_studi }} ({{ $pendidikan->perguruan_tinggi }})
 									</div>
-	
-									<div class="col mt-2 float-end">
-										<a href="" class="text-success me-1"><i class="bi bi-pencil-square"></i></a>
-										<a href="" class="text-success"><i class="bi bi-trash3"></i></a>
+									<div class="timeline__event__content">
+										<div class="timeline__event__title">
+											@if ($pendidikan->tingkat_pendidikan == 'a')
+												Strata 1 (S1)
+											@elseif ($pendidikan->tingkat_pendidikan == 'b')
+												Strata 2 (S2)
+											@else
+												Strata 3 (S3)
+											@endif
+										</div>
+										<div class="timeline__event__description">
+											<p>{{ \Carbon\Carbon::parse($pendidikan->tgl_mulai_pendidikan)->translatedFormat('d F Y', 'id_ID') }}</p>
+										</div>
+		
+										<div class="col mt-2 float-end">
+											<a href="/dashboard/pendidikan/{{ $pendidikan->id }}" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-eye"></i></a>
+											<a href="/dashboard/pendidikan/{{ $pendidikan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
+											<form action="/dashboard/pendidikan/{{ $pendidikan->id }}" method="post" class="d-inline m-0 p-0">
+												@csrf
+												@method('DELETE')
+												<button class="btn btn-link btn-sm text-success m-0 p-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>
+											</form>
+										</div>
 									</div>
 								</div>
-							</div>
 							@endforeach
 						</div>
 	
-						<div class="col position-absolute bottom-0 end-0 mb-3 me-3">
+						<div class="col d-flex justify-content-end">
 							<a href="/dashboard/pendidikan/create" class="btn btn-success"><i class="bi bi-plus-lg"></i> Tambah Pendidikan</a>
 						</div>
 					</div>
