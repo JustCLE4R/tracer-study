@@ -26,7 +26,7 @@ Artisan::command('clear', function () {
     $this->callSilent('route:clear');
     $this->callSilent('view:clear');
     $this->callSilent('clear-compiled');
-    $this->callSilent('optimize');
+    // $this->callSilent('optimize');
 
     $executionTime = number_format((microtime(true) - $startTime), 6);
     $executionTimeMS = $executionTime * 1000;

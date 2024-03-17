@@ -12,7 +12,8 @@
           </div>
         </div>
 
-        <form action="">
+        <form action="/dashboard/pekerja" method="POST" enctype="multipart/form-data">
+          @csrf
           <div class="mb-3 col-lg-4 col-md-5 col-sm-12">
               <label for="filterTracer" class="form-label text-secondary">Pilihlah status pekerjaan anda saat ini *</label>
               <select class="form-select" id="filterTracer" onchange="handleStatusChange()">

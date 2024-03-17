@@ -46,8 +46,8 @@
 									</div>
 	
 									<div class="col mt-2 float-end">
-										<a href="" class="text-success me-1"><i class="bi bi-pencil-square"></i></a>
-										<a href="" class="text-success"><i class="bi bi-trash3"></i></a>
+										<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
+										<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></a>
 									</div>
 	
 								</div>

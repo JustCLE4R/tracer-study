@@ -28,7 +28,7 @@ class PekerjaController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    dd($request->all());
   }
 
   /**
@@ -36,7 +36,9 @@ class PekerjaController extends Controller
    */
   public function show(Pekerja $pekerja)
   {
-    //
+    if($pekerja->user_id != auth()->user()->id){
+      return abort(403);
+    }
   }
 
   /**
@@ -44,7 +46,9 @@ class PekerjaController extends Controller
    */
   public function edit(Pekerja $pekerja)
   {
-    //
+    if($pekerja->user_id != auth()->user()->id){
+      return abort(403);
+    }
   }
 
   /**
@@ -52,7 +56,9 @@ class PekerjaController extends Controller
    */
   public function update(Request $request, Pekerja $pekerja)
   {
-    //
+    if($pekerja->user_id != auth()->user()->id){
+      return abort(403);
+    }
   }
 
   /**
@@ -60,6 +66,8 @@ class PekerjaController extends Controller
    */
   public function destroy(Pekerja $pekerja)
   {
-    //
+    if($pekerja->user_id != auth()->user()->id){
+      return abort(403);
+    }
   }
 }
