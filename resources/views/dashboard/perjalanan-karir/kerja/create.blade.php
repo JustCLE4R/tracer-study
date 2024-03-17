@@ -19,7 +19,7 @@
               <select class="form-select" id="filterTracer" onchange="handleStatusChange()">
                   <option hidden selected>Pilih Status</option>
                   <option value="bekerja">Bekerja</option>
-                  <option value="wirausaha">wirausaha</option>
+                  <option value="wirausaha">Wirausaha</option>
                   <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
               </select>
               
@@ -28,13 +28,6 @@
                   <option value="fulltime">Fulltime</option>
                   <option value="parttime">Partime</option>
               </select>
-          </div>
-      
-          <div id="infoPerusahaanForm" style="display: none;">
-              <!-- ... (Elemen-elemen form informasi perusahaan) ... -->
-              
-      
-              <!-- ... (Tambahkan elemen form informasi perusahaan sesuai kebutuhan) ... -->
           </div>
       
           <div class="row justify-content-between" id="dynamicForm">

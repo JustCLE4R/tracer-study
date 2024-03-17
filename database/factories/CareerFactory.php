@@ -25,7 +25,7 @@ class CareerFactory extends Factory
       'description' => collect($this->faker->paragraphs(mt_rand(15,25)))
                       -> map(fn($p) => "<p>$p</p>")
                       -> join(''),
-      'excerpt' => $this->faker->paragraph(),
+      'excerpt' => $this->faker->paragraph(1),
     ];
   }
 }

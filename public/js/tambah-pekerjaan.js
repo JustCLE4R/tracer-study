@@ -204,7 +204,6 @@ function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
 }
 
 function isFreelancer(value) {
-    console.log(value);
     if (value === "d") {
         $("#infoPerusahaan").css("display", "none");
     } 
@@ -222,7 +221,7 @@ function createQuestionElement(question) {
         var select = $("<select>")
             .addClass("form-select")
             .attr("aria-label", "Default select example")
-            .attr("name", question.id)
+            .attr("name", question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-'))
             .attr("onchange", "isFreelancer(this.value)");
         var defaultOption = $("<option>").prop({ selected: true }).text("Pilih " + question.question);
         select.append(defaultOption);
@@ -282,7 +281,7 @@ function createQuestionElement(question) {
         var checkboxDiv = $("<div>").addClass("form-check");
         var checkboxLabel = $("<label>").addClass("form-check-label").text("Benar");
         var checkboxInput = $("<input>")
-            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-') }) 
+            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-'), required: true }) 
             .addClass("form-check-input");
 
         checkboxDiv.append(checkboxInput);

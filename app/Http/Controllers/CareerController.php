@@ -53,7 +53,7 @@ class CareerController extends Controller
     }
 
     $validatedData['user_id'] = auth()->user()->id;
-    $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 200);
+    $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 100);
 
     Career::create($validatedData);
 
@@ -122,7 +122,7 @@ class CareerController extends Controller
     }
 
     $validatedData['user_id'] = auth()->user()->id;
-    $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 200);
+    $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 100);
 
     $career->update($validatedData);
 
