@@ -13,8 +13,10 @@
         <div class="card">
           <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-              <img src="{{ Auth::user()->foto ? url('https://pmb.uinsu.ac.id/file/photo/' . Auth::user()->foto) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Admin" class="rounded-circle"
-                width="150">
+              <div class="rounded-circle overflow-hidden" style="width: 150px; height: 150px;">
+                <img src="{{ Auth::user()->foto ? url('https://pmb.uinsu.ac.id/file/photo/' . Auth::user()->foto) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Admin" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;">
+              </div>
+              
               <div class="mt-3">
             <h4>{{ Auth::user()->nama }}</h4>
               </div>

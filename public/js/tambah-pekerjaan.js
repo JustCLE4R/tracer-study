@@ -209,7 +209,7 @@ function isFreelancer(value) {
         $("#infoPerusahaan").css("display", "none");
     } 
     else {
-        $("#infoPerusahaan").css("display", "block");
+        $("#infoPerusahaan").css("display", "flex");
     }
 }
 
@@ -239,7 +239,7 @@ function createQuestionElement(question) {
         var select = $("<select>")
             .addClass("form-select")
             .attr("aria-label", "Default select example")
-            .attr("name", question.question.toLowerCase().replace(/\s+/g, '-')); // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
+            .attr("name", question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-')); 
         var defaultOption = $("<option>").prop({ selected: true }).text("Pilih " + question.question);
         select.append(defaultOption);
 
@@ -252,14 +252,14 @@ function createQuestionElement(question) {
         colDiv.append(select);
     } else if (question.type === "text" || question.type === "number" || question.type === "date") {
         var input = $("<input>")
-            .attr({ type: question.type, id: "formGroupExampleInput", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
+            .attr({ type: question.type, id: "formGroupExampleInput", name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-') }) 
             .addClass("form-control");
         colDiv.append(input);
     } else if (question.type === "file") {
         var fileInputContainer = $("<div>").addClass("d-flex align-items-center");
         var fileLabel = $("<label>").addClass("form-label text-secondary").text(question.question + " *");
         var fileInput = $("<input>")
-            .attr({ type: "file", id: "formGroupExampleFile", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
+            .attr({ type: "file", id: "formGroupExampleFile", name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-') }) 
             .addClass("form-control");
         var fileInfoSpan = $("<span>").addClass("ms-2").attr({
             "data-bs-toggle": "popover",
@@ -275,14 +275,14 @@ function createQuestionElement(question) {
         colDiv.append(fileInputContainer);
     } else if (question.type === "email") {
         var inputEmail = $("<input>")
-            .attr({ type: "email", id: "formGroupExampleInput", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
+            .attr({ type: "email", id: "formGroupExampleInput", name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-') }) 
             .addClass("form-control");
         colDiv.append(inputEmail);
     } else if (question.type === "checkbox") {
         var checkboxDiv = $("<div>").addClass("form-check");
         var checkboxLabel = $("<label>").addClass("form-check-label").text("Benar");
         var checkboxInput = $("<input>")
-            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.question.toLowerCase().replace(/\s+/g, '-') }) // Mengubah nama menjadi lowercase dan mengganti spasi dengan -
+            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-') }) 
             .addClass("form-check-input");
 
         checkboxDiv.append(checkboxInput);
@@ -292,4 +292,5 @@ function createQuestionElement(question) {
 
     return colDiv;
 }
+
 

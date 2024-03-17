@@ -32,10 +32,7 @@
       
           <div id="infoPerusahaanForm" style="display: none;">
               <!-- ... (Elemen-elemen form informasi perusahaan) ... -->
-              <div class="mb-3">
-                  <label for="namaPerusahaan" class="form-label">Nama Perusahaan</label>
-                  <input type="text" class="form-control" id="namaPerusahaan" name="namaPerusahaan">
-              </div>
+              
       
               <!-- ... (Tambahkan elemen form informasi perusahaan sesuai kebutuhan) ... -->
           </div>
