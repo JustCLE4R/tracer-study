@@ -83,8 +83,6 @@
 								</div>
 							</div>
 							
-									
-							
 							@foreach ($pendidikans as $pendidikan)
 							<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
 								<div class="timeline__event__icon">
@@ -108,18 +106,21 @@
 									</div>
 	
 									<div class="col mt-2 float-end">
-										<a href="" class="text-success me-1"><i class="bi bi-pencil-square"></i></a>
-										<a href="" class="text-success"><i class="bi bi-trash3"></i></a>
+										<a href="/dashboard/pendidikan/{{ $pendidikan->id }}" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-eye"></i></a>
+										<a href="/dashboard/pendidikan/{{ $pendidikan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
+										<form action="/dashboard/pendidikan/{{ $pendidikan->id }}" method="post" class="d-inline m-0 p-0">
+											@csrf
+											@method('DELETE')
+											<button class="btn btn-link btn-sm text-success m-0 p-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>
+										</form>
 									</div>
 								</div>
 							</div>
 							@endforeach
+
 						</div>
-	
-						
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
