@@ -278,16 +278,28 @@ function createQuestionElement(question) {
             .addClass("form-control");
         colDiv.append(inputEmail);
     } else if (question.type === "checkbox") {
-        var checkboxDiv = $("<div>").addClass("form-check");
-        var checkboxLabel = $("<label>").addClass("form-check-label").text("Benar");
-        var checkboxInput = $("<input>")
-            .attr({ type: "checkbox", id: "formGroupExampleCheckbox", name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-'), required: true }) 
-            .addClass("form-check-input");
-
-        checkboxDiv.append(checkboxInput);
-        checkboxDiv.append(checkboxLabel);
-        colDiv.append(checkboxDiv);
+        // Parse JSON dari qanswer
+        var qanswer = JSON.parse(question.qanswer);
+    
+        var labelDiv = $("<div>").addClass("col-12");
+        labelDiv.append(label);
+        colDiv.append(labelDiv);
+    
+        Object.keys(qanswer).forEach(function(key) {
+            var checkboxDiv = $("<div>").addClass("form-check col-6");
+    
+            var checkboxInput = $("<input>")
+                .attr({ type: "checkbox", id: "formGroupExampleCheckbox_" + key, name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-'), value: key }) 
+                .addClass("form-check-input");
+    
+            var checkboxLabel = $("<label>").addClass("form-check-label").text(qanswer[key]);
+    
+            checkboxDiv.append(checkboxInput);
+            checkboxDiv.append(checkboxLabel);
+            colDiv.append(checkboxDiv);
+        });
     }
+    
 
     return colDiv;
 }
