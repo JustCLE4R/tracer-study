@@ -10,7 +10,7 @@ function handleStatusChange() {
         return;
     }
 
-    if (filterTracer.val() === "bekerja") {
+    if (filterTracer.val() === "pekerja") {
         bekerjaSelect.show();
         if (bekerjaSelect.val() === "Pilih Status Bekerja") {
             clearDynamicForm();

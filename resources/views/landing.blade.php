@@ -40,9 +40,15 @@
           <li class="nav-item mx-1">
             <a class="nav-link" href="admin/form.html">Questioner</a>
           </li>
-          <li class="nav-item mx-1">
-            <a class="rounded-pill btn btn-success text-light py-1 my-1" href="login">Login</a>
-          </li>
+          @if(auth()->check())
+            <li class="nav-item mx-1">
+              <a class="rounded-pill btn btn-success text-light py-1 my-1" href="/dashboard">Dashboard</a>
+            </li>
+          @else
+            <li class="nav-item mx-1">
+              <a class="rounded-pill btn btn-success text-light py-1 my-1" href="login">Login</a>
+            </li>
+          @endif
         </ul>
       </div>
     </div>
@@ -178,7 +184,7 @@
                 </div>
                 <div class="col-md-8">
                   <div class="card-body">
-                    <h5 data-aos="fade-left" data-aos-duration="1200" class="card-title">{{ $career->position . '|' . $career->company_name }}</h5>
+                    <h5 data-aos="fade-left" data-aos-duration="1200" class="card-title">{{ $career->position . ' | ' . $career->company_name }}</h5>
                     <p data-aos="fade-left" data-aos-duration="1000" class="card-text">{{ $career->excerpt }}</p>
                     <p data-aos="fade-up" data-aos-duration="1000" class="card-text">
                       <small class="text-body-secondary">

@@ -25,13 +25,15 @@ Route::get('/', [LandingController::class, 'index']);
 Route::get('/career', [CareerController::class, 'publicIndex']);
 Route::get('/career/{career:slug}', [CareerController::class, 'publicShow']);
 
-Route::get('/login', [LoginController::class, 'index'])->middleware(['no-cache', 'guest'])->name('login');
-Route::post('/login', [LoginController::class, 'authenticate'])->middleware(['no-cache', 'guest']);
+Route::middleware(['guest', 'no-cache'])->group(function () {
+  Route::get('/login', [LoginController::class, 'index'])->middleware(['no-cache', 'guest'])->name('login');
+  Route::post('/login', [LoginController::class, 'authenticate'])->middleware(['no-cache', 'guest']);
+});
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'no-cache'])->group(function () {
   Route::get('/logout', [LoginController::class, 'logout']);
 
-  Route::get('/dashboard', fn() => view('dashboard.index'))->name('dashboard')->middleware('no-cache');
+  Route::get('/dashboard', fn() => view('dashboard.index'))->name('dashboard');
   Route::get('dashboard/perjalanan-karir', [PerjalananKarirController::class, 'index']); //menampilkan semua karir dia
 
   Route::get('/dashboard/tracer', [TracerController::class, 'index']);

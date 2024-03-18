@@ -16,14 +16,14 @@
           @csrf
           <div class="mb-3 col-lg-4 col-md-5 col-sm-12">
               <label for="filterTracer" class="form-label text-secondary">Pilihlah status pekerjaan anda saat ini *</label>
-              <select class="form-select" id="filterTracer" onchange="handleStatusChange()">
+              <select class="form-select" id="filterTracer" onchange="handleStatusChange()" name="pekerjaan">
                   <option hidden selected>Pilih Status</option>
-                  <option value="bekerja">Bekerja</option>
+                  <option value="pekerja">Bekerja</option>
                   <option value="wirausaha">Wirausaha</option>
                   <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
               </select>
               
-              <select class="form-select my-2" id="bekerjaSelect" style="display: none;" onchange="handleBekerjaChange()">
+              <select class="form-select my-2" id="bekerjaSelect" style="display: none;" onchange="handleBekerjaChange()" name="status-perkerjaan">
                   <option hidden selected>Pilih Status Bekerja</option>
                   <option value="fulltime">Fulltime</option>
                   <option value="parttime">Partime</option>
