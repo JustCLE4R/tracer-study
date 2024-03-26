@@ -289,7 +289,7 @@ function createQuestionElement(question) {
             var checkboxDiv = $("<div>").addClass("form-check col-6");
     
             var checkboxInput = $("<input>")
-                .attr({ type: "checkbox", id: "formGroupExampleCheckbox_" + key, name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-'), value: key }) 
+                .attr({ type: "checkbox", id: "formGroupExampleCheckbox_" + key, name: question.question.toLowerCase().replace(/\s+/g, '-').replace(/[^a-zA-Z0-9-]/g, '').replace(/-{2,}/g, '-') + "[]", value: key })
                 .addClass("form-check-input");
     
             var checkboxLabel = $("<label>").addClass("form-check-label").text(qanswer[key]);

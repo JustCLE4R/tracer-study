@@ -84,38 +84,38 @@
 							</div>
 							
 							@foreach ($pendidikans as $pendidikan)
-							<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
-								<div class="timeline__event__icon">
-									<i class="bi bi-mortarboard-fill"></i>
-								</div>
-								<div class="timeline__event__date">
-									{{ $pendidikan->program_studi }} ({{ $pendidikan->perguruan_tinggi }})
-								</div>
-								<div class="timeline__event__content">
-									<div class="timeline__event__title">
-										@if ($pendidikan->tingkat_pendidikan == 'a')
-											Strata 1 (S1)
-										@elseif ($pendidikan->tingkat_pendidikan == 'b')
-											Strata 2 (S2)
-										@else
-											Strata 3 (S3)
-										@endif
+								<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
+									<div class="timeline__event__icon">
+										<i class="bi bi-mortarboard-fill"></i>
 									</div>
-									<div class="timeline__event__description">
-										<p>{{ \Carbon\Carbon::parse($pendidikan->tgl_mulai_pendidikan)->translatedFormat('d F Y', 'id_ID') }}</p>
+									<div class="timeline__event__date">
+										{{ $pendidikan->program_studi }} ({{ $pendidikan->perguruan_tinggi }})
 									</div>
-	
-									<div class="col mt-2 float-end">
-										<a href="/dashboard/pendidikan/{{ $pendidikan->id }}" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-eye"></i></a>
-										<a href="/dashboard/pendidikan/{{ $pendidikan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
-										<form action="/dashboard/pendidikan/{{ $pendidikan->id }}" method="post" class="d-inline m-0 p-0">
-											@csrf
-											@method('DELETE')
-											<button class="btn btn-link btn-sm text-success m-0 p-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>
-										</form>
+									<div class="timeline__event__content">
+										<div class="timeline__event__title">
+											@if ($pendidikan->tingkat_pendidikan == 'a')
+												Strata 1 (S1)
+											@elseif ($pendidikan->tingkat_pendidikan == 'b')
+												Strata 2 (S2)
+											@else
+												Strata 3 (S3)
+											@endif
+										</div>
+										<div class="timeline__event__description">
+											<p>{{ \Carbon\Carbon::parse($pendidikan->tgl_mulai_pendidikan)->translatedFormat('d F Y', 'id_ID') }}</p>
+										</div>
+		
+										<div class="col mt-2 float-end">
+											<a href="/dashboard/pendidikan/{{ $pendidikan->id }}" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-eye"></i></a>
+											<a href="/dashboard/pendidikan/{{ $pendidikan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
+											<form action="/dashboard/pendidikan/{{ $pendidikan->id }}" method="post" class="d-inline m-0 p-0">
+												@csrf
+												@method('DELETE')
+												<button class="btn btn-link btn-sm text-success m-0 p-0" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>
+											</form>
+										</div>
 									</div>
 								</div>
-							</div>
 							@endforeach
 
 						</div>

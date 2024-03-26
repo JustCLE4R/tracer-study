@@ -16,6 +16,7 @@ return new class extends Migration
       $table->string('nim', 10)->unique();
       $table->string('nama');
       $table->string('password');
+      $table->string('role')->default('mahasiswa');
       // informasi akademik
       $table->string('program_studi');
       $table->string('fakultas')->nullable();
