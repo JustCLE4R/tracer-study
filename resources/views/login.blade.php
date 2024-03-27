@@ -24,7 +24,7 @@
       @csrf
       <div class="field email @error('nim') shake @enderror" data-aos="fade-up" data-aos-duration="900">
         <div class="input-area">
-          <input type="text" name="nim" placeholder="NIM" oninput="validateNumericInput(this)" value="{{ $errors->has('nim') ? '' : old('nim') }}" maxlength="12">
+          <input type="text" name="nim" placeholder="NIM" oninput="validateNumericInput(this)" value="{{ $errors->has('nim') ? '' : old('nim', 41144013) }}" maxlength="12">
           <i class="icon fas fa-envelope"></i>
           @error('nim')
             <i class="error error-icon fas fa-exclamation-circle"></i>
@@ -36,7 +36,7 @@
       </div>
       <div class="field password @error('password') shake @enderror" data-aos="fade-up" data-aos-duration="1100">
         <div class="input-area">
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password" value="12345">
           <i class="icon fas fa-lock"></i>
           @error('password')
             <i class="error error-icon fas fa-exclamation-circle"></i>
