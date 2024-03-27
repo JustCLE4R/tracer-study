@@ -1,11 +1,11 @@
 var dynamicFormVisible = false;
-
 function handleStatusChange() {
     var filterTracer = $("#filterTracer");
     var bekerjaSelect = $("#bekerjaSelect");
 
     if (filterTracer.val() === "Pilih Status" || filterTracer.val() === "") {
         clearDynamicForm();
+        clearInfoPerusahaanForm(); // Hapus form informasi perusahaan saat status tidak dipilih atau kosong
         dynamicFormVisible = false;
         return;
     }
@@ -14,6 +14,7 @@ function handleStatusChange() {
         bekerjaSelect.show();
         if (bekerjaSelect.val() === "Pilih Status Bekerja") {
             clearDynamicForm();
+            clearInfoPerusahaanForm(); // Hapus form informasi perusahaan saat memilih "pekerja" tetapi status pekerjaan tidak dipilih
             dynamicFormVisible = false;
             return;
         }
@@ -30,17 +31,37 @@ function handleStatusChange() {
     } else {
         bekerjaSelect.hide();
         clearDynamicForm();
+        clearInfoPerusahaanForm(); // Hapus form informasi perusahaan untuk status lainnya
         dynamicFormVisible = false;
     }
 }
-
-
 
 function handleBekerjaChange() {
     var bekerjaSelect = $("#bekerjaSelect");
     var selectedValue = bekerjaSelect.val();
     loadQuestions(selectedValue);
+
+    // Sembunyikan atau tampilkan form informasi perusahaan sesuai dengan kebutuhan
+    if (selectedValue === "parttime") {
+        var kriteriaPekerjaan = $('#kriteriaPekerjaan').val();
+        if (kriteriaPekerjaan === "d") {
+            // Sembunyikan form informasi perusahaan jika kriteria "d"
+            clearInfoPerusahaanForm();
+        } else {
+            // Tampilkan kembali form informasi perusahaan
+            $("#infoPerusahaan").css("display", "flex");
+        }
+    } else {
+        // Sembunyikan form informasi perusahaan untuk jenis pekerjaan lainnya
+        clearInfoPerusahaanForm();
+    }
 }
+
+function clearInfoPerusahaanForm() {
+    // Hapus form informasi perusahaan beserta semua child elemen dan input didalamnya dari DOM
+    $("#infoPerusahaan").empty().remove();
+}
+
 
 function clearDynamicForm() {
     var dynamicForm = $("#dynamicForm");
