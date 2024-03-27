@@ -25,6 +25,8 @@
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
+    line-height:1.2rem;
+    overflow-x:hidden;
 }
 
 .gutters-sm {

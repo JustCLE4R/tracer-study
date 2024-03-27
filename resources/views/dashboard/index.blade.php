@@ -5,42 +5,42 @@
 <div class="container-fluid pt-4 px-4">
   <div class="row g-4">
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-up"
         data-aos-duration="1000">
         <i class="bi bi-mortarboard-fill fs-1 text-primary"></i>
         <div class="ms-3">
-          <p data-aos="fade-left" data-aos-duration="1200" class="mb-2 ">Total Mahasiswa Lulus</p>
-          <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0 ">18.456</h6>
+          <p data-aos="fade-up" data-aos-duration="1200" class="mb-2 ">Total Mahasiswa Lulus</p>
+          <h6 data-aos="fade-up" data-aos-duration="1400" class="mb-0 ">18.456</h6>
         </div>
       </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-up"
         data-aos-duration="1000">
         <i class="bi bi-person-workspace fs-1 text-primary"></i>
         <div class="ms-3">
-          <p data-aos="fade-left" data-aos-duration="1200" class="mb-2">Total Mahasiswa Bekerja</p>
-          <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0">12.921</h6>
+          <p data-aos="fade-up" data-aos-duration="1200" class="mb-2">Total Mahasiswa Bekerja</p>
+          <h6 data-aos="fade-up" data-aos-duration="1400" class="mb-0">12.921</h6>
         </div>
       </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-up"
         data-aos-duration="1000">
         <i class="bi bi-grid-1x2 fs-1 text-primary"></i>
         <div class="ms-3">
-          <p data-aos="fade-left" data-aos-duration="1200" class="mb-2">Jumlah Fakultas UINSU</p>
-          <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0">18</h6>
+          <p data-aos="fade-up" data-aos-duration="1200" class="mb-2">Jumlah Fakultas UINSU</p>
+          <h6 data-aos="fade-up" data-aos-duration="1400" class="mb-0">18</h6>
         </div>
       </div>
     </div>
     <div class="col-sm-6 col-xl-3">
-      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-right"
+      <div class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-between p-4" data-aos="fade-up"
         data-aos-duration="1000">
         <i class="bi bi-grid fs-1 text-primary"></i>
         <div class="ms-3">
-          <p data-aos="fade-left" data-aos-duration="1200" class="mb-2">Jumlah Prodi UINSU</p>
-          <h6 data-aos="fade-left" data-aos-duration="1400" class="mb-0">94</h6>
+          <p data-aos="fade-up" data-aos-duration="1200" class="mb-2">Jumlah Prodi UINSU</p>
+          <h6 data-aos="fade-up" data-aos-duration="1400" class="mb-0">94</h6>
         </div>
       </div>
     </div>
@@ -53,13 +53,13 @@
 
     <div class="col-sm-12 col-xl-6">
       <div class="bg-light  border-top border-success border-5 rounded h-100 p-4">
-        <h6 class="mb-4 text-primary " data-aos="fade-left" data-aos-duration="1400">Mahasiswa Yang Sukses</h6>
+        <h6 class="mb-4 text-primary " data-aos="fade-up" data-aos-duration="1400">Mahasiswa Yang Sukses</h6>
         <div class="owl-carousel testimonial-carousel">
           <div class="testimonial-item text-center">
-            <img data-aos="fade-right" data-aos-duration="1200" class="img-fluid rounded-circle mx-auto mb-4"
+            <img data-aos="fade-up" data-aos-duration="1200" class="img-fluid rounded-circle mx-auto mb-4"
               src="img/user.jpg" style="width: 100px; height: 100px;">
-            <h5 data-aos="fade-left" data-aos-duration="1400" class="mb-1">Paris Alvito</h5>
-            <p data-aos="fade-right" data-aos-duration="1400">Web Developer</p>
+            <h5 data-aos="fade-up" data-aos-duration="1400" class="mb-1">Paris Alvito</h5>
+            <p data-aos="fade-up" data-aos-duration="1400">Web Developer</p>
             <p data-aos="fade-up" data-aos-duration="1600" class="mb-0">Lorem ipsum dolor sit amet consectetur
               adipisicing elit. Dolor, voluptate?</p>
           </div>
@@ -95,7 +95,7 @@
   </div>
 
   <!-- Chart 1 -->
-  <div data-aos="fade-right" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 py-3"
+  <div data-aos="fade-up" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 py-3"
     id="urutan2">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Jenis Kelamin Mahasiswa </span>
@@ -114,7 +114,7 @@
 
     <canvas data-aos="fade-up" data-aos-duration="1000" id="bar"></canvas>
   </div>
-  <div data-aos="fade-left" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 py-3"
+  <div data-aos="fade-up" data-aos-duration="800" class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 py-3"
     id="urutan3">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Keterangan </span>
@@ -125,7 +125,7 @@
   <!-- End Chart 1 -->
 
   <!-- Chart 2 -->
-  <div data-aos="fade-right" data-aos-duration="800"
+  <div data-aos="fade-up" data-aos-duration="800"
     class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 pt-3 py-3" id="urutan5">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Keterangan </span>
@@ -133,7 +133,7 @@
     </div>
     <div id="legend-container2"></div>
   </div>
-  <div data-aos="fade-left" data-aos-duration="800"
+  <div data-aos="fade-up" data-aos-duration="800"
     class="col-lg-5 col-sm-12 shadow bg-light  border-top border-success border-5 rounded m-3 px-3 pb-5 pt-3" id="urutan4">
     <div class="d-flex align-items-center justify-content-between mb-4">
       <span data-aos="fade-up" data-aos-duration="1000" class="mb-0 h4">Total Mahasiswa Di Fakultas</span>
@@ -217,7 +217,7 @@
             <td>5</td>
             <td>2024</td>
             <td>28.092</td>
-            <td>456/td>
+            <td>456</td>
             <td>18</td>
             <td>94</td>
             <td><a class="btn btn-sm btn-success" href="">Lihat</a></td>

@@ -5,24 +5,19 @@
     <i class="bi bi-justify"></i>
   </a>
 
-
-  <div class="navbar-nav row justif-content-center align-items-center ms-auto m-2">
-
-      
-      <div class="col-8 text-end">
-        <a href="">
-          <span class="d-none text-success d-lg-inline-flex">{{ Auth::user()->nama }}</span>
-        </a>
-      </div>
-      <div class="col-4 text-start">
-        <a href="#" class="">
-          <img class="rounded-circle " src="/img/account.png" alt="" width="40vh">        
-        </a>
-      </div>
-      
-
-    
+  <div class="navbar-nav d-flex align-items-center ms-auto m-2">
+    <div class="text-end me-2 flex-grow-1">
+      <a href="/dashboard/profile">
+        <span class="d-none text-success d-lg-inline-flex overflow-hidden" style="max-width: 150px;">{{ Auth::user()->nama }}</span>
+      </a>
+    </div>
+    <div class="text-start">
+      <a href="/dashboard/profile" class="">
+        <img class="rounded-circle " src="/img/account.png" alt="" width="40vh">        
+      </a>
+    </div>
   </div>
 
 </nav>
+
 <!-- Navbar End -->

@@ -7,7 +7,7 @@
       <div class="bg-light rounded p-4 border-top border-success border-5">
         <div class="row">
           <div class="col-12">
-            <h4>Tambah Pendidikan</h4>
+            <span class="h4">Tambah Pendidikan</span>
             <hr>
           </div>
 

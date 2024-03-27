@@ -2,6 +2,9 @@
 *{
     font-family:  "Open Sans" !important;
 }
+ol li{
+    margin-bottom:1.5vh;
+}
 :root {
     --primary: #009cff;
     --light: #f3f6f9;
@@ -47,9 +50,13 @@
 .bg-light {
     overflow: hidden;
 }
+.table {
+    --bs-table-bg: transparent;
+}
+
 
 #hidden {
-    overflow-x: hidden;
+    overflow: hidden;
     width: 99%;
 }
 .nav-link {
