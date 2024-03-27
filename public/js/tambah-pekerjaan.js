@@ -1,4 +1,5 @@
 var dynamicFormVisible = false;
+
 function handleStatusChange() {
     var filterTracer = $("#filterTracer");
     var bekerjaSelect = $("#bekerjaSelect");
@@ -18,8 +19,8 @@ function handleStatusChange() {
             dynamicFormVisible = false;
             return;
         }
+        handleBekerjaChange(filterTracer.val());
         dynamicFormVisible = true;
-        loadQuestions(bekerjaSelect.val());
     } else if (filterTracer.val() === "wirausaha") {
         bekerjaSelect.hide();
         dynamicFormVisible = true;
@@ -36,30 +37,20 @@ function handleStatusChange() {
     }
 }
 
-function handleBekerjaChange() {
-    var bekerjaSelect = $("#bekerjaSelect");
-    var selectedValue = bekerjaSelect.val();
-    loadQuestions(selectedValue);
+function handleBekerjaChange(value) {
+    loadQuestions(value);
 
-    // Sembunyikan atau tampilkan form informasi perusahaan sesuai dengan kebutuhan
-    if (selectedValue === "parttime") {
-        var kriteriaPekerjaan = $('#kriteriaPekerjaan').val();
-        if (kriteriaPekerjaan === "d") {
-            // Sembunyikan form informasi perusahaan jika kriteria "d"
-            clearInfoPerusahaanForm();
-        } else {
-            // Tampilkan kembali form informasi perusahaan
-            $("#infoPerusahaan").css("display", "flex");
-        }
-    } else {
-        // Sembunyikan form informasi perusahaan untuk jenis pekerjaan lainnya
-        clearInfoPerusahaanForm();
-    }
+    
 }
 
-function clearInfoPerusahaanForm() {
-    // Hapus form informasi perusahaan beserta semua child elemen dan input didalamnya dari DOM
-    $("#infoPerusahaan").empty().remove();
+
+function isFreelancer(value) {
+    if (value === "d") {
+        $("#infoPerusahaan").empty();
+    } 
+    else {
+        $("#infoPerusahaan").append();//saya ingin infoPerusahaan ditambahkan lagi setelah dihapus
+    }
 }
 
 
@@ -156,34 +147,55 @@ function buildDynamicFormBelumKerja(questionsBelumKerja) {
     dynamicForm.append(buttonRow);
 }
 
+function loadQuestionsBekerja() {
+    var apiUrlBekerja = "http://127.0.0.1:8000/api/questions/category/bekerja";
 
-function loadQuestions(type) {
+    return $.ajax({
+        url: apiUrlBekerja,
+        method: "GET",
+        dataType: "json",
+        success: function (dataBekerja) {
+            var questionsBekerja = dataBekerja.questions;
+            // Panggil fungsi buildDynamicBekerja dengan parameter questionsBekerja
+        },
+        error: function (errorBekerja) {
+            console.error("Error fetching bekerja data:", errorBekerja);
+        }
+    });
+}
+
+function loadQuestionsInfoPerusahaan() {
+    var apiUrlInfoPerusahaan = "http://127.0.0.1:8000/api/questions/category/info-perusahaan";
+
+    return $.ajax({
+        url: apiUrlInfoPerusahaan,
+        method: "GET",
+        dataType: "json",
+        success: function (dataInfoPerusahaan) {
+            var questionsInfoPerusahaan = dataInfoPerusahaan.questions;
+            // Panggil fungsi buildDynamicInfoPerusahaan dengan parameter questionsInfoPerusahaan
+        },
+        error: function (errorInfoPerusahaan) {
+            console.error("Error fetching info perusahaan data:", errorInfoPerusahaan);
+        }
+    });
+}
+function loadQuestions(type, status = null) { 
+    clearDynamicForm();
+
+
     if (type === "wirausaha") {
-        loadQuestionsWirausaha();
+        loadQuestionsWirausaha().then(buildDynamicFormWirausaha);
     } else if (type === "belum-kerja") {
-        loadQuestionsBelumKerja(); // Menambahkan pemanggilan untuk kategori belum-kerja
+        loadQuestionsBelumKerja().then(buildDynamicFormBelumKerja);
+    } else if (type === "bekerja") {
+        console.log(status);
     } else {
-        var apiUrlBekerja = "http://127.0.0.1:8000/api/questions/category/bekerja";
-        var apiUrlInfoPerusahaan = "http://127.0.0.1:8000/api/questions/category/info-perusahaan";
-        $.when(
-            $.ajax({ url: apiUrlBekerja, method: "GET", dataType: "json" }),
-            $.ajax({ url: apiUrlInfoPerusahaan, method: "GET", dataType: "json" })
-        ).done(function (dataBekerja, dataInfoPerusahaan) {
-            var questionsBekerja = dataBekerja[0].questions;
-            var questionsInfoPerusahaan = dataInfoPerusahaan[0].questions;
-
-            var filteredQuestionsBekerja = questionsBekerja.filter(function (question) {
-                return !(type === "parttime" && question.id === 1) && !(type === "fulltime" && question.id === 2);
-            });
-
-            buildDynamicForm(filteredQuestionsBekerja, questionsInfoPerusahaan);
-        }).fail(function (errors) {
-            console.error("Error fetching data:", errors);
-        });
+        console.error("Invalid type:", type);
     }
 }
 
-function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
+function buildDynamicBekerja(questionsBekerja) {
     clearDynamicForm();
     var dynamicForm = $("#dynamicForm");
 
@@ -196,7 +208,9 @@ function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
         var colDiv = createQuestionElement(question);
         dynamicForm.append(colDiv);
     });
+}
 
+function buildDynamicInfoPerusahaan(questionsInfoPerusahaan) {
     var infoPerusahaanDiv = $("<div>").addClass("row mb-3").attr("id", "infoPerusahaan");
     var infoPerusahaanSpan = $("<span>").addClass("h4").text("Informasi Perusahaan");
     infoPerusahaanDiv.append(infoPerusahaanSpan);
@@ -205,7 +219,6 @@ function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
     questionsInfoPerusahaan.forEach(function (question) {
         var colDiv = createQuestionElement(question);
         infoPerusahaanDiv.append(colDiv);
-        // dynamicForm.append(colDiv);
     });
 
     var buttonRow = $("<div>").addClass("row justify-content-end my-1");
@@ -224,14 +237,6 @@ function buildDynamicForm(questionsBekerja, questionsInfoPerusahaan) {
     dynamicForm.append(buttonRow);
 }
 
-function isFreelancer(value) {
-    if (value === "d") {
-        $("#infoPerusahaan").css("display", "none");
-    } 
-    else {
-        $("#infoPerusahaan").css("display", "flex");
-    }
-}
 
 function createQuestionElement(question) {
     var colDiv = $("<div>").addClass("col-lg-4 col-md-6 col-sm-12 my-2");
