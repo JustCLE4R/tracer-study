@@ -26,8 +26,8 @@ Route::get('/career', [CareerController::class, 'publicIndex']);
 Route::get('/career/{career:slug}', [CareerController::class, 'publicShow']);
 
 Route::middleware(['guest', 'no-cache'])->group(function () {
-  Route::get('/login', [LoginController::class, 'index'])->middleware(['no-cache', 'guest'])->name('login');
-  Route::post('/login', [LoginController::class, 'authenticate'])->middleware(['no-cache', 'guest']);
+  Route::get('/login', [LoginController::class, 'index'])->name('login');
+  Route::post('/login', [LoginController::class, 'authenticate']);
 });
 
 Route::middleware(['auth', 'no-cache'])->group(function () {

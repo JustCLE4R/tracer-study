@@ -355,7 +355,9 @@
   },
   {
     "question": "Saya Belum Memiliki Pekerjaan",
-    "qanswer": {},
+    "qanswer": {
+      "a": "Ya, saya belum bekerja"
+    },
     "category": "belum-kerja",
     "type": "checkbox"
   }
