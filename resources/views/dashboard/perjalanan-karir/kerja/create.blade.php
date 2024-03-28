@@ -23,7 +23,7 @@
                   <option value="Belum memungkinkan bekerja">Belum memungkinkan bekerja</option>
               </select>
               
-              <select class="form-select my-2" id="bekerjaSelect" style="display: none;" onchange="handleBekerjaChange(this.value)" name="status-perkerjaan">
+              <select class="form-select my-2" id="bekerjaSelect" style="display: none;" onchange="handleBekerjaChange()" name="status-perkerjaan">
                   <option hidden selected>Pilih Status Bekerja</option>
                   <option value="fulltime">Fulltime</option>
                   <option value="parttime">Partime</option>
