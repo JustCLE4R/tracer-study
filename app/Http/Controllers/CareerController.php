@@ -41,12 +41,29 @@ class CareerController extends Controller
   {
     $validatedData = $request->validate([
       'company_name' => 'required',
+      'category' => 'required|in:1,2,3,4',
       'position' => 'required',
       'url' => 'url|nullable',
       'slug' => 'required|unique:careers',
       'description' => 'required',
       'image' => 'image|file|max:2048',
-    ]);
+  ], [
+      'required' => 'Kolom :attribute wajib diisi.',
+      'in' => 'Pilihan :attribute tidak valid.',
+      'url' => 'Kolom :attribute harus berupa URL yang valid.',
+      'unique' => 'Kolom :attribute sudah ada yang menggunakan.',
+      'image' => 'Kolom :attribute harus berupa gambar.',
+      'file' => 'Kolom :attribute harus berupa berkas.',
+      'max' => 'Kolom :attribute tidak boleh lebih dari :max kilobita.',
+  ], [
+      'company_name' => 'Nama Perusahaan',
+      'category' => 'Kategori',
+      'position' => 'Posisi',
+      'url' => 'URL',
+      'slug' => 'Slug',
+      'description' => 'Deskripsi',
+      'image' => 'Gambar',
+  ]);
 
     if ($request->file('image')) {
       $validatedData['image'] = $request->file('image')->store('careers-images');

@@ -13,6 +13,7 @@ function handlePekerjaan(value) {
     handleStatus.addClass('d-none')
     fetchQuestion('belum-kerja')
   } else {
+    buttonGroup.addClass('d-none');
     handleStatus.removeClass('d-none').val(handleStatus.find('option:first').val());
   }
 }

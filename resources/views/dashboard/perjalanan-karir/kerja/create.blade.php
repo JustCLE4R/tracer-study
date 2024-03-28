@@ -40,12 +40,12 @@
 
           <div class="row justify-content-end my-1 d-none" id="buttonGroup">
             <div class="col-lg-5 col-md-8 col-sm-12 text-end">
-                <a class="btn btn-secondary mx-1" href="/dashboard/perjalanan">
-                    <i class="bi bi-arrow-left-circle"></i> Kembali
-                </a>
-                <button class="btn btn-success mx-1">
-                    <i class="bi bi-file-earmark-check"></i> Simpan
-                </button>
+              <a class="btn btn-secondary mx-1" href="/dashboard/perjalanan">
+                <i class="bi bi-arrow-left-circle"></i> Kembali
+              </a>
+              <button class="btn btn-success mx-1">
+                <i class="bi bi-file-earmark-check"></i> Simpan
+              </button>
             </div>
           </div>
         </form>

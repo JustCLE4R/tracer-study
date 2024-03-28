@@ -18,6 +18,7 @@ class CareerFactory extends Factory
   {
     return [
       'user_id' => $this->faker->numberBetween(1, 6),
+      'category' => $this->faker->numberBetween(1, 4),
       'position' => $this->faker->jobTitle(),
       'slug' => $this->faker->slug(),
       'company_name' => $this->faker->company(),
