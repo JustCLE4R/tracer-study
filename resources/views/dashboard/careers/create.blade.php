@@ -31,6 +31,21 @@
                   @enderror
                 </div>
                 <div class="mb-3">
+                  <label for="category" class="form-label">Kategori</label>
+                  <select class="form-control @error('category') is-invalid @enderror" name="category" id="category" >
+                    <option hidden selected>Pilih Kategori</option>
+                    <option value="1" {{ old('category') == 1 ? 'selected' : '' }}>Instansi Pemerintahan</option>
+                    <option value="2" {{ old('category') == 2 ? 'selected' : '' }}>Lembaga Swadaya Masyarakat</option>
+                    <option value="3" {{ old('category') == 3 ? 'selected' : '' }}>Perusahaan Swasta</option>
+                    <option value="4" {{ old('category') == 4 ? 'selected' : '' }}>Freelancer</option>
+                  </select>
+                  @error('category')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                <div class="mb-3">
                   <label for="position" class="form-label">Posisi</label>
                   <input type="text" class="form-control @error('position') is-invalid @enderror" id="position"
                     name="position" value="{{ old('position') }}" required>
