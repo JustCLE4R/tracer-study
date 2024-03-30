@@ -119,7 +119,7 @@
     "type": "text"
   },
   {
-    "question": "Foto/Bukti Telah Bekerja Berwirausaha",
+    "question": "Foto/Bukti Telah Bekerja",
     "qanswer": {},
     "category": "bekerja",
     "type": "file"
@@ -162,14 +162,14 @@
     "type": "text"
   },
   {
-    "question": "Tingkat / Ukuran Tempat Bekerja",
+    "question": "Tingkat / Ukuran Tempat Usaha",
     "qanswer": {
       "a": "Lokal",
       "b": "Nasional",
       "c": "Multinasional"
     },
     "category": "wirausaha",
-    "type": "text"
+    "type": "select"
   },
   {
     "question": "Bidang Usaha",
@@ -214,7 +214,7 @@
     "type": "select"
   },
   {
-    "question": "Detail Pekerjaan",
+    "question": "Detail Usaha",
     "qanswer": {},
     "category": "wirausaha",
     "type": "text"
@@ -276,6 +276,12 @@
     "qanswer": {},
     "category": "wirausaha",
     "type": "text"
+  },
+  {
+    "question": "Foto/Bukti Telah Berwirausaha",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "file"
   },
   {
     "question": "Tingkat Pendidikan",

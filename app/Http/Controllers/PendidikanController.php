@@ -64,12 +64,11 @@ class PendidikanController extends Controller
       'bukti_pendidikan' => 'Bukti Tanda Terima Kuliah'
     ]);
 
-    $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('pendidikans-images');
+    $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('bukti-pendidikan');
     $rules['user_id'] = auth()->user()->id;
 
     Pendidikan::create($rules);
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan baru telah ditambahkan!');
-
   }
 
   /**
@@ -147,7 +146,7 @@ class PendidikanController extends Controller
     if($rules['bukti_pendidikan']) {
       Storage::delete($request->oldImage);
       
-      $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('pendidikans-images');
+      $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('bukti-pendidikan');
     }
 
     $pendidikan->update($rules);

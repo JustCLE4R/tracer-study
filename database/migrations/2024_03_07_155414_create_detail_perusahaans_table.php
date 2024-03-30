@@ -14,7 +14,7 @@ return new class extends Migration
     Schema::create('detail_perusahaans', function (Blueprint $table) {
       $table->id();
       $table->foreignId('pekerja_id')->constrained('pekerjas')->onDelete('cascade');
-      $table->string('nama');
+      $table->string('nama_perusahaan');
       $table->string('nama_atasan');
       $table->string('jabatan_atasan');
       $table->string('telepon_atasan', 15);
