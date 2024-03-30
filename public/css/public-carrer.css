@@ -8741,6 +8741,15 @@
     left: auto;
     justify-content: flex-end;
   }
+  .btn{
+    background-color: #ededed !important;
+   
+  }
+  .btn:hover{
+    background-color:#11ab08 !important; 
+    border: 1px solid #ededed !important;
+    color:white;
+  }  
   
   .overlay {
     position: absolute;

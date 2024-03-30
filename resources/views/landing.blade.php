@@ -136,7 +136,7 @@
         <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
           <div class="hero-figure-box hero-figure-box-09" ></div>
           <div class="hero-figure-box hero-figure-box-07" ></div>
-          <div class="hero-figure-box hero-figure-box-08 wow fadeInUp" data-wow-delay=".5s" data-rotation="-22deg" style="transform: rotate(-22deg) scale(1); opacity: 1;"></div>
+          <div class="hero-figure-box hero-figure-box-08 " data-wow-delay=".5s" data-rotation="-22deg" style="transform: rotate(-22deg) scale(1); opacity: 1;"></div>
           <img src="https://preview.uideck.com/items/bliss/assets/img/hero/hero-img.svg" alt="">
         </div>
       
@@ -202,7 +202,7 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row  justify-content-center">
 					<div class="col-xl-4 col-md-6">
 						<div class="single-service">
 							<div class="icon color-1">
@@ -287,7 +287,7 @@
 		<section id="laporan" class="cta-section img-bg pt-110 pb-60">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-xl-7 col-lg-8">
+					<div class="col-xl-7 col-lg-7">
 						<div class="section-title mb-50">
 							<h1 class="mb-20 wow fadeInUp" data-wow-delay=".2s">Buku Tracer Study UIN Sumatera Utara</h1>
 							<p class="wow fadeInUp" data-wow-delay=".4s">Buku "Tracer Study UIN Sumatera Utara" adalah sebuah laporan yang mengungkapkan hasil penelitian dan analisis mendalam terhadap jejak karir alumni dari UIN Sumatera Utara. Dalam buku ini, Anda akan menemukan berbagai data dan informasi yang relevan, termasuk pandangan dari para alumni, tren karir, serta dampak pendidikan dari universitas setiap tahunnya.</p>
@@ -344,144 +344,136 @@
 					<div class="single-pricing">
 					  <h4>Portal SIA</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i> </a>
+					  <p>Menangani Sistem Informasi Akademik Dosen dan Mahasiswa UINSU</p>
+					  <a href="https://portalsia.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i> </a>
 					</div>
 				  </div>
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-PMB</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Penerimaan Mahasiswa Baru UIN Sumatera Utara</p>
+					  <a href="https:// .uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div>
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-MABA</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Daftar Ulang Mahasiswa Baru UIN Sumatera Utara</p>
+					  <a href="https://maba.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div>
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-SELMA</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Surat Elektronik Mahasiswa UIN Sumatera Utara</p>
+					  <a href="https:// .uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div>
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-LIANA</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Kuliah Kerja Nyata UIN Sumatera Utara</p>
+					  <a href="https://siselma.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div>
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>E-LEARNING</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Pembelajaran Online UIN Sumatera Utara</p>
+					  <a href="https://elearning.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 	
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-JURNAL</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Tentang Sistem Informasi Jurnal UIN Sumatera Utara</p>
+					  <a href="https://sijurnal.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-LIBRARY</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
-					</div>
-				  </div> 
-				  <div class="single-pricing-wrapper">
-					<div class="single-pricing">
-					  <h4>SI-PERPUS</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Website Perpustakaan UIN Sumatera Utara</p>
+					  <a href="https://silibrary.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>REPOSITORY</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Repositori UIN Sumatera Utara</p>
+					  <a href="https://repository.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-PUSAKA</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Pengajuan Surat Bebas Pustaka UIN Sumatera Utara</p>
+					  <a href="https://sipusaka.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-RASIDA</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Pendaftaran Sisdang dan Wisuda UINSU</p>
+					  <a href="https://sirasida.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-KIP</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi penjarinagan beasiswa KIP UIN Sumatera Utara</p>
+					  <a href="https://kip.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>UMM</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Ujian Masuk Mandiri Online UIN Sumatera Utara</p>
+					  <a href="https://umm.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-DAHLIA</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Daftar Hadir Kuliah UIN Sumatera Utara</p>
+					  <a href="https://.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-BEDJO</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Beban Kinerja Dosen UIN Sumatera Utara</p>
+					  <a href="https://sibedjo.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-RALINE</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Presensi Online UIN Sumatera Utara</p>
+					  <a href="https://siraline.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>LKP</h4>
 					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, reiciendis.</p>
-					  <a href="#0" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <p>Menangani Sistem Informasi Laporan Kinerja UIN Sumatera Utara</p>
+					  <a href="https://lkp.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 
