@@ -95,7 +95,7 @@
                         <img class="img-fluid w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3MY6qPFPzwcZo3S7IxeXzZrk38Is2tf4A9IUlLSHpQQ&s" style="object-fit: cover;">
                         <div class="overlay position-relative bg-light">
                             <div class="mb-3">
-                                <a href="">Technology</a>
+                                <a href="">Perusahaan Swasta</a>
                                 <span class="px-1">/</span>
                                 <span>January 01, 2045</span>
                             </div>
@@ -129,7 +129,7 @@
                             <img src="img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
+                                    <a href="">Perusahaan Swasta</a>
                                     <span class="px-1">/</span>
                                     <span>January 01, 2045</span>
                                 </div>
@@ -140,7 +140,7 @@
                             <img src="img/news-100x100-2.jpg" style="width: 100px; height: 100px; object-fit: cover;">
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
+                                    <a href="">Perusahaan Swasta</a>
                                     <span class="px-1">/</span>
                                     <span>January 01, 2045</span>
                                 </div>
@@ -151,7 +151,7 @@
                             <img src="img/news-100x100-3.jpg" style="width: 100px; height: 100px; object-fit: cover;">
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
+                                    <a href="">Perusahaan Swasta</a>
                                     <span class="px-1">/</span>
                                     <span>January 01, 2045</span>
                                 </div>
@@ -162,7 +162,7 @@
                             <img src="img/news-100x100-4.jpg" style="width: 100px; height: 100px; object-fit: cover;">
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
+                                    <a href="">Perusahaan Swasta</a>
                                     <span class="px-1">/</span>
                                     <span>January 01, 2045</span>
                                 </div>
@@ -173,7 +173,7 @@
                             <img src="img/news-100x100-5.jpg" style="width: 100px; height: 100px; object-fit: cover;">
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Technology</a>
+                                    <a href="">Perusahaan Swasta</a>
                                     <span class="px-1">/</span>
                                     <span>January 01, 2045</span>
                                 </div>

@@ -83,75 +83,81 @@
         <div class="row align-items-center">
           <div class="col-lg-6">
             <div class="hero-content">
-				<span class="wow fadeInLeft fs-5 text-secondary" data-wow-delay=".2s">Selamat Datang Di Website</span>
+			      	<span class="wow fadeInLeft fs-5 text-secondary" data-wow-delay=".2s">Selamat Datang Di Website</span>
             	<h1 class="wow fadeInUp" data-wow-delay=".4s">Tracer Study Universitas Islam Negeri Sumatera Utara</h1>
          	    <p class="wow fadeInUp" data-wow-delay=".6s">Menyediakan Informasi Seputar Rekam Jejak Karir Lulusan UIN Sumatera Utara Dan Informasi Tentang Berita Lowongan Pekerjaan</p>
 
-				<div class="about-counter ">
-					<div class="row">
-						<div class="col-sm-4">
-							<div class="single-counter counter-color-1 mt-30 d-flex wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-								<div class="counter-shape">
-									<span class="shape-1"></span>
-									<span class="shape-2"></span>
-								</div>
-								<div class="counter-content media-body">
-									<div class="counter-count"><div class="counter" id="clientsCount">350</div></div>
-									<p class="text">Mahasiswa</p>
-								</div>
-							</div> <!-- single counter -->
-						</div>
-						<div class="col-sm-4">
-							<div class="single-counter counter-color-2 mt-30 d-flex wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-								<div class="counter-shape">
-									<span class="shape-1"></span>
-									<span class="shape-2"></span>
-								</div>
-								<div class="counter-content media-body">
-									<div class="counter-count"><div class="counter" id="satisfactionCount">99</div></div>
-									<p class="text">Alumni</p>
-								</div>
-							</div> <!-- single counter -->
-						</div>
-						<div class="col-sm-4">
-							<div class="single-counter counter-color-3 mt-30 d-flex wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s">
-								<div class="counter-shape">
-									<span class="shape-1"></span>
-									<span class="shape-2"></span>
-								</div>
-								<div class="counter-content media-body">
-									<div class="counter-count"><div class="counter" id="projectsCount">870</div></div>
-									<p class="text">Prodi</p>
-								</div>
-							</div>
-						</div>
-						
-					</div> 
-				</div> 
+              <div class="about-counter ">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="single-counter counter-color-1 mt-30 d-flex wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+                      <div class="counter-shape">
+                        <span class="shape-1"></span>
+                        <span class="shape-2"></span>
+                      </div>
+                      <div class="counter-content media-body">
+                        <div class="counter-count"><div class="counter" id="clientsCount">350</div></div>
+                        <p class="text">Mahasiswa</p>
+                      </div>
+                    </div> <!-- single counter -->
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="single-counter counter-color-2 mt-30 d-flex wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
+                      <div class="counter-shape">
+                        <span class="shape-1"></span>
+                        <span class="shape-2"></span>
+                      </div>
+                      <div class="counter-content media-body">
+                        <div class="counter-count"><div class="counter" id="satisfactionCount">99</div></div>
+                        <p class="text">Alumni</p>
+                      </div>
+                    </div> <!-- single counter -->
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="single-counter counter-color-3 mt-30 d-flex wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s">
+                      <div class="counter-shape">
+                        <span class="shape-1"></span>
+                        <span class="shape-2"></span>
+                      </div>
+                      <div class="counter-content media-body">
+                        <div class="counter-count"><div class="counter" id="projectsCount">870</div></div>
+                        <p class="text">Prodi</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div> 
+              </div> 
 				
 
             </div>
 		  </div>
 		  <div class="col-lg-6">
-			<div class="hero-img wow fadeInUp" data-wow-delay=".5s">
-				<img src="https://preview.uideck.com/items/bliss/assets/img/hero/hero-img.svg" alt="">
-			</div>
+        <div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+          <div class="hero-figure-box hero-figure-box-09" ></div>
+          <div class="hero-figure-box hero-figure-box-07" ></div>
+          <div class="hero-figure-box hero-figure-box-08 wow fadeInUp" data-wow-delay=".5s" data-rotation="-22deg" style="transform: rotate(-22deg) scale(1); opacity: 1;"></div>
+          <img src="https://preview.uideck.com/items/bliss/assets/img/hero/hero-img.svg" alt="">
+        </div>
+      
 		  </div>
         </div>
 	  </div>
     </section>
 
-		<section id="tracer" class="about-section pt-150">
+    
+
+		<section id="tracer" class="about-section pt-100">
 			<div class="container">
-				<div class="row">
-					<div class="col-lg-5">
-						<div class="about-img mb-50 mr-40">
+				<div id="roker" class="row justify-content-between">
+					<div id="col1" class="col-lg-5 p-5 ">
+						<div id="chart" class="about-img mb-50  wow fadeInUp" data-wow-delay=".5s">
 							<canvas id="pie-chart"></canvas>
 						</div>
 					</div>
-					<div class="col-lg-7">
+					<div id="col2" class="col-lg-7">
 						<div class="about-content mb-50">
-							<div class="section-title mb-10">
+							<div class="section-title mb-10 wow fadeInUp" data-wow-delay=".5s">
 								<h1 class="mb-20">Data Statistik Tracer Study</h1>
 								<p>Tracer Study UIN Sumatera Utara adalah sebuah Website yang mengungkapkan hasil penelitian dan analisis mendalam terhadap jejak karir alumni dari UIN Sumatera Utara para alumni, tren karir, serta dampak pendidikan dari universitas setiap tahunnya.</p>                
 							</div>
@@ -189,7 +195,7 @@
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-xxl-6 col-xl-9 col-lg-12 col-md-12">
-						<div class="section-title text-center mb-50">
+						<div class="section-title text-center mb-50 wow fadeInUp" data-wow-delay=".5s">
 							<h1>Virtual Tour </h1>
 							<p>Kampus UINSU Menyediakan Sarana Bagi Alumni Untuk Berbagi Berita Lowongan Pekerjaan yang Selalu di Update Setiap Saat</p>
 						</div>
@@ -202,7 +208,7 @@
 							<div class="icon color-1">
 								<i class="lni lni-map-marker"></i>
 							</div>
-							<div class="content">
+							<div class="content wow fadeInUp" data-wow-delay=".5s">
 								<h3>Kampus I UINSU</h3>								
 								<p>Berlokasikan di Jl. Sutomo Ujung Kota Medan, Sumatera Utara</p>
 								<a href="https://sutomo.uinsu.ac.id/" class="button-sm radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
@@ -214,7 +220,7 @@
 							<div class="icon color-2">
 								<i class="lni lni-map-marker"></i>
 							</div>
-							<div class="content">
+							<div class="content wow fadeInUp" data-wow-delay=".5s">
 								<h3>Kampus II UINSU</h3>
 								<p>Berlokasikan di Jl. William Iskandar Ps. V, Kabupaten Deli Serdang, Sumatera Utara</p>
 								<a href="https://pancing.uinsu.ac.id/" class="button-sm radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
@@ -226,7 +232,7 @@
 							<div class="icon color-3">
 								<i class="lni lni-map-marker"></i>
 							</div>
-							<div class="content">
+							<div class="content wow fadeInUp" data-wow-delay=".5s">
 								<h3>Kampus IV UINSU</h3>
                 <p>Berlokasikan di Jl. Lap. Golf No.120, Kabupaten Deli Serdang, Sumatera Utara </p>
 								<a href="https://tuntungan.uinsu.ac.id/" class="button-sm radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
@@ -239,7 +245,7 @@
 			</div>
 		</section>
 
-			<section id="career" class="about-section ">
+			<section id="career" class="about-section pt-100 pb-100">
 				<div class="container">
 				  <div class="row align-items-center">
 					<div class="col-xl-6 col-lg-6">
