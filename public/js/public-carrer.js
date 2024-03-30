@@ -1,6 +1,6 @@
 (function ($) {
     "use strict";
-    
+
     // Dropdown on mouse hover
     $(document).ready(function () {
         function toggleNavbarMethod() {
@@ -17,136 +17,119 @@
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
     });
-    
-    
-    // Back to top button
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.back-to-top').fadeIn('slow');
+
+   // Initialize Owl Carousels
+    $(".tranding-carousel, .carousel-item-1, .carousel-item-2, .carousel-item-3, .carousel-item-4").each(function () {
+        var $this = $(this);
+        var itemsToShow = 1;
+        var autoplaySpeed = 1000;
+        var smartSpeed = 1000;
+
+        if ($this.hasClass('carousel-item-1')) {
+            itemsToShow = 1;
+            autoplaySpeed = 1500;
+            smartSpeed = 1500;
+        } else if ($this.hasClass('carousel-item-2')) {
+            itemsToShow = 2;
+            autoplaySpeed = 1000;
+            smartSpeed = 1000;
+        } else if ($this.hasClass('carousel-item-3')) {
+            itemsToShow = 3;
+            autoplaySpeed = 1000;
+            smartSpeed = 1000;
+        } else if ($this.hasClass('carousel-item-4')) {
+            itemsToShow = 4;
+            autoplaySpeed = 1000;
+            smartSpeed = 1000;
         } else {
-            $('.back-to-top').fadeOut('slow');
+            itemsToShow = 1;
+            autoplaySpeed = 1000;
+            smartSpeed = 1000;
         }
+
+        $this.owlCarousel({
+            autoplay: true,
+            smartSpeed: smartSpeed,
+            items: itemsToShow,
+            dots: false,
+            loop: true,
+            nav: true,
+            navText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>', '<i class="fa fa-angle-right" aria-hidden="true"></i>'],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                576: {
+                    items: 1
+                },
+                768: {
+                    items: itemsToShow
+                },
+                992: {
+                    items: itemsToShow
+                },
+                1200: {
+                    items: itemsToShow
+                }
+            }
+        });
     });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+
+    // Preloader
+    $(window).on('load', function() {
+        $('.preloader').fadeOut('slow');
+    });
+
+    // Sticky Navbar
+    var header_navbar = $(".navbar-area");
+    var sticky = header_navbar.offset().top;
+    $(window).on('scroll', function() {
+        if ($(window).scrollTop() > sticky) {
+            header_navbar.addClass("sticky");
+        } else {
+            header_navbar.removeClass("sticky");
+        }
+
+        var backToTop = $(".scroll-top");
+            if ($(window).scrollTop() > 50) {
+                backToTop.css("display", "flex");
+            } else {
+                backToTop.css("display", "none");
+         }
+    });
+
+    // Smooth Scroll for Menu Links
+    $('.page-scroll').on('click', function(event) {
+        event.preventDefault();
+        var target = $(this.hash);
+        $('html, body').animate({
+            scrollTop: target.offset().top - 60
+        }, 1000);
+    });
+
+    // Navbar Collapse Close on Click
+    $(".page-scroll").on("click", function() {
+        $(".navbar-collapse").removeClass("show");
+        $(".navbar-toggler").removeClass("active");
+    });
+
+    $(".navbar-toggler").on("click", function() {
+        $(this).toggleClass("active");
+    });
+
+    // WOW.js Initialization
+    new WOW().init();
+
+    // Counter Up Initialization
+    $('.counter').counterUp({
+        delay: 10,
+        time: 2000
+    });
+
+    // Scroll to Top
+    $('.scroll-top').on('click', function() {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
         return false;
     });
 
-
-    // Tranding carousel
-    $(".tranding-carousel").owlCarousel({
-        autoplay: true,
-        smartSpeed: 2000,
-        items: 1,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-left"></i>',
-            '<i class="fa fa-angle-right"></i>'
-        ]
-    });
-
-
-    // Carousel item 1
-    $(".carousel-item-1").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1500,
-        items: 1,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-            '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        ]
-    });
-
-    // Carousel item 2
-    $(".carousel-item-2").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        margin: 30,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-            '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            }
-        }
-    });
-
-
-    // Carousel item 3
-    $(".carousel-item-3").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        margin: 30,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-            '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            }
-        }
-    });
-    
-
-    // Carousel item 4
-    $(".carousel-item-4").owlCarousel({
-        autoplay: true,
-        smartSpeed: 1000,
-        margin: 30,
-        dots: false,
-        loop: true,
-        nav : true,
-        navText : [
-            '<i class="fa fa-angle-left" aria-hidden="true"></i>',
-            '<i class="fa fa-angle-right" aria-hidden="true"></i>'
-        ],
-        responsive: {
-            0:{
-                items:1
-            },
-            576:{
-                items:1
-            },
-            768:{
-                items:2
-            },
-            992:{
-                items:3
-            },
-            1200:{
-                items:4
-            }
-        }
-    });
-    
 })(jQuery);
-

@@ -24,6 +24,10 @@ use App\Http\Controllers\UserController;
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/career', [CareerController::class, 'publicIndex']);
 Route::get('/career/{career:slug}', [CareerController::class, 'publicShow']);
+Route::get('/show', function () {
+  return view('publicCareer/show');
+});
+
 
 Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::get('/login', [LoginController::class, 'index'])->name('login');

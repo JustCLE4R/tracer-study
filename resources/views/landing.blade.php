@@ -55,19 +55,19 @@
                       <a class="page-scroll active" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="#about">Tracer Study</a>
+                      <a class="page-scroll" href="#tracer">Tracer Study</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="/career">Career</a>
+                      <a class="page-scroll " href="#career" onclick="window.location.href='/career'">Career</a>
                     </li>
                     <li class="nav-item">
-                      <a class="" href="/dashboard/questioner">Questioner</a>
+                      <a class="page-scroll" href="/dashboard/questioner">Questioner</a>
                     </li>
                     <li class="nav-item">
-                      <a class="" href="#0">Laporan</a>
+                      <a class="page-scroll" href="#laporan">Laporan</a>
                     </li>
                     <li class="nav-item">
-                      <a class="" href="/login">Login</a>
+                      <a class="page-scroll" href="/login">Login</a>
                     </li>
                   </ul>
                 </div>
@@ -141,7 +141,7 @@
 	  </div>
     </section>
 
-		<section id="about" class="about-section pt-150">
+		<section id="tracer" class="about-section pt-150">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-5">
@@ -239,7 +239,7 @@
 			</div>
 		</section>
 
-			<section id="home" class="about-section ">
+			<section id="career" class="about-section ">
 				<div class="container">
 				  <div class="row align-items-center">
 					<div class="col-xl-6 col-lg-6">
@@ -266,7 +266,7 @@
 							Freelancer
 						  </li>
 						</ul>
-						<a href="/career" class="button  mt-20 radius-10 wow fadeInUp" data-wow-delay=".5s">Kunjungi Career <i class="lni lni-angle-double-right"></i></a>
+						<a href="/career" onclick="window.location.href='/career'" class="button  mt-20 radius-10 wow fadeInUp" data-wow-delay=".5s">Kunjungi Career <i class="lni lni-angle-double-right"></i></a>
 					  </div>
 					</div>
 					<div class="col-xl-6 col-lg-6">
@@ -278,7 +278,7 @@
 				</div>
 			  </section>
 
-		<section class="cta-section img-bg pt-110 pb-60">
+		<section id="laporan" class="cta-section img-bg pt-110 pb-60">
 			<div class="container">
 				<div class="row align-items-center">
 					<div class="col-xl-7 col-lg-8">
