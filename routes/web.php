@@ -23,7 +23,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/career', [CareerController::class, 'publicIndex']);
-Route::get('/career/{career:slug}', [CareerController::class, 'publicShow']);
+Route::get('/career/{career:slug}', [CareerController::class, 'publicShow'])->name('career.publicShow');
 Route::get('/show', function () {
   return view('publicCareer/show');
 });

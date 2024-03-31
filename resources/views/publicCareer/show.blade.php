@@ -92,97 +92,56 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="position-relative mb-3">
-                        <img class="img-fluid w-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3MY6qPFPzwcZo3S7IxeXzZrk38Is2tf4A9IUlLSHpQQ&s" style="object-fit: cover;">
+                        <img class="img-fluid w-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
                         <div class="overlay position-relative bg-light">
                             <div class="mb-3">
-                                <a href="">Perusahaan Swasta</a>
+                                <a href="#">{{ getCategoryName($career->category) }}</a>
                                 <span class="px-1">/</span>
-                                <span>January 01, 2045</span>
+                                <span>{{ $career->created_at->format('F d, Y') }}</span>
                             </div>
                             <div>
-                                <h3 class="mb-3">Est stet amet ipsum stet clita rebum duo</h3>
-                                <p>Sadipscing labore amet rebum est et justo gubergren. Et eirmod ipsum sit diam ut
-                                    magna lorem. Nonumy vero labore lorem sanctus rebum et lorem magna kasd, stet
-                                    amet magna accusam consetetur eirmod. Kasd accusam sit ipsum sadipscing et at at
-                                    sanctus et. Ipsum sit gubergren dolores et, consetetur justo invidunt at et
-                                    aliquyam ut et vero clita. Diam sea sea no sed dolores diam nonumy, gubergren
-                                    sit stet no diam kasd vero.</p>
-                                <p>Voluptua est takimata stet invidunt sed rebum nonumy stet, clita aliquyam dolores
-                                    vero stet consetetur elitr takimata rebum sanctus. Sit sed accusam stet sit
-                                    nonumy kasd diam dolores, sanctus lorem kasd duo dolor dolor vero sit et. Labore
-                                    ipsum duo sanctus amet eos et. Consetetur no sed et aliquyam ipsum justo et,
-                                    clita lorem sit vero amet amet est dolor elitr, stet et no diam sit. Dolor erat
-                                    justo dolore sit invidunt.</p>
-                                
+                                <h3 class="">{{ $career->position }}</h3> 
+                                <span class="mb-3"><a href="{{ $career->url }}">{{ $career->company_name }}</a></span>
+                                <p>{{ $career->description }}</p>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-primary" onclick="history.back()">Kembali</button>  
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 pt-3 pt-lg-0">
-    
-                    <div class="pb-3">
-                        <div class="bg-light py-2 px-4 mb-3">
-                            <h3 class="m-0">Terbaru</h3>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-2.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-3.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-4.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-5.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
+                
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                        <h3 class="m-0">Kategori</h3>
                     </div>
-  
-                    <div class="pb-3">
+                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                        <img class="img-fluid w-100 h-100" src="https://ziliun.com/wp-content/uploads/2022/04/Magang-di-instansi-pemerintahan.gif" style="object-fit: cover;">
+                        <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
+                            Instansi Pemerintahan
+                        </a>
+                    </div>
+                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                        <img class="img-fluid w-100 h-100" src="https://dakwah.uin-suka.ac.id/media/gambar/02_20220404_WhatsApp_Image_2022-04-01_at_16.33.06_(1).jpeg" style="object-fit: cover;">
+                        <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
+                            Lembaga Swadaya Masyarakat
+                        </a>
+                    </div>
+                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                        <img class="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa19ZHhBgIwnuXfQSgpRMijdg2C0KQVrQVMCcKl_C1-Q&s" style="object-fit: cover;">
+                        <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
+                            Perusahaan Swasta
+                        </a>
+                    </div>
+                    <div class="position-relative overflow-hidden" style="height: 80px;">
+                        <img class="img-fluid w-100 h-100" src="https://asset.kompas.com/crops/82L1ew9xRM-9Ndi3B6hM0FlryyU=/0x0:997x665/750x500/data/photo/2019/06/24/3743393451.jpg" style="object-fit: cover;">
+                        <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
+                            Freelancer
+                        </a>
+                    </div>
+                    <div class="pt-4">
                         <div class="bg-light py-2 px-4 mb-3">
                             <h3 class="m-0">Tags</h3>
                         </div>
@@ -201,8 +160,8 @@
                             <a href="" class="btn btn-sm btn-outline-secondary m-1">Ustad</a>
                         </div>
                     </div>
-  
                 </div>
+
             </div>
         </div>
     </div>

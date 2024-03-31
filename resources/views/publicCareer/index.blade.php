@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
+
 <body> 
     <div class="preloader">
         <div class="loader">
@@ -90,54 +91,53 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="owl-carousel owl-carousel-2 carousel-item-1 position-relative mb-3 mb-lg-0">
+                        @foreach($careers->sortByDesc('created_at') as $career)
                         <div class="position-relative overflow-hidden" style="height: 435px;">
-                            <img class="img-fluid h-100" src="img/news-700x435-1.jpg" style="object-fit: cover;">
+                            @if($career->image)
+                            <img class="img-fluid h-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
+                            @else
+                            <img class="img-fluid h-100" src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png"style="object-fit: cover;">
+                            @endif                            
                             <div class="overlay">
                                 <div class="mb-1">
-                                    <a class="text-white" href="">Perusahaan Swasta</a>
+                                    <a class="text-white" href="#">{{ $career->company_name }}</a>
                                     <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">January 01, 2045</a>
+                                    <span class="text-white">{{ $career->created_at->format('F d, Y') }}</span>
+                                    
                                 </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">Sanctus amet sed amet ipsum lorem. Dolores et erat et elitr sea sed</a>
+                                <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h2 m-0 text-white font-weight-bold" href="#">{{ $career->position }}</a>
+                                <span class="h5 text-white">{{ getCategoryName($career->category) }}</span>
                             </div>
                         </div>
-                        <div class="position-relative overflow-hidden" style="height: 435px;">
-                            <img class="img-fluid h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
-                            <div class="overlay">
-                                <div class="mb-1">
-                                    <a class="text-white" href="">Perusahaan Swasta</a>
-                                    <span class="px-2 text-white">/</span>
-                                    <a class="text-white" href="">January 01, 2045</a>
-                                </div>
-                                <a class="h2 m-0 text-white font-weight-bold" href="">Sanctus amet sed amet ipsum lorem. Dolores et erat et elitr sea sed</a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+                    
+                    
                 </div>
                 <div class="col-lg-4">
                     <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
                         <h3 class="m-0">Kategori</h3>
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-1.jpg" style="object-fit: cover;">
+                        <img class="img-fluid w-100 h-100" src="https://ziliun.com/wp-content/uploads/2022/04/Magang-di-instansi-pemerintahan.gif" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Instansi Pemerintahan
                         </a>
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-2.jpg" style="object-fit: cover;">
+                        <img class="img-fluid w-100 h-100" src="https://dakwah.uin-suka.ac.id/media/gambar/02_20220404_WhatsApp_Image_2022-04-01_at_16.33.06_(1).jpeg" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Lembaga Swadaya Masyarakat
                         </a>
                     </div>
                     <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-3.jpg" style="object-fit: cover;">
+                        <img class="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa19ZHhBgIwnuXfQSgpRMijdg2C0KQVrQVMCcKl_C1-Q&s" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Perusahaan Swasta
                         </a>
                     </div>
                     <div class="position-relative overflow-hidden" style="height: 80px;">
-                        <img class="img-fluid w-100 h-100" src="img/cat-500x80-4.jpg" style="object-fit: cover;">
+                        <img class="img-fluid w-100 h-100" src="https://asset.kompas.com/crops/82L1ew9xRM-9Ndi3B6hM0FlryyU=/0x0:997x665/750x500/data/photo/2019/06/24/3743393451.jpg" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Freelancer
                         </a>
@@ -154,168 +154,55 @@
                                 <h3 class="m-0">Perusahaan Swasta</h3>
                             </div>
                         </div>
+                        @foreach($careers->where('category', 3)->sortByDesc('created_at')->take(4) as $career)
                         <div class="col-lg-6">
                             <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-500x280-1.jpg" style="object-fit: cover;">
+                                @if($career->image)
+                                <img style="width: 100%; height: 200px; object-fit: cover;" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
+                                @else
+                                <img style="width: 100%; height: 200px; object-fit: cover;" src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png" style="object-fit: cover;">
+                                @endif
                                 <div class="overlay position-relative bg-light">
                                     <div class="mb-2" style="font-size: 14px;">
-                                        <a href="">Perusahaan Swasta</a>
+                                        <a href="">{{ getCategoryName($career->category) }}</a>
                                         <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
+                                        <span>{{ $career->created_at->format('F d, Y') }}</span>
                                     </div>
-                                    <a class="h4" href="">Est stet amet ipsum stet clita rebum duo</a>
-                                    <p class="m-0">Rebum dolore duo et vero ipsum clita, est ea sed duo diam ipsum, clita at justo, lorem amet vero eos sed sit...</p>
+                                    <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h4" href="">{{ $career->position }}</a>
+                                    <p class="m-0">{{ Str::limit($career->description, 100) }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-500x280-2.jpg" style="object-fit: cover;">
-                                <div class="overlay position-relative bg-light">
-                                    <div class="mb-2" style="font-size: 14px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h4" href="">Est stet amet ipsum stet clita rebum duo</a>
-                                    <p class="m-0">Rebum dolore duo et vero ipsum clita, est ea sed duo diam ipsum, clita at justo, lorem amet vero eos sed sit...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-500x280-3.jpg" style="object-fit: cover;">
-                                <div class="overlay position-relative bg-light">
-                                    <div class="mb-2" style="font-size: 14px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h4" href="">Est stet amet ipsum stet clita rebum duo</a>
-                                    <p class="m-0">Rebum dolore duo et vero ipsum clita, est ea sed duo diam ipsum, clita at justo, lorem amet vero eos sed sit...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
-                                <img class="img-fluid w-100" src="img/news-500x280-5.jpg" style="object-fit: cover;">
-                                <div class="overlay position-relative bg-light">
-                                    <div class="mb-2" style="font-size: 14px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h4" href="">Est stet amet ipsum stet clita rebum duo</a>
-                                    <p class="m-0">Rebum dolore duo et vero ipsum clita, est ea sed duo diam ipsum, clita at justo, lorem amet vero eos sed sit...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                                     
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-2.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-3.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-4.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-5.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="d-flex mb-3">
-                                <img src="img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                    <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">Perusahaan Swasta</a>
-                                        <span class="px-1">/</span>
-                                        <span>January 01, 2045</span>
-                                    </div>
-                                    <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+
 
                     </div>
+                    
+                                     
                     <div class="row">
-                        <div class="col-12">
-                            <nav aria-label="Page navigation">
-                              <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                  <a class="page-link" href="#" aria-label="Previous">
-                                    <span class="fa fa-angle-double-left" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                  </a>
-                                </li>
-                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                  <a class="page-link" href="#" aria-label="Next">
-                                    <span class="fa fa-angle-double-right" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                  </a>
-                                </li>
-                              </ul>
-                            </nav>
+                        @foreach($careers as $career)
+                        <div class="col-lg-6">
+                            <div class="d-flex mb-3">
+                                @if($career->image)
+                                <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
+                                @else
+                                <img  src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png" style="width: 100px; height: 100px; object-fit: cover;">
+                                @endif                               
+                                <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
+                                    <div class="mb-1" style="font-size: 13px;">
+                                        <a href="">{{ getCategoryName($career->category) }}</a>
+                                        <span class="px-1">/</span>
+                                        <span>{{ $career->created_at->format('F d, Y') }}</span>
+                                    </div>
+                                    <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h6 m-0" href="">{{ $career->position }}</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        @endforeach
+                    </div>                   
+                    
+                    {{ $careers->links() }}                           
+                    
                 </div>
 
                 <div class="col-lg-4 pt-3 pt-lg-0">
@@ -324,62 +211,28 @@
                         <div class="bg-light py-2 px-4 mb-3">
                             <h3 class="m-0">Terbaru</h3>
                         </div>
+                        
+                        @foreach($careers->sortByDesc('created_at')->take(8) as $career)
                         <div class="d-flex mb-3">
-                            <img src="img/news-100x100-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+                            @if($career->image)
+                            <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
+                            @else
+                            <img  src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png"style="width: 100px; height: 100px; object-fit: cover;">
+                            @endif 
+                            
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
+                                    <a href="">{{ getCategoryName($career->category) }}</a>
                                     <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
+                                    <span>{{ $career->created_at->format('F d, Y') }}</span>
                                 </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
+                                <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h6 m-0" href="">{{ $career->position }}</a>
                             </div>
                         </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-2.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-3.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-4.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
-                        <div class="d-flex mb-3">
-                            <img src="img/news-100x100-5.jpg" style="width: 100px; height: 100px; object-fit: cover;">
-                            <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
-                                <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">Perusahaan Swasta</a>
-                                    <span class="px-1">/</span>
-                                    <span>January 01, 2045</span>
-                                </div>
-                                <a class="h6 m-0" href="">Lorem ipsum dolor sit amet consec adipis elit</a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+                    
+                    
 
                     <div class="pb-3">
                         <div class="bg-light py-2 px-4 mb-3">
@@ -495,8 +348,8 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="/lib/easing/easing.min.js"></script>
     <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -506,6 +359,33 @@
     <script src="/js/wow.min.js"></script>
 
     <script src="/js/public-carrer.js"></script>
+    <script>
+        $(document).ready(function(){
+            var previousText = 'Sebelumnya';
+            var nextText = 'Selanjutnya';
+            
+            var previousElement = $('body > div.container-fluid.py-3 > div:nth-child(2) > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\\:hidden > span');
+            var nextElement = $('body > div.container-fluid.py-3 > div:nth-child(2) > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\\:hidden > a');
+            
+            if (previousElement.text().trim() === 'pagination.previous') {
+                previousElement.text(previousText);
+            }
+            
+            if (nextElement.text().trim() === 'pagination.next') {
+                nextElement.text(nextText);
+            }
+        });
+
+
+
+
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('span.relative.z-0.inline-flex.rtl\\:flex-row-reverse.shadow-sm.rounded-md').css('display', 'none');
+            });
+        });
+    </script>
+    
 </body>
 
 </html>

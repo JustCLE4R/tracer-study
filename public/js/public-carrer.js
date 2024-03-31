@@ -80,6 +80,7 @@
         $('.preloader').fadeOut('slow');
     });
 
+    
     // Sticky Navbar
     var header_navbar = $(".navbar-area");
     var sticky = header_navbar.offset().top;
@@ -131,5 +132,8 @@
         $('html, body').animate({ scrollTop: 0 }, 'slow');
         return false;
     });
+
+    
+   
 
 })(jQuery);

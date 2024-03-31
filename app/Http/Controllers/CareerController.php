@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class CareerController extends Controller
 {
@@ -20,11 +21,13 @@ class CareerController extends Controller
     ]);
   }
 
-  public function publicIndex(){
-    return view('publicCareer.index', [
-      'careers' => Career::all()
-    ]);
+  public function publicIndex()
+  {
+      $careers = Career::where('category', 3)->orderByDesc('created_at')->paginate(6);
+      return view('publicCareer.index', compact('careers'));
   }
+
+  
 
   /**
    * Show the form for creating a new resource.
