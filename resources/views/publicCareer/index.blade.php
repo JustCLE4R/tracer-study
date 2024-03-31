@@ -86,7 +86,7 @@
         </div>
       </header>
 
-    <div class="container-fluid py-3 " style="margin-top: 100px">
+    <div class="container-fluid py-3 " style="margin-top: 100px; background-image: url(https://preview.uideck.com/items/bliss/assets/img/hero/hero-bg.jpg);">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -155,8 +155,8 @@
                             </div>
                         </div>
                         @foreach($careers->where('category', 3)->sortByDesc('created_at')->take(4) as $career)
-                        <div class="col-lg-6">
-                            <div class="position-relative mb-3">
+                        <div class="col-lg-6 ">
+                            <div id="hover" class="position-relative mb-3 border" >
                                 @if($career->image)
                                 <img style="width: 100%; height: 200px; object-fit: cover;" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
                                 @else
@@ -181,8 +181,8 @@
                                      
                     <div class="row">
                         @foreach($careers as $career)
-                        <div class="col-lg-6">
-                            <div class="d-flex mb-3">
+                        <div class="col-lg-6 ">
+                            <div id="hover" class="d-flex mb-3 border">
                                 @if($career->image)
                                 <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
                                 @else
@@ -213,7 +213,7 @@
                         </div>
                         
                         @foreach($careers->sortByDesc('created_at')->take(8) as $career)
-                        <div class="d-flex mb-3">
+                        <div id="hover" class="d-flex mb-3 border">
                             @if($career->image)
                             <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
                             @else
@@ -261,7 +261,7 @@
     </div>
 
 
-    <footer class="footer">
+    <footer class="footer" style="background-image: url(https://preview.uideck.com/items/bliss/assets/img/hero/hero-bg.jpg);">
         <div class="container">
             <div class="widget-wrapper">
                 <div class="row">
