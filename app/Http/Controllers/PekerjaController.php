@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailPerusahaan;
 use App\Models\Pekerja;
+use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -91,7 +92,7 @@ class PekerjaController extends Controller
       'pekerjaan' => 'required|string',
       'status-pekerjaan' => 'required|string',
       'kriteria-pekerjaan' => 'required|string|in:a,b,c,d',
-      'bidang-usaha' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,u',
+      'bidang-pekerjaan' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u',
       'tingkat-ukuran-tempat-bekerja' => 'required|string|in:a,b,c',
       'posisi-jabatan-pekerjaan' => 'required|string|in:a,b,c,d,e,f',
       'detail-pekerjaan' => 'required|string',
@@ -123,7 +124,7 @@ class PekerjaController extends Controller
       'pekerjaan' => 'Pekerjaan',
       'status-pekerjaan' => 'Status Pekerjaan',
       'kriteria-pekerjaan' => 'Kriteria Pekerjaan',
-      'bidang-usaha' => 'Bidang Usaha',
+      'bidang-pekerjaan' => 'Bidang Pekerjaan',
       'tingkat-ukuran-tempat-bekerja' => 'Tingkat Ukuran Tempat Bekerja',
       'posisi-jabatan-pekerjaan' => 'Posisi Jabatan Pekerjaan',
       'detail-pekerjaan' => 'Detail Pekerjaan',
@@ -147,9 +148,9 @@ class PekerjaController extends Controller
       'user_id' => auth()->user()->id,
       'status_pekerjaan' => $rules['status-pekerjaan'],
       'kriteria_pekerjaan' => $rules['kriteria-pekerjaan'],
-      'bidang_usaha' => $rules['bidang-usaha'],
+      'bidang_pekerjaan' => $rules['bidang-pekerjaan'],
       'tingkat_tempat_bekerja' => $rules['tingkat-ukuran-tempat-bekerja'],
-      'jabatan' => $rules['posisi-jabatan-pekerjaan'],
+      'jabatan_pekerjaan' => $rules['posisi-jabatan-pekerjaan'],
       'detail_pekerjaan' => $rules['detail-pekerjaan'],
       'pendapatan' => $rules['jumlah-pendapatan-perbulan'],
       'kesesuaian' => $rules['kesesuaian-pekerjaan-dengan-prodi'],
@@ -159,8 +160,6 @@ class PekerjaController extends Controller
       'kabupaten_kerja' => $rules['kabupaten'] ,
       'bukti_bekerja' => $request->file('fotobukti-telah-bekerja')->store('bukti-bekerja'),
     ];
-    
-    // $dataPrepare['bukti_bekerja'] = $request->file('fotobukti-telah-bekerja')->store('bukti-bekerja');
     
     $pekerja = Pekerja::create($dataPrepare);
     
@@ -188,7 +187,7 @@ class PekerjaController extends Controller
       'status-pekerjaan' => 'required|string',
       'nama-usaha' => 'required|string',
       'tingkat-ukuran-tempat-usaha' => 'required|string',
-      'bidang-usaha' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,u',
+      'bidang-usaha' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u',
       'posisi-jabatan-pekerjaan' => 'required|string|in:a,b,c,d,e,f',
       'detail-usaha' => 'required|string',
       'jumlah-pendapatan-perbulan-omset-penjualan' => 'required|numeric',
@@ -228,13 +227,13 @@ class PekerjaController extends Controller
       'kabupaten' => 'Kabupaten',
       'fotobukti-telah-berwirausaha' => 'Fotobukti Telah Berwirausaha',
   ]);
-  
+
   $dataPrepare = [
     'user_id' => auth()->user()->id,
     'nama_usaha' => $rules['nama-usaha'],
     'tingkat_tempat_usaha' => $rules['tingkat-ukuran-tempat-usaha'],
     'bidang_usaha' => $rules['bidang-usaha'],
-    'jabatan' => $rules['posisi-jabatan-pekerjaan'],
+    'jabatan_usaha' => $rules['posisi-jabatan-pekerjaan'],
     'detail_usaha' => $rules['detail-usaha'],
     'omset' => $rules['jumlah-pendapatan-perbulan-omset-penjualan'],
     'pendapatan' => $rules['jumlah-pendapatan-bersih-perbulan'],
@@ -247,10 +246,25 @@ class PekerjaController extends Controller
     'bukti_berusaha' => $request->file('fotobukti-telah-berwirausaha')->store('bukti-wirausaha'),
   ];
 
-    dd($dataPrepare);
+    Wirausaha::create($dataPrepare);
+
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data Wirausaha telah ditambahkan!');
   }
 
   private function nganggurStore($request){
-    dd($request->all());
+    $request->validate([
+      'saya-belum-memiliki-pekerjaan' => 'required|array|size:1'
+    ], [
+      'required' => 'Centang pernyataan :attribute',
+    ], [
+      'saya-belum-memiliki-pekerjaan' => '"Ya, saya belum bekerja"'
+    ]);
+
+    Pekerja::create([
+      'user_id' => auth()->user()->id,
+      'is_bekerja' => 0
+    ]);
+
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data tidak bekerja telah ditambahkan!');
   }
 }

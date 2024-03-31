@@ -21,7 +21,7 @@
     "type": "select"
   },
   {
-    "question": "Bidang Usaha",
+    "question": "Bidang Pekerjaan",
     "qanswer": {
       "a": "Pertanian, perikanan, dan kehutanan",
       "b": "Pertambangan dan penggalian",
@@ -62,7 +62,6 @@
   {
     "question": "Posisi / Jabatan Pekerjaan",
     "qanswer": {
-      "a": "Pemilik",
       "b": "Direktur",
       "c": "Kepala Unit",
       "d": "Supervisor",

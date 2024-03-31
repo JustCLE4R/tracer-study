@@ -23,8 +23,10 @@ class CareerController extends Controller
 
   public function publicIndex()
   {
-      $careers = Career::where('category', 3)->orderByDesc('created_at')->paginate(6);
-      return view('publicCareer.index', compact('careers'));
+    $careers = Career::orderByDesc('created_at')->paginate(6);
+    return view('publicCareer.index', [
+      'careers' => $careers
+    ]);
   }
 
   

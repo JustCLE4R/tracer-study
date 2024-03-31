@@ -20,7 +20,6 @@
 					<div class="accordion-body">
 						<div class="timeline mx-3 pb-5">
 							<div class="row justify-content-between">
-								
 								<div class="col-7 ">
 									<a href="/dashboard/pekerja/create" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Tambah Riwayat</a>
 								</div>
@@ -29,33 +28,36 @@
 								</div>
 							</div>
 							<!--first-->
-							@for ($i = 0; $i < 3; $i++)
-							<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
-								<div class="timeline__event__icon">
-									<i class="bi bi-person-workspace"></i>
-								</div>
-								<div class="timeline__event__date">
-									TEKNISI JARINGAN MAJU CERAH
-								</div>
-								<div class="timeline__event__content">
-									<div class="timeline__event__title">
-										Bekerja
+							@foreach ($pekerjaans as $pekerjaan)
+								<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
+									<div class="timeline__event__icon">
+										<i class="bi bi-person-workspace"></i>
 									</div>
-									<div class="timeline__event__description">
-										<p>1 Agustus 2021 - Sekarang </p>
+									<div class="timeline__event__date">
+										{{ $pekerjaan->is_bekerja == 1 ? ($pekerjaan->detail_pekerjaan." | ".$pekerjaan->jabatan_pekerjaan) : 'Belum Bekerja' }}
+
 									</div>
-	
-									<div class="col mt-2 float-end">
-										<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
-										<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></a>
+									<div class="timeline__event__content">
+										<div class="timeline__event__title">
+											@if ($pekerjaan->tipe_kerja == 'pekerja' && $pekerjaan->is_bekerja == 1)
+												Bekerja
+											@elseif($pekerjaan->tipe_kerja == 'wirausaha' && $pekerjaan->is_bekerja == 1)
+												Berwirausaha
+											@else
+												Belum Bekerja
+											@endif
+										</div>
+										<div class="timeline__event__description">
+											<p>{{ \Carbon\Carbon::parse($pekerjaan->tgl_mulai_kerja)->translatedFormat('d F Y') }} - Sekarang </p>
+										</div>
+										<div class="col mt-2 float-end">
+											<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
+											<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></a>
+										</div>
 									</div>
-	
 								</div>
-							</div>
-							@endfor
+							@endforeach
 						</div>
-	
-						
 					</div>
 				</div>
 			</div>
