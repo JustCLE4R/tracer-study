@@ -92,7 +92,12 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="position-relative mb-3">
+                        @if($career->image)
                         <img class="img-fluid w-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
+                        @else
+                        <img class="img-fluid w-100" src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png" style="object-fit: cover;">
+                        @endif
+                        
                         <div class="overlay position-relative bg-light">
                             <div class="mb-3">
                                 <a href="#">{{ getCategoryName($career->category) }}</a>
@@ -102,7 +107,7 @@
                             <div>
                                 <h3 class="">{{ $career->position }}</h3> 
                                 <span class="mb-3"><a href="{{ $career->url }}">{{ $career->company_name }}</a></span>
-                                <p>{{ $career->description }}</p>
+                                <p>{{ strip_tags($career->description) }}</p>
                             </div>
                         </div>
                     </div>

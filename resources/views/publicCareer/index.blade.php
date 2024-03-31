@@ -169,7 +169,7 @@
                                         <span>{{ $career->created_at->format('F d, Y') }}</span>
                                     </div>
                                     <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h4" href="">{{ $career->position }}</a>
-                                    <p class="m-0">{{ Str::limit($career->description, 100) }}</p>
+                                    <p class="m-0">{{ Str::limit(strip_tags($career->description), 100) }}</p>
                                 </div>
                             </div>
                         </div>
