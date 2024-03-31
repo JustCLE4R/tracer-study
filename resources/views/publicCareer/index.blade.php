@@ -63,16 +63,16 @@
                             <a class="page-scroll" href="#" onclick="window.location.href='/'">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="page-scroll" href="#" onclick="document.getElementById('about').scrollIntoView()">Tracer Study</a>
+                            <a class="page-scroll" href="/" >Tracer Study</a>
                         </li>
                         <li class="nav-item">
                             <a class="page-scroll active" href="#" >Career</a>
                         </li>
                         <li class="nav-item">
-                            <a class="" href="#" onclick="window.location.href='/dashboard/questioner'">Questioner</a>
+                            <a class="" href="#" onclick="window.location.href='/dashboard'">Questioner</a>
                         </li>
                         <li class="nav-item">
-                            <a class="" href="#" onclick="document.getElementById('laporan').scrollIntoView()">Laporan</a>
+                            <a class="" href="/" >Laporan</a>
                         </li>
                         <li class="nav-item">
                             <a class="" href="#" onclick="window.location.href='/login'">Login</a>
@@ -115,28 +115,28 @@
                     
                 </div>
                 <div class="col-lg-4">
-                    <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                    <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3 border">
                         <h3 class="m-0">Kategori</h3>
                     </div>
-                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                    <div id="hover" class="position-relative overflow-hidden mb-3" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://ziliun.com/wp-content/uploads/2022/04/Magang-di-instansi-pemerintahan.gif" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Instansi Pemerintahan
                         </a>
                     </div>
-                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                    <div id="hover" class="position-relative overflow-hidden mb-3" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://dakwah.uin-suka.ac.id/media/gambar/02_20220404_WhatsApp_Image_2022-04-01_at_16.33.06_(1).jpeg" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Lembaga Swadaya Masyarakat
                         </a>
                     </div>
-                    <div class="position-relative overflow-hidden mb-3" style="height: 80px;">
+                    <div id="hover" class="position-relative overflow-hidden mb-3" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa19ZHhBgIwnuXfQSgpRMijdg2C0KQVrQVMCcKl_C1-Q&s" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Perusahaan Swasta
                         </a>
                     </div>
-                    <div class="position-relative overflow-hidden" style="height: 80px;">
+                    <div id="hover" class="position-relative overflow-hidden" style="height: 80px;">
                         <img class="img-fluid w-100 h-100" src="https://asset.kompas.com/crops/82L1ew9xRM-9Ndi3B6hM0FlryyU=/0x0:997x665/750x500/data/photo/2019/06/24/3743393451.jpg" style="object-fit: cover;">
                         <a href="" class="overlay text-start justify-content-center h5 m-0 text-white text-decoration-none">
                             Freelancer
@@ -145,18 +145,18 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div id="content" class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-12">
-                            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3 border">
                                 <h3 class="m-0">Perusahaan Swasta</h3>
                             </div>
                         </div>
                         @foreach($careers->where('category', 3)->sortByDesc('created_at')->take(4) as $career)
                         <div class="col-lg-6 ">
-                            <div id="hover" class="position-relative mb-3 border" >
+                            <div id="hover" class="position-relative mb-3 border" onclick="window.location.href='{{ route('career.publicShow', ['career' => $career->slug]) }}'" >
                                 @if($career->image)
                                 <img style="width: 100%; height: 200px; object-fit: cover;" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
                                 @else
@@ -182,7 +182,7 @@
                     <div class="row">
                         @foreach($careers as $career)
                         <div class="col-lg-6 ">
-                            <div id="hover" class="d-flex mb-3 border">
+                            <div id="hover" class="d-flex mb-3 border" onclick="window.location.href='{{ route('career.publicShow', ['career' => $career->slug]) }}'">
                                 @if($career->image)
                                 <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
                                 @else
@@ -213,7 +213,7 @@
                         </div>
                         
                         @foreach($careers->sortByDesc('created_at')->take(8) as $career)
-                        <div id="hover" class="d-flex mb-3 border">
+                        <div id="hover" class="d-flex mb-3 border" onclick="window.location.href='{{ route('career.publicShow', ['career' => $career->slug]) }}'">
                             @if($career->image)
                             <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
                             @else
@@ -235,10 +235,10 @@
                     
 
                     <div class="pb-3">
-                        <div class="bg-light py-2 px-4 mb-3">
+                        <div class="bg-light py-2 px-4 mb-3 border" >
                             <h3 class="m-0">Tags</h3>
                         </div>
-                        <div class="d-flex flex-wrap m-n1">
+                        <div id="tags" class="d-flex flex-wrap m-n1">
                             <a href="" class="btn btn-sm btn-outline-secondary m-1">BUMN</a>
                             <a href="" class="btn btn-sm btn-outline-secondary m-1">Buruh</a>
                             <a href="" class="btn btn-sm btn-outline-secondary m-1">Web Developer</a>
@@ -261,7 +261,7 @@
     </div>
 
 
-    <footer class="footer" style="background-image: url(https://preview.uideck.com/items/bliss/assets/img/hero/hero-bg.jpg);">
+    <footer class="footer" style="">
         <div class="container">
             <div class="widget-wrapper">
                 <div class="row">
@@ -363,18 +363,38 @@
         $(document).ready(function(){
             var previousText = 'Sebelumnya';
             var nextText = 'Selanjutnya';
+            var previousIcon = '<i class="bi bi-chevron-double-left"></i>';
+            var nextIcon = '<i class="bi bi-chevron-double-right"></i>';
             
             var previousElement = $('body > div.container-fluid.py-3 > div:nth-child(2) > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\\:hidden > span');
             var nextElement = $('body > div.container-fluid.py-3 > div:nth-child(2) > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\\:hidden > a');
             
             if (previousElement.text().trim() === 'pagination.previous') {
-                previousElement.text(previousText);
+                previousElement.html(previousIcon + previousText);
             }
-            
+
             if (nextElement.text().trim() === 'pagination.next') {
-                nextElement.text(nextText);
+                nextElement.html(nextText + nextIcon);
             }
         });
+        $(document).ready(function(){
+            var previousText = 'Sebelumnya';
+            var nextText = 'Selanjutnya';
+            var previousIcon = '<i class="bi bi-chevron-double-left"></i>';
+            var nextIcon = '<i class="bi bi-chevron-double-right"></i>';
+
+            var previousElement = $('body > div.container-fluid.py-3 > div:nth-child(2) > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\\:hidden > a');
+            var nextElement = $('body > div.container-fluid.py-3 > div:nth-child(2) > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\\:hidden > span');
+
+            if (previousElement.text().trim() === 'pagination.previous') {
+                previousElement.html(previousIcon + previousText);
+            }
+
+            if (nextElement.text().trim() === 'pagination.next') {
+                nextElement.html(nextText + nextIcon);
+            }
+        });
+
 
 
 

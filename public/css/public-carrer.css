@@ -31,9 +31,21 @@
   #hover {
     transition: box-shadow 0.3s ease; /* Efek transisi untuk box-shadow */
   }
+  #content a{
+    color:#018d27!important;
+  }
+  #tags a:hover{
+    background-color:#018d27!important;
+    color:white !important;
+  }
+  #tags a{
+    background-color:white !important;
+    border: 1px solid #e9e9e9;
+  }
 
   #hover:hover {
-      box-shadow: 1px 1px 10px grey; /* Bayangan baru saat dihover */
+      box-shadow: 1px 1px 10px grey; 
+      cursor:pointer;
   }
 
   .page-item.active .page-link {

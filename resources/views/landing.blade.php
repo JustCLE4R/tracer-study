@@ -61,13 +61,13 @@
                       <a class="page-scroll " href="#career" onclick="window.location.href='/career'">Career</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="/dashboard/questioner">Questioner</a>
+                      <a class="page-scroll" href="/dashboard/questioner" onclick="window.location.href='/dashboard/questioner'">Questioner</a>
                     </li>
                     <li class="nav-item">
                       <a class="page-scroll" href="#laporan">Laporan</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="/login">Login</a>
+                      <a class="page-scroll" href="/login" onclick="window.location.href='/login'">Login</a>
                     </li>
                   </ul>
                 </div>
@@ -96,7 +96,7 @@
                         <span class="shape-2"></span>
                       </div>
                       <div class="counter-content media-body">
-                        <div class="counter-count"><div class="counter" id="clientsCount">350</div></div>
+                        <div class="counter-count"><div class="counter" id="clientsCount">4350</div></div>
                         <p class="text">Mahasiswa</p>
                       </div>
                     </div> <!-- single counter -->
@@ -108,7 +108,7 @@
                         <span class="shape-2"></span>
                       </div>
                       <div class="counter-content media-body">
-                        <div class="counter-count"><div class="counter" id="satisfactionCount">99</div></div>
+                        <div class="counter-count"><div class="counter" id="satisfactionCount">2899</div></div>
                         <p class="text">Alumni</p>
                       </div>
                     </div> <!-- single counter -->
@@ -120,7 +120,7 @@
                         <span class="shape-2"></span>
                       </div>
                       <div class="counter-content media-body">
-                        <div class="counter-count"><div class="counter" id="projectsCount">870</div></div>
+                        <div class="counter-count"><div class="counter" id="projectsCount">63</div></div>
                         <p class="text">Prodi</p>
                       </div>
                     </div>
@@ -197,7 +197,7 @@
 					<div class="col-xxl-6 col-xl-9 col-lg-12 col-md-12">
 						<div class="section-title text-center mb-50 wow fadeInUp" data-wow-delay=".5s">
 							<h1>Virtual Tour </h1>
-							<p>Kampus UINSU Menyediakan Sarana Bagi Alumni Untuk Berbagi Berita Lowongan Pekerjaan yang Selalu di Update Setiap Saat</p>
+							<p>UIN Sumatera Utara Menyediakan Sarana Virtual Tour Bagi Para Pengunjung Yang Ingin Mengunjungi Setiap Kampus UINSU Secara Virtual</p>
 						</div>
 					</div>
 				</div>
@@ -351,15 +351,15 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-PMB</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-person-bounding-box"></i></h3>
 					  <p>Menangani Sistem Informasi Penerimaan Mahasiswa Baru UIN Sumatera Utara</p>
-					  <a href="https:// .uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
+					  <a href="https://sipmb.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div>
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-MABA</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-person-standing"></i></h3>
 					  <p>Menangani Sistem Informasi Daftar Ulang Mahasiswa Baru UIN Sumatera Utara</p>
 					  <a href="https://maba.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -367,7 +367,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-SELMA</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-person-circle"></i></h3>
 					  <p>Menangani Sistem Informasi Surat Elektronik Mahasiswa UIN Sumatera Utara</p>
 					  <a href="https:// .uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -375,7 +375,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-LIANA</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-check2-all"></i></h3>
 					  <p>Menangani Sistem Informasi Kuliah Kerja Nyata UIN Sumatera Utara</p>
 					  <a href="https://siselma.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -383,7 +383,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>E-LEARNING</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-mortarboard-fill"></i></h3>
 					  <p>Menangani Sistem Informasi Pembelajaran Online UIN Sumatera Utara</p>
 					  <a href="https://elearning.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -391,7 +391,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-JURNAL</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-journals"></i></h3>
 					  <p>Menangani Tentang Sistem Informasi Jurnal UIN Sumatera Utara</p>
 					  <a href="https://sijurnal.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -399,7 +399,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-LIBRARY</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-book-half"></i></h3>
 					  <p>Menangani Website Perpustakaan UIN Sumatera Utara</p>
 					  <a href="https://silibrary.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -407,7 +407,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>REPOSITORY</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-bookmarks-fill"></i></h3>
 					  <p>Menangani Sistem Informasi Repositori UIN Sumatera Utara</p>
 					  <a href="https://repository.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -415,7 +415,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-PUSAKA</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-chat-square-dots-fill"></i></h3>
 					  <p>Menangani Sistem Informasi Pengajuan Surat Bebas Pustaka UIN Sumatera Utara</p>
 					  <a href="https://sipusaka.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -423,23 +423,23 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-RASIDA</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Menangani Sistem Informasi Pendaftaran Sisdang dan Wisuda UINSU</p>
+					  <h3><i class="bi bi-mortarboard"></i></h3>
+					  <p>Menangani Sistem Informasi Pendaftaran Sidang dan Wisuda UINSU</p>
 					  <a href="https://sirasida.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-KIP</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
-					  <p>Menangani Sistem Informasi penjarinagan beasiswa KIP UIN Sumatera Utara</p>
+					  <h3><i class="bi bi-person-vcard-fill"></i></h3>
+					  <p>Menangani Sistem Informasi Penjaringan Beasiswa KIP UIN Sumatera Utara</p>
 					  <a href="https://kip.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
 				  </div> 
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>UMM</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-pencil-square"></i></h3>
 					  <p>Menangani Sistem Informasi Ujian Masuk Mandiri Online UIN Sumatera Utara</p>
 					  <a href="https://umm.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -447,7 +447,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-DAHLIA</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-info-circle-fill"></i></h3>
 					  <p>Menangani Sistem Informasi Daftar Hadir Kuliah UIN Sumatera Utara</p>
 					  <a href="https://.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -455,7 +455,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-BEDJO</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3<i class="bi bi-person-video3"></i></h3>
 					  <p>Menangani Sistem Informasi Beban Kinerja Dosen UIN Sumatera Utara</p>
 					  <a href="https://sibedjo.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -463,7 +463,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>SI-RALINE</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-person-check"></i></h3>
 					  <p>Menangani Sistem Informasi Presensi Online UIN Sumatera Utara</p>
 					  <a href="https://siraline.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
@@ -471,7 +471,7 @@
 				  <div class="single-pricing-wrapper">
 					<div class="single-pricing">
 					  <h4>LKP</h4>
-					  <h3><i class="bi bi-gear"></i></h3>
+					  <h3><i class="bi bi-person-fill-gear"></i></h3>
 					  <p>Menangani Sistem Informasi Laporan Kinerja UIN Sumatera Utara</p>
 					  <a href="https://lkp.uinsu.ac.id " target="_blank" class="button radius-30 mt-2">Kunjungi <i class="lni lni-angle-double-right"></i></a>
 					</div>
