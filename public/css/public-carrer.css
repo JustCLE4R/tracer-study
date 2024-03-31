@@ -1,10 +1,3 @@
-/******* Bootstrap Theming ********/
-/*!
- * Bootstrap v4.5.3 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
  :root {
     --blue: #007bff;
     --indigo: #6610f2;
@@ -35,6 +28,14 @@
     --font-family-sans-serif: "Roboto", sans-serif;
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   }
+  #hover {
+    transition: box-shadow 0.3s ease; /* Efek transisi untuk box-shadow */
+  }
+
+  #hover:hover {
+      box-shadow: 1px 1px 10px grey; /* Bayangan baru saat dihover */
+  }
+
   .page-item.active .page-link {
     color: #fff !important;
     background-color: green !important;
