@@ -11,7 +11,15 @@
             <hr>
           </div>
         </div>
-
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <form action="/dashboard/pekerja" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="mb-3 col-lg-4 col-md-5 col-sm-12">
@@ -23,7 +31,7 @@
                   <option value="belum-kerja">Belum memungkinkan bekerja</option>
               </select>
               
-              <select class="form-select my-2 d-none" id="handleStatus" onchange="handleStatusChange(this.value)" name="status-perkerjaan">
+              <select class="form-select my-2 d-none" id="handleStatus" onchange="handleStatusChange(this.value)" name="status-pekerjaan">
                   <option hidden selected>Pilih Status Bekerja</option>
                   <option value="fulltime">Fulltime</option>
                   <option value="parttime">Partime</option>

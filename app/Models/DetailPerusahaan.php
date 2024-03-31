@@ -9,6 +9,10 @@ class DetailPerusahaan extends Model
 {
     use HasFactory;
 
+    protected $guarded = [
+        "id",
+    ];
+
     public function pekerja(){
         return $this->belongsTo(Pekerja::class);
     }

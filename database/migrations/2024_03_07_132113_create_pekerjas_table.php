@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->boolean('is_bekerja')->default(1);
-            $table->char('status_pekerjaan', 1)->nullable(); //part time, full time
+            $table->char('status_pekerjaan', 8)->nullable(); //part time, full time
             $table->char('kriteria_pekerjaan', 1)->nullable();
             $table->char('bidang_usaha', 1)->nullable();
             $table->char('tingkat_tempat_bekerja', 1)->nullable();
