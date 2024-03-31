@@ -169,27 +169,27 @@
 							</div>
 							
 							<div class="accordion pb-15 wow fadeInUp" data-wow-delay=".2s" id="accordionExample">
-                <div class="single-faq">
-                  <button class="w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <h3>Pilih Statistik Untuk Ditampilkan</h3>
-                  </button>
-              
-                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div class="faq-content">
-                      Jumlah Pengisi Data Tracer Study 2024 
-                      <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i class="lni lni-display"></i></a>
-                    </div>
-                    <div class="faq-content">
-                      Jumlah Pengisi Data Tracer Study 2024 
-                      <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i class="lni lni-display"></i></a>
-                    </div>
-                    <div class="faq-content">
-                      Jumlah Pengisi Data Tracer Study 2024 
-                      <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i class="lni lni-display"></i></a>
-                    </div>
-                  </div>
-                </div>              
-              </div>
+								<div class="single-faq">
+								<button class="w-100 text-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+									<h3>Pilih Statistik Untuk Ditampilkan</h3>
+								</button>
+							
+								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="faq-content">
+									Jumlah Pengisi Data Tracer Study 2024 
+									<a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i class="lni lni-display"></i></a>
+									</div>
+									<div class="faq-content">
+									Jumlah Pengisi Data Tracer Study 2024 
+									<a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i class="lni lni-display"></i></a>
+									</div>
+									<div class="faq-content">
+									Jumlah Pengisi Data Tracer Study 2024 
+									<a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i class="lni lni-display"></i></a>
+									</div>
+								</div>
+								</div>              
+							</div>
 
 						</div>
 					</div>
@@ -488,7 +488,7 @@
 			</div>
 		  </div>
 		</div>
-	  </section>
+	</section>
 
 		<footer class="footer">
 			<div class="container">
