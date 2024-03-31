@@ -100,7 +100,7 @@
                         
                         <div class="overlay position-relative bg-light">
                             <div class="mb-3">
-                                <a href="#">{{ getCategoryName($career->category) }}</a>
+                                <a href="#">{{$career->category }}</a>
                                 <span class="px-1">/</span>
                                 <span>{{ $career->created_at->format('F d, Y') }}</span>
                             </div>

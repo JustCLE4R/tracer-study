@@ -212,7 +212,7 @@
                             <h3 class="m-0">Terbaru</h3>
                         </div>
                         
-                        @foreach($careers->sortByDesc('created_at')->take(8) as $career)
+                        @foreach($careers->sortByDesc('created_at')->take(4) as $career)
                         <div id="hover" class="d-flex mb-3 border" onclick="window.location.href='{{ route('career.publicShow', ['career' => $career->slug]) }}'">
                             @if($career->image)
                             <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
@@ -394,7 +394,23 @@
                 nextElement.html(nextText + nextIcon);
             }
         });
+        $(document).ready(function(){
+            var previousText = 'Sebelumnya';
+            var nextText = 'Selanjutnya';
+            var previousIcon = '<i class="bi bi-chevron-double-left"></i>';
+            var nextIcon = '<i class="bi bi-chevron-double-right"></i>';
 
+            var previousElement = $('#content > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\:hidden > a:nth-child(1)');
+            var nextElement = $('#content > div > div.col-lg-8 > nav > div.flex.justify-between.flex-1.sm\:hidden > a');
+
+            if (previousElement.text().trim() === 'pagination.previous') {
+                previousElement.html(previousIcon + previousText);
+            }
+
+            if (nextElement.text().trim() === 'pagination.next') {
+                nextElement.html(nextText + nextIcon);
+            }
+        });
 
 
 
