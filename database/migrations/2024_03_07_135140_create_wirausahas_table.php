@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nama_usaha');
             $table->char('tingkat_tempat_usaha', 1);
             $table->char('bidang_usaha', 1);
-            $table->char('jabatan', 1);
+            $table->char('jabatan_usaha', 1);
             $table->string('detail_usaha');
             $table->bigInteger('omset');
             $table->bigInteger('pendapatan');   

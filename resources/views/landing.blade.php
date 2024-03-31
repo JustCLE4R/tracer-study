@@ -66,9 +66,15 @@
                     <li class="nav-item">
                       <a class="page-scroll" href="#laporan">Laporan</a>
                     </li>
+										@if (auth()->check())
+											<li class="nav-item">
+												<a href="/dashboard">Dashboard</a>
+											</li>
+										@else
                     <li class="nav-item">
-                      <a class="page-scroll" href="/login" onclick="window.location.href='/login'">Login</a>
+											<a href="/login">Login</a>
                     </li>
+										@endif
                   </ul>
                 </div>
               </nav>

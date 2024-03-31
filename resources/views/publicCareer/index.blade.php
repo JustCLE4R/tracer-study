@@ -102,11 +102,11 @@
                                 <div class="mb-1">
                                     <a class="text-white" href="#">{{ $career->company_name }}</a>
                                     <span class="px-2 text-white">/</span>
-                                    <span class="text-white">{{ $career->created_at->format('F d, Y') }}</span>
+                                    <span class="text-white">{{ $career->created_at->translatedFormat('d F Y') }}</span>
                                     
                                 </div>
                                 <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h2 m-0 text-white font-weight-bold" href="#">{{ $career->position }}</a>
-                                <span class="h5 text-white">{{ getCategoryName($career->category) }}</span>
+                                <span class="h5 text-white">{{ $career->category }}</span>
                             </div>
                         </div>
                         @endforeach
@@ -164,9 +164,9 @@
                                 @endif
                                 <div class="overlay position-relative bg-light">
                                     <div class="mb-2" style="font-size: 14px;">
-                                        <a href="">{{ getCategoryName($career->category) }}</a>
+                                        <a href="">{{ $career->category }}</a>
                                         <span class="px-1">/</span>
-                                        <span>{{ $career->created_at->format('F d, Y') }}</span>
+                                        <span>{{ $career->created_at->translatedFormat('d F Y') }}</span>
                                     </div>
                                     <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h4" href="">{{ $career->position }}</a>
                                     <p class="m-0">{{ Str::limit(strip_tags($career->description), 100) }}</p>
@@ -190,9 +190,9 @@
                                 @endif                               
                                 <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                     <div class="mb-1" style="font-size: 13px;">
-                                        <a href="">{{ getCategoryName($career->category) }}</a>
+                                        <a href="">{{ $career->category }}</a>
                                         <span class="px-1">/</span>
-                                        <span>{{ $career->created_at->format('F d, Y') }}</span>
+                                        <span>{{ $career->created_at->translatedFormat('d F Y') }}</span>
                                     </div>
                                     <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h6 m-0" href="">{{ $career->position }}</a>
                                 </div>
@@ -222,9 +222,9 @@
                             
                             <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
                                 <div class="mb-1" style="font-size: 13px;">
-                                    <a href="">{{ getCategoryName($career->category) }}</a>
+                                    <a href="">{{ $career->category }}</a>
                                     <span class="px-1">/</span>
-                                    <span>{{ $career->created_at->format('F d, Y') }}</span>
+                                    <span>{{ $career->created_at->translatedFormat('d F Y') }}</span>
                                 </div>
                                 <a href="{{ route('career.publicShow', ['career' => $career->slug]) }}" class="h6 m-0" href="">{{ $career->position }}</a>
                             </div>
