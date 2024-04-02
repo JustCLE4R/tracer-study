@@ -1963,7 +1963,7 @@
   .btn {
     display: inline-block;
     font-weight: 400;
-    color: #6c757d;
+    color: #6c757d !important;
     text-align: center;
     vertical-align: middle;
     user-select: none;
@@ -1983,7 +1983,7 @@
   }
   
   .btn:hover {
-    color: #6c757d;
+    color: white !important;
     text-decoration: none;
   }
   

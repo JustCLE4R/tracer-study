@@ -38,7 +38,9 @@
   <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
   <link href="{{ asset('css/timeline.css') }}" rel="stylesheet">
   <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/perjalanan-karir.css') }}" rel="stylesheet">
+  @if (Request::is('dashboard/perjalanan-karir*'))
+    <link href="{{ asset('css/perjalanan-karir.css') }}" rel="stylesheet">
+  @endif
 </head>
 
 <body>
