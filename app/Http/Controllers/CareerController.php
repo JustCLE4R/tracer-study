@@ -7,7 +7,6 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class CareerController extends Controller
 {
@@ -21,15 +20,37 @@ class CareerController extends Controller
     ]);
   }
 
-  public function publicIndex()
-  {
-    $careers = Career::orderByDesc('created_at')->paginate(10);
+  /**
+   * Public Career (for /career) 
+   */
+  public function publicIndex(Request $request){
+    $category = $request->input('category');
+
+    $query = Career::when($category, function ($query) use ($category) {
+      switch ($category) {
+        case 'Instansi Pemerintahan':
+          $query->where('category', 1);
+          break;
+        case 'Lembaga Swadaya Masyarakat':
+          $query->where('category', 2);
+          break;
+        case 'Perusahaan Swasta':
+          $query->where('category', 3);
+          break;
+        case 'Freelancer':
+          $query->where('category', 4);
+          break;
+      }
+    })->latest();
+
+    $careers = $query->paginate(6)->withQueryString();
+
     return view('publicCareer.index', [
       'careers' => $careers
     ]);
   }
 
-  
+
 
   /**
    * Show the form for creating a new resource.
@@ -52,7 +73,7 @@ class CareerController extends Controller
       'slug' => 'required|unique:careers',
       'description' => 'required',
       'image' => 'image|file|max:2048',
-  ], [
+    ], [
       'required' => 'Kolom :attribute wajib diisi.',
       'in' => 'Pilihan :attribute tidak valid.',
       'url' => 'Kolom :attribute harus berupa URL yang valid.',
@@ -60,7 +81,7 @@ class CareerController extends Controller
       'image' => 'Kolom :attribute harus berupa gambar.',
       'file' => 'Kolom :attribute harus berupa berkas.',
       'max' => 'Kolom :attribute tidak boleh lebih dari :max kilobita.',
-  ], [
+    ], [
       'company_name' => 'Nama Perusahaan',
       'category' => 'Kategori',
       'position' => 'Posisi',
@@ -68,7 +89,7 @@ class CareerController extends Controller
       'slug' => 'Slug',
       'description' => 'Deskripsi',
       'image' => 'Gambar',
-  ]);
+    ]);
 
     if ($request->file('image')) {
       $validatedData['image'] = $request->file('image')->store('careers-images');
@@ -130,7 +151,7 @@ class CareerController extends Controller
       'image' => 'image|file|max:2048',
     ];
 
-    if($request->slug != $career->slug) {
+    if ($request->slug != $career->slug) {
       $rules['slug'] = 'required|unique:careers';
     }
 
@@ -156,11 +177,11 @@ class CareerController extends Controller
    */
   public function destroy(Career $career)
   {
-    if($career->image) {
+    if ($career->image) {
       Storage::delete($career->image);
     }
     $career->delete();
-    
+
     return redirect('/dashboard/career')->with('success', 'Career has been deleted!');
   }
 

@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
     ]);
     User::factory(5)->create();
 
-    Career::factory(20)->create();
+    Career::factory(1354)->create();
 
 
 
