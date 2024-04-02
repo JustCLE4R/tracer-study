@@ -92,8 +92,7 @@
                         @endforeach
 
                     </div>
-                    
-                    {{ $careers->links() }}                  
+                    {{ $careers->onEachSide(1)->links() }}                  
                     
                 </div>
 
