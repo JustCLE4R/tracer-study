@@ -1,89 +1,6 @@
-<!DOCTYPE html>
-<html class="no-js" lang="">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Tracer Study UINSU</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/uin-dan-blu-png-2.png"/>
-
-    <link rel="stylesheet" href="/css/bootstrap-5.0.0-beta2.min.css" />
-    <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
-    <link rel="stylesheet" href="/css/tiny-slider.css" />
-    <link rel="stylesheet" href="/css/animate.css" />
-    <link rel="stylesheet" href="/css/style.css" />	
-    <link rel="stylesheet" href="/css/lindy-uikit.css"/>
-	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  </head>
-  <body>
-    <div class="preloader">
-      <div class="loader">
-        <div class="spinner">
-          <div class="spinner-container">
-            <div class="spinner-rotator">
-              <div class="spinner-left">
-                <div class="spinner-circle"></div>
-              </div>
-              <div class="spinner-right">
-                <div class="spinner-circle"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <header class="header">
-      <div class="navbar-area">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-12">
-              <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="/">
-                  <img src="https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/uin-dan-blu-png-2.png" alt="Logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                  <span class="toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                  <ul id="nav" class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                      <a class="page-scroll active" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll" href="#tracer">Tracer Study</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll " href="#career" onclick="window.location.href='/career'">Career</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll" href="/dashboard/questioner" onclick="window.location.href='/dashboard/questioner'">Questioner</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="page-scroll" href="#laporan">Laporan</a>
-                    </li>
-										@if (auth()->check())
-											<li class="nav-item">
-												<a href="/dashboard">Dashboard</a>
-											</li>
-										@else
-                    <li class="nav-item">
-											<a href="/login">Login</a>
-                    </li>
-										@endif
-                  </ul>
-                </div>
-              </nav>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
+@extends('layouts.main')
+@section('content')
+	
     <section id="home" class="hero-section">
       <div class="container">
         <div class="row align-items-center">
@@ -127,7 +44,7 @@
                       </div>
                       <div class="counter-content media-body">
                         <div class="counter-count"><div class="counter" id="projectsCount">63</div></div>
-                        <p class="text">Prodi</p>
+                        <p class="text">Telah Mengisi</p>
                       </div>
                     </div>
                   </div>
@@ -489,103 +406,6 @@
 		  </div>
 		</div>
 	</section>
+@endsection
 
-		<footer class="footer">
-			<div class="container">
-				<div class="widget-wrapper">
-					<div class="row">
-						<div class="col-xl-3 col-md-6">
-							<div class="footer-widget">
-								<div class="logo mb-35">
-									<a href="index.html"> <img src="https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/uin-dan-blu-png-2.png" width="200px" alt=""> </a>
-								</div>
-								<p class="desc mb-35">UIN Sumatera Utara memiliki 8 Fakultas dan 1 Program Pascasarjana. UINSU adalah kampus islam yang memiliki moto “Smart Islamic University”</p>
-								<ul class="socials">
-									<li>
-										<a href="https://www.facebook.com/uinsuofficial/"> <i class="lni lni-facebook-filled"></i> </a>
-									</li>
-									<li>
-										<a href="https://twitter.com/UINSumutMedan"> <i class="lni lni-twitter-filled"></i> </a>
-									</li>
-									<li>
-										<a href="https://www.instagram.com/uinsu_official/"> <i class="lni lni-instagram-filled"></i> </a>
-									</li>
-									<li>
-										<a href="https://www.youtube.com/channel/UCu-kpT7tJfg6y2tJ71e1vtQ"> <i class="lni lni-youtube"></i> </a>
-									</li>
-								</ul>
-							</div>
-						</div>
 
-						<div class="col-xl-2 offset-xl-1 col-md-5 offset-md-1 col-sm-6">
-							<div class="footer-widget">
-								<h3>Link</h3>
-								<ul class="links">
-									<li> <a href="javascript:void(0)">Home</a> </li>
-									<li> <a href="javascript:void(0)">Tracer Study</a> </li>
-									<li> <a href="javascript:void(0)">Career</a> </li>
-									<li> <a href="javascript:void(0)">Questioner</a> </li>
-									<li> <a href="javascript:void(0)">Laporan</a> </li>
-									<li> <a href="javascript:void(0)">Login</a> </li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-xl-3 col-md-6 col-sm-6">
-							<div class="footer-widget">
-								<h3>Layanan</h3>
-								<ul class="links">
-									<li> <a href="javascript:void(0)">Portal SIA</a> </li>
-									<li> <a href="javascript:void(0)">SI-SELMA</a> </li>
-									<li> <a href="javascript:void(0)">E-LEARNING</a> </li>
-									<li> <a href="javascript:void(0)">SI-JURNAL</a> </li>
-									<li> <a href="javascript:void(0)">Repository</a> </li>
-									<li> <a href="javascript:void(0)">SI-DAHLIA</a> </li>
-									<li> <a href="javascript:void(0)">SI-PERPUS</a> </li>
-								</ul>
-							</div>
-						</div>
-
-						<div class="col-xl-3 col-md-6">
-							<div class="footer-widget">
-								<h3>Kontak</h3>
-								<ul>
-									
-									<li>humas@uinsu.ac.id</li>
-									<li>Jl. Willem Iskandar Pasar V, Medan Estate</li>
-								</ul>
-								<div class="contact_map" style="width: 100%; height: 150px; margin-top: 25px;">
-									<div class="gmap_canvas">
-										<iframe id="gmap_canvas"src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.923855729958!2d98.71849827371673!3d3.604906850184647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3031316be49d74e9%3A0x2f82fd7c9bd27f!2sUniversitas%20Islam%20Negeri%20Sumatera%20Utara%20Medan!5e0!3m2!1sid!2sid!4v1711774604762!5m2!1sid!2sid" style="width: 100%;"></iframe>
-										
-									</div>
-									</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<div class="copy-right">
-					<p>Copyright © 2024  <a href="https://uinsu.ac.id/" rel="nofollow" target="_blank"> UIN Sumatera Utara Medan </a></p>
-				</div>
-
-			</div>
-		</footer>
-
-    <a href="#" class="scroll-top btn-hover">
-      <i class="lni lni-chevron-up"></i>
-    </a>
-
-    <script src="/js/bootstrap-5.0.0-beta2.min.js"></script>    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="/js/count-up.min.js"></script>
-  	<script src="/js/glightbox.min.js"></script>
-    <script src="/js/tiny-slider.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/polifill.js"></script>
-    <script src="/js/main.js"></script>
-
-  </body>
-  
-</html>
