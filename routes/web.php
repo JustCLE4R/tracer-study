@@ -53,3 +53,11 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
   Route::resource('/dashboard/pendidikan', PendidikanController::class);
   Route::resource('/dashboard/career', CareerController::class);
 });
+
+Route::get('dashboard/pekerja/edit', function(){
+  return view('dashboard.perjalanan-karir.kerja.editKerja');
+});
+
+Route::get('dashboard/wirausaha/edit', function(){
+  return view('dashboard.perjalanan-karir.kerja.editWirausaha');
+});
