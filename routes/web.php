@@ -38,7 +38,6 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
   Route::get('/logout', [LoginController::class, 'logout']);
 
   Route::get('/dashboard', fn() => view('dashboard.index'))->name('dashboard');
-  Route::get('/dashboard/perjalanan-karir', [PerjalananKarirController::class, 'index']); //menampilkan semua karir dia
 
   Route::get('/dashboard/tracer', [TracerController::class, 'index']);
   Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
@@ -49,6 +48,7 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
 
   Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug']);
 
+  Route::resource('/dashboard/perjalanan-karir', PerjalananKarirController::class);
   Route::resource('/dashboard/pekerja', PekerjaController::class);
   Route::resource('/dashboard/pendidikan', PendidikanController::class);
   Route::resource('/dashboard/career', CareerController::class);

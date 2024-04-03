@@ -103,7 +103,7 @@
                             <h3 class="m-0">Terbaru</h3>
                         </div>
                         
-                        @foreach($careers->sortByDesc('created_at')->take(8) as $career)
+                        @foreach($careersLatest->take(6) as $career)
                         <div id="hover" class="d-flex mb-3 border" onclick="window.location.href='{{ route('career.publicShow', ['career' => $career->slug]) }}'">
                             @if($career->image)
                             <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">

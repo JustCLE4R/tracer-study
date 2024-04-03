@@ -44,9 +44,11 @@ class CareerController extends Controller
     })->latest();
 
     $careers = $query->paginate(6)->withQueryString();
+    $careersLatest = Career::latest()->take(10)->get();
 
     return view('publicCareer.index', [
-      'careers' => $careers
+      'careers' => $careers,
+      'careersLatest' => $careersLatest,
     ]);
   }
 

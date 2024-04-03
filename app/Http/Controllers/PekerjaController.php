@@ -77,11 +77,13 @@ class PekerjaController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Pekerja $pekerja)
+  public function destroy(Request $request, Pekerja $pekerja)
   {
     if($pekerja->user_id != auth()->user()->id){
       return abort(403);
     }
+
+    dd($request->all());
   }
 
   /**

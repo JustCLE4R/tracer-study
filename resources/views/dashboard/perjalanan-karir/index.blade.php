@@ -52,7 +52,13 @@
 										</div>
 										<div class="col mt-2 float-end">
 											<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
-											<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></a>
+											<form class="d-inline" action="/dashboard/pekerja/{{ $pekerjaan->id }}" method="POST">
+												@csrf
+												@method('DELETE')
+												<input type="hidden" name="tipe_kerja" value="{{ $pekerjaan->tipe_kerja }}">
+												<input type="hidden" name="id" value="{{ $pekerjaan->id }}">
+												<button class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></button>
+											</form>
 										</div>
 									</div>
 								</div>
