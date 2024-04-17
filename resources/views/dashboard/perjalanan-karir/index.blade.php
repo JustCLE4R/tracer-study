@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-<div id="row" class="row justify-content-center ">
+<div id="row" class="row justify-content-center mb-5 pb-4">
 	@if (session()->has('success'))
 	<div class="alert alert-success alert-dismissible fade show col-lg-10 mb-0" role="alert">
 		<strong>Success!</strong> {{ session('success') }}
@@ -51,7 +51,7 @@
 											<p>{{ \Carbon\Carbon::parse($pekerjaan->tgl_mulai_kerja)->translatedFormat('d F Y') }} - Sekarang </p>
 										</div>
 										<div class="col mt-2 float-end">
-											<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
+											<a href="pekerja/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
 											<form class="d-inline" action="/dashboard/pekerja/{{ $pekerjaan->id }}" method="POST">
 												@csrf
 												@method('DELETE')

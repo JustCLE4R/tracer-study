@@ -55,7 +55,7 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
 });
 
 Route::get('dashboard/pekerja/edit', function(){
-  return view('dashboard.perjalanan-karir.kerja.editKerja');
+  return view('dashboard.perjalanan-karir.kerja.editPekerja');
 });
 
 Route::get('dashboard/wirausaha/edit', function(){
