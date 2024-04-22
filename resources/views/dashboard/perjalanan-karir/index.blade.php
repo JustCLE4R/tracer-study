@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-<div id="row" class="row justify-content-center ">
+<div id="row" class="row justify-content-center mb-5 pb-4">
 	@if (session()->has('success'))
 	<div class="alert alert-success alert-dismissible fade show col-lg-10 mb-0" role="alert">
 		<strong>Success!</strong> {{ session('success') }}

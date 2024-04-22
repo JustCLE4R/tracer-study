@@ -8,7 +8,7 @@
 <!-- Spinner End -->
 
 <!-- Sidebar Start -->
-<div class="sidebar pe-4 pb-3">
+<div class="sidebar pe-4 pb-3 shadow ">
   <nav class="navbar">
     <a href="https://uinsu.ac.id" class="navbar-brand mx-4 mb-3">
       <img src="/img/logo.png" width="200px" alt="">
