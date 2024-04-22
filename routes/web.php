@@ -50,15 +50,7 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
 
   Route::resource('/dashboard/career', CareerController::class);
   Route::resource('/dashboard/perjalanan-karir', PerjalananKarirController::class)->only(['index', 'create', 'store']);
-  Route::resource('/dashboard/pekerja', PekerjaController::class)->except(['index', 'create']);
-  Route::resource('/dashboard/wirausaha', WirausahaController::class)->except(['index', 'create']);
+  Route::resource('/dashboard/pekerja', PekerjaController::class)->except(['index', 'create', 'store']);
+  Route::resource('/dashboard/wirausaha', WirausahaController::class)->except(['index', 'create', 'store']);
   Route::resource('/dashboard/pendidikan', PendidikanController::class)->except(['index']);
-});
-
-Route::get('dashboard/pekerja/edit', function(){
-  return view('dashboard.perjalanan-karir.kerja.editPekerja');
-});
-
-Route::get('dashboard/wirausaha/edit', function(){
-  return view('dashboard.perjalanan-karir.kerja.editWirausaha');
 });

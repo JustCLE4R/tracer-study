@@ -45,7 +45,13 @@ class WirausahaController extends Controller
    */
   public function edit(Wirausaha $wirausaha)
   {
-    //
+    if($wirausaha->user_id != auth()->user()->id){
+      return abort(403);
+    }
+
+    return view('dashboard.perjalanan-karir.kerja.editWirausaha', [
+      'wirausaha' => $wirausaha
+    ]);
   }
 
   /**

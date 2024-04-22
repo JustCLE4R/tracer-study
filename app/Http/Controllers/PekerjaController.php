@@ -51,6 +51,10 @@ class PekerjaController extends Controller
     if($pekerja->user_id != auth()->user()->id){
       return abort(403);
     }
+
+    return view('dashboard.perjalanan-karir.kerja.editPekerja', [
+      'pekerja' => $pekerja
+    ]);
   }
 
   /**
