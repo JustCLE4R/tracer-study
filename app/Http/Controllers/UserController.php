@@ -20,25 +20,38 @@ class UserController extends Controller
       'email' => 'email|max:255',
       'linkedin' => 'nullable|url',
       'facebook' => 'nullable|url',
-      'tgl_lulus' => 'required|before:today',
-      'tgl_yudisium' => 'required|before:today',
-      'tgl_wisuda' => 'required|before:today',
+      'tgl_lulus' => 'required|date|before:today',
+      'tgl_yudisium' => 'required|date|before:today',
+      'tgl_wisuda' => 'required|date|before:today',
       'judul_tugas_akhir' => 'required|string|max:255',
       'provinsi' => 'required|string|max:255',
       'kabupaten' => 'required|string|max:255',
       'kecamatan' => 'required|string|max:255',
       'alamat' => 'required|string|max:255',
-    ],
-    [
-      '*.max' => 'Input tidak boleh lebih dari 255 karakter',
-      '*.required' => 'Input tidak boleh kosong',
-      '*.numeric' => 'Input harus berupa angka',
-      '*.integer' => 'Input harus berupa bilangan bulat',
-      '*.digits' => 'Input harus berupa angka dan terdiri dari 16 karakter',
-      '*.date' => 'Input harus berupa tanggal',
-      '*.before' => 'Input harus berupa tanggal sebelum hari ini',
-      '*.url' => 'Input harus berupa URL',
-    ]);
+  ], [
+      'required' => 'Kolom :attribute wajib diisi.',
+      'numeric' => 'Kolom :attribute harus berupa angka.',
+      'email' => 'Kolom :attribute harus berupa alamat email yang valid.',
+      'url' => 'Kolom :attribute harus berupa URL yang valid.',
+      'date' => 'Kolom :attribute harus berupa tanggal yang valid',
+      'before' => 'Kolom :attribute harus sebelum tanggal hari ini.',
+      'string' => 'Kolom :attribute harus berupa teks.',
+      'max' => 'Kolom :attribute tidak boleh lebih dari :max karakter.',
+  ], [
+      'telepon' => 'Telepon',
+      'email' => 'Email',
+      'linkedin' => 'Linkedin',
+      'facebook' => 'Facebook',
+      'tgl_lulus' => 'Tanggal Lulus',
+      'tgl_yudisium' => 'Tanggal Yudisium',
+      'tgl_wisuda' => 'Tanggal Wisuda',
+      'judul_tugas_akhir' => 'Judul Tugas Akhir',
+      'provinsi' => 'Provinsi',
+      'kabupaten' => 'Kabupaten',
+      'kecamatan' => 'Kecamatan',
+      'alamat' => 'Alamat',
+  ]);
+  
 
     $rules['predikat_kelulusan'] = $this->calculatePredicate($request->ipk);
 

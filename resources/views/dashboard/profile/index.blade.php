@@ -258,7 +258,7 @@
             </div>
             <div class="row mt-2">
               <div class="col-12 text-end">
-                <a href="/dashboard/profile-edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Perbaharui Data Diri</a>
+                <a href="/dashboard/profile/edit" class="btn btn-success"><i class="bi bi-pencil-square"></i> Perbaharui Data Diri</a>
               </div>
             </div>
           </div>

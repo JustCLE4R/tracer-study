@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Validation\Rule;
+use App\Models\DetailPerusahaan;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,6 +15,121 @@ class Pekerja extends Model
     "id"
   ];
 
+  public static function pekerjaStore($request){
+    $rules = $request->validate([
+      'pekerjaan' => 'required|string',
+      'status-pekerjaan' => 'required|string',
+      'kriteria-pekerjaan' => 'required|string|in:a,b,c,d',
+      'bidang-pekerjaan' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u',
+      'tingkat-ukuran-tempat-bekerja' => 'required|string|in:a,b,c',
+      'posisi-jabatan-pekerjaan' => 'required|string|in:a,b,c,d,e,f',
+      'detail-pekerjaan' => 'required|string',
+      'jumlah-pendapatan-perbulan' => 'required|numeric',
+      'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
+      'tanggal-mulai-bekerja' => 'required|date',
+      'tanggal-akhir-kerja' => 'date',
+      'provinsi' => 'required|string',
+      'kabupaten' => 'required|string',
+      'fotobukti-telah-bekerja' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
+
+      // info perusahaan
+      'nama-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
+      'nama-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
+      'posisi-jabatan-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
+      'nomor-telepon-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
+      'alamat-email-aktif-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'email'],
+    ], [
+      'required' => 'Kolom :attribute wajib diisi.',
+      'string' => 'Kolom :attribute harus berupa teks.',
+      'in' => 'Kolom :attribute tidak valid.',
+      'numeric' => 'Kolom :attribute harus berupa angka.',
+      'email' => 'Kolom :attribute harus berupa alamat email yang valid.',
+      'date' => 'Kolom :attribute harus berupa tanggal yang valid.',
+      'image' => 'Kolom :attribute harus berupa gambar.',
+      'mimes' => 'Kolom :attribute harus memiliki format: :values.',
+      'max' => 'Kolom :attribute tidak boleh lebih dari :max kilobita.',
+    ], [
+      'pekerjaan' => 'Pekerjaan',
+      'status-pekerjaan' => 'Status Pekerjaan',
+      'kriteria-pekerjaan' => 'Kriteria Pekerjaan',
+      'bidang-pekerjaan' => 'Bidang Pekerjaan',
+      'tingkat-ukuran-tempat-bekerja' => 'Tingkat Ukuran Tempat Bekerja',
+      'posisi-jabatan-pekerjaan' => 'Posisi Jabatan Pekerjaan',
+      'detail-pekerjaan' => 'Detail Pekerjaan',
+      'jumlah-pendapatan-perbulan' => 'Jumlah Pendapatan Per Bulan',
+      'kesesuaian-pekerjaan-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
+      'tanggal-mulai-bekerja' => 'Tanggal Mulai Bekerja',
+      'tanggal-akhir-kerja' => 'Tanggal Akhir Bekerja',
+      'provinsi' => 'Provinsi',
+      'kabupaten' => 'Kabupaten',
+      'fotobukti-telah-bekerja' => 'Foto Bukti Telah Bekerja',
+
+      // info perusahaan
+      'nama-perusahaan' => 'Nama Perusahaan',
+      'nama-atasan' => 'Nama Atasan',
+      'posisi-jabatan-atasan' => 'Posisi Jabatan Atasan',
+      'nomor-telepon-atasan' => 'Nomor Telepon Atasan',
+      'alamat-email-aktif-atasan' => 'Alamat Email Aktif Atasan',
+    ]);
+  
+    $dataPrepare = [
+      'user_id' => auth()->user()->id,
+      'status_pekerjaan' => $rules['status-pekerjaan'],
+      'kriteria_pekerjaan' => $rules['kriteria-pekerjaan'],
+      'bidang_pekerjaan' => $rules['bidang-pekerjaan'],
+      'tingkat_tempat_bekerja' => $rules['tingkat-ukuran-tempat-bekerja'],
+      'jabatan_pekerjaan' => $rules['posisi-jabatan-pekerjaan'],
+      'detail_pekerjaan' => $rules['detail-pekerjaan'],
+      'pendapatan' => $rules['jumlah-pendapatan-perbulan'],
+      'kesesuaian' => $rules['kesesuaian-pekerjaan-dengan-prodi'],
+      'tgl_mulai_kerja' => $rules['tanggal-mulai-bekerja'],
+      'tgl_akhir_kerja' => $rules['tanggal-akhir-kerja'],
+      'provinsi_kerja' => $rules['provinsi'],
+      'kabupaten_kerja' => $rules['kabupaten'] ,
+      'bukti_bekerja' => $request->file('fotobukti-telah-bekerja')->store('bukti-bekerja'),
+    ];
+    
+    $pekerja = Pekerja::create($dataPrepare);
+    
+    if($rules['status-pekerjaan'] == 'parttime' && $rules['kriteria-pekerjaan'] == 'd'){
+      return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
+    }
+    
+    $detail_perusahaan = [
+      'pekerja_id' => $pekerja->id,
+      'nama_perusahaan' => $rules['nama-perusahaan'],
+      'nama_atasan' => $rules['nama-atasan'],
+      'jabatan_atasan' => $rules['posisi-jabatan-atasan'],
+      'telepon_atasan' => $rules['nomor-telepon-atasan'],
+      'email_atasan' => $rules['alamat-email-aktif-atasan'],
+    ];
+
+    DetailPerusahaan::create($detail_perusahaan);
+
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
+  }
+
+  public static function nganggurStore($request){
+    $request->validate([
+      'saya-belum-memiliki-pekerjaan' => 'required|array|size:1'
+    ], [
+      'required' => 'Centang pernyataan :attribute',
+    ], [
+      'saya-belum-memiliki-pekerjaan' => '"Ya, saya belum bekerja"'
+    ]);
+
+    Pekerja::create([
+      'user_id' => auth()->user()->id,
+      'is_bekerja' => 0
+    ]);
+
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data tidak bekerja telah ditambahkan!');
+  }
+
+
+  /**
+   * Just bunch of accessor
+   */
   protected function getKriteriaPekerjaanAttribute($value){
     $kriteriaPekerjaan = [
       'a' => 'Instansi Pemerintah',
@@ -84,6 +201,10 @@ class Pekerja extends Model
 
     return $kesesuaian[$value] ?? 'Unknown Kesesuaian';
   }
+  /**
+   * end of accessor
+   */
+
 
   public function user() {
     return $this->belongsTo(User::class);

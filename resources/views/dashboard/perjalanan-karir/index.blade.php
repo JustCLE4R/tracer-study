@@ -21,7 +21,7 @@
 						<div class="timeline mx-3 pb-5">
 							<div class="row justify-content-between">
 								<div class="col-7 ">
-									<a href="/dashboard/pekerja/create" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Tambah Riwayat</a>
+									<a href="/dashboard/perjalanan-karir/create" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Tambah Riwayat</a>
 								</div>
 								<div class="col-5 text-end">
 									<span class=" mt-1 text-success ">Setelah Lulus </span>
@@ -52,11 +52,9 @@
 										</div>
 										<div class="col mt-2 float-end">
 											<a href="" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
-											<form class="d-inline" action="/dashboard/pekerja/{{ $pekerjaan->id }}" method="POST">
+											<form class="d-inline" action="/dashboard/{{ $pekerjaan->tipe_kerja }}/{{ $pekerjaan->id }}" method="POST">
 												@csrf
 												@method('DELETE')
-												<input type="hidden" name="tipe_kerja" value="{{ $pekerjaan->tipe_kerja }}">
-												<input type="hidden" name="id" value="{{ $pekerjaan->id }}">
 												<button class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></button>
 											</form>
 										</div>

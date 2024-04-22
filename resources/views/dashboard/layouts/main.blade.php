@@ -37,7 +37,10 @@
   <!-- Custom Stylesheet -->
   <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
   <link href="{{ asset('css/timeline.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+  @if (Request::is('dashboard/profile*'))
+    <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
+  @endif
+
   @if (Request::is('dashboard/perjalanan-karir*'))
     <link href="{{ asset('css/perjalanan-karir.css') }}" rel="stylesheet">
   @endif
@@ -86,7 +89,7 @@
     <script src="{{ asset('js/form.js') }}"></script>
   @endif
 
-  @if (Request::is('dashboard/pekerja*'))
+  @if (Request::is('dashboard/perjalanan-karir*'))
     <script src="{{ asset('js/tambah-pekerjaan.js') }}"></script>
   @endif
 

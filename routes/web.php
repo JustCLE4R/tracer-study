@@ -9,6 +9,7 @@ use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PerjalananKarirController;
 use App\Http\Controllers\TracerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WirausahaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,6 @@ Route::get('/show', function () {
   return view('publicCareer/show');
 });
 
-
 Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::get('/login', [LoginController::class, 'index'])->name('login');
   Route::post('/login', [LoginController::class, 'authenticate']);
@@ -43,15 +43,16 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
   Route::post('/dashboard/tracer', [TracerController::class, 'receviceAnswer']);
 
   Route::get('/dashboard/profile', [UserController::class, 'index']);
-  Route::get('/dashboard/profile-edit', [UserController::class, 'edit']);
-  Route::patch('/dashboard/profile-edit', [UserController::class, 'update']);
+  Route::get('/dashboard/profile/edit', [UserController::class, 'edit']);
+  Route::patch('/dashboard/profile/edit', [UserController::class, 'update']);
 
   Route::get('/dashboard/career/checkSlug', [CareerController::class, 'checkSlug']);
 
-  Route::resource('/dashboard/perjalanan-karir', PerjalananKarirController::class);
-  Route::resource('/dashboard/pekerja', PekerjaController::class);
-  Route::resource('/dashboard/pendidikan', PendidikanController::class);
   Route::resource('/dashboard/career', CareerController::class);
+  Route::resource('/dashboard/perjalanan-karir', PerjalananKarirController::class)->only(['index', 'create', 'store']);
+  Route::resource('/dashboard/pekerja', PekerjaController::class)->except(['index', 'create']);
+  Route::resource('/dashboard/wirausaha', WirausahaController::class)->except(['index', 'create']);
+  Route::resource('/dashboard/pendidikan', PendidikanController::class)->except(['index']);
 });
 
 Route::get('dashboard/pekerja/edit', function(){
