@@ -17,6 +17,7 @@ return new class extends Migration
       $table->string('nama');
       $table->string('password');
       $table->string('role')->default('mahasiswa');
+      $table->boolean('is_bekerja')->default(1);
       // informasi akademik
       $table->string('program_studi');
       $table->string('fakultas')->nullable();

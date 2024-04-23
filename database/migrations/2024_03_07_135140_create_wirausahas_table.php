@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('wirausahas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->boolean('is_active')->default(1);
             $table->string('nama_usaha');
             $table->char('tingkat_tempat_usaha', 1);
             $table->char('bidang_usaha', 1);
-            $table->char('jabatan_usaha', 1);
             $table->string('detail_usaha');
             $table->bigInteger('omset');
             $table->bigInteger('pendapatan');   
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->date('tgl_akhir_usaha')->default(null)->nullable();
             $table->string('provinsi_usaha');
             $table->string('kabupaten_usaha');
+            $table->string('alamat');
             $table->string('bukti_berusaha');
             $table->timestamps();
         });
