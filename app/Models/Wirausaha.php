@@ -20,7 +20,7 @@ class Wirausaha extends Model
       'status-pekerjaan' => 'required|string',
       'nama-usaha' => 'required|string',
       'tingkat-ukuran-tempat-usaha' => 'required|string',
-      'bidang-usaha' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,u',
+      'bidang-usaha' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u',
       'posisi-jabatan-pekerjaan' => 'required|string|in:a,b,c,d,e,f',
       'detail-usaha' => 'required|string',
       'jumlah-pendapatan-perbulan-omset-penjualan' => 'required|numeric',
