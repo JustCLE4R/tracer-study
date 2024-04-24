@@ -48,5 +48,12 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
     Route::resource('/pekerja', PekerjaController::class)->except(['index', 'create', 'store']);
     Route::resource('/wirausaha', WirausahaController::class)->except(['index', 'create', 'store']);
     Route::resource('/pendidikan', PendidikanController::class)->except(['index']);
+
+    Route::get('/dashboard/laporan', function () {
+      return view('dashboard.laporan');
+    });
+  
+
+
   });
 });

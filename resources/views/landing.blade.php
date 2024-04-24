@@ -11,10 +11,10 @@
                         <p class="wow fadeInUp" data-wow-delay=".6s">Menyediakan Informasi Seputar Rekam Jejak Karir Lulusan
                             UIN Sumatera Utara Dan Informasi Tentang Berita Lowongan Pekerjaan</p>
 
-                        <div class="about-counter ">
+                        <div class="about-counter mt-50 ">
                             <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="single-counter counter-color-1 mt-30 d-flex wow fadeInUp"
+                                <div class="col-sm-4 ">
+                                    <div class="single-counter counter-color-1 d-flex wow fadeInUp"
                                         data-wow-duration="1s" data-wow-delay="0.3s">
                                         <div class="counter-shape">
                                             <span class="shape-1"></span>
@@ -29,7 +29,7 @@
                                     </div> <!-- single counter -->
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="single-counter counter-color-2 mt-30 d-flex wow fadeInUp"
+                                    <div class="single-counter counter-color-2 d-flex wow fadeInUp"
                                         data-wow-duration="1s" data-wow-delay="0.6s">
                                         <div class="counter-shape">
                                             <span class="shape-1"></span>
@@ -44,7 +44,7 @@
                                     </div> <!-- single counter -->
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="single-counter counter-color-3 mt-30 d-flex wow fadeInUp"
+                                    <div class="single-counter counter-color-3 d-flex wow fadeInUp"
                                         data-wow-duration="1s" data-wow-delay="0.9s">
                                         <div class="counter-shape">
                                             <span class="shape-1"></span>
@@ -107,18 +107,18 @@
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionExample">
-                                    <div class="faq-content">
-                                        Jumlah Pengisi Data Tracer Study 2024
+                                    <div class="faq-content d-flex flex-wrap">
+                                        Perbandingan Jumlah Alumni Yang Mengisi Tracer Study 2024
                                         <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i
                                                 class="lni lni-display"></i></a>
                                     </div>
-                                    <div class="faq-content">
-                                        Jumlah Pengisi Data Tracer Study 2024
+                                    <div class="faq-content d-flex flex-wrap">
+                                        Perbandingan Jenis Kelamin Yang Mengisi Tracer Study 2024
                                         <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i
                                                 class="lni lni-display"></i></a>
                                     </div>
-                                    <div class="faq-content">
-                                        Jumlah Pengisi Data Tracer Study 2024
+                                    <div class="faq-content d-flex flex-wrap">
+                                        Perbandingan Berdasarkan Status Alumni Tracer Study 2024
                                         <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i
                                                 class="lni lni-display"></i></a>
                                     </div>

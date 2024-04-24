@@ -13,7 +13,7 @@
   <div class="container">
     <div class="cover">
       <div class="front">
-        <img src="https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/Graduation.jpg" alt="">
+        <img src="https://preview.uideck.com/items/bliss/assets/img/hero/hero-img.svg" alt="">
         
         <div class="text" data-aos="fade-up" data-aos-duration="800">
           <div class="carousel">
@@ -77,33 +77,9 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
+   
     $(document).ready(function() {
       AOS.init();
-    });
-
-    const imageUrls = [
-      'https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/2-11.jpg',
-      'https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/Graduation.jpg',
-      'https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/IMG_2051.jpg',
-      'https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/uin.png'
-    ];
-    
-    let currentIndex = 0;
-    
-    function changeBackground() {
-      document.body.style.backgroundImage = `url('${imageUrls[currentIndex]}')`;
-      currentIndex = (currentIndex + 1) % imageUrls.length;
-    }
-    
-    const firstImage = new Image();
-    firstImage.src = imageUrls[0];
-    firstImage.onload = function() {
-      changeBackground();
-      setInterval(changeBackground, 5000);
-    };
-
-    
-    $(document).ready(function() {
       var currentIndex = 0;
       var texts = $(".carousel").children();
 

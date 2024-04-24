@@ -1,4 +1,3 @@
-AOS.init();
 (function ($) {
   "use strict";
 
@@ -133,9 +132,7 @@ var legendList = document.createElement("ol");
 legendItems.forEach(function (item) {
     var listItem = document.createElement("li");
 
-    // Menambahkan atribut data-aos
-    listItem.setAttribute("data-aos", "fade-up");
-    listItem.setAttribute("data-aos-duration", "1200");
+
 
     // Menambahkan icon
     var icon = document.createElement("i");
@@ -194,10 +191,6 @@ function showLegend(chart, containerId) {
 
     legendItems.forEach(function (item) {
         var listItem = document.createElement("li");
-
-        // Menambahkan atribut data-aos
-        listItem.setAttribute("data-aos", "fade-up");
-        listItem.setAttribute("data-aos-duration", "1500");
 
         // Menambahkan icon
         var icon = document.createElement("i");
