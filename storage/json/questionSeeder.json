@@ -251,11 +251,10 @@
     "type": "date"
   },
   {
-    "question": "Apakah Saat Ini Masih Memiliki Usaha ?",
+    "question": "Apakah Saat Ini Masih Memiliki Usaha?",
     "qanswer": {
       "a": "Masih",
       "b": "Tidak"
-
     },
     "category": "wirausaha",
     "type": "checkbox"

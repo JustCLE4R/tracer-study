@@ -27,7 +27,7 @@ return new class extends Migration
             $table->date('tgl_akhir_kerja')->default(null)->nullable();
             $table->string('provinsi_kerja');
             $table->string('kabupaten_kerja');
-            $table->string('alamat');
+            $table->string('alamat_kerja');
             $table->string('bukti_bekerja');
             $table->timestamps();
         });

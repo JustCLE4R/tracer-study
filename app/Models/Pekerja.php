@@ -33,10 +33,11 @@ class Pekerja extends Model
       'fotobukti-telah-bekerja' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
 
       // info perusahaan
-      'nama-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
-      'nama-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
-      'posisi-jabatan-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
-      'nomor-telepon-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string'],
+      'nama-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
+      'nama-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
+      'posisi-jabatan-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
+      'nomor-telepon-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
+      'alamat-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
       'alamat-email-aktif-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'email'],
     ], [
       'required' => 'Kolom :attribute wajib diisi.',
@@ -47,7 +48,7 @@ class Pekerja extends Model
       'date' => 'Kolom :attribute harus berupa tanggal yang valid.',
       'image' => 'Kolom :attribute harus berupa gambar.',
       'mimes' => 'Kolom :attribute harus memiliki format: :values.',
-      'max' => 'Kolom :attribute tidak boleh lebih dari :max kilobita.',
+      'max' => 'Kolom :attribute tidak boleh lebih dari :max',
     ], [
       'pekerjaan' => 'Pekerjaan',
       'status-pekerjaan' => 'Status Pekerjaan',
@@ -71,6 +72,14 @@ class Pekerja extends Model
       'nomor-telepon-atasan' => 'Nomor Telepon Atasan',
       'alamat-email-aktif-atasan' => 'Alamat Email Aktif Atasan',
     ]);
+
+    $is_active = $rules['apakah-saat-ini-masih-memiliki-usaha-'][0] == 'a' ? 1 : 0;
+
+    if($is_active == 0){
+      $dataPrepare = [
+        'tgl_akhir_usaha' => $rules['tanggal-akhir-kerja'],
+      ];
+    }
   
     $dataPrepare = [
       'user_id' => auth()->user()->id,
@@ -108,24 +117,6 @@ class Pekerja extends Model
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
   }
-
-  public static function nganggurStore($request){
-    $request->validate([
-      'saya-belum-memiliki-pekerjaan' => 'required|array|size:1'
-    ], [
-      'required' => 'Centang pernyataan :attribute',
-    ], [
-      'saya-belum-memiliki-pekerjaan' => '"Ya, saya belum bekerja"'
-    ]);
-
-    Pekerja::create([
-      'user_id' => auth()->user()->id,
-      'is_bekerja' => 0
-    ]);
-
-    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data tidak bekerja telah ditambahkan!');
-  }
-
 
   /**
    * Just bunch of accessor
