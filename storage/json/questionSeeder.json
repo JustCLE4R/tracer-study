@@ -12,10 +12,9 @@
   {
     "question": "Kriteria Pekerjaan",
     "qanswer": {
-      "a": "Instansi pemerintah (termasuk BUMN)",
-      "b": "Organisasi non-profit / lembaga swadaya masyarakat",
-      "c": "Perusahaan Swasta",
-      "d": "Freelance (Self Employed) (termasuk Dai)"
+      "a": "Organisasi non-profit / lembaga swadaya masyarakat",
+      "b": "Perusahaan Swasta",
+      "c": "Freelance (Self Employed) (termasuk Dai)"
     },
     "category": "bekerja",
     "type": "select"
@@ -148,6 +147,12 @@
     "type": "text"
   },
   {
+    "question": "Alamat Perusahaan",
+    "qanswer": {},
+    "category": "info-perusahaan",
+    "type": "text"
+  },
+  {
     "question": "Alamat Email Aktif Atasan",
     "qanswer": {},
     "category": "info-perusahaan",
@@ -200,19 +205,6 @@
     "type": "select"
   },
   {
-    "question": "Posisi / Jabatan Pekerjaan",
-    "qanswer": {
-      "a": "Pemilik",
-      "b": "Direktur",
-      "c": "Kepala Unit",
-      "d": "Supervisor",
-      "e": "Staf",
-      "f": "Self Employed"
-    },
-    "category": "wirausaha",
-    "type": "select"
-  },
-  {
     "question": "Detail Usaha",
     "qanswer": {},
     "category": "wirausaha",
@@ -259,10 +251,14 @@
     "type": "date"
   },
   {
-    "question": "Tanggal Akhir Berusaha",
-    "qanswer":{},
+    "question": "Apakah Saat Ini Masih Memiliki Usaha ?",
+    "qanswer": {
+      "a": "Masih",
+      "b": "Tidak"
+
+    },
     "category": "wirausaha",
-    "type": "date"
+    "type": "checkbox"
   },
   {
     "question": "Provinsi",
@@ -272,6 +268,12 @@
   },
   {
     "question": "Kabupaten",
+    "qanswer": {},
+    "category": "wirausaha",
+    "type": "text"
+  },
+  {
+    "question": "Alamat",
     "qanswer": {},
     "category": "wirausaha",
     "type": "text"

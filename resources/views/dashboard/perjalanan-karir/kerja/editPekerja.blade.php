@@ -158,6 +158,11 @@
                                     class="form-control">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                <label class="form-label text-secondary">Alamat Perusahaan *</label>
+                                <input type="text" id="formGroupExampleInput" name="alamat-perusahaan"
+                                    class="form-control">
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Alamat Email Aktif Atasan *</label>
                                 <input type="email" id="formGroupExampleInput" name="alamat-email-aktif-atasan"
                                     class="form-control">

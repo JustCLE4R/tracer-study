@@ -23,8 +23,6 @@ class PerjalananKarirController extends Controller
 
 		$unioned = $pekerjaans->union($wirausaha)->orderBy('tanggal_mulai', 'asc')->get();
 
-		dd($unioned);
-
 		return view('dashboard.perjalanan-karir.index', [
 			'pekerjaans' => $unioned,
 			'pendidikans' => Pendidikan::where('user_id', auth()->user()->id)->orderBy('tingkat_pendidikan', 'asc')->get()

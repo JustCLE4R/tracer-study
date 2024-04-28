@@ -112,8 +112,12 @@
                                 <input type="date" id="formGroupExampleInput" name="tanggal-mulai-berusaha" class="form-control">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Tanggal Akhir Berusaha *</label>
-                                <input type="date" id="formGroupExampleInput" name="tanggal-akhir-berusaha" class="form-control">
+                                <label class="form-label text-secondary">Apakah Saat Ini Masih Memiliki Usaha ? *</label>
+                                <select class="form-select" aria-label="Default select example" name="apakah-saat-ini-masih-memiliki-usaha-[]">
+                                    <option>Pilih Kesesuaian Pekerjaan dengan Prodi</option>
+                                    <option value="a">Masih</option>
+                                    <option value="b">Tidak</option>
+                                </select>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Provinsi *</label>
@@ -122,6 +126,10 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Kabupaten *</label>
                                 <input type="text" id="formGroupExampleInput" name="kabupaten" class="form-control">
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                <label class="form-label text-secondary">Alamat *</label>
+                                <input type="text" id="formGroupExampleInput" name="alamat" class="form-control">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Foto/Bukti Telah Berwirausaha *</label>
