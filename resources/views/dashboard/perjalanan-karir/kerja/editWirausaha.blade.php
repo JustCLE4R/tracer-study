@@ -114,7 +114,7 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Apakah Saat Ini Masih Memiliki Usaha ? *</label>
                                 <select class="form-select" aria-label="Default select example" name="apakah-saat-ini-masih-memiliki-usaha-[]">
-                                    <option>Pilih Kesesuaian Pekerjaan dengan Prodi</option>
+                                    <option>Pilih Apakah Saat Ini Masih Memiliki Usaha?</option>
                                     <option value="a">Masih</option>
                                     <option value="b">Tidak</option>
                                 </select>

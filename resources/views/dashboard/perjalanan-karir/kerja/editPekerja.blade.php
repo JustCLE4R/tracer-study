@@ -96,7 +96,7 @@
                                     <option value="a">Tinggi</option>
                                     <option value="b">Sedang</option>
                                     <option value="c">Rendah</option>
-                                </select>
+                                </select> 
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Tanggal Mulai Bekerja *</label>
@@ -104,7 +104,7 @@
                                     class="form-control">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Tanggal Akhir Kerja *</label>
+                                <label class="form-label text-secondary">Tanggal Akhir Kerja (Kosongkan Jika Masih Bekerja)*</label>
                                 <input type="date" id="formGroupExampleInput" name="tanggal-akhir-kerja"
                                     class="form-control">
                             </div>

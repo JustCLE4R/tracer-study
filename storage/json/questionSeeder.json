@@ -99,7 +99,7 @@
     "type": "date"
   },
   {
-    "question": "Tanggal Akhir Kerja",
+    "question": "Tanggal Akhir Kerja (Kosongkan jika masih bekerja)",
     "qanswer": {},
     "category": "bekerja",
     "type": "date"
@@ -258,7 +258,7 @@
 
     },
     "category": "wirausaha",
-    "type": "checkbox"
+    "type": "select"
   },
   {
     "question": "Provinsi",
