@@ -30,7 +30,7 @@ class PekerjaController extends Controller
    */
   public function store($request)
   {
-    return $request->pekerjaan == 'pekerja' ? Pekerja::pekerjaStore($request) : Pekerja::nganggurStore($request);
+    return Pekerja::pekerjaStore($request);
   }
 
   /**

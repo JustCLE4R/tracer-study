@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Pekerja;
 use App\Models\Wirausaha;
 use App\Models\Pendidikan;
@@ -21,7 +22,7 @@ class PerjalananKarirController extends Controller
 		$wirausaha = Wirausaha::select(DB::raw("'wirausaha' as tipe_kerja"), 'id', DB::raw('1'), 'nama_usaha', 'is_active', 'tgl_mulai_usaha as tanggal_mulai', 'tgl_akhir_usaha as tanggal_akhir')
 				->where('user_id', $user_id);
 
-		$unioned = $pekerjaans->union($wirausaha)->orderBy('tanggal_mulai', 'asc')->get();
+		$unioned = $pekerjaans->union($wirausaha)->orderBy('is_active', 'desc')->orderBy('tanggal_mulai', 'asc')->get();
 
 		return view('dashboard.perjalanan-karir.index', [
 			'pekerjaans' => $unioned,
@@ -36,14 +37,36 @@ class PerjalananKarirController extends Controller
 	public function store(Request $request){
 		switch ($request->pekerjaan){
 			case 'pekerja':
-			case 'belum-kerja':
 				return (new PekerjaController)->store($request);
 				break;
-      case 'wirausaha':
-        return (new WirausahaController)->store($request);
-        break;
+			case 'wirausaha':
+				return (new WirausahaController)->store($request);
+				break;
+			case 'belum-kerja':
+				return $this->nganggurStore($request);
+				break;
+			default:
+				return abort(404);
+				break;
     }
 	}
 
+	private static function nganggurStore($request){
+    $request->validate([
+      'saya-belum-memiliki-pekerjaan' => 'required|array|size:1'
+    ], [
+      'required' => 'Centang pernyataan :attribute',
+    ], [
+      'saya-belum-memiliki-pekerjaan' => '"Ya, saya belum bekerja"'
+    ]);
+
+		$user = User::find(auth()->user()->id);
+
+		$user->update([
+			'is_bekerja' => 0
+		]);
+
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data tidak bekerja telah ditambahkan!');
+  }
 	
 }
