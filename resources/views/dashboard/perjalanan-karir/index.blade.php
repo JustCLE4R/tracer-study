@@ -21,12 +21,39 @@
 						<div class="timeline mx-3 pb-5">
 							<div class="row justify-content-between">
 								<div class="col-7 ">
-									<a href="/dashboard/perjalanan-karir/create" class="btn btn-success btn-sm"><i class="bi bi-plus-lg"></i> Tambah Riwayat</a>
+									<a href="/dashboard/perjalanan-karir/create" class="btn btn-success btn-sm @if (auth()->user()->is_bekerja == 0) disabled @endif"><i class="bi bi-plus-lg"></i> Tambah Riwayat</a>
 								</div>
 								<div class="col-5 text-end">
-									<span class=" mt-1 text-success ">Setelah Lulus </span>
+									<span class=" mt-1 text-success ">Setelah Lulus</span>
 								</div>
 							</div>
+
+							@if(auth()->user()->is_bekerja == 0)
+								<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
+									<div class="timeline__event__icon">
+										<i class="bi bi-person-workspace"></i>
+									</div>
+									<div class="timeline__event__date">
+										Belum Bekerja
+									</div>
+									<div class="timeline__event__content">
+										{{-- <div class="timeline__event__title">
+											Bekerja
+										</div> --}}
+										<div class="timeline__event__description">
+											<small class="text-muted">Hapus untuk menambah riwayat lainnya</small>
+										</div>
+										<div class="col mt-2 float-end">
+											<form class="d-inline" action="/dashboard/hapusBelumKerja" method="POST">
+												@csrf
+												@method('PATCH')
+												<button class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></button>
+											</form>
+										</div>
+									</div>
+								</div>
+							@endif
+
 							<!--first-->
 							@foreach ($pekerjaans as $pekerjaan)
 								<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
@@ -34,21 +61,19 @@
 										<i class="bi bi-person-workspace"></i>
 									</div>
 									<div class="timeline__event__date">
-										{{ $pekerjaan->is_bekerja == 1 ? ($pekerjaan->detail_pekerjaan." | ".$pekerjaan->jabatan_pekerjaan) : 'Belum Bekerja' }}
+										{{ $pekerjaan->detail_pekerjaan." | ".$pekerjaan->jabatan_pekerjaan}}
 
 									</div>
 									<div class="timeline__event__content">
 										<div class="timeline__event__title">
-											@if ($pekerjaan->tipe_kerja == 'pekerja' && $pekerjaan->is_bekerja == 1)
+											@if ($pekerjaan->tipe_kerja == 'pekerja')
 												Bekerja
-											@elseif($pekerjaan->tipe_kerja == 'wirausaha' && $pekerjaan->is_bekerja == 1)
+											@elseif($pekerjaan->tipe_kerja == 'wirausaha')
 												Berwirausaha
-											@else
-												Belum Bekerja
 											@endif
 										</div>
 										<div class="timeline__event__description">
-											<p>{{ \Carbon\Carbon::parse($pekerjaan->tgl_mulai_kerja)->translatedFormat('d F Y') }} - Sekarang </p>
+											<p>{{ \Carbon\Carbon::parse($pekerjaan->tgl_mulai_kerja)->translatedFormat('d F Y') .' - '. ($pekerjaan->tgl_akhir_kerja ? \Carbon\Carbon::parse($pekerjaan->tgl_akhir_kerja)->translatedFormat('d F Y') : 'Sekarang') }}</p>
 										</div>
 										<div class="col mt-2 float-end">
 											<a href="/dashboard/{{ $pekerjaan->tipe_kerja }}/{{ $pekerjaan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>

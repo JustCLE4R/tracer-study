@@ -17,43 +17,36 @@
                                 <label class="form-label text-secondary">Kriteria Pekerjaan *</label>
                                 <select class="form-select" aria-label="Default select example" name="kriteria-pekerjaan">
                                     <option>Pilih Kriteria Pekerjaan</option>
-                                    <option value="a">Instansi pemerintah (termasuk BUMN)</option>
-                                    <option value="b">Organisasi non-profit / lembaga swadaya masyarakat</option>
-                                    <option value="c">Perusahaan swasta</option>
+                                    <option value="a" {{ (old('kriteria-pekerjaan') ? old('kriteria-pekerjaan') : $pekerja->getRawOriginal('kriteria_pekerjaan')) == 'a' ? 'selected' : '' }}>Instansi pemerintah (termasuk BUMN)</option>
+                                    <option value="b" {{ (old('kriteria-pekerjaan') ? old('kriteria-pekerjaan') : $pekerja->getRawOriginal('kriteria_pekerjaan')) == 'b' ? 'selected' : '' }}>Organisasi non-profit / lembaga swadaya masyarakat</option>
+                                    <option value="c" {{ (old('kriteria-pekerjaan') ? old('kriteria-pekerjaan') : $pekerja->getRawOriginal('kriteria_pekerjaan')) == 'c' ? 'selected' : '' }}>Perusahaan swasta</option>
                                 </select>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Bidang Pekerjaan *</label>
                                 <select class="form-select" aria-label="Default select example" name="bidang-pekerjaan">
                                     <option>Pilih Bidang Pekerjaan</option>
-                                    <option value="a">Pertanian, perikanan, dan kehutanan</option>
-                                    <option value="b">Pertambangan dan penggalian</option>
-                                    <option value="c">Industri pengolahan</option>
-                                    <option value="d">Pengadaaan listrik, gas, uap/air panas, dan udara dingin</option>
-                                    <option value="e">Pengelolaan air, pengolahan air limbah, pengelolaan dan daur
-                                        ulang sampah, dan aktivitas remediasi</option>
-                                    <option value="f">Konstruksi</option>
-                                    <option value="g">Perdagangan besar dan eceran, reparasi dan perawatan mobil dan
-                                        sepeda motor</option>
-                                    <option value="h">Pengangkutan dan pergudangan</option>
-                                    <option value="i">Penyediaan akomodasi dan penyediaan makanan dan minuman</option>
-                                    <option value="j">Informasi dan komunikasi</option>
-                                    <option value="k">Aktivitas keuangan dan asuransi</option>
-                                    <option value="l">Real estate</option>
-                                    <option value="m">Aktivitas profesional, ilmiah, dan teknis</option>
-                                    <option value="n">Aktivitas persewaan dan sewa guna usaha tanpa hak opsi,
-                                        ketenagakerjaan, agen perjalanan dan penunjang usaha lainnya</option>
-                                    <option value="o">Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib
-                                    </option>
-                                    <option value="p">Aktivitas Pendidikan</option>
-                                    <option value="q">Aktivitas kesehatan dan aktivitas sosial</option>
-                                    <option value="r">Kesenian, hiburan dan rekreasi</option>
-                                    <option value="s">Aktivitas jasa lainnya</option>
-                                    <option value="t">Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang
-                                        menghasilkan barang dan jasa oleh rumah tangga yang digunakan untuk memenuhi
-                                        kebutuhan sendiri yang digunakan untuk memenuhi kebutuhan sendiri</option>
-                                    <option value="u">Aktivitas badan internasional dan badan ekstra internasional
-                                        lainnya</option>
+                                    <option value="a" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'a' ? 'selected' : '' }}>Pertanian, perikanan, dan kehutanan</option>
+                                    <option value="b" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'b' ? 'selected' : '' }}>Pertambangan dan penggalian</option>
+                                    <option value="c" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'c' ? 'selected' : '' }}>Industri pengolahan</option>
+                                    <option value="d" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'd' ? 'selected' : '' }}>Pengadaaan listrik, gas, uap/air panas, dan udara dingin</option>
+                                    <option value="e" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'e' ? 'selected' : '' }}>Pengelolaan air, pengolahan air limbah, pengelolaan dan daur ulang sampah, dan aktivitas remediasi</option>
+                                    <option value="f" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'f' ? 'selected' : '' }}>Konstruksi</option>
+                                    <option value="g" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'g' ? 'selected' : '' }}>Perdagangan besar dan eceran, reparasi dan perawatan mobil dan sepeda motor</option>
+                                    <option value="h" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'h' ? 'selected' : '' }}>Pengangkutan dan pergudangan</option>
+                                    <option value="i" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'i' ? 'selected' : '' }}>Penyediaan akomodasi dan penyediaan makanan dan minuman</option>
+                                    <option value="j" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'j' ? 'selected' : '' }}>Informasi dan komunikasi</option>
+                                    <option value="k" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'k' ? 'selected' : '' }}>Aktivitas keuangan dan asuransi</option>
+                                    <option value="l" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'l' ? 'selected' : '' }}>Real estate</option>
+                                    <option value="m" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'm' ? 'selected' : '' }}>Aktivitas profesional, ilmiah, dan teknis</option>
+                                    <option value="n" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'n' ? 'selected' : '' }}>Aktivitas persewaan dan sewa guna usaha tanpa hak opsi, ketenagakerjaan, agen perjalanan dan lainnya</option>
+                                    <option value="o" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'o' ? 'selected' : '' }}>Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib</option>
+                                    <option value="p" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'p' ? 'selected' : '' }}>Aktivitas Pendidikan</option>
+                                    <option value="q" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'q' ? 'selected' : '' }}>Aktivitas kesehatan dan aktivitas sosial</option>
+                                    <option value="r" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'r' ? 'selected' : '' }}>Kesenian, hiburan dan rekreasi</option>
+                                    <option value="s" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 's' ? 'selected' : '' }}>Aktivitas jasa lainnya</option>
+                                    <option value="t" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 't' ? 'selected' : '' }}>Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah yang digunakan untuk memenuhi kebutuhan sendiri yang digunakan untuk memenuhi kebutuhan sendiri</option>
+                                    <option value="u" {{ (old('bidang-pekerjaan') ? old('bidang-pekerjaan') : $pekerja->getRawOriginal('bidang_pekerjaan')) == 'u' ? 'selected' : '' }}>Aktivitas badan internasional dan badan ekstra internasional lainnya</option>
                                 </select>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
@@ -135,37 +128,32 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Nama Perusahaan *</label>
                                 <input type="text" id="formGroupExampleInput" name="nama-perusahaan"
-                                    class="form-control">
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Alamat Perusahaan *</label>
-                                <input type="text" id="formGroupExampleInput" name="alamat-perusahaan"
-                                    class="form-control">
+                                    class="form-control" value="{{ old('nama-perusahaan', $pekerja->detailPerusahaan->nama_perusahaan) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Nama Atasan *</label>
                                 <input type="text" id="formGroupExampleInput" name="nama-atasan"
-                                    class="form-control">
+                                    class="form-control" value="{{ old('nama-atasan', $pekerja->detailPerusahaan->nama_atasan) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Posisi / Jabatan Atasan *</label>
                                 <input type="text" id="formGroupExampleInput" name="posisi-jabatan-atasan"
-                                    class="form-control">
+                                    class="form-control" value="{{ old('posisi-jabatan-atasan', $pekerja->detailPerusahaan->jabatan_atasan) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Nomor Telepon Atasan *</label>
                                 <input type="text" id="formGroupExampleInput" name="nomor-telepon-atasan"
-                                    class="form-control">
+                                    class="form-control" value="{{ old('nomor-telepon-atasan', $pekerja->detailPerusahaan->telepon_atasan) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Alamat Perusahaan *</label>
                                 <input type="text" id="formGroupExampleInput" name="alamat-perusahaan"
-                                    class="form-control">
+                                    class="form-control" value="{{ old('alamat-perusahaan', $pekerja->detailPerusahaan->alamat_perusahaan) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Alamat Email Aktif Atasan *</label>
                                 <input type="email" id="formGroupExampleInput" name="alamat-email-aktif-atasan"
-                                    class="form-control">
+                                    class="form-control" value="{{ old('alamat-email-aktif-atasan', $pekerja->detailPerusahaan->email_atasan) }}">
                             </div>
                         </div>
 

@@ -18,6 +18,7 @@ return new class extends Migration
       $table->string('nama_atasan');
       $table->string('jabatan_atasan');
       $table->string('telepon_atasan', 15);
+      $table->string('alamat_perusahaan');
       $table->string('email_atasan');
       $table->timestamps();
     });

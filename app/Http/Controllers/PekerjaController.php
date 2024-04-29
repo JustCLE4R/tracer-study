@@ -53,7 +53,7 @@ class PekerjaController extends Controller
     }
 
     return view('dashboard.perjalanan-karir.kerja.editPekerja', [
-      'pekerja' => $pekerja
+      'pekerja' => $pekerja,
     ]);
   }
 

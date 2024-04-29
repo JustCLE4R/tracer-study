@@ -51,6 +51,16 @@ class PerjalananKarirController extends Controller
     }
 	}
 
+	public function destroyBelumKerja(){
+		$user = User::find(auth()->user()->id);
+
+		$user->update([
+			'is_bekerja' => 1
+		]);
+
+		return redirect('/dashboard/perjalanan-karir')->with('success', 'Data belum bekerja telah dihapus!');
+	}
+
 	private static function nganggurStore($request){
     $request->validate([
       'saya-belum-memiliki-pekerjaan' => 'required|array|size:1'
@@ -66,7 +76,7 @@ class PerjalananKarirController extends Controller
 			'is_bekerja' => 0
 		]);
 
-    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data tidak bekerja telah ditambahkan!');
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data belum bekerja telah ditambahkan!');
   }
 	
 }

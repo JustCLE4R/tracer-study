@@ -42,6 +42,7 @@ Route::middleware(['auth', 'no-cache'])->group(function () {
     Route::patch('/profile/edit', [UserController::class, 'update']);
 
     Route::get('/career/checkSlug', [CareerController::class, 'checkSlug']);
+    Route::patch('/hapusBelumKerja', [PerjalananKarirController::class, 'destroyBelumKerja']);
 
     Route::resource('/career', CareerController::class);
     Route::resource('/perjalanan-karir', PerjalananKarirController::class)->only(['index', 'create', 'store']);

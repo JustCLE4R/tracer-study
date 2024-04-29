@@ -27,7 +27,7 @@ class Pekerja extends Model
       'jumlah-pendapatan-perbulan' => 'required|numeric',
       'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
       'tanggal-mulai-bekerja' => 'required|date',
-      'tanggal-akhir-kerja' => 'date',
+      'tanggal-akhir-kerja-kosongkan-jika-masih-bekerja' => 'nullable|date',
       'provinsi' => 'required|string',
       'kabupaten' => 'required|string',
       'fotobukti-telah-bekerja' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
@@ -60,7 +60,7 @@ class Pekerja extends Model
       'jumlah-pendapatan-perbulan' => 'Jumlah Pendapatan Per Bulan',
       'kesesuaian-pekerjaan-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
       'tanggal-mulai-bekerja' => 'Tanggal Mulai Bekerja',
-      'tanggal-akhir-kerja' => 'Tanggal Akhir Bekerja',
+      'tanggal-akhir-kerja-kosongkan-jika-masih-bekerja' => 'Tanggal Akhir Bekerja',
       'provinsi' => 'Provinsi',
       'kabupaten' => 'Kabupaten',
       'fotobukti-telah-bekerja' => 'Foto Bukti Telah Bekerja',
@@ -70,14 +70,16 @@ class Pekerja extends Model
       'nama-atasan' => 'Nama Atasan',
       'posisi-jabatan-atasan' => 'Posisi Jabatan Atasan',
       'nomor-telepon-atasan' => 'Nomor Telepon Atasan',
+      'alamat-perusahaan' => 'Alamat Perusahaan',
       'alamat-email-aktif-atasan' => 'Alamat Email Aktif Atasan',
     ]);
 
-    $is_active = $rules['apakah-saat-ini-masih-memiliki-usaha-'][0] == 'a' ? 1 : 0;
-
-    if($is_active == 0){
-      $dataPrepare = [
-        'tgl_akhir_usaha' => $rules['tanggal-akhir-kerja'],
+    
+    $dataAkhirKerja = [];
+    if(isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])){
+      $dataAkhirKerja = [
+        'is_active' => 0,
+        'tgl_akhir_kerja' => $rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'],
       ];
     }
   
@@ -92,12 +94,11 @@ class Pekerja extends Model
       'pendapatan' => $rules['jumlah-pendapatan-perbulan'],
       'kesesuaian' => $rules['kesesuaian-pekerjaan-dengan-prodi'],
       'tgl_mulai_kerja' => $rules['tanggal-mulai-bekerja'],
-      'tgl_akhir_kerja' => $rules['tanggal-akhir-kerja'],
       'provinsi_kerja' => $rules['provinsi'],
       'kabupaten_kerja' => $rules['kabupaten'] ,
       'bukti_bekerja' => $request->file('fotobukti-telah-bekerja')->store('bukti-bekerja'),
-    ];
-    
+    ] + $dataAkhirKerja;
+
     $pekerja = Pekerja::create($dataPrepare);
     
     if($rules['status-pekerjaan'] == 'parttime' && $rules['kriteria-pekerjaan'] == 'd'){
@@ -110,6 +111,7 @@ class Pekerja extends Model
       'nama_atasan' => $rules['nama-atasan'],
       'jabatan_atasan' => $rules['posisi-jabatan-atasan'],
       'telepon_atasan' => $rules['nomor-telepon-atasan'],
+      'alamat_perusahaan' => $rules['alamat-perusahaan'],
       'email_atasan' => $rules['alamat-email-aktif-atasan'],
     ];
 
