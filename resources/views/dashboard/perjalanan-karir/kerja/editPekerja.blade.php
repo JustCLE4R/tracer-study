@@ -10,16 +10,35 @@
                             <hr>
                         </div>
                     </div>
-                    <form action="/dashboard/perjalanan-karir" method="POST" enctype="multipart/form-data">
-
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
+                    <form action="/dashboard/pekerja/{{ $pekerja->id }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
                         <div class="row justify-content-between" id="dynamicForm">
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                <label class="form-label text-secondary">Status Pekerjaan *</label>
+                                <select class="form-select" aria-label="Default select example" name="status-pekerjaan" disabled>
+                                    <option>Pilih Kriteria Pekerjaan</option>
+                                    <option value="a" {{ (old('status-pekerjaan') ? old('status-pekerjaan') : $pekerja->getRawOriginal('status_pekerjaan')) == 'a' ? 'selected' : '' }}>Full-time</option>
+                                    <option value="b" {{ (old('status-pekerjaan') ? old('status-pekerjaan') : $pekerja->getRawOriginal('status_pekerjaan')) == 'b' ? 'selected' : '' }}>Part-time</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Kriteria Pekerjaan *</label>
-                                <select class="form-select" aria-label="Default select example" name="kriteria-pekerjaan">
+                                <select class="form-select" aria-label="Default select example" name="kriteria-pekerjaan" disabled>
                                     <option>Pilih Kriteria Pekerjaan</option>
                                     <option value="a" {{ (old('kriteria-pekerjaan') ? old('kriteria-pekerjaan') : $pekerja->getRawOriginal('kriteria_pekerjaan')) == 'a' ? 'selected' : '' }}>Instansi pemerintah (termasuk BUMN)</option>
                                     <option value="b" {{ (old('kriteria-pekerjaan') ? old('kriteria-pekerjaan') : $pekerja->getRawOriginal('kriteria_pekerjaan')) == 'b' ? 'selected' : '' }}>Organisasi non-profit / lembaga swadaya masyarakat</option>
                                     <option value="c" {{ (old('kriteria-pekerjaan') ? old('kriteria-pekerjaan') : $pekerja->getRawOriginal('kriteria_pekerjaan')) == 'c' ? 'selected' : '' }}>Perusahaan swasta</option>
+                                    <option value="d" {{ (old('kriteria-pekerjaan') ? old('kriteria-pekerjaan') : $pekerja->getRawOriginal('kriteria_pekerjaan')) == 'd' ? 'selected' : '' }}>Freelance (Self Employed) (termasuk Dai)</option>
                                 </select>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
@@ -54,9 +73,9 @@
                                 <select class="form-select" aria-label="Default select example"
                                     name="tingkat-ukuran-tempat-bekerja">
                                     <option>Pilih Tingkat / Ukuran Tempat Bekerja</option>
-                                    <option value="a">Lokal</option>
-                                    <option value="b">Nasional</option>
-                                    <option value="c">Multinasional</option>
+                                    <option value="a" {{ (old('tingkat-ukuran-tempat-bekerja') ? old('tingkat-ukuran-tempat-bekerja') : $pekerja->getRawOriginal('tingkat_tempat_bekerja')) == 'a' ? 'selected' : '' }}>Lokal</option>
+                                    <option value="b" {{ (old('tingkat-ukuran-tempat-bekerja') ? old('tingkat-ukuran-tempat-bekerja') : $pekerja->getRawOriginal('tingkat_tempat_bekerja')) == 'b' ? 'selected' : '' }}>Nasional</option>
+                                    <option value="c" {{ (old('tingkat-ukuran-tempat-bekerja') ? old('tingkat-ukuran-tempat-bekerja') : $pekerja->getRawOriginal('tingkat_tempat_bekerja')) == 'c' ? 'selected' : '' }}>Multinasional</option>
                                 </select>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
@@ -64,56 +83,53 @@
                                 <select class="form-select" aria-label="Default select example"
                                     name="posisi-jabatan-pekerjaan">
                                     <option>Pilih Posisi / Jabatan Pekerjaan</option>
-                                    <option value="b">Direktur</option>
-                                    <option value="c">Kepala Unit</option>
-                                    <option value="d">Supervisor</option>
-                                    <option value="e">Staf</option>
-                                    <option value="f">Self Employed</option>
+                                    <option value="b" {{ (old('posisi-jabatan-pekerjaan') ? old('posisi-jabatan-pekerjaan') : $pekerja->getRawOriginal('jabatan_pekerjaan')) == 'b' ? 'selected' : '' }}>Direktur</option>
+                                    <option value="c" {{ (old('posisi-jabatan-pekerjaan') ? old('posisi-jabatan-pekerjaan') : $pekerja->getRawOriginal('jabatan_pekerjaan')) == 'c' ? 'selected' : '' }}>Kepala Unit</option>
+                                    <option value="d" {{ (old('posisi-jabatan-pekerjaan') ? old('posisi-jabatan-pekerjaan') : $pekerja->getRawOriginal('jabatan_pekerjaan')) == 'd' ? 'selected' : '' }}>Supervisor</option>
+                                    <option value="e" {{ (old('posisi-jabatan-pekerjaan') ? old('posisi-jabatan-pekerjaan') : $pekerja->getRawOriginal('jabatan_pekerjaan')) == 'e' ? 'selected' : '' }}>Staf</option>
+                                    <option value="f" {{ (old('posisi-jabatan-pekerjaan') ? old('posisi-jabatan-pekerjaan') : $pekerja->getRawOriginal('jabatan_pekerjaan')) == 'f' ? 'selected' : '' }}>Self Employed</option>
                                 </select>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Detail Pekerjaan *</label>
-                                <input type="text" id="formGroupExampleInput" name="detail-pekerjaan"
-                                    class="form-control">
+                                <input type="text" id="formGroupExampleInput" name="detail-pekerjaan" class="form-control" value="{{ old('detail-pekerjaan', $pekerja->detail_pekerjaan) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Jumlah Pendapatan Perbulan *</label>
-                                <input type="number" id="formGroupExampleInput" name="jumlah-pendapatan-perbulan"
-                                    class="form-control">
+                                <input type="number" id="formGroupExampleInput" name="jumlah-pendapatan-perbulan" class="form-control" value="{{ old('jumlah-pendapatan-perbulan', $pekerja->pendapatan) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Kesesuaian Pekerjaan dengan Prodi *</label>
                                 <select class="form-select" aria-label="Default select example"
                                     name="kesesuaian-pekerjaan-dengan-prodi">
                                     <option>Pilih Kesesuaian Pekerjaan dengan Prodi</option>
-                                    <option value="a">Tinggi</option>
-                                    <option value="b">Sedang</option>
-                                    <option value="c">Rendah</option>
+                                    <option value="a" {{ (old('kesesuaian-pekerjaan-dengan-prodi') ? old('kesesuaian-pekerjaan-dengan-prodi') : $pekerja->getRawOriginal('kesesuaian')) == 'a' ? 'selected' : '' }}>Tinggi</option>
+                                    <option value="b" {{ (old('kesesuaian-pekerjaan-dengan-prodi') ? old('kesesuaian-pekerjaan-dengan-prodi') : $pekerja->getRawOriginal('kesesuaian')) == 'b' ? 'selected' : '' }}>Sedang</option>
+                                    <option value="c" {{ (old('kesesuaian-pekerjaan-dengan-prodi') ? old('kesesuaian-pekerjaan-dengan-prodi') : $pekerja->getRawOriginal('kesesuaian')) == 'c' ? 'selected' : '' }}>Rendah</option>
                                 </select> 
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Tanggal Mulai Bekerja *</label>
-                                <input type="date" id="formGroupExampleInput" name="tanggal-mulai-bekerja"
-                                    class="form-control">
+                                <input type="date" id="formGroupExampleInput" name="tanggal-mulai-bekerja" class="form-control" value="{{ old('tanggal-mulai-bekerja', $pekerja->tgl_mulai_kerja) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Tanggal Akhir Kerja (Kosongkan Jika Masih Bekerja)*</label>
-                                <input type="date" id="formGroupExampleInput" name="tanggal-akhir-kerja"
-                                    class="form-control">
+                                <input type="date" id="formGroupExampleInput" name="tanggal-akhir-kerja" class="form-control" value="{{ old('tanggal-akhir-kerja', $pekerja->tgl_akhir_kerja) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Provinsi *</label>
-                                <input type="text" id="formGroupExampleInput" name="provinsi" class="form-control">
+                                <input type="text" id="formGroupExampleInput" name="provinsi" class="form-control" value="{{ old('provinsi', $pekerja->provinsi_kerja) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Kabupaten *</label>
-                                <input type="text" id="formGroupExampleInput" name="kabupaten" class="form-control">
+                                <input type="text" id="formGroupExampleInput" name="kabupaten" class="form-control" value="{{ old('kabupaten', $pekerja->kabupaten_kerja) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Foto/Bukti Telah Bekerja *</label>
+                                <input type="hidden" name="oldImage" value="{{ $pekerja->bukti_bekerja }}">
+                                <img src="{{ asset('storage/'.$pekerja->bukti_bekerja) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                                 <div class="d-flex align-items-center">
-                                    <input type="file" id="formGroupExampleFile" name="fotobukti-telah-bekerja"
-                                        class="form-control">
+                                    <input class="form-control" type="file" id="image" name="fotobukti-telah-bekerja" onchange="previewImage()">
                                     <span class="ms-2" data-bs-toggle="popover" data-bs-title="Keterangan"
                                         data-bs-content="File ini bisa berupa foto/screenshot yang membuktikan bahwa anda telah bekerja/berwirausaha, contoh: 1. Surat/Email Penerimaan Bekerja, 2. Surat Keputusan kontrak kerja, 3. Riwayat chat penerimaan /pemanggilan kerja, 4. Foto Tempat Berwirausaha, 5. Dan lain-lain">
                                         <i class="bi bi-info-circle"></i>
@@ -122,7 +138,7 @@
                             </div>
                         </div>
 
-                        @if ($pekerja->getRawOriginal('kriteria_pekerjaan') != 'c')
+                        @if ($pekerja->getRawOriginal('kriteria_pekerjaan') != 'd')
                             <div class="row justify-content-between" id="informasiPerusahaan">
                                 <span class="h4">Informasi Perusahaan</span>
                                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
@@ -176,4 +192,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function previewImage() {
+            const imgPreview = $('.img-preview');
+            // imgPreview.show();
+            imgPreview.css('display', 'block');
+
+            const blob = URL.createObjectURL($('#image')[0].files[0]);
+            imgPreview.attr('src', blob);
+        }
+    </script>
 @endsection

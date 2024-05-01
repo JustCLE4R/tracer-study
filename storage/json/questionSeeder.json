@@ -12,9 +12,9 @@
   {
     "question": "Kriteria Pekerjaan",
     "qanswer": {
-      "a": "Organisasi non-profit / lembaga swadaya masyarakat",
-      "b": "Perusahaan Swasta",
-      "c": "Freelance (Self Employed) (termasuk Dai)"
+      "b": "Organisasi non-profit / lembaga swadaya masyarakat",
+      "c": "Perusahaan Swasta",
+      "d": "Freelance (Self Employed) (termasuk Dai)"
     },
     "category": "bekerja",
     "type": "select"

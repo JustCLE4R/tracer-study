@@ -59,7 +59,7 @@ class WirausahaController extends Controller
    */
   public function update(Request $request, Wirausaha $wirausaha)
   {
-    //
+    dd($request->all());
   }
 
   /**

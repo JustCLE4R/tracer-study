@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pekerja;
-use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -65,6 +64,8 @@ class PekerjaController extends Controller
     if($pekerja->user_id != auth()->user()->id){
       return abort(403);
     }
+
+    return Pekerja::pekerjaUpdate($request, $pekerja);
   }
 
   /**

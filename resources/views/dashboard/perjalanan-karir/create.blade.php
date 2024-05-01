@@ -33,8 +33,8 @@
               
               <select class="form-select my-2 d-none" id="handleStatus" onchange="handleStatusChange(this.value)" name="status-pekerjaan">
                   <option hidden selected>Pilih Status Bekerja</option>
-                  <option value="fulltime">Fulltime</option>
-                  <option value="parttime">Partime</option>
+                  <option value="a">Full-time</option>
+                  <option value="b">Part-time</option>
               </select>
           </div>
           

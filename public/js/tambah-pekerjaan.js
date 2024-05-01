@@ -31,9 +31,9 @@ function fetchQuestion(url, status = null){
     method: "GET",
     dataType: "json",
     success: function (data) {
-      if(url === 'bekerja' && status === 'fulltime'){
+      if(url === 'bekerja' && status === 'a'){
         data.questions.splice(1,1)
-      } else if(url === 'bekerja' && status === 'parttime'){
+      } else if(url === 'bekerja' && status === 'b'){
         data.questions.splice(0,1)
       }
 
@@ -73,7 +73,7 @@ function populateInformasiPerusahaan(){
 }
 
 function isFreelancer(value){
-  if(value == 'c'){
+  if(value == 'd'){
     informasiPerusahaan.empty();
   }else{
     informasiPerusahaan.append(populateInformasiPerusahaan());
