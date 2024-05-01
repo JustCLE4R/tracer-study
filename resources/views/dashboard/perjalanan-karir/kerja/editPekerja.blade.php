@@ -122,40 +122,43 @@
                             </div>
                         </div>
 
+                        @if ($pekerja->getRawOriginal('kriteria_pekerjaan') != 'c')
+                            <div class="row justify-content-between" id="informasiPerusahaan">
+                                <span class="h4">Informasi Perusahaan</span>
+                                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                    <label class="form-label text-secondary">Nama Perusahaan *</label>
+                                    <input type="text" id="formGroupExampleInput" name="nama-perusahaan"
+                                        class="form-control" value="{{ old('nama-perusahaan', $pekerja->detailPerusahaan->nama_perusahaan) }}">
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                    <label class="form-label text-secondary">Nama Atasan *</label>
+                                    <input type="text" id="formGroupExampleInput" name="nama-atasan"
+                                        class="form-control" value="{{ old('nama-atasan', $pekerja->detailPerusahaan->nama_atasan) }}">
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                    <label class="form-label text-secondary">Posisi / Jabatan Atasan *</label>
+                                    <input type="text" id="formGroupExampleInput" name="posisi-jabatan-atasan"
+                                        class="form-control" value="{{ old('posisi-jabatan-atasan', $pekerja->detailPerusahaan->jabatan_atasan) }}">
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                    <label class="form-label text-secondary">Nomor Telepon Atasan *</label>
+                                    <input type="text" id="formGroupExampleInput" name="nomor-telepon-atasan"
+                                        class="form-control" value="{{ old('nomor-telepon-atasan', $pekerja->detailPerusahaan->telepon_atasan) }}">
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                    <label class="form-label text-secondary">Alamat Perusahaan *</label>
+                                    <input type="text" id="formGroupExampleInput" name="alamat-perusahaan"
+                                        class="form-control" value="{{ old('alamat-perusahaan', $pekerja->detailPerusahaan->alamat_perusahaan) }}">
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                                    <label class="form-label text-secondary">Alamat Email Aktif Atasan *</label>
+                                    <input type="email" id="formGroupExampleInput" name="alamat-email-aktif-atasan"
+                                        class="form-control" value="{{ old('alamat-email-aktif-atasan', $pekerja->detailPerusahaan->email_atasan) }}">
+                                </div>
+                            </div>
+                        @endif
+
                         <hr>
-                        <div class="row justify-content-between" id="informasiPerusahaan">
-                            <span class="h4">Informasi Perusahaan</span>
-                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Nama Perusahaan *</label>
-                                <input type="text" id="formGroupExampleInput" name="nama-perusahaan"
-                                    class="form-control" value="{{ old('nama-perusahaan', $pekerja->detailPerusahaan->nama_perusahaan) }}">
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Nama Atasan *</label>
-                                <input type="text" id="formGroupExampleInput" name="nama-atasan"
-                                    class="form-control" value="{{ old('nama-atasan', $pekerja->detailPerusahaan->nama_atasan) }}">
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Posisi / Jabatan Atasan *</label>
-                                <input type="text" id="formGroupExampleInput" name="posisi-jabatan-atasan"
-                                    class="form-control" value="{{ old('posisi-jabatan-atasan', $pekerja->detailPerusahaan->jabatan_atasan) }}">
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Nomor Telepon Atasan *</label>
-                                <input type="text" id="formGroupExampleInput" name="nomor-telepon-atasan"
-                                    class="form-control" value="{{ old('nomor-telepon-atasan', $pekerja->detailPerusahaan->telepon_atasan) }}">
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Alamat Perusahaan *</label>
-                                <input type="text" id="formGroupExampleInput" name="alamat-perusahaan"
-                                    class="form-control" value="{{ old('alamat-perusahaan', $pekerja->detailPerusahaan->alamat_perusahaan) }}">
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Alamat Email Aktif Atasan *</label>
-                                <input type="email" id="formGroupExampleInput" name="alamat-email-aktif-atasan"
-                                    class="form-control" value="{{ old('alamat-email-aktif-atasan', $pekerja->detailPerusahaan->email_atasan) }}">
-                            </div>
-                        </div>
 
                         <div class="row justify-content-end my-1" id="buttonGroup">
                             <div class="col-lg-5 col-md-8 col-sm-12 text-end">

@@ -26,9 +26,8 @@ class Wirausaha extends Model
       'jumlah-pendapatan-bersih-perbulan' => 'required|numeric',
       'pemodal-saat-ini' => 'required|array|min:1|max:4|in:a,b,c,d',
       'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
-      'tanggal-mulai-berusaha' => 'required|date',
-      'tanggal-akhir-berusaha' => 'required_if:apakah-saat-ini-masih-memiliki-usaha.*,b|date',
-      'apakah-saat-ini-masih-memiliki-usaha' => 'required|array|max:1|in:a,b',
+      'tanggal-mulai-usaha' => 'required|date',
+      'tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha' => 'nullable|date',
       'provinsi' => 'required|string|max:255',
       'kabupaten' => 'required|string|max:255',
       'alamat' => 'required|string|max:255',
@@ -55,20 +54,18 @@ class Wirausaha extends Model
       'pemodal-saat-ini' => 'Pemodal Saat Ini',
       'kesesuaian-pekerjaan-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
       'tanggal-mulai-berusaha' => 'Tanggal Mulai Berusaha',
-      'tanggal-akhir-berusaha' => 'Tanggal Akhir Berusaha',
-      'apakah-saat-ini-masih-memiliki-usaha' => 'Apakah Saat Ini Masih Memiliki Usaha?',
+      'tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha' => 'Tanggal Akhir Usaha',
       'provinsi' => 'Provinsi',
       'kabupaten' => 'Kabupaten',
       'alamat' => 'Alamat',
       'fotobukti-telah-berwirausaha' => 'Fotobukti Telah Berwirausaha',
   ]);
-  dd($rules);
 
-  $is_active = $rules['apakah-saat-ini-masih-memiliki-usaha-'][0] == 'a' ? 1 : 0;
-
-  if($is_active == 0 AND isset($rules['tanggal-akhir-berusaha'])){
-    $dataPrepare = [
-      'tgl_akhir_usaha' => $rules['tanggal-akhir-berusaha'],
+  $dataAkhirUsaha = [];
+  if(isset($rules['tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha'])){
+    $dataAkhirUsaha = [
+      'is_active' => 0,
+      'tgl_akhir_usaha' => $rules['tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha'],
     ];
   }
 
@@ -82,13 +79,12 @@ class Wirausaha extends Model
     'pendapatan' => $rules['jumlah-pendapatan-bersih-perbulan'],
     'pemodal' => json_encode($rules['pemodal-saat-ini']),
     'kesesuaian' => $rules['kesesuaian-pekerjaan-dengan-prodi'],
-    'tgl_mulai_usaha' => $rules['tanggal-mulai-berusaha'],
-    'is_active' => $is_active,
+    'tgl_mulai_usaha' => $rules['tanggal-mulai-usaha'],
     'provinsi_usaha' => $rules['provinsi'],
     'kabupaten_usaha' => $rules['kabupaten'],
     'alamat_usaha' => $rules['alamat'],
     'bukti_berusaha' => $request->file('fotobukti-telah-berwirausaha')->store('bukti-wirausaha'),
-  ];
+  ]+$dataAkhirUsaha;
 
     Wirausaha::create($dataPrepare);
 
@@ -98,18 +94,18 @@ class Wirausaha extends Model
   /**
    * Just bunch of accessor
    */
-  protected function getJabatanUsahaAttribute($value){
-    $jabatanUsaha = [
-      "a" => "Pemilik",
-      "b" => "Direktur",
-      "c" => "Kepala Unit",
-      "d" => "Supervisor",
-      "e" => "Staf",
-      "f" => "Self Employed"
-    ];
+  // protected function getJabatanUsahaAttribute($value){
+  //   $jabatanUsaha = [
+  //     "a" => "Pemilik",
+  //     "b" => "Direktur",
+  //     "c" => "Kepala Unit",
+  //     "d" => "Supervisor",
+  //     "e" => "Staf",
+  //     "f" => "Self Employed"
+  //   ];
 
-    return $jabatanUsaha[$value] ?? 'Unknown Jabatan';
-  }
+  //   return $jabatanUsaha[$value] ?? 'Unknown Jabatan';
+  // }
   /**
    * end of accessor
    */

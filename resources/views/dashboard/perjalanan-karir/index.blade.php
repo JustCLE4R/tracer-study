@@ -72,8 +72,9 @@
 												Berwirausaha
 											@endif
 										</div>
+										{{-- @dd($pekerjaan) --}}
 										<div class="timeline__event__description">
-											<p>{{ \Carbon\Carbon::parse($pekerjaan->tgl_mulai_kerja)->translatedFormat('d F Y') .' - '. ($pekerjaan->tgl_akhir_kerja ? \Carbon\Carbon::parse($pekerjaan->tgl_akhir_kerja)->translatedFormat('d F Y') : 'Sekarang') }}</p>
+											<p>{{ \Carbon\Carbon::parse($pekerjaan->tanggal_mulai)->translatedFormat('d F Y') .' - '. ($pekerjaan->is_active ? 'Sekarang' : \Carbon\Carbon::parse($pekerjaan->tanggal_akhir)->translatedFormat('d F Y')) }}</p>
 										</div>
 										<div class="col mt-2 float-end">
 											<a href="/dashboard/{{ $pekerjaan->tipe_kerja }}/{{ $pekerjaan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>

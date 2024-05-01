@@ -73,7 +73,7 @@ function populateInformasiPerusahaan(){
 }
 
 function isFreelancer(value){
-  if(value == 'd'){
+  if(value == 'c'){
     informasiPerusahaan.empty();
   }else{
     informasiPerusahaan.append(populateInformasiPerusahaan());

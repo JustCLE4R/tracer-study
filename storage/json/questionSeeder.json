@@ -245,19 +245,16 @@
     "type": "select"
   },
   {
-    "question": "Tanggal Mulai Berusaha",
+    "question": "Tanggal Mulai Usaha",
     "qanswer":{},
     "category": "wirausaha",
     "type": "date"
   },
   {
-    "question": "Apakah Saat Ini Masih Memiliki Usaha?",
-    "qanswer": {
-      "a": "Masih",
-      "b": "Tidak"
-    },
+    "question": "Tanggal Akhir Usaha (Kosongkan jika masih memiliki usaha)",
+    "qanswer":{},
     "category": "wirausaha",
-    "type": "select"
+    "type": "date"
   },
   {
     "question": "Provinsi",

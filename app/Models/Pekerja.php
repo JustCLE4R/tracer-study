@@ -33,12 +33,12 @@ class Pekerja extends Model
       'fotobukti-telah-bekerja' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
 
       // info perusahaan
-      'nama-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
-      'nama-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
-      'posisi-jabatan-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
-      'nomor-telepon-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
-      'alamat-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'string', 'max:255'],
-      'alamat-email-aktif-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'd'), 'email'],
+      'nama-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'c'), 'string', 'max:255'],
+      'nama-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'c'), 'string', 'max:255'],
+      'posisi-jabatan-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'c'), 'string', 'max:255'],
+      'nomor-telepon-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'c'), 'string', 'max:255'],
+      'alamat-perusahaan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'c'), 'string', 'max:255'],
+      'alamat-email-aktif-atasan' => [Rule::requiredIf($request->input('kriteria-pekerjaan') != 'c'), 'email'],
     ], [
       'required' => 'Kolom :attribute wajib diisi.',
       'string' => 'Kolom :attribute harus berupa teks.',
@@ -101,7 +101,7 @@ class Pekerja extends Model
 
     $pekerja = Pekerja::create($dataPrepare);
     
-    if($rules['status-pekerjaan'] == 'parttime' && $rules['kriteria-pekerjaan'] == 'd'){
+    if($rules['status-pekerjaan'] == 'parttime' && $rules['kriteria-pekerjaan'] == 'c'){
       return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
     }
     
@@ -125,10 +125,9 @@ class Pekerja extends Model
    */
   protected function getKriteriaPekerjaanAttribute($value){
     $kriteriaPekerjaan = [
-      'a' => 'Instansi Pemerintah',
-      'b' => 'Organisasi non-profit / lembaga swadaya masyarakat',
-      'c' => 'Perusahaan Swasta',
-      'd' => 'Freelance (Self Employed)'
+      'a' => 'Organisasi non-profit / lembaga swadaya masyarakat',
+      'b' => 'Perusahaan Swasta',
+      'c' => 'Freelance (Self Employed)',
     ];
 
     return $kriteriaPekerjaan[$value] ?? 'Unknown Kriteria Pekerjaan';
