@@ -78,6 +78,42 @@ class DatabaseSeeder extends Seeder
     ]);
     User::factory(5)->create();
 
+    User::create([
+      "nim" => "0700000000",
+      "nama" => "Admin Saintek",
+      "password" => Hash::make(md5('123')),
+      "role" => 'admin',
+      'program_studi' => '-',
+      'fakultas' => 'Sains dan Teknologi',
+      'tahun_masuk' => fake()->year,
+      'tempat_lahir' => '-',
+      'tgl_lahir' => fake()->date,
+      'jenis_kelamin' => 'L',
+      'kewarganegaraan' => 'Indonesia',
+      'telepon' => '0888888888',
+      'email' => 'saintek@uinsu.ac.id',
+      'remember_token' => Str::random(10),
+      'alamat' => fake()->address,
+    ]);
+
+    User::create([
+      "nim" => "0000000000",
+      "nama" => "Super Admin",
+      "password" => Hash::make(md5('123')),
+      "role" => 'superadmin',
+      'program_studi' => '-',
+      'fakultas' => '-',
+      'tahun_masuk' => fake()->year,
+      'tempat_lahir' => '-',
+      'tgl_lahir' => fake()->date,
+      'jenis_kelamin' => 'L',
+      'kewarganegaraan' => 'Indonesia',
+      'telepon' => '0888888888',
+      'email' => 'admin@uinsu.ac.id',
+      'remember_token' => Str::random(10),
+      'alamat' => fake()->address,
+    ]);
+
     Career::factory(1354)->create();
 
 

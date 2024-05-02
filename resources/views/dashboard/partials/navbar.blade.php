@@ -5,11 +5,21 @@
     <i class="bi bi-justify"></i>
   </a>
 
-  <div class="navbar-nav d-flex align-items-center ms-auto m-2">
+  <div class="navbar-nav w-100 d-flex justify-content-between align-items-center m-2">
+
+    @if (Auth::user()->role == 'superadmin' || Auth::user()->role == 'admin')
+    <div class="me-auto">
+      <form class="d-flex align-items-center" action="/dashboard/search" method="GET">
+        <input class="form-control me-2" type="search" name="search" placeholder="NIM" aria-label="Search">
+        <button class="btn btn-sm btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+    @endif
+
     <div class="text-end me-2 flex-grow-1">
-      {{-- <a href="/dashboard/profile">
+      <a href="/dashboard/profile">
         <span class="d-none text-success d-lg-inline-flex overflow-hidden" style="max-width: 150px;">{{ Auth::user()->nama }}</span>
-      </a> --}}
+      </a>
     </div>
     <div class="text-start">
       <a href="/dashboard/profile" class="">

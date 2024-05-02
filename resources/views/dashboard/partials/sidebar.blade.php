@@ -22,7 +22,10 @@
       <a href="/dashboard/career" class="nav-link "><i class="bi bi-newspaper me-2 fs-5"></i>Career</a>
       <a href="/dashboard/perjalanan-karir" class="nav-item nav-link"><i class="bi bi-person-fill-gear me-2 fs-5"></i>Perjalanan Karir</a>
 
-      <a href="/dashboard/laporan" class="nav-link "><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a>
+      {{-- @if (Auth::user()->role == 'superadmin') --}}
+        <a href="/dashboard/laporan" class="nav-link "><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a>
+      {{-- @endif --}}
+
       <a href="/logout" class="nav-item nav-link"><i class="bi bi-box-arrow-right me-2 fs-5"></i>Logout</a>
     </div>
   </nav>

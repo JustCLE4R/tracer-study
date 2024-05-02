@@ -130,7 +130,7 @@ class Pekerja extends Model
       'jumlah-pendapatan-perbulan' => 'required|numeric',
       'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
       'tanggal-mulai-bekerja' => 'required|date',
-      'tanggal-akhir-kerja-kosongkan-jika-masih-bekerja' => 'nullable|date',
+      'tanggal-akhir-kerja' => 'nullable|date',
       'provinsi' => 'required|string',
       'kabupaten' => 'required|string',
       'fotobukti-telah-bekerja' => 'file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
@@ -160,7 +160,7 @@ class Pekerja extends Model
       'jumlah-pendapatan-perbulan' => 'Jumlah Pendapatan Per Bulan',
       'kesesuaian-pekerjaan-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
       'tanggal-mulai-bekerja' => 'Tanggal Mulai Bekerja',
-      'tanggal-akhir-kerja-kosongkan-jika-masih-bekerja' => 'Tanggal Akhir Bekerja',
+      'tanggal-akhir-kerja' => 'Tanggal Akhir Bekerja',
       'provinsi' => 'Provinsi',
       'kabupaten' => 'Kabupaten',
       'fotobukti-telah-bekerja' => 'Foto Bukti Telah Bekerja',
@@ -175,10 +175,15 @@ class Pekerja extends Model
     ]);
 
     $dataAkhirKerja = [];
-    if(isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])){
+    if(isset($rules['tanggal-akhir-kerja'])){
       $dataAkhirKerja = [
         'is_active' => 0,
-        'tgl_akhir_kerja' => $rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'],
+        'tgl_akhir_kerja' => $rules['tanggal-akhir-kerja'],
+      ];
+    } else {
+      $dataAkhirKerja = [
+        'is_active' => 1,
+        'tgl_akhir_kerja' => null,
       ];
     }
   
@@ -216,7 +221,7 @@ class Pekerja extends Model
       'email_atasan' => $rules['alamat-email-aktif-atasan'],
     ];
 
-    (new DetailPerusahaan)->update($detail_perusahaan);
+    DetailPerusahaan::where('pekerja_id', $pekerja->id)->update($detail_perusahaan);
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil diubah!');
   }
