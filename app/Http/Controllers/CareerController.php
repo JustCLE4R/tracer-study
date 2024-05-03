@@ -15,8 +15,18 @@ class CareerController extends Controller
    */
   public function index()
   {
+    $query = Career::latest();
+
+    if (auth()->user()->role == 'admin') {
+      $query->where('user.fakultas', auth()->user()->fakultas);
+    } else if (auth()->user()->role == 'superadmin') {
+      //
+    } else {
+      $query->where('user_id', auth()->user()->id);
+    }
+
     return view('dashboard.careers.index', [
-      'careers' => Career::where('user_id', auth()->user()->id)->get()
+      'careers' => $query->paginate(10)->withQueryString()
     ]);
   }
 
@@ -110,7 +120,7 @@ class CareerController extends Controller
    */
   public function show(Career $career)
   {
-    if ($career->user_id !== auth()->user()->id) {
+    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
       abort(403);
     }
 
@@ -131,7 +141,7 @@ class CareerController extends Controller
    */
   public function edit(Career $career)
   {
-    if ($career->user_id !== auth()->user()->id) {
+    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
       abort(403);
     }
 
@@ -145,6 +155,10 @@ class CareerController extends Controller
    */
   public function update(Request $request, Career $career)
   {
+    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
+      abort(403);
+    }
+
     $rules = [
       'company_name' => 'required',
       'position' => 'required',
@@ -166,7 +180,7 @@ class CareerController extends Controller
       $validatedData['image'] = $request->file('image')->store('careers-images');
     }
 
-    $validatedData['user_id'] = auth()->user()->id;
+    // $validatedData['user_id'] = auth()->user()->id; //dimatikan agar jika admin mengedit postingan karir tidka mengambil hak milik postingan
     $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 100);
 
     $career->update($validatedData);
@@ -179,6 +193,10 @@ class CareerController extends Controller
    */
   public function destroy(Career $career)
   {
+    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
+      abort(403);
+    }
+
     if ($career->image) {
       Storage::delete($career->image);
     }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CareerController;
@@ -31,30 +32,32 @@ Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::post('/login', [LoginController::class, 'authenticate']);
 });
 
-Route::middleware(['auth', 'no-cache'])->group(function () {
+Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () {
   Route::get('/logout', [LoginController::class, 'logout']);
 
-  Route::prefix('dashboard')->group(function () {
-    Route::get('/', fn() => view('dashboard.index'))->name('dashboard');
+  Route::get('/', fn() => view('dashboard.index'))->name('dashboard');
 
-    Route::get('/profile', [UserController::class, 'index']);
-    Route::get('/profile/edit', [UserController::class, 'edit']);
-    Route::patch('/profile/edit', [UserController::class, 'update']);
+  Route::get('/profile', [UserController::class, 'index']);
+  Route::get('/profile/edit', [UserController::class, 'edit']);
+  Route::patch('/profile/edit', [UserController::class, 'update']);
 
-    Route::get('/career/checkSlug', [CareerController::class, 'checkSlug']);
-    Route::patch('/hapusBelumKerja', [PerjalananKarirController::class, 'destroyBelumKerja']);
+  Route::get('/career/checkSlug', [CareerController::class, 'checkSlug']);
+  Route::patch('/hapusBelumKerja', [PerjalananKarirController::class, 'destroyBelumKerja']);
 
-    Route::resource('/career', CareerController::class);
-    Route::resource('/perjalanan-karir', PerjalananKarirController::class)->only(['index', 'create', 'store']);
-    Route::resource('/pekerja', PekerjaController::class)->except(['index', 'create', 'store']);
-    Route::resource('/wirausaha', WirausahaController::class)->except(['index', 'create', 'store']);
-    Route::resource('/pendidikan', PendidikanController::class)->except(['index']);
+  Route::resource('/career', CareerController::class);
+  Route::resource('/perjalanan-karir', PerjalananKarirController::class)->only(['index', 'create', 'store']);
+  Route::resource('/pekerja', PekerjaController::class)->except(['index', 'create', 'store']);
+  Route::resource('/wirausaha', WirausahaController::class)->except(['index', 'create', 'store']);
+  Route::resource('/pendidikan', PendidikanController::class)->except(['index']);
 
-    Route::get('/dashboard/laporan', function () {
-      return view('dashboard.laporan');
-    });
-  
-
-
+  Route::get('/laporan', function () {
+    return view('dashboard.laporan.index');
   });
+
+
+
+  Route::middleware('is-admin')->group(function () {
+    Route::resource('/admin', AdminController::class);
+  });
+  
 });
