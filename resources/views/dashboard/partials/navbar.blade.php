@@ -9,9 +9,11 @@
 
     @if (Auth::user()->role == 'superadmin' OR Auth::user()->role == 'admin')
     <div class="me-auto">
-      <form class="d-flex align-items-center" action="/dashboard/search" method="GET">
-        <input class="form-control me-2" type="search" name="search" placeholder="NIM" aria-label="Search">
-        <button class="btn btn-sm btn-outline-success" type="submit"><i class="bi bi-search"></i></button>
+      <form class="d-flex align-items-center" action="/dashboard/admin" method="GET">
+        <div class="input-group">
+          <input class="form-control" type="search" name="search" placeholder="Search ..." aria-label="Search" value="{{ request()->input('search') ?: old('search') }}">
+          <button class="btn btn-sm btn-outline-success" type="submit" id="button-addon2"><i class="bi bi-search"></i></button>
+        </div>
       </form>
     </div>
     @endif

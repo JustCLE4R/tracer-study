@@ -16,6 +16,14 @@ class Pekerja extends Model
     "id"
   ];
 
+  // protected $with = [
+  //   "user",
+  // ];
+
+  protected $with = [
+    'detailPerusahaan'
+  ];
+
   public static function pekerjaStore($request){
     $rules = $request->validate([
       'pekerjaan' => 'required|string',

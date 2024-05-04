@@ -43,7 +43,7 @@
                         <tbody style="background-color: transparent !important;" >
                           @foreach ($careers as $career)
                           <tr>
-                            <td style="background-color: transparent !important;">{{ $loop->iteration }}</td>
+                            <td style="background-color: transparent !important;">{{ $careers->firstItem() + $loop->index }}</td>
                             <td style="background-color: transparent !important;">{{ $career->company_name }}</td>
                             <td style="background-color: transparent !important;">{{ $career->position }}</td>
                             @if (auth()->user()->role == 'admin' OR auth()->user()->role == 'superadmin')

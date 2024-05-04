@@ -28,7 +28,7 @@ class UserFactory extends Factory
       'nama' => fake()->name(),
       'password' => static::$password ??= Hash::make(md5('password')),
       'program_studi' => 'Ilmu Komputer',
-      'fakultas' => 'Sains dan Teknologi',
+      'fakultas' => fake()->randomElement(['Sains dan Teknologi', 'Ushuluddin dan Studi Islam', 'Ekonomi dan Bisnis Islam']),
       'strata' => fake()->randomElement(['S1', 'S2', 'S3']),
       'tahun_masuk' => fake()->year,
       'tgl_lulus' => fake()->date,

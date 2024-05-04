@@ -25,14 +25,14 @@ use App\Http\Controllers\WirausahaController;
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/career', [CareerController::class, 'publicIndex']);
 Route::get('/career/{career:slug}', [CareerController::class, 'publicShow'])->name('career.publicShow');
-Route::view('/show', 'publicCareer.show');
 
 Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::get('/login', [LoginController::class, 'index'])->name('login');
   Route::post('/login', [LoginController::class, 'authenticate']);
 });
 
-Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () {
+//dashboard routes
+Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () { 
   Route::get('/logout', [LoginController::class, 'logout']);
 
   Route::get('/', fn() => view('dashboard.index'))->name('dashboard');
@@ -42,7 +42,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::patch('/profile/edit', [UserController::class, 'update']);
 
   Route::get('/career/checkSlug', [CareerController::class, 'checkSlug']);
-  Route::patch('/hapusBelumKerja', [PerjalananKarirController::class, 'destroyBelumKerja']);
+  Route::delete('/hapusBelumKerja', [PerjalananKarirController::class, 'destroyBelumKerja']);
 
   Route::resource('/career', CareerController::class);
   Route::resource('/perjalanan-karir', PerjalananKarirController::class)->only(['index', 'create', 'store']);
@@ -55,9 +55,10 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   });
 
 
-
+  // admin routes
   Route::middleware('is-admin')->group(function () {
-    Route::resource('/admin', AdminController::class);
+    Route::model('admin', App\Models\User::class);
+    Route::resource('/admin', AdminController::class)->except(['create', 'store']);
   });
   
 });

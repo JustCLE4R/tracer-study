@@ -15,9 +15,9 @@ class Career extends Model
     "id"
   ];
 
-  protected $with = [
-    "user"
-  ];
+  // protected $with = [
+  //   "user"
+  // ];
   
   protected function getCategoryAttribute($value){
     switch ($value) {

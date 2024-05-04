@@ -18,7 +18,9 @@ class CareerController extends Controller
     $query = Career::latest();
 
     if (auth()->user()->role == 'admin') {
-      $query->where('user.fakultas', auth()->user()->fakultas);
+      $query->whereHas('user', function ($query) {
+        $query->where('fakultas', auth()->user()->fakultas);
+      });
     } else if (auth()->user()->role == 'superadmin') {
       //
     } else {
@@ -26,7 +28,7 @@ class CareerController extends Controller
     }
 
     return view('dashboard.careers.index', [
-      'careers' => $query->paginate(10)->withQueryString()
+      'careers' => $query->paginate(7)->withQueryString()
     ]);
   }
 

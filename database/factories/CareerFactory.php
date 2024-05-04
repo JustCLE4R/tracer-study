@@ -17,7 +17,7 @@ class CareerFactory extends Factory
   public function definition(): array
   {
     return [
-      'user_id' => $this->faker->numberBetween(1, 6),
+      'user_id' => $this->faker->numberBetween(1, 100),
       'category' => $this->faker->numberBetween(1, 4),
       'position' => $this->faker->jobTitle(),
       'slug' => $this->faker->slug(),

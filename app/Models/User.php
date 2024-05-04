@@ -27,6 +27,13 @@ class User extends Authenticatable
 
   protected $primarykey = 'nim';
 
+  protected $with = [
+    'pekerja',
+    'pendidikan',
+    'wirausaha',
+    'career',
+  ];
+
   /**
    * The attributes that should be hidden for serialization.
    *

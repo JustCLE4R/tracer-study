@@ -12,7 +12,22 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return 'mantab index';
+        $query = User::where('id', '!=', Auth()->id())->latest();
+
+        if (request('search')) {
+            $query->where('nama', 'like', '%' . request('search') . '%')
+                ->orWhere('nim', 'like', '%' . request('search') . '%')
+                ->orWhere('email', 'like', '%' . request('search') . '%');
+        }
+
+        if(Auth()->user()->role == 'admin'){
+            $query->where('fakultas', Auth()->user()->fakultas)
+                ->where('role', 'mahasiswa');
+        }
+        
+        return view('dashboard.admin.index', [
+            'users' => $query->paginate(50)->withQueryString()
+        ]);
     }
 
     /**
@@ -36,7 +51,9 @@ class AdminController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('dashboard.admin.show', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -62,4 +79,9 @@ class AdminController extends Controller
     {
         //
     }
+
+    // public function route()
+    // {
+    //     return 'user';
+    // }
 }

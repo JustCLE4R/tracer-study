@@ -76,25 +76,33 @@ class DatabaseSeeder extends Seeder
       'facebook' => 'https://www.facebook.com/' . fake()->userName,
       'remember_token' => Str::random(10),
     ]);
-    User::factory(5)->create();
+    User::factory(100)->create();
 
-    User::create([
-      "nim" => "0700000000",
-      "nama" => "Admin Saintek",
-      "password" => Hash::make(md5('123')),
-      "role" => 'admin',
-      'program_studi' => '-',
-      'fakultas' => 'Sains dan Teknologi',
-      'tahun_masuk' => fake()->year,
-      'tempat_lahir' => '-',
-      'tgl_lahir' => fake()->date,
-      'jenis_kelamin' => 'L',
-      'kewarganegaraan' => 'Indonesia',
-      'telepon' => '0888888888',
-      'email' => 'saintek@uinsu.ac.id',
-      'remember_token' => Str::random(10),
-      'alamat' => fake()->address,
-    ]);
+
+    function createAdmin(string $nim, string $nama, string $password, string $fakultas, string $email, string $telepon): void
+    {
+      User::create([
+          "nim" => $nim,
+          "nama" => $nama,
+          "password" => Hash::make($password),
+          "role" => 'admin',
+          'program_studi' => '-',
+          'fakultas' => $fakultas,
+          'tahun_masuk' => fake()->year,
+          'tempat_lahir' => '-',
+          'tgl_lahir' => fake()->date,
+          'jenis_kelamin' => 'L',
+          'kewarganegaraan' => 'Indonesia',
+          'telepon' => $telepon,
+          'email' => $email,
+          'remember_token' => Str::random(10),
+          'alamat' => fake()->address,
+      ]);
+    }
+
+    createAdmin('0700000000', 'Admin Saintek', md5('123'), 'Sains dan Teknologi', 'saintek@uinsu.ac.id', '0888888888');
+    createAdmin('0100000000', 'Admin FUSI', md5('123'), 'Ushuluddin dan Studi Islam', 'fusi@uinsu.ac.id', '0888888888');
+    createAdmin('0200000000', 'Admin FEBI', md5('123'), 'Ekonomi dan Bisnis Islam', 'febi@uinsu.ac.id', '0888888888');
 
     User::create([
       "nim" => "0000000000",

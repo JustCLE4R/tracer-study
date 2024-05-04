@@ -46,7 +46,7 @@
 										<div class="col mt-2 float-end">
 											<form class="d-inline" action="/dashboard/hapusBelumKerja" method="POST">
 												@csrf
-												@method('PATCH')
+												@method('DELETE')
 												<button class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-trash3"></i></button>
 											</form>
 										</div>

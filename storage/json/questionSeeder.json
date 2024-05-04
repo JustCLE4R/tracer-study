@@ -235,7 +235,7 @@
     "type": "checkbox"
   },
   {
-    "question": "Kesesuaian Pekerjaan dengan Prodi",
+    "question": "Kesesuaian Usaha dengan Prodi",
     "qanswer": {
       "a": "Tinggi",
       "b": "Sedang",

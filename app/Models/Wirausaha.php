@@ -15,6 +15,10 @@ class Wirausaha extends Model
     'id'
   ];
 
+  // protected $with = [
+  //   'user'
+  // ];
+
   public static function wirausahaStore($request){
     $rules = $request->validate([
       'pekerjaan' => 'required|string',
@@ -26,7 +30,7 @@ class Wirausaha extends Model
       'jumlah-pendapatan-perbulan-omset-penjualan' => 'required|numeric',
       'jumlah-pendapatan-bersih-perbulan' => 'required|numeric',
       'pemodal-saat-ini' => 'required|array|min:1|max:4|in:a,b,c,d',
-      'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
+      'kesesuaian-usaha-dengan-prodi' => 'required|string|in:a,b,c',
       'tanggal-mulai-usaha' => 'required|date',
       'tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha' => 'nullable|date',
       'provinsi' => 'required|string|max:255',
@@ -53,7 +57,7 @@ class Wirausaha extends Model
       'jumlah-pendapatan-perbulan-omset-penjualan' => 'Jumlah Pendapatan Per Bulan (Omset Penjualan)',
       'jumlah-pendapatan-bersih-perbulan' => 'Jumlah Pendapatan Bersih Per Bulan',
       'pemodal-saat-ini' => 'Pemodal Saat Ini',
-      'kesesuaian-pekerjaan-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
+      'kesesuaian-usaha-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
       'tanggal-mulai-berusaha' => 'Tanggal Mulai Berusaha',
       'tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha' => 'Tanggal Akhir Usaha',
       'provinsi' => 'Provinsi',
