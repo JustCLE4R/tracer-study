@@ -143,8 +143,14 @@ class CareerController extends Controller
    */
   public function edit(Career $career)
   {
-    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
-      abort(403);
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($career->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $career->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
+      return abort(403);
     }
 
     return view('dashboard.careers.edit', [
@@ -157,8 +163,14 @@ class CareerController extends Controller
    */
   public function update(Request $request, Career $career)
   {
-    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
-      abort(403);
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($career->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $career->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
+      return abort(403);
     }
 
     $rules = [
@@ -187,6 +199,10 @@ class CareerController extends Controller
 
     $career->update($validatedData);
 
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$career->user->id)->with('success', 'Career has been updated!');
+    }
+
     return redirect('/dashboard/career')->with('success', 'Career has been updated!');
   }
 
@@ -195,14 +211,24 @@ class CareerController extends Controller
    */
   public function destroy(Career $career)
   {
-    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
-      abort(403);
+    // allowing admin with same faculty to delete the resource
+    if(
+      ($career->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $career->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
+      return abort(403);
     }
 
     if ($career->image) {
       Storage::delete($career->image);
     }
     $career->delete();
+
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$career->user->id)->with('success', 'Career has been deleted!');
+    }
 
     return redirect('/dashboard/career')->with('success', 'Career has been deleted!');
   }

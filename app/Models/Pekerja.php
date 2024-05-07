@@ -196,7 +196,7 @@ class Pekerja extends Model
     }
   
     $dataPrepare = [
-      'user_id' => auth()->user()->id,
+      // 'user_id' => auth()->user()->id,
       'bidang_pekerjaan' => $rules['bidang-pekerjaan'],
       'tingkat_tempat_bekerja' => $rules['tingkat-ukuran-tempat-bekerja'],
       'jabatan_pekerjaan' => $rules['posisi-jabatan-pekerjaan'],
@@ -215,6 +215,10 @@ class Pekerja extends Model
 
     $pekerja->update($dataPrepare);
     
+    if($pekerja->getRawOriginal('kriteria_pekerjaan') == 'd' && auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$pekerja->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
+    }
+
     if($pekerja->getRawOriginal('kriteria_pekerjaan') == 'd'){
       return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil diubah!');
     }
@@ -230,6 +234,10 @@ class Pekerja extends Model
     ];
 
     DetailPerusahaan::where('pekerja_id', $pekerja->id)->update($detail_perusahaan);
+
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$pekerja->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
+    }
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil diubah!');
   }

@@ -28,9 +28,9 @@ class User extends Authenticatable
   protected $primarykey = 'nim';
 
   protected $with = [
-    'pekerja',
+    // 'pekerja',
+    // 'wirausaha',
     'pendidikan',
-    'wirausaha',
     'career',
   ];
 

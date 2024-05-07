@@ -153,7 +153,7 @@ class Wirausaha extends Model
     }
 
     $dataPrepare = [
-      'user_id' => auth()->user()->id,
+      // 'user_id' => auth()->user()->id,
       'nama_usaha' => $rules['nama-usaha'],
       'tingkat_tempat_usaha' => $rules['tingkat-ukuran-tempat-usaha'],
       'bidang_usaha' => $rules['bidang-usaha'],
@@ -174,6 +174,10 @@ class Wirausaha extends Model
     }
 
     $wirausaha->update($dataPrepare);
+
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$wirausaha->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
+    }
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Data Wirausaha telah diubah!');
   }

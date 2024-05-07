@@ -47,7 +47,13 @@ class PekerjaController extends Controller
    */
   public function edit(Pekerja $pekerja)
   {
-    if($pekerja->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($pekerja->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $pekerja->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -61,7 +67,13 @@ class PekerjaController extends Controller
    */
   public function update(Request $request, Pekerja $pekerja)
   {
-    if($pekerja->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($pekerja->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $pekerja->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -73,7 +85,13 @@ class PekerjaController extends Controller
    */
   public function destroy(Pekerja $pekerja)
   {
-    if($pekerja->user_id != auth()->user()->id){
+    // allowing admin with same faculty to delete the resource
+    if(
+      ($pekerja->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $pekerja->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -81,6 +99,10 @@ class PekerjaController extends Controller
       Storage::delete($pekerja->bukti_bekerja);
     }
     $pekerja->delete();
+
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$pekerja->user->id)->with('success', 'Data pekerjaan berhasil dihapus!');
+    }
     
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Berhasil menghapus data!');
   }

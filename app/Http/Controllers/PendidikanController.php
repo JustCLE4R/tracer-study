@@ -76,7 +76,13 @@ class PendidikanController extends Controller
    */
   public function show(Pendidikan $pendidikan)
   {
-    if($pendidikan->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -90,7 +96,13 @@ class PendidikanController extends Controller
    */
   public function edit(Pendidikan $pendidikan)
   {
-    if($pendidikan->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -104,7 +116,13 @@ class PendidikanController extends Controller
    */
   public function update(Request $request, Pendidikan $pendidikan)
   {
-    if($pendidikan->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -143,13 +161,18 @@ class PendidikanController extends Controller
       'bukti_pendidikan' => 'Bukti Tanda Terima Kuliah'
     ]);
 
-    if($rules['bukti_pendidikan']) {
+    if(isset($rules['bukti_pendidikan'])) {
       Storage::delete($request->oldImage);
       
       $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('bukti-pendidikan');
     }
 
     $pendidikan->update($rules);
+
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$pendidikan->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
+    }
+
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan telah diperbarui!');
   }
 
@@ -158,12 +181,23 @@ class PendidikanController extends Controller
    */
   public function destroy(Pendidikan $pendidikan)
   {
-    if($pendidikan->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
     Storage::delete($pendidikan->bukti_pendidikan);
     $pendidikan->delete();
+
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$pendidikan->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
+    }
+    
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan telah dihapus!');
   }
 }

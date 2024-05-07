@@ -45,7 +45,13 @@ class WirausahaController extends Controller
    */
   public function edit(Wirausaha $wirausaha)
   {
-    if($wirausaha->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($wirausaha->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $wirausaha->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -59,7 +65,13 @@ class WirausahaController extends Controller
    */
   public function update(Request $request, Wirausaha $wirausaha)
   {
-    if($wirausaha->user_id != auth()->user()->id){
+    // allowing admin with same faculty to edit the resource
+    if(
+      ($wirausaha->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $wirausaha->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -71,7 +83,13 @@ class WirausahaController extends Controller
    */
   public function destroy(Wirausaha $wirausaha)
   {
-    if ($wirausaha->user_id != auth()->user()->id) {
+    // allowing admin with same faculty to delete the resource
+    if(
+      ($wirausaha->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      || 
+      (auth()->user()->fakultas != $wirausaha->user->fakultas && auth()->user()->role == 'admin')
+    )
+    {
       return abort(403);
     }
 
@@ -79,6 +97,10 @@ class WirausahaController extends Controller
       Storage::delete($wirausaha->bukti_berusaha);
     }
     $wirausaha->delete();
+
+    if(auth()->user()->role != 'mahasiswa'){
+      return redirect('/dashboard/admin/'.$wirausaha->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
+    }
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Berhasil menghapus data!');
   }
