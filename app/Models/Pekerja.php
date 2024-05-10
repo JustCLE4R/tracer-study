@@ -245,11 +245,30 @@ class Pekerja extends Model
   /**
    * Just bunch of accessor
    */
+  protected function getIsActiveAttribute($value){
+    $isActive = [
+      0 => "Usaha Tidak Aktif",
+      1 => "Usaha Aktif"
+    ];
+
+    return $isActive[$value] ?? 'Unknown State';
+  }
+
+  protected function getStatusPekerjaanAttribute($value){
+    $statusPekerjaan = [
+      'a' => 'Full-time',
+      'b' => 'Part-time',
+    ];
+
+    return $statusPekerjaan[$value] ?? 'Unknown Status Pekerjaan';
+  }
+
   protected function getKriteriaPekerjaanAttribute($value){
     $kriteriaPekerjaan = [
-      'a' => 'Organisasi non-profit / lembaga swadaya masyarakat',
-      'b' => 'Perusahaan Swasta',
-      'c' => 'Freelance (Self Employed)',
+      'a' => "Instansi pemerintah (termasuk BUMN)",
+      'b' => 'Organisasi non-profit / lembaga swadaya masyarakat',
+      'c' => 'Perusahaan Swasta',
+      'd' => 'Freelance (Self Employed) (termasuk Dai)',
     ];
 
     return $kriteriaPekerjaan[$value] ?? 'Unknown Kriteria Pekerjaan';
