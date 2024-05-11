@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CareerController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PekerjaController;
+use App\Http\Controllers\WirausahaController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PerjalananKarirController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\WirausahaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,15 +51,11 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::resource('/wirausaha', WirausahaController::class)->except(['index', 'create', 'store']);
   Route::resource('/pendidikan', PendidikanController::class)->except(['index']);
 
-  Route::get('/laporan', function () {
-    return view('dashboard.laporan.index');
-  });
-
-
+  
   // admin routes
   Route::middleware('is-admin')->group(function () {
-    Route::model('admin', App\Models\User::class);
-    Route::resource('/admin', AdminController::class)->except(['create', 'store']);
+    Route::resource('/admin/laporan', LaporanController::class);
+    Route::resource('/admin', AdminController::class)->except(['create', 'store'])->parameters(['admin' => 'user']);
   });
   
 });
