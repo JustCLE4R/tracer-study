@@ -256,26 +256,14 @@
 
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
-                                <div class="faq-content">
-                                    Tracer Study UINSU 2024 <br>
-                                    <a href="#0" class="button-sm radius-30 mt-2">Download <i
-                                            class="lni lni-download"></i></a>
-                                </div>
-                                <div class="faq-content">
-                                    Tracer Study UINSU 2023 <br>
-                                    <a href="#0" class="button-sm radius-30 mt-2">Download <i
-                                            class="lni lni-download"></i></a>
-                                </div>
-                                <div class="faq-content">
-                                    Tracer Study UINSU 2022 <br>
-                                    <a href="#0" class="button-sm radius-30 mt-2">Download <i
-                                            class="lni lni-download"></i></a>
-                                </div>
-                                <div class="faq-content">
-                                    Tracer Study UINSU 2021 <br>
-                                    <a href="#0" class="button-sm radius-30 mt-2">Download <i
-                                            class="lni lni-download"></i></a>
-                                </div>
+
+                                @foreach ($laporans as $laporan)
+                                    <div class="faq-content">
+                                        {{ $laporan->title }}<br>
+                                        <a href="storage/{{ $laporan->laporan }}" class="button-sm radius-30 mt-2" download>Download <i class="lni lni-download"></i></a>
+                                    </div>
+                                @endforeach
+                                
                             </div>
 
 

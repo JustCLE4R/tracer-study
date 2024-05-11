@@ -22,7 +22,7 @@
         <tr>
           <th>{{ 1 + $loop->index }}</th>
           <td>{{ $laporan->title }}</td>
-          <td><a href="{{ asset('storage/' . $laporan->laporan) }}" target="_blank">{{ $laporan->laporan }}</a></td>
+          <td><a href="{{ asset('storage/' . $laporan->laporan) }}" target="_blank">{{ basename($laporan->laporan) }}</a></td>
           <td>
             <a class="btn btn-sm px-1 py-0 btn-warning" href="/dashboard/admin/laporan/{{ $laporan->id }}/edit"><i class="bi bi-pencil-square"></i></a>
             <form class="d-inline" action="/dashboard/admin/laporan/{{ $laporan->id }}" method="post">

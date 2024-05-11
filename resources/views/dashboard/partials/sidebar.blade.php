@@ -28,9 +28,12 @@
 
       @if (Auth::user()->role == 'superadmin' OR Auth::user()->role == 'admin')
         <a href="/dashboard/admin" class="nav-link "><i class="bi bi-shield-lock me-2 fs-5"></i>Admin</a>
-        <a href="/dashboard/admin/laporan" class="nav-link "><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a>
       @endif
 
+      @if (Auth::user()->role == 'superadmin')
+        <a href="/dashboard/admin/laporan" class="nav-link "><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a>
+      @endif
+        
       <a href="/dashboard/logout" class="nav-item nav-link"><i class="bi bi-box-arrow-right me-2 fs-5"></i>Logout</a>
     </div>
   </nav>

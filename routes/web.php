@@ -54,7 +54,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   
   // admin routes
   Route::middleware('is-admin')->group(function () {
-    Route::resource('/admin/laporan', LaporanController::class);
+    Route::resource('/admin/laporan', LaporanController::class)->except(['show']);
     Route::resource('/admin', AdminController::class)->except(['create', 'store'])->parameters(['admin' => 'user']);
   });
   
