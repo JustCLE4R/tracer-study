@@ -11,7 +11,7 @@
 <div class="sidebar pe-4 pb-3 shadow ">
   <nav class="navbar">
     <a href="https://uinsu.ac.id" class="navbar-brand mx-4 ">
-      <img src="/img/logo.png" width="160px" alt="">
+      <img src="/img/logo-admin.png" width="160px" alt="">
     </a>
 
     <div class="navbar-nav w-100 ">

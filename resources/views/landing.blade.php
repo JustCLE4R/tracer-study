@@ -71,7 +71,7 @@
                         <div class="hero-figure-box hero-figure-box-07"></div>
                         <div class="hero-figure-box hero-figure-box-08 " data-wow-delay=".5s" data-rotation="-22deg"
                             style="transform: rotate(-22deg) scale(1); opacity: 1;"></div>
-                        <img src="https://preview.uideck.com/items/bliss/assets/img/hero/hero-img.svg" alt="">
+                        <img src="https://preview.uideck.com/items/bliss/assets/img/hero/hero-img.svg" alt="" style="max-width: 600px">
                     </div>
 
                 </div>

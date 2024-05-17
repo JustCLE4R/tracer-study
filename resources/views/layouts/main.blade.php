@@ -6,7 +6,7 @@
   <title>Tracer Study UINSU</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/uin-dan-blu-png-2.png"/>
+  <link rel="shortcut icon" type="image/x-icon" href="/img/logo.png"/>
 
   <link rel="stylesheet" href="/css/bootstrap-5.0.0-beta2.min.css" />
   <link rel="stylesheet" href="/css/LineIcons.2.0.css" />

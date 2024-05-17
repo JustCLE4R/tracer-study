@@ -13,11 +13,14 @@ ol li{
 .page-item.active .page-link,
 .page-link.active {
     z-index: 3;
-    color: white !important; /* warna teks untuk tombol aktif */
-    background-color: green !important; /* warna latar belakang untuk tombol aktif */
-    border-color: green !important; /* warna border untuk tombol aktif */
+    color: white !important;
+    background-color: green !important;
+    border-color: green !important; 
 }
 
+.page-item .page-link{
+    color:green !important;
+}
 .title {
     display: flex;
     justify-content: center;

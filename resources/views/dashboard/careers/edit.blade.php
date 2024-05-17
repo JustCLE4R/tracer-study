@@ -16,9 +16,8 @@
                       <hr>
                   </div>
               </div>
-              <div class="row">
-                <div class="col-lg-10 ps-4">
-                  <div class="col-lg-10">
+              <div class="row justify-content-center">
+                  <div class="col-lg-19 col-md-10 col-sm-12">
                     <form class="mb-5" action="/dashboard/career/{{ $career->slug }}" method="post" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
@@ -90,7 +89,6 @@
                       </div>
                     </form>
                   </div>
-                </div>
               </div>
 
           </div>
