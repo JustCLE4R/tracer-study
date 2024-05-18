@@ -11,6 +11,7 @@ use App\Http\Controllers\PekerjaController;
 use App\Http\Controllers\WirausahaController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PerjalananKarirController;
+use App\Http\Controllers\QuestionerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,8 @@ Route::get('/career/{career:slug}', [CareerController::class, 'publicShow'])->na
 Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::get('/login', [LoginController::class, 'index'])->name('login');
   Route::post('/login', [LoginController::class, 'authenticate']);
+
+  Route::get('/questioner/{questioner:token}', [QuestionerController::class, 'getPublicQuestioner']);
 });
 
 //dashboard routes
@@ -55,7 +58,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   // admin routes
   Route::middleware('is-admin')->group(function () {
     Route::resource('/admin/laporan', LaporanController::class)->except(['show']);
-    Route::resource('/admin', AdminController::class)->except(['create', 'store'])->parameters(['admin' => 'user']);
+    Route::resource('/admin', AdminController::class)->except(['create', 'store', 'destroy'])->parameters(['admin' => 'user']);
   });
   
 });

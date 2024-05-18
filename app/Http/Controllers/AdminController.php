@@ -7,6 +7,7 @@ use App\Models\Pekerja;
 use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\UserController;
 
 class AdminController extends Controller
 {
@@ -63,6 +64,8 @@ class AdminController extends Controller
             abort(403);
         }
 
+        $user->load(['pendidikan', 'career']);
+
         $pekerjaans = Pekerja::select(DB::raw("'pekerja' as tipe_kerja"), 'id', 'jabatan_pekerjaan', 'detail_pekerjaan', 'is_active', 'tgl_mulai_kerja as tanggal_mulai', 'tgl_akhir_kerja as tanggal_akhir')
         ->where('user_id', $user->id);
 
@@ -96,7 +99,46 @@ class AdminController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        dd($request->all());
+        $rules = $request->validate([
+            'telepon' => 'numeric|required',
+            'email' => 'email|max:255',
+            'linkedin' => 'nullable|url',
+            'facebook' => 'nullable|url',
+            'tgl_lulus' => 'required|date|before:today',
+            'tgl_yudisium' => 'required|date|before:today',
+            'tgl_wisuda' => 'required|date|before:today',
+            'judul_tugas_akhir' => 'required|string|max:255',
+            'provinsi' => 'required|string|max:255',
+            'kabupaten' => 'required|string|max:255',
+            'kecamatan' => 'required|string|max:255',
+            'alamat' => 'required|string|max:255',
+        ], [
+            'required' => 'Kolom :attribute wajib diisi.',
+            'numeric' => 'Kolom :attribute harus berupa angka.',
+            'email' => 'Kolom :attribute harus berupa alamat email yang valid.',
+            'url' => 'Kolom :attribute harus berupa URL yang valid.',
+            'date' => 'Kolom :attribute harus berupa tanggal yang valid',
+            'before' => 'Kolom :attribute harus sebelum tanggal hari ini.',
+            'string' => 'Kolom :attribute harus berupa teks.',
+            'max' => 'Kolom :attribute tidak boleh lebih dari :max karakter.',
+        ], [
+            'telepon' => 'Telepon',
+            'email' => 'Email',
+            'linkedin' => 'Linkedin',
+            'facebook' => 'Facebook',
+            'tgl_lulus' => 'Tanggal Lulus',
+            'tgl_yudisium' => 'Tanggal Yudisium',
+            'tgl_wisuda' => 'Tanggal Wisuda',
+            'judul_tugas_akhir' => 'Judul Tugas Akhir',
+            'provinsi' => 'Provinsi',
+            'kabupaten' => 'Kabupaten',
+            'kecamatan' => 'Kecamatan',
+            'alamat' => 'Alamat',
+        ]);
+        
+        
+        $user->update($rules);
+        return redirect('/dashboard/admin/' . $user->id)->with('success', 'Profil berhasil diperbarui');
     }
 
     /**

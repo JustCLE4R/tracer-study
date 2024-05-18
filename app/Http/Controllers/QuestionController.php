@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
-class TracerController extends Controller
+class QuestionController extends Controller
 {
   public function getQuestions(){
     return response()->json([

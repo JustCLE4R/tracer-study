@@ -13,6 +13,10 @@ class DetailPerusahaan extends Model
         "id",
     ];
 
+    protected $hidden = [
+        "token",
+    ];
+
     public function pekerja(){
         return $this->belongsTo(Pekerja::class);
     }
