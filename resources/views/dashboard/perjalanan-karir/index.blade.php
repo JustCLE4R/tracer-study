@@ -1,14 +1,14 @@
 @extends('dashboard.layouts.main')
 
 @section('content')
-<div id="row" class="row justify-content-center mb-5 pb-4">
+<div id="row" class="row justify-content-center mb-5 pb-4" style="min-height: 80vh;">
 	@if (session()->has('success'))
 	<div class="alert alert-success alert-dismissible fade show col-lg-10 mb-0" role="alert">
 		<strong>Success!</strong> {{ session('success') }}
 		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 	</div>
 	@endif
-	<div class="col-lg-5 col-md-7 col-sm-8 col-xs-8 my-2  position-relative">
+	<div class="col-lg-5 col-md-7 col-sm-8 col-xs-8 my-2  position-relative" >
 		<div class="accordion " id="accordionExample">
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="headingOne">

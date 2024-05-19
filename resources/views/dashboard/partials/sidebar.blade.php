@@ -17,10 +17,10 @@
     <div class="navbar-nav w-100 ">
       <a href="/dashboard" class="nav-item nav-link "><i class="bi bi-house-fill me-2 fs-5"></i>Dashboard</a>
 
-      @if (Auth::user()->role == 'mahasiswa')
+      @if (Auth::user()->role == 'mahasiswa')        
+        <a href="/" class="nav-item nav-link"><i class="bi bi-speedometer2 me-2 fs-5"></i>Beranda</a>
         <a href="/dashboard/profile" class="nav-item nav-link"><i class="bi bi-person-circle me-2 fs-5"></i>Profile</a>
-        <a href="/" class="nav-item nav-link"><i class="bi bi-speedometer2 me-2 fs-5"></i>Landing Page</a>
-        <a href="/dashboard/tracer" class="nav-item nav-link"><i class="bi bi-ui-checks me-2 fs-5"></i>Questioner</a>
+        <a href="/dashboard/questioner" class="nav-item nav-link"><i class="bi bi-ui-checks me-2 fs-5"></i>Questioner</a>
         <a href="/dashboard/perjalanan-karir" class="nav-item nav-link"><i class="bi bi-person-fill-gear me-2 fs-5"></i>Perjalanan Karir</a>
       @endif
 

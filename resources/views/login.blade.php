@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
@@ -17,7 +20,7 @@
         
         <div class="text" data-aos="fade-up" data-aos-duration="800">
           <div class="carousel">
-            <span class="text-1">Selamat Datang <br> Di Website Tracer Study UINSU</span>
+            <span class="text-1">Selamat Datang <br> Di Website Tracer Study UINSU <br><a class="kunjungi" href="/">Kunjungi Tracer <i class="fa-regular fa-paper-plane"></i></a></span>
             <span class="text-1" style="display: none;">Terima Kasih <br> Telah Menggunakan Layanan Kami</span>
             <!-- Add additional text items here -->
           </div>

@@ -1,0 +1,148 @@
+@extends('dashboard.layouts.main')
+
+@section('content')
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-12">
+                <div class="bg-light rounded p-5 border-top border-success border-5" >
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="h4">Kuesioner</span><br>
+                            Status Pengisian: <span class="btn btn-sm btn-success">Sudah Mengisi <i class="bi bi-check-lg"></i></span>  {{-- <span class="btn btn-sm btn-danger text-light">Belum Mengisi <i class="bi bi-x-lg"></i></span> --}}
+                            <hr>
+                        </div>
+                        <div class="col-12" style="line-height: 1.6rem;">
+                            <p>Tanggal Pengisian: <span class="h6">1 Juli 2022</span></p>
+                            <p>Sebelum Melakukan Pengisian Kuesioner ini, diharapkan bagi alumni untuk:</p>
+                            <ul>
+                                <li>1. Melakukan pembaharuan data diri pada menu profile</li>
+                                <li>2. Melakukan pembaharuan riwayat pekerjaan pada menu perjalanan karir</li>
+                                <li>3. Melakukan pembaharuan riwayat pendidikan pada menu perjalanan karir</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-12">
+
+                <div class="bg-light rounded p-5 border-top border-success border-5" style="min-height: 70vh ;">
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="h4">Tracer Study Alumni</span>
+                            <hr>
+                        </div>
+                    </div>
+
+
+
+                    <form action="">
+                        <div class="row" id="questionnaire-form"></div>
+                        <div class="row my-2">
+                            <div class="col-12">
+                                <span class="h6 mb-2"><b>(h) Matakuliah yang paling berperan terhadap kelanjutan karir anda?</b></span>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label for="h-1" class="form-label">Jawaban Anda :</label>
+                                <input type="text" class="form-control" name="h-1" id="h-1" required>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-12">
+                                <span class="h6 mb-2"><b>(i) Matakuliah yang sebaiknya ditiadakan?</b></span>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label for="i-1" class="form-label">Jawaban Anda :</label>
+                                <input type="text" class="form-control" name="i-1" id="i-1" required>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                            <div class="col-12">
+                                <span class="h6 mb-2"><b>(j) Matakuliah yang sebaiknya diadakan di kampus?</b></span>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-12">
+                                <label for="j-1" class="form-label">Jawaban Anda :</label>
+                                <input type="text" class="form-control" name="j-1" id="j-1" required>
+                            </div>
+                        </div>
+                        <div class="row mt-2 justify-content-end">
+                            <div class="col-lg-3 col-md-3 col-sm-10 text-end">
+                                <a href="" class="btn btn-success btn-sm mb-3">Kirim Jawaban <i class="bi bi-send-fill"></i>
+                                </a>
+                            </div>    
+                        </div>
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.getElementById('questionnaire-form');
+
+            fetch('http://127.0.0.1:8000/questioner.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    data.questioner.forEach(section => {
+                        const sectionTitle = document.createElement('div');
+                        sectionTitle.className = 'row';
+                        sectionTitle.innerHTML = `
+                    <div class="col-12">
+                        <span class="h6 mb-2"><b>${section.title}</b></span>
+                    </div>
+                `;
+                        formContainer.appendChild(sectionTitle);
+
+                        if (section.questions) {
+                            section.questions.forEach((question, index) => {
+                                const questionCol = document.createElement('div');
+                                questionCol.className = 'col-lg-6 col-sm-12 my-1';
+                                questionCol.innerHTML = `
+                            <span class="mb-1">${index + 1}. ${question.text}</span>
+                        `;
+                                question.options.forEach(option => {
+                                    const optionDiv = document.createElement('div');
+                                    optionDiv.className = 'form-check';
+                                    optionDiv.innerHTML = `
+                                <input class="form-check-input" type="radio" name="${question.name}" id="${question.name}-${option}">
+                                <label class="form-check-label" for="${question.name}-${option}">
+                                    ${option}
+                                </label>
+                            `;
+                                    questionCol.appendChild(optionDiv);
+                                });
+
+                                formContainer.appendChild(questionCol);
+                            });
+                        } else if (section.options) {
+                            const optionsCol = document.createElement('div');
+                            optionsCol.className = 'col-lg-6 col-sm-12 my-1';
+                            section.options.forEach(option => {
+                                const optionDiv = document.createElement('div');
+                                optionDiv.className = 'form-check';
+                                optionDiv.innerHTML = `
+                            <input class="form-check-input" type="radio" name="${section.name}" id="${section.name}-${option}">
+                            <label class="form-check-label" for="${section.name}-${option}">
+                                ${option}
+                            </label>
+                        `;
+                                optionsCol.appendChild(optionDiv);
+                            });
+
+                            formContainer.appendChild(optionsCol);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching the JSON data:', error);
+                });
+        });
+    </script>
+@endsection

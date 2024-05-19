@@ -51,7 +51,14 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::resource('/wirausaha', WirausahaController::class)->except(['index', 'create', 'store']);
   Route::resource('/pendidikan', PendidikanController::class)->except(['index']);
 
-  
+  Route::get('/questioner', function () {
+    return view('dashboard.questioner.index');
+  });
+  Route::get('/questioner/stack', function () {
+    return view('dashboard.questioner.stack');
+  });
+
+
   // admin routes
   Route::middleware('is-admin')->group(function () {
     Route::resource('/admin/laporan', LaporanController::class)->except(['show']);

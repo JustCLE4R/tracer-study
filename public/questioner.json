@@ -1,0 +1,364 @@
+{
+    "questioner": [
+      {
+        "title": "(a) Seberapa besar kompetensi di bawah ini Anda kuasai?",
+        "prefix": "a",
+        "questions": [
+          {
+            "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
+            "name": "a-1",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Etika dan kecerdasan dalam bertindak",
+            "name": "a-2",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
+            "name": "a-3",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Ketrampilan internet dan computer",
+            "name": "a-4",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan belajar",
+            "name": "a-5",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan berkomunikasi",
+            "name": "a-6",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+            "name": "a-7",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan dalam memecahkan masalah",
+            "name": "a-8",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Inovasi dan/atau kreatifitas",
+            "name": "a-9",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pengetahuan di bidang atau disiplin ilmu anda",
+            "name": "a-10",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
+            "name": "a-11",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Keseimbangan antara pikir dan zikir",
+            "name": "a-12",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Mampu melakukan pendekatan integral-transdisipliner",
+            "name": "a-13",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+            "name": "a-14",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Berakhlak mulia",
+            "name": "a-15",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
+            "name": "a-16",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Bervisi pengembangan peradaban",
+            "name": "a-17",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Berpenampilan happy / Bahagia",
+            "name": "a-18",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          }
+        ]
+      },
+      {
+        "title": "(b) Seberapa besar kontribusi perguruan tinggi terhadap kompetensi yang Anda kuasai?",
+        "prefix": "b",
+        "questions": [
+          {
+            "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
+            "name": "b-1",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Etika dan kecerdasan dalam bertindak",
+            "name": "b-2",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
+            "name": "b-3",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Ketrampilan internet dan computer",
+            "name": "b-4",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan belajar",
+            "name": "b-5",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan berkomunikasi",
+            "name": "b-6",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+            "name": "b-7",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kemampuan dalam memecahkan masalah",
+            "name": "b-8",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Inovasi dan/atau kreatifitas",
+            "name": "b-9",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pengetahuan di bidang atau disiplin ilmu anda",
+            "name": "b-10",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
+            "name": "b-11",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Keseimbangan antara pikir dan zikir",
+            "name": "b-12",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Mampu melakukan pendekatan integral-transdisipliner",
+            "name": "b-13",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+            "name": "b-14",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Berakhlak mulia",
+            "name": "b-15",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
+            "name": "b-16",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Bervisi pengembangan peradaban",
+            "name": "b-17",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Berpenampilan happy / Bahagia",
+            "name": "b-18",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          }
+        ]
+      },
+      {
+        "title": "(c) Peningkatan kompetensi yang anda peroleh didapat paling banyak dari:",
+        "prefix": "c",
+        "name" : "c-1",
+        "options":[
+            "Perkuliahan Himpunan Prodi",
+            "Organisasi Ekstra Kampus",
+            "Organisasi Intra Kampus",
+            "Project / Riset"
+        ]
+
+      },
+      {
+        "title": "(d) Seberapa besar penekanan pada aspek-aspek pembelajaran di bawah ini dilaksanakan di program studi Anda?",
+        "prefix": "d",
+        "questions": [
+          {
+            "text": "Perkuliahan",
+            "name": "d-1",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Demonstrasi/peragaan pembelajaran",
+            "name": "d-2",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Partisipasi dalam proyek riset",
+            "name": "d-3",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Magang",
+            "name": "d-4",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Diskusi",
+            "name": "d-5",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          }
+        ]
+      },
+      {
+        "title": "(e) Bagaimana penilaian Anda terhadap aspek belajar mengajar di bawah ini?",
+        "prefix": "e",
+        "questions": [
+          {
+            "text": "Kesempatan untuk berinteraksi dengan dosen-dosen di luar jadwal kuliah",
+            "name": "e-1",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Bimbingan akademik",
+            "name": "e-2",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Variasi mata kuliah",
+            "name": "e-3",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kesempatan untuk memasuki dan menjadi bagian dari jejaring ilmuwan professional",
+            "name": "e-4",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Beasiswa",
+            "name": "e-5",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          }
+        ]
+      },
+      {
+        "title": "(f) Bagaimana penilaian Anda terhadap fasilitas kampus di bawah ini?",
+        "prefix": "f",
+        "questions": [
+          {
+            "text": "Perpustakaan",
+            "name": "f-1",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Teknologi informasi dan komunikasi",
+            "name": "f-2",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pusat Bahasa",
+            "name": "f-3",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Fasilitas olahraga",
+            "name": "f-4",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Laboratorium/studio/workshop",
+            "name": "f-5",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kondisi dan sistem keamanan serta keselamatan",
+            "name": "f-6",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kondisi serta fasilitas toilet dan sanitari lainnya",
+            "name": "f-7",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kantin, koperasi dan sarana perbelanjaan di dalam kampus",
+            "name": "f-8",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pusat kegiatan mahasiswa beserta fasilitasnya dan ruang rekreasi",
+            "name": "f-9",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Fasilitas layanan Kesehatan",
+            "name": "f-10",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          }
+        ]
+      },
+      {
+        "title": "(g) Seberapa besar program studi Anda bermanfaat untuk hal-hal di bawah ini?",
+        "prefix": "g",
+        "questions": [
+          {
+            "text": "Memulai pekerjaan",
+            "name": "g-1",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pembelajaran yang berkelanjutan dalam pekerjaan",
+            "name": "g-2",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Kinerja dalam menjalankan tugas",
+            "name": "g-3",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Informasi karir dan peluang kerja",
+            "name": "g-4",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Pengembangan diri",
+            "name": "g-5",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          },
+          {
+            "text": "Meningkatkan keterampilan kewirausahaan",
+            "name": "g-6",
+            "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+          }
+        ]
+      }
+
+    ]
+  }
+  

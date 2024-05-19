@@ -21,6 +21,19 @@ body {
 
 }
 
+.carousel a{
+  text-decoration:none;
+  color:#ffffff94;
+  background:#147704d6;
+  border-radius:4px;
+  padding: 3px 8px;
+  font-size: .9rem;
+}
+.carousel a:hover{
+  background:#ffffff94;
+  color:#147704d6;
+
+}
 .container{
   z-index:11;
   margin:2vh;

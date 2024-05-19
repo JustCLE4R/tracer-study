@@ -1,0 +1,196 @@
+{
+    "questioner": [
+        {
+            "title": "(e)Menurut anda, seberapa PENTINGkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?",
+            "prefix": "e",
+            "questions": [
+                {
+                    "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
+                    "name": "e-1",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Etika dan kecerdasan dalam bertindak",
+                    "name": "e-2",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
+                    "name": "e-3",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Ketrampilan internet dan komputer",
+                    "name": "e-4",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan belajar",
+                    "name": "e-5",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan berkomunikasi",
+                    "name": "e-6",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+                    "name": "e-7",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan dalam memecahkan masalah",
+                    "name": "e-8",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Inovasi dan/atau kreativitas",
+                    "name": "e-9",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Pengetahuan di bidang atau disiplin ilmu anda",
+                    "name": "e-10",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
+                    "name": "e-11",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Keseimbangan antara pikir dan zikir",
+                    "name": "e-12",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Mampu melakukan pendekatan integral-transdisipliner",
+                    "name": "e-13",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+                    "name": "e-14",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Berakhlak mulia",
+                    "name": "e-15",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
+                    "name": "e-16",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Bervisi pengembangan peradaban",
+                    "name": "e-17",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Berpenampilan happy / Bahagia",
+                    "name": "e-18",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                }
+            ]
+        },
+        {
+            "title": "(f) Bagaimanakah tingkat KEPUASAN anda terhadap Alumni FEBI UIN SU Medan yang bekerja di kantor/perusahaan anda, tentang hal-hal di bawah ini?",
+            "prefix": "f",
+            "questions": [
+                {
+                    "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
+                    "name": "f-1",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Etika dan kecerdasan dalam bertindak",
+                    "name": "f-2",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
+                    "name": "f-3",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Ketrampilan internet dan komputer",
+                    "name": "f-4",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan belajar",
+                    "name": "f-5",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan berkomunikasi",
+                    "name": "f-6",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+                    "name": "f-7",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Kemampuan dalam memecahkan masalah",
+                    "name": "f-8",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Inovasi dan/atau kreativitas",
+                    "name": "f-9",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Pengetahuan di bidang atau disiplin ilmu anda",
+                    "name": "f-10",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
+                    "name": "f-11",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Keseimbangan antara pikir dan zikir",
+                    "name": "f-12",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Mampu melakukan pendekatan integral-transdisipliner",
+                    "name": "f-13",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+                    "name": "f-14",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Berakhlak mulia",
+                    "name": "f-15",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
+                    "name": "f-16",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Bervisi pengembangan peradaban",
+                    "name": "f-17",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                },
+                {
+                    "text": "Berpenampilan happy / Bahagia",
+                    "name": "f-18",
+                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                } ]
+            }
+        ]
+    }
+    
