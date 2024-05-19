@@ -30,8 +30,8 @@ class User extends Authenticatable
   protected $with = [
     // 'pekerja',
     // 'wirausaha',
-    'pendidikan',
-    'career',
+    // 'pendidikan',
+    // 'career',
   ];
 
   /**

@@ -7,7 +7,7 @@
           <div class="bg-light rounded p-5 border-top border-success border-5">
               <div class="row">
                   <div class="col-12">
-                      <span class="h4">Admin</span>
+                      <span class="h4">Daftar Akun</span>
                       <hr>
                   </div>
               </div>

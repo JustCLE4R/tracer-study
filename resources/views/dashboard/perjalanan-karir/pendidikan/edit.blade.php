@@ -19,9 +19,9 @@
                   <label class="form-label text-secondary">Tingkat Pendidikan *</label>
                   <select class="form-select @error('tingkat_pendidikan') is-invalid @enderror" name="tingkat_pendidikan">
                     <option hidden="">Pilih Tingkat Pendidikan</option>
-                    <option value="a" {{ old('tingkat_pendidikan', $pendidikan->tingkat_pendidikan) == 'a' ? 'selected' : '' }}>S1</option>
-                    <option value="b" {{ old('tingkat_pendidikan', $pendidikan->tingkat_pendidikan) == 'b' ? 'selected' : '' }}>S2</option>
-                    <option value="c" {{ old('tingkat_pendidikan', $pendidikan->tingkat_pendidikan) == 'c' ? 'selected' : '' }}>S3</option>
+                    <option value="a" {{ old('tingkat_pendidikan', $pendidikan->getRawOriginal('tingkat_pendidikan')) == 'a' ? 'selected' : '' }}>S1</option>
+                    <option value="b" {{ old('tingkat_pendidikan', $pendidikan->getRawOriginal('tingkat_pendidikan')) == 'b' ? 'selected' : '' }}>S2</option>
+                    <option value="c" {{ old('tingkat_pendidikan', $pendidikan->getRawOriginal('tingkat_pendidikan')) == 'c' ? 'selected' : '' }}>S3</option>
                   </select>
                   @error('tingkat_pendidikan')
                     <div class="invalid-feedback">
@@ -69,8 +69,8 @@
                   <label class="form-label text-secondary">Status Saat Ini *</label>
                   <select class="form-select @error('is_studying') is-invalid @enderror" name="is_studying">
                     <option hidden="">Pilih Status Saat Ini</option>
-                    <option value="0" {{ old('is_studying', $pendidikan->is_studying) == '0' ? 'selected' : '' }}>Sudah Selesai</option>
-                    <option value="1" {{ old('is_studying', $pendidikan->is_studying) == '1' ? 'selected' : '' }}>Masih Kuliah</option>
+                    <option value="0" {{ old('is_studying', $pendidikan->getRawOriginal('is_studying')) == '0' ? 'selected' : '' }}>Sudah Selesai</option>
+                    <option value="1" {{ old('is_studying', $pendidikan->getRawOriginal('is_studying')) == '1' ? 'selected' : '' }}>Masih Kuliah</option>
                   </select>
                   @error('is_studying')
                     <div class="invalid-feedback">
@@ -82,8 +82,8 @@
                   <label class="form-label text-secondary">Program Studi Satu Linier *</label>
                   <select class="form-select @error('is_linear') is-invalid @enderror" name="is_linear">
                     <option hidden="">Pilih Program Studi Satu Linier</option>
-                    <option value="0" {{ old('is_linear', $pendidikan->is_linear) == '0' ? 'selected' : '' }}>Tidak</option>
-                    <option value="1" {{ old('is_linear', $pendidikan->is_linear) == '1' ? 'selected' : '' }}>Ya</option>
+                    <option value="0" {{ old('is_linear', $pendidikan->getRawOriginal('is_linear')) == '0' ? 'selected' : '' }}>Tidak</option>
+                    <option value="1" {{ old('is_linear', $pendidikan->getRawOriginal('is_linear')) == '1' ? 'selected' : '' }}>Ya</option>
                   </select>
                   @error('is_linear')
                     <div class="invalid-feedback">

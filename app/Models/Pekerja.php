@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use App\Models\DetailPerusahaan;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pekerja extends Model
 {
@@ -85,6 +86,8 @@ class Pekerja extends Model
 
     
     $dataAkhirKerja = [];
+
+    // cek jika inputan tanggal akhir kerja ada dan mematikan is_active
     if(isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])){
       $dataAkhirKerja = [
         'is_active' => 0,
@@ -110,10 +113,16 @@ class Pekerja extends Model
 
     $pekerja = Pekerja::create($dataPrepare);
     
+    // cek jika freelance dan early return 
     if($rules['status-pekerjaan'] == 'b' && $rules['kriteria-pekerjaan'] == 'd'){
       return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
     }
     
+    // pembuatan token untuk link public yang diakses oleh stakeholder
+    do {
+      $token = Str::random(255);
+    } while (DetailPerusahaan::where('token', $token)->first());
+
     $detail_perusahaan = [
       'pekerja_id' => $pekerja->id,
       'nama_perusahaan' => $rules['nama-perusahaan'],
@@ -122,9 +131,12 @@ class Pekerja extends Model
       'telepon_atasan' => $rules['nomor-telepon-atasan'],
       'alamat_perusahaan' => $rules['alamat-perusahaan'],
       'email_atasan' => $rules['alamat-email-aktif-atasan'],
+      'token' => $token
     ];
 
     DetailPerusahaan::create($detail_perusahaan);
+    
+    // kirim notif ke stakeholder
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
   }
@@ -233,13 +245,29 @@ class Pekerja extends Model
       'email_atasan' => $rules['alamat-email-aktif-atasan'],
     ];
 
+    // cek jika nomor telepon atasan berubah atau tidak untuk membuat token baru
+    if($rules['nomor-telepon-atasan'] != $pekerja->detailPerusahaan->telepon_atasan){
+      do {
+        $detail_perusahaan['token'] = Str::random(255);
+      } while (DetailPerusahaan::where('token', $detail_perusahaan['token'])->first());
+    }
+
     DetailPerusahaan::where('pekerja_id', $pekerja->id)->update($detail_perusahaan);
+
+    // Kirim notif ke stakeholder
 
     if(auth()->user()->role != 'mahasiswa'){
       return redirect('/dashboard/admin/'.$pekerja->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
     }
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil diubah!');
+  }
+
+  /**
+   * DRY function
+   */
+  private function whatsappGateway($nomorTelepon, $token, $message){
+    
   }
 
   /**

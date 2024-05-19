@@ -27,7 +27,7 @@ function handleStatusChange(value){
 function fetchQuestion(url, status = null){
   buttonGroup.removeClass('d-none');
   $.ajax({
-    url: "http://127.0.0.1:8000/api/questions/category/"+url,
+    url: "/api/questions/category/"+url,
     method: "GET",
     dataType: "json",
     success: function (data) {
@@ -58,7 +58,7 @@ function populateInformasiPerusahaan(){
   informasiPerusahaan.empty();
   informasiPerusahaan.append($("<span>").addClass("h4").text("Informasi Perusahaan"));
   $.ajax({
-    url: "http://127.0.0.1:8000/api/questions/category/info-perusahaan",
+    url: "/api/questions/category/info-perusahaan",
     method: "GET",
     dataType: "json",
     success: function (data) {

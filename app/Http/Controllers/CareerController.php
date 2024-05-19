@@ -15,7 +15,7 @@ class CareerController extends Controller
    */
   public function index()
   {
-    $query = Career::latest();
+    $query = Career::with('user')->latest();
 
     if (auth()->user()->role == 'admin') {
       $query->whereHas('user', function ($query) {
@@ -28,7 +28,7 @@ class CareerController extends Controller
     }
 
     return view('dashboard.careers.index', [
-      'careers' => $query->paginate(7)->withQueryString()
+      'careers' => $query->paginate()->appends(request()->query()),
     ]);
   }
 
