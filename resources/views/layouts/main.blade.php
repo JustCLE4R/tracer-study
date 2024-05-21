@@ -6,7 +6,7 @@
   <title>Tracer Study UINSU</title>
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
 
   <link rel="stylesheet" href="/css/bootstrap-5.0.0-beta2.min.css" />
   <link rel="stylesheet" href="/css/LineIcons.2.0.css" />
@@ -53,9 +53,6 @@
 
   @if (Request::is('career*'))
   <script src="/js/public-carrer.js"></script>
-    <script>
-           
-    </script>
   @endif
 
 </body>

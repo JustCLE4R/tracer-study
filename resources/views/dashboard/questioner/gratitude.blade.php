@@ -1,0 +1,1 @@
+<h1 style="font-size: 5rem" class="text-center">TERIMA KASIH YA BWANG SUDAH MENGISI KUESIONERNYA</h1>
