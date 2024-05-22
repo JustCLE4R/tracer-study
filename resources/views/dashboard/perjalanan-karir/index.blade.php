@@ -61,7 +61,7 @@
 										<i class="bi bi-person-workspace"></i>
 									</div>
 									<div class="timeline__event__date">
-										{{ $pekerjaan->detail_pekerjaan." | ".$pekerjaan->jabatan_pekerjaan}}
+										{{ $pekerjaan->detail_pekerjaan." - ".$pekerjaan->jabatan_pekerjaan}}
 
 									</div>
 									<div class="timeline__event__content">

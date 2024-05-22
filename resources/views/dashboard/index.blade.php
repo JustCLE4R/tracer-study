@@ -94,16 +94,8 @@ n="1000">
       <!-- Chart 1 -->
     
         <div class="col-lg-12 col-sm-12 d-flex align-items-center justify-content-between mb-4">
-          <span  class="mb-0 h4 ">Pilih Data Yang Ingin Ditampilkan</span>
-          <div class="input-group mb-2 wow fadeInUp" style="width: 45%;" data-wow-duration="1s" data-wow-delay="0.9s" >
-            <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-            <button class="btn btn-success" type="button">Pilih Kategori</button>
-          </div>
+          <span  class="mb-0 h4 ">Visualisasi Data Tracer Study</span>
+          <a href="" class="btn btn-success">Tampilkan Semua</a>
           
         </div> 
 
@@ -197,7 +189,11 @@ n="1000">
 </div>
 {{-- table end --}}
 
+<script>
   
+
+
+</script>
 
 
 @endsection
