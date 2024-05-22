@@ -33,6 +33,7 @@ Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::post('/login', [LoginController::class, 'authenticate']);
 
   Route::get('/questioner/{questioner:token}', [QuestionerController::class, 'getPublicQuestioner']);
+  Route::post('/questioner/{questioner:token}', [QuestionerController::class, 'postPublicQuestioner']);
 });
 
 //dashboard routes
@@ -54,13 +55,8 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::resource('/wirausaha', WirausahaController::class)->except(['index', 'create', 'store']);
   Route::resource('/pendidikan', PendidikanController::class)->except(['index']);
 
-  Route::get('/questioner', function () {
-    return view('dashboard.questioner.index');
-  });
-  Route::get('/questioner/stack', function () {
-    return view('dashboard.questioner.stack');
-  });
-
+  Route::get('/questioner', [QuestionerController::class, 'index']);
+  Route::post('/questioner', [QuestionerController::class, 'store']);
 
   // admin routes
   Route::middleware('is-admin')->group(function () {

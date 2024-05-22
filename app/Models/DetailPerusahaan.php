@@ -20,4 +20,8 @@ class DetailPerusahaan extends Model
     public function pekerja(){
         return $this->belongsTo(Pekerja::class);
     }
+
+    public function questionerStackHolder(){
+        return $this->hasOne(QuestionerStackHolder::class);
+    }
 }

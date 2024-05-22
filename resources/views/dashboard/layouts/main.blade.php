@@ -8,7 +8,7 @@
   <title>Pusat Pengembangan Karir</title>
 
   <!-- Favicon -->
-  <link href="favicon.ico" rel="icon">
+  <link href="favicon.ico" type="image/x-icon" rel="icon">
 
   <!-- Google Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

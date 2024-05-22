@@ -19,6 +19,7 @@ class Wirausaha extends Model
   //   'user'
   // ];
 
+  // TODO: Move this shit to Form Request
   public static function wirausahaStore($request){
     $rules = $request->validate([
       'pekerjaan' => 'required|string',
