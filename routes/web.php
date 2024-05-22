@@ -58,6 +58,9 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::get('/questioner', [QuestionerController::class, 'index']);
   Route::post('/questioner', [QuestionerController::class, 'store']);
 
+  Route::get('/visual', function () {
+    return view('dashboard.visual');
+  });
   // admin routes
   Route::middleware('is-admin')->group(function () {
     Route::resource('/admin/laporan', LaporanController::class)->except(['show']);

@@ -95,7 +95,7 @@ n="1000">
     
         <div class="col-lg-12 col-sm-12 d-flex align-items-center justify-content-between mb-4">
           <span  class="mb-0 h4 ">Visualisasi Data Tracer Study</span>
-          <a href="" class="btn btn-success">Tampilkan Semua</a>
+          <a href="/dashboard/visual" class="btn btn-success">Tampilkan Semua</a>
           
         </div> 
 
@@ -121,7 +121,7 @@ n="1000">
 <div class="container-fluid pt-4 px-4 ms-0">
   <div class="bg-light  border-top border-success border-5 text-center rounded p-4">
     <div class="d-flex align-items-center justify-content-between mb-4">
-      <span data-wow-duration="1s" data-wow-delay="0.9s"  class="mb-0 h4 wow fadeInUp">Data Mahasiswa</span>
+      <span data-wow-duration="1s" data-wow-delay="0.9s"  class="mb-0 h4 wow fadeInUp">Data Pengisi Tracer Study & Questioner</span>
     </div>
     <div class="table-responsive">
       <table class="table text-start align-middle table-bordered table-hover mb-0">
