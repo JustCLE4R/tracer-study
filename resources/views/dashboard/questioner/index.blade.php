@@ -8,6 +8,7 @@
                     <div class="row">
                         <div class="col-12">
                             <span class="h4">Kuesioner</span><br>
+                            {{ $data->a_1 }}
                             Status Pengisian:
                             @if ($questioner->isNotEmpty())
                                 <span class="btn btn-sm btn-success">Sudah Mengisi <i class="bi bi-check-lg"></i></span>  
@@ -64,8 +65,8 @@
                                     <span class="h6 mb-2"><b>(h) Matakuliah yang paling berperan terhadap kelanjutan karir anda?</b></span>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <label for="h-1" class="form-label">Jawaban Anda :</label>
-                                    <input type="text" class="form-control" name="h-1" id="h-1" required>
+                                    <label for="h_1" class="form-label">Jawaban Anda :</label>
+                                    <input type="text" class="form-control" name="h_1" id="h_1" required>
                                 </div>
                             </div>
                             <div class="row my-2">
@@ -73,8 +74,8 @@
                                     <span class="h6 mb-2"><b>(i) Matakuliah yang sebaiknya ditiadakan?</b></span>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <label for="i-1" class="form-label">Jawaban Anda :</label>
-                                    <input type="text" class="form-control" name="i-1" id="i-1" required>
+                                    <label for="i_1" class="form-label">Jawaban Anda :</label>
+                                    <input type="text" class="form-control" name="i_1" id="i_1" required>
                                 </div>
                             </div>
                             <div class="row my-2">
@@ -82,8 +83,8 @@
                                     <span class="h6 mb-2"><b>(j) Matakuliah yang sebaiknya diadakan di kampus?</b></span>
                                 </div>
                                 <div class="col-lg-4 col-md-6 col-sm-12">
-                                    <label for="j-1" class="form-label">Jawaban Anda :</label>
-                                    <input type="text" class="form-control" name="j-1" id="j-1" required>
+                                    <label for="j_1" class="form-label">Jawaban Anda :</label>
+                                    <input type="text" class="form-control" name="j_1" id="j_1" required>
                                 </div>
                             </div>
                             <div class="row mt-2 justify-content-end">

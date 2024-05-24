@@ -15,27 +15,27 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             for ($i = 1; $i <= 18; $i++) {
-                $table->enum('a-' . $i, [0, 1, 2, 3, 4]);
+                $table->enum('a_' . $i, [0, 1, 2, 3, 4]);
             }
             for ($i = 1; $i <= 18; $i++) {
-                $table->enum('b-' . $i, [0, 1, 2, 3, 4]);
+                $table->enum('b_' . $i, [0, 1, 2, 3, 4]);
             }
-            $table->enum('c-1', [0, 1, 2, 3]); //C
+            $table->enum('c_1', [0, 1, 2, 3]); //C
             for ($i = 1; $i <= 5; $i++) {
-                $table->enum('d-' . $i, [0, 1, 2, 3, 4]);
+                $table->enum('d_' . $i, [0, 1, 2, 3, 4]);
             }
             for ($i = 1; $i <= 5; $i++) {
-                $table->enum('e-' . $i, [0, 1, 2, 3, 4]);
+                $table->enum('e_' . $i, [0, 1, 2, 3, 4]);
             }
             for ($i = 1; $i <= 10; $i++) {
-                $table->enum('f-' . $i, [0, 1, 2, 3, 4]);
+                $table->enum('f_' . $i, [0, 1, 2, 3, 4]);
             }
             for($i = 1; $i <= 6; $i++){
-                $table->enum('g-' . $i, [0, 1, 2, 3, 4]);
+                $table->enum('g_' . $i, [0, 1, 2, 3, 4]);
             }
-            $table->string('h-1');
-            $table->string('i-1');
-            $table->string('j-1');
+            $table->string('h_1');
+            $table->string('i_1');
+            $table->string('j_1');
             $table->timestamps();
         });
     }

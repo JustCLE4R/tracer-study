@@ -26,26 +26,26 @@ class StoreQuestionerRequest extends FormRequest
         $rules['user_id'] = ['required'];
         
         for ($i = 1; $i <= 18; $i++) {
-            $rules["a-$i"] = ['required', 'integer', 'between:0,4'];
-            $rules["b-$i"] = ['required', 'integer', 'between:0,4'];
+            $rules["a_$i"] = ['required', 'integer', 'between:0,4'];
+            $rules["b_$i"] = ['required', 'integer', 'between:0,4'];
         }
 
-        $rules["c-1"] = ['required', 'integer', 'between:0,3'];
+        $rules["c_1"] = ['required', 'integer', 'between:0,3'];
 
         for ($i = 1; $i <= 5; $i++) {
-            $rules["d-$i"] = ['required', 'integer', 'between:0,4'];
-            $rules["e-$i"] = ['required', 'integer', 'between:0,4'];
+            $rules["d_$i"] = ['required', 'integer', 'between:0,4'];
+            $rules["e_$i"] = ['required', 'integer', 'between:0,4'];
         }
         for ($i = 1; $i <= 10; $i++) {
-            $rules["f-$i"] = ['required', 'integer', 'between:0,4'];
+            $rules["f_$i"] = ['required', 'integer', 'between:0,4'];
         }
         for ($i = 1; $i <= 6; $i++) {
-            $rules["g-$i"] = ['required', 'integer', 'between:0,4'];
+            $rules["g_$i"] = ['required', 'integer', 'between:0,4'];
         }
 
-        $rules["h-1"] = ['required', 'string'];
-        $rules["i-1"] = ['required', 'string'];
-        $rules["j-1"] = ['required', 'string'];
+        $rules["h_1"] = ['required', 'string'];
+        $rules["i_1"] = ['required', 'string'];
+        $rules["j_1"] = ['required', 'string'];
 
         return $rules;
     }
@@ -64,26 +64,26 @@ class StoreQuestionerRequest extends FormRequest
     {
         $attributes = [];
         for ($i = 1; $i <= 18; $i++) {
-            $attributes["a-$i"] = "a-$i";
-            $attributes["b-$i"] = "b-$i";
+            $attributes["a_$i"] = "a_$i";
+            $attributes["b_$i"] = "b_$i";
         }
 
-        $attributes["c-1"] = "c-1"; //C
+        $attributes["c_1"] = "c_1"; //C
 
         for ($i = 1; $i <= 5; $i++) {
-            $attributes["d-$i"] = "d-$i";
-            $attributes["e-$i"] = "e-$i";
+            $attributes["d_$i"] = "d_$i";
+            $attributes["e_$i"] = "e_$i";
         }
         for ($i = 1; $i <= 10; $i++) {
-            $attributes["f-$i"] = "f-$i";
+            $attributes["f_$i"] = "f_$i";
         }
         for ($i = 1; $i <= 6; $i++) {
-            $attributes["g-$i"] = "g-$i";
+            $attributes["g_$i"] = "g_$i";
         }
 
-        $attributes["h-1"] = "h-1"; //H
-        $attributes["i-1"] = "i-1"; //I
-        $attributes["j-1"] = "j-1"; //J
+        $attributes["h_1"] = "h_1"; //H
+        $attributes["i_1"] = "i_1"; //I
+        $attributes["j_1"] = "j_1"; //J
 
         return $attributes;
     }

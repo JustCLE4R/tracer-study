@@ -27,3 +27,4 @@ Route::get('/questions/type/{question:type}', [QuestionController::class, 'getQu
 Route::get('/visualisasi/wirausaha', [VisualisasiController::class, 'dataWirausaha']);
 Route::get('/visualisasi/pekerja', [VisualisasiController::class, 'dataPekerja']);
 Route::get('/visualisasi/pendidikan', [VisualisasiController::class, 'dataPendidikan']);
+Route::get('/visualisasi/questioner', [VisualisasiController::class, 'dataQuestioner']);

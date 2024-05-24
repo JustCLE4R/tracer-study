@@ -72,8 +72,10 @@ class QuestionerController extends Controller
     }
 
     public function index(){
+        $data = Questioner::get()->first();
         return view('dashboard.questioner.index', [
-            'questioner' => Questioner::where('user_id', auth()->user()->id)->with('user')->get()
+            'questioner' => Questioner::where('user_id', auth()->user()->id)->with('user')->get(),
+            'data' => $data
         ]);
     }
 

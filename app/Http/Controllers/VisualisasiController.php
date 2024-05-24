@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pekerja;
 use App\Models\Wirausaha;
 use App\Models\Pendidikan;
+use App\Models\Questioner;
 
 class VisualisasiController extends Controller
 {
@@ -91,6 +92,38 @@ class VisualisasiController extends Controller
             'Tgl Surat Penerimaan Pendidikan' => $this->dateRange($pendidikan_data, 'tgl_surat_penerimaan_pendidikan'),
             'Tgl Mulai Pendidikan' => $this->dateRange($pendidikan_data, 'tgl_mulai_pendidikan'),
             'Satu Linear' => $pendidikan_data->countBy('is_linear'),
+        ];
+    }
+
+    public function dataQuestioner(){
+        $questioner_data = Questioner::get();
+
+        return[
+            'Ketaqwaan terhadap Tuhan yang maha Esa' => $questioner_data->countBy('a_1'),
+            'Etika dan kecerdasan dalam bertindak' => $questioner_data->countBy('a_2'),
+            'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $questioner_data->countBy('a_3'),
+            'Ketrampilan internet dan computer' => $questioner_data->countBy('a_4'),
+            'Kemampuan belajar' => $questioner_data->countBy('a_5'),
+            'Kemampuan berkomunikasi' => $questioner_data->countBy('a_6'),
+            'Bekerja dalam tim/bekerjasama dengan orang lain' => $questioner_data->countBy('a_7'),
+            'Kemampuan dalam memecahkan masalah' => $questioner_data->countBy('a_8'),
+            'Inovasi dan/atau kreatifitas' => $questioner_data->countBy('a_9'),
+            'Pengetahuan di bidang atau disiplin ilmu anda' => $questioner_data->countBy('a_10'),
+            'Pengetahuan di luar bidang atau disiplin ilmu anda' => $questioner_data->countBy('a_11'),
+            'Keseimbangan antara pikir dan zikir' => $questioner_data->countBy('a_12'),
+            'Mampu melakukan pendekatan integral-transdisipliner' => $questioner_data->countBy('a_13'),
+            'Memiliki etos dinamis dan berkarakter pengabdi' => $questioner_data->countBy('a_14'),
+            'Berakhlak mulia' => $questioner_data->countBy('a_15'),
+            'Pengetahuan umum dan memiliki wawasan kebangsaan' => $questioner_data->countBy('a_16'),
+            'Bervisi pengembangan peradaban' => $questioner_data->countBy('a_17'),
+            'Berpenampilan happy / Bahagia' => $questioner_data->countBy('a_18'),
+
+            'ini c' => $questioner_data->countBy('c_1'),
+
+
+
+
+
         ];
     }
 

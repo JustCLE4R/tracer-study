@@ -6,92 +6,92 @@
         "questions": [
           {
             "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
-            "name": "a-1",
+            "name": "a_1",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Etika dan kecerdasan dalam bertindak",
-            "name": "a-2",
+            "name": "a_2",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
-            "name": "a-3",
+            "name": "a_3",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Ketrampilan internet dan computer",
-            "name": "a-4",
+            "name": "a_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan belajar",
-            "name": "a-5",
+            "name": "a_5",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan berkomunikasi",
-            "name": "a-6",
+            "name": "a_6",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
-            "name": "a-7",
+            "name": "a_7",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan dalam memecahkan masalah",
-            "name": "a-8",
+            "name": "a_8",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Inovasi dan/atau kreatifitas",
-            "name": "a-9",
+            "name": "a_9",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pengetahuan di bidang atau disiplin ilmu anda",
-            "name": "a-10",
+            "name": "a_10",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
-            "name": "a-11",
+            "name": "a_11",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Keseimbangan antara pikir dan zikir",
-            "name": "a-12",
+            "name": "a_12",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Mampu melakukan pendekatan integral-transdisipliner",
-            "name": "a-13",
+            "name": "a_13",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Memiliki etos dinamis dan berkarakter pengabdi",
-            "name": "a-14",
+            "name": "a_14",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Berakhlak mulia",
-            "name": "a-15",
+            "name": "a_15",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
-            "name": "a-16",
+            "name": "a_16",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Bervisi pengembangan peradaban",
-            "name": "a-17",
+            "name": "a_17",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Berpenampilan happy / Bahagia",
-            "name": "a-18",
+            "name": "a_18",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }
         ]
@@ -102,92 +102,92 @@
         "questions": [
           {
             "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
-            "name": "b-1",
+            "name": "b_1",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Etika dan kecerdasan dalam bertindak",
-            "name": "b-2",
+            "name": "b_2",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
-            "name": "b-3",
+            "name": "b_3",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Ketrampilan internet dan computer",
-            "name": "b-4",
+            "name": "b_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan belajar",
-            "name": "b-5",
+            "name": "b_5",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan berkomunikasi",
-            "name": "b-6",
+            "name": "b_6",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
-            "name": "b-7",
+            "name": "b_7",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kemampuan dalam memecahkan masalah",
-            "name": "b-8",
+            "name": "b_8",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Inovasi dan/atau kreatifitas",
-            "name": "b-9",
+            "name": "b_9",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pengetahuan di bidang atau disiplin ilmu anda",
-            "name": "b-10",
+            "name": "b_10",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
-            "name": "b-11",
+            "name": "b_11",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Keseimbangan antara pikir dan zikir",
-            "name": "b-12",
+            "name": "b_12",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Mampu melakukan pendekatan integral-transdisipliner",
-            "name": "b-13",
+            "name": "b_13",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Memiliki etos dinamis dan berkarakter pengabdi",
-            "name": "b-14",
+            "name": "b_14",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Berakhlak mulia",
-            "name": "b-15",
+            "name": "b_15",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
-            "name": "b-16",
+            "name": "b_16",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Bervisi pengembangan peradaban",
-            "name": "b-17",
+            "name": "b_17",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Berpenampilan happy / Bahagia",
-            "name": "b-18",
+            "name": "b_18",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }
         ]
@@ -195,7 +195,7 @@
       {
         "title": "(c) Peningkatan kompetensi yang anda peroleh didapat paling banyak dari:",
         "prefix": "c",
-        "name" : "c-1",
+        "name" : "c_1",
         "options":[
             "Perkuliahan Himpunan Prodi",
             "Organisasi Ekstra Kampus",
@@ -210,27 +210,27 @@
         "questions": [
           {
             "text": "Perkuliahan",
-            "name": "d-1",
+            "name": "d_1",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Demonstrasi/peragaan pembelajaran",
-            "name": "d-2",
+            "name": "d_2",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Partisipasi dalam proyek riset",
-            "name": "d-3",
+            "name": "d_3",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Magang",
-            "name": "d-4",
+            "name": "d_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Diskusi",
-            "name": "d-5",
+            "name": "d_5",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }
         ]
@@ -241,27 +241,27 @@
         "questions": [
           {
             "text": "Kesempatan untuk berinteraksi dengan dosen-dosen di luar jadwal kuliah",
-            "name": "e-1",
+            "name": "e_1",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Bimbingan akademik",
-            "name": "e-2",
+            "name": "e_2",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Variasi mata kuliah",
-            "name": "e-3",
+            "name": "e_3",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kesempatan untuk memasuki dan menjadi bagian dari jejaring ilmuwan professional",
-            "name": "e-4",
+            "name": "e_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Beasiswa",
-            "name": "e-5",
+            "name": "e_5",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }
         ]
@@ -272,52 +272,52 @@
         "questions": [
           {
             "text": "Perpustakaan",
-            "name": "f-1",
+            "name": "f_1",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Teknologi informasi dan komunikasi",
-            "name": "f-2",
+            "name": "f_2",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pusat Bahasa",
-            "name": "f-3",
+            "name": "f_3",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Fasilitas olahraga",
-            "name": "f-4",
+            "name": "f_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Laboratorium/studio/workshop",
-            "name": "f-5",
+            "name": "f_5",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kondisi dan sistem keamanan serta keselamatan",
-            "name": "f-6",
+            "name": "f_6",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kondisi serta fasilitas toilet dan sanitari lainnya",
-            "name": "f-7",
+            "name": "f_7",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kantin, koperasi dan sarana perbelanjaan di dalam kampus",
-            "name": "f-8",
+            "name": "f_8",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pusat kegiatan mahasiswa beserta fasilitasnya dan ruang rekreasi",
-            "name": "f-9",
+            "name": "f_9",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Fasilitas layanan Kesehatan",
-            "name": "f-10",
+            "name": "f_10",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }
         ]
@@ -328,32 +328,32 @@
         "questions": [
           {
             "text": "Memulai pekerjaan",
-            "name": "g-1",
+            "name": "g_1",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pembelajaran yang berkelanjutan dalam pekerjaan",
-            "name": "g-2",
+            "name": "g_2",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Kinerja dalam menjalankan tugas",
-            "name": "g-3",
+            "name": "g_3",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Informasi karir dan peluang kerja",
-            "name": "g-4",
+            "name": "g_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Pengembangan diri",
-            "name": "g-5",
+            "name": "g_5",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
             "text": "Meningkatkan keterampilan kewirausahaan",
-            "name": "g-6",
+            "name": "g_6",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }
         ]
