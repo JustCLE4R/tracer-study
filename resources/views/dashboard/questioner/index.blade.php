@@ -8,7 +8,6 @@
                     <div class="row">
                         <div class="col-12">
                             <span class="h4">Kuesioner</span><br>
-                            {{ $data->a_1 }}
                             Status Pengisian:
                             @if ($questioner->isNotEmpty())
                                 <span class="btn btn-sm btn-success">Sudah Mengisi <i class="bi bi-check-lg"></i></span>  

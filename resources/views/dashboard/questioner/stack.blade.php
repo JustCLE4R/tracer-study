@@ -75,45 +75,45 @@
                         <div class="row my-2">
                             <div class="h6 mb-2"><b>(a) Menilai</b></div>
                             <div class="col-lg-6 col-md-6 col-sm-12 mb-3">
-                                <label for="a-1" class="form-label">Nama: </label>
-                                <input type="text" class="form-control" name="a-1" id="a-1" value="{{ $questioner->pekerja->user->nama }}" readonly>
+                                <label for="a_1" class="form-label">Nama: </label>
+                                <input type="text" class="form-control" name="a_1" id="a_1" value="{{ $questioner->pekerja->user->nama }}" readonly>
                             </div>
                             <div class="col-6">
-                                <label for="a-2" class="form-label">Jabatan: </label>
-                                <input type="text" class="form-control" name="a-2" id="a-2" value="{{ $questioner->pekerja->jabatan_pekerjaan }}" readonly>
+                                <label for="a_2" class="form-label">Jabatan: </label>
+                                <input type="text" class="form-control" name="a_2" id="a_2" value="{{ $questioner->pekerja->jabatan_pekerjaan }}" readonly>
                             </div>
                         </div>
                         <div class="row justify-content-between">
                             <div class="h6 mb-2"><b>(b) Penilai </b></div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary" for="b-1">Nama Perusahaan:</label>
-                                <input type="text" id="b-1" name="b-1"
-                                    class="form-control" value="{{ old('b-1', $questioner->nama_perusahaan) }}" required>
+                                <label class="form-label text-secondary" for="b_1">Nama Perusahaan:</label>
+                                <input type="text" id="b_1" name="b_1"
+                                    class="form-control" value="{{ old('b_1', $questioner->nama_perusahaan) }}" required>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary" for="b-2">Nama Atasan:</label>
-                                <input type="text" id="b-2" name="b-2"
-                                    class="form-control" value="{{ old('b-2', $questioner->nama_atasan) }}" required>
+                                <label class="form-label text-secondary" for="b_2">Nama Atasan:</label>
+                                <input type="text" id="b_2" name="b_2"
+                                    class="form-control" value="{{ old('b_2', $questioner->nama_atasan) }}" required>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary" for="b-3">Posisi / Jabatan Atasan:</label>
-                                <input type="text" id="b-3" name="b-3"
-                                    class="form-control" value="{{ old('b-3', $questioner->jabatan_atasan) }}" required>
+                                <label class="form-label text-secondary" for="b_3">Posisi / Jabatan Atasan:</label>
+                                <input type="text" id="b_3" name="b_3"
+                                    class="form-control" value="{{ old('b_3', $questioner->jabatan_atasan) }}" required>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary" for="b-4">Nomor Telepon Atasan:</label>
-                                <input type="text" id="b-4" name="b-4"
-                                    class="form-control" value="{{ old('b-4', $questioner->telepon_atasan) }}" required>
+                                <label class="form-label text-secondary" for="b_4">Nomor Telepon Atasan:</label>
+                                <input type="text" id="b_4" name="b_4"
+                                    class="form-control" value="{{ old('b_4', $questioner->telepon_atasan) }}" required>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary" for="b-5">Alamat Perusahaan:</label>
-                                <input type="text" id="b-5" name="b-5"
-                                    class="form-control" value="{{ old('b-5', $questioner->alamat_perusahaan) }}" required>
+                                <label class="form-label text-secondary" for="b_5">Alamat Perusahaan:</label>
+                                <input type="text" id="b_5" name="b_5"
+                                    class="form-control" value="{{ old('b_5', $questioner->alamat_perusahaan) }}" required>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary" for="b-6">Alamat Email Aktif Atasan:</label>
-                                <input type="email" id="b-6" name="b-6"
-                                    class="form-control" value="{{ old('b-6',$questioner->email_atasan) }}" required>
+                                <label class="form-label text-secondary" for="b_6">Alamat Email Aktif Atasan:</label>
+                                <input type="email" id="b_6" name="b_6"
+                                    class="form-control" value="{{ old('b_6',$questioner->email_atasan) }}" required>
                             </div>
                         </div>
                         <div class="row my-2">
@@ -122,32 +122,32 @@
                             </div>
                             <div class="col-lg-6 col-sm-12 my-1">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="c-1[]" value="a" id="c-1-Sponsorship">
-                                    <label class="form-check-label" for="c-1-Sponsorship">
+                                    <input type="checkbox" class="form-check-input" name="c_1[]" value="a" id="c_1-Sponsorship">
+                                    <label class="form-check-label" for="c_1-Sponsorship">
                                         Sponsorship
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="c-1[]" value="b" id="c-1-Rekrutmen">
-                                    <label class="form-check-label" for="c-1-Rekrutmen">
+                                    <input type="checkbox" class="form-check-input" name="c_1[]" value="b" id="c_1-Rekrutmen">
+                                    <label class="form-check-label" for="c_1-Rekrutmen">
                                         Rekrutmen
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="c-1[]" value="c" id="c-1-Magang">
-                                    <label class="form-check-label" for="c-1-Magang">
+                                    <input type="checkbox" class="form-check-input" name="c_1[]" value="c" id="c_1-Magang">
+                                    <label class="form-check-label" for="c_1-Magang">
                                         Magang
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="c-1[]" value="d" id="c-1-Beasiswa">
-                                    <label class="form-check-label" for="c-1-Beasiswa">
+                                    <input type="checkbox" class="form-check-input" name="c_1[]" value="d" id="c_1-Beasiswa">
+                                    <label class="form-check-label" for="c_1-Beasiswa">
                                         Beasiswa
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="c-1[]" value="e" id="c-1-Kuliah Tamu">
-                                    <label class="form-check-label" for="c-1-Kuliah Tamu">
+                                    <input type="checkbox" class="form-check-input" name="c_1[]" value="e" id="c_1-Kuliah Tamu">
+                                    <label class="form-check-label" for="c_1-Kuliah Tamu">
                                         Kuliah Tamu
                                     </label>
                                 </div>
@@ -159,32 +159,32 @@
                             </div>
                             <div class="col-lg-6 col-sm-12 my-1">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="d-1[]" value="a" id="d-1-Sponsorship">
-                                    <label class="form-check-label" for="d-1-Sponsorship">
+                                    <input type="checkbox" class="form-check-input" name="d_1[]" value="a" id="d_1-Sponsorship">
+                                    <label class="form-check-label" for="d_1-Sponsorship">
                                         Sponsorship
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="d-1[]" value="b" id="d-1-Rekrutmen">
-                                    <label class="form-check-label" for="d-1-Rekrutmen">
+                                    <input type="checkbox" class="form-check-input" name="d_1[]" value="b" id="d_1-Rekrutmen">
+                                    <label class="form-check-label" for="d_1-Rekrutmen">
                                         Rekrutmen
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="d-1[]" value="c" id="d-1-Magang">
-                                    <label class="form-check-label" for="d-1-Magang">
+                                    <input type="checkbox" class="form-check-input" name="d_1[]" value="c" id="d_1-Magang">
+                                    <label class="form-check-label" for="d_1-Magang">
                                         Magang
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="d-1[]" value="d" id="d-1-Beasiswa">
-                                    <label class="form-check-label" for="d-1-Beasiswa">
+                                    <input type="checkbox" class="form-check-input" name="d_1[]" value="d" id="d_1-Beasiswa">
+                                    <label class="form-check-label" for="d_1-Beasiswa">
                                         Beasiswa
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="d-1[]" value="e" id="d-1-Kuliah Tamu">
-                                    <label class="form-check-label" for="d-1-Kuliah Tamu">
+                                    <input type="checkbox" class="form-check-input" name="d_1[]" value="e" id="d_1-Kuliah Tamu">
+                                    <label class="form-check-label" for="d_1-Kuliah Tamu">
                                         Kuliah Tamu
                                     </label>
                                 </div>
@@ -198,8 +198,8 @@
                                 <span class="h6 mb-2"><b>(g) Menurut Anda, Kompetensi HARDSKILL apakah yang menurut Anda kurang diberikan di UIN SU Medan?</b></span>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12">
-                                <label for="g-1" class="form-label">Jawaban Anda:</label>
-                                <input type="text" class="form-control" name="g-1" id="g-1" value="{{ old('g-1') }}" required>
+                                <label for="g_1" class="form-label">Jawaban Anda:</label>
+                                <input type="text" class="form-control" name="g_1" id="g_1" value="{{ old('g_1') }}" required>
                             </div>
                         </div>
                         <div class="row my-2">
@@ -207,8 +207,8 @@
                                 <span class="h6 mb-2"><b>(i) Menurut Anda, Kompetensi SOFTSKILL apakah yang menurut Anda kurang diberikan di UINSU Medan</b></span>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12">
-                                <label for="i-1" class="form-label">Jawaban Anda:</label>
-                                <input type="text" class="form-control" name="i-1" id="i-1" value="{{ old('i-1') }}" required>
+                                <label for="i_1" class="form-label">Jawaban Anda:</label>
+                                <input type="text" class="form-control" name="i_1" id="i_1" value="{{ old('i_1') }}" required>
                             </div>
                         </div>
                         <div class="row my-2">
@@ -216,8 +216,8 @@
                                 <span class="h6 mb-2"><b>(j) Apakah Usulan Anda untuk meningkatkan kompetensi Alumni yang sesuai dengan kebutuhan di Perusahaan Anda saat ini?</b></span>
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12">
-                                <label for="j-1" class="form-label">Jawaban Anda:</label>
-                                <input type="text" class="form-control" name="j-1" id="j-1" value="{{ old('j-1') }}" required>
+                                <label for="j_1" class="form-label">Jawaban Anda:</label>
+                                <input type="text" class="form-control" name="j_1" id="j_1" value="{{ old('j_1') }}" required>
                             </div>
                         </div>
                         <div class="row mt-2 justify-content-end">
@@ -234,7 +234,7 @@
         </div>
     </div>
     
-  
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

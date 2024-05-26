@@ -28,3 +28,4 @@ Route::get('/visualisasi/wirausaha', [VisualisasiController::class, 'dataWirausa
 Route::get('/visualisasi/pekerja', [VisualisasiController::class, 'dataPekerja']);
 Route::get('/visualisasi/pendidikan', [VisualisasiController::class, 'dataPendidikan']);
 Route::get('/visualisasi/questioner', [VisualisasiController::class, 'dataQuestioner']);
+Route::get('/visualisasi/stakeholder', [VisualisasiController::class, 'dataStakeholder']);

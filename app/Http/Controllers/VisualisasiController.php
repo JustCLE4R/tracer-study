@@ -6,12 +6,14 @@ use App\Models\Pekerja;
 use App\Models\Wirausaha;
 use App\Models\Pendidikan;
 use App\Models\Questioner;
+use App\Models\QuestionerStackHolder;
+use Illuminate\Http\Request;
 
 class VisualisasiController extends Controller
 {
-    public function dataWirausaha(){
+    public function dataWirausaha(Request $request){
 
-        $wirausaha_data = Wirausaha::get(['is_active', 'tingkat_tempat_usaha', 'bidang_usaha', 'omset', 'pendapatan', 'pemodal', 'kesesuaian', 'tgl_mulai_usaha', 'tgl_akhir_usaha']);
+        $wirausaha_data = Wirausaha::get();
 
         $pemodal_counts = [
             "Pribadi / Tabungan" => 0,
@@ -66,8 +68,8 @@ class VisualisasiController extends Controller
         ];
     }
 
-    public function dataPekerja(){
-        $pekerja_data = Pekerja::get(['is_active', 'status_pekerjaan', 'kriteria_pekerjaan', 'bidang_pekerjaan', 'tingkat_tempat_bekerja', 'jabatan_pekerjaan', 'pendapatan', 'kesesuaian', 'tgl_mulai_kerja', 'tgl_akhir_kerja']);
+    public function dataPekerja(Request $request){
+        $pekerja_data = Pekerja::get();
 
         return [
             'is_active' => $pekerja_data->countBy('is_active'),
@@ -83,54 +85,169 @@ class VisualisasiController extends Controller
         ];
     }
 
-    public function dataPendidikan(){
-        $pendidikan_data = Pendidikan::get(['is_studying', 'tingkat_pendidikan', 'tgl_surat_penerimaan_pendidikan', 'tgl_mulai_pendidikan', 'is_linear']);
+    public function dataPendidikan(Request $request){
+        $pendidikan_data = Pendidikan::get();
+
+        $negara = $pendidikan_data->map(function($item){
+            if($item->negara_pendidikan == "Indonesia"){
+                return "Dalam Negeri";
+            }else{
+                return "Luar Negeri";
+            }
+        })->countBy();
 
         return [
             'is_studying' => $pendidikan_data->countBy('is_studying'),
             'Tingkat Pendidikan' => $pendidikan_data->countBy('tingkat_pendidikan'),
             'Tgl Surat Penerimaan Pendidikan' => $this->dateRange($pendidikan_data, 'tgl_surat_penerimaan_pendidikan'),
             'Tgl Mulai Pendidikan' => $this->dateRange($pendidikan_data, 'tgl_mulai_pendidikan'),
+            'Negara Pendidikan' => $negara,
+            'provinsi_pendidikan' => $pendidikan_data->whereNotNull('provinsi_pendidikan')->countBy('provinsi_pendidikan'),
+            'kabupaten_pendidikan' => $pendidikan_data->whereNotNull('kabupaten_pendidikan')->countBy('kabupaten_pendidikan'),
             'Satu Linear' => $pendidikan_data->countBy('is_linear'),
         ];
     }
 
-    public function dataQuestioner(){
+    public function dataQuestioner(Request $request){
         $questioner_data = Questioner::get();
 
         return[
-            'Ketaqwaan terhadap Tuhan yang maha Esa' => $questioner_data->countBy('a_1'),
-            'Etika dan kecerdasan dalam bertindak' => $questioner_data->countBy('a_2'),
-            'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $questioner_data->countBy('a_3'),
-            'Ketrampilan internet dan computer' => $questioner_data->countBy('a_4'),
-            'Kemampuan belajar' => $questioner_data->countBy('a_5'),
-            'Kemampuan berkomunikasi' => $questioner_data->countBy('a_6'),
-            'Bekerja dalam tim/bekerjasama dengan orang lain' => $questioner_data->countBy('a_7'),
-            'Kemampuan dalam memecahkan masalah' => $questioner_data->countBy('a_8'),
-            'Inovasi dan/atau kreatifitas' => $questioner_data->countBy('a_9'),
-            'Pengetahuan di bidang atau disiplin ilmu anda' => $questioner_data->countBy('a_10'),
-            'Pengetahuan di luar bidang atau disiplin ilmu anda' => $questioner_data->countBy('a_11'),
-            'Keseimbangan antara pikir dan zikir' => $questioner_data->countBy('a_12'),
-            'Mampu melakukan pendekatan integral-transdisipliner' => $questioner_data->countBy('a_13'),
-            'Memiliki etos dinamis dan berkarakter pengabdi' => $questioner_data->countBy('a_14'),
-            'Berakhlak mulia' => $questioner_data->countBy('a_15'),
-            'Pengetahuan umum dan memiliki wawasan kebangsaan' => $questioner_data->countBy('a_16'),
-            'Bervisi pengembangan peradaban' => $questioner_data->countBy('a_17'),
-            'Berpenampilan happy / Bahagia' => $questioner_data->countBy('a_18'),
+            '(a) Seberapa besar kompetensi di bawah ini Anda kuasai?' => [
+                'Ketaqwaan terhadap Tuhan yang maha Esa' => $questioner_data->countBy('a_1'),
+                'Etika dan kecerdasan dalam bertindak' => $questioner_data->countBy('a_2'),
+                'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $questioner_data->countBy('a_3'),
+                'Ketrampilan internet dan computer' => $questioner_data->countBy('a_4'),
+                'Kemampuan belajar' => $questioner_data->countBy('a_5'),
+                'Kemampuan berkomunikasi' => $questioner_data->countBy('a_6'),
+                'Bekerja dalam tim/bekerjasama dengan orang lain' => $questioner_data->countBy('a_7'),
+                'Kemampuan dalam memecahkan masalah' => $questioner_data->countBy('a_8'),
+                'Inovasi dan/atau kreatifitas' => $questioner_data->countBy('a_9'),
+                'Pengetahuan di bidang atau disiplin ilmu anda' => $questioner_data->countBy('a_10'),
+                'Pengetahuan di luar bidang atau disiplin ilmu anda' => $questioner_data->countBy('a_11'),
+                'Keseimbangan antara pikir dan zikir' => $questioner_data->countBy('a_12'),
+                'Mampu melakukan pendekatan integral-transdisipliner' => $questioner_data->countBy('a_13'),
+                'Memiliki etos dinamis dan berkarakter pengabdi' => $questioner_data->countBy('a_14'),
+                'Berakhlak mulia' => $questioner_data->countBy('a_15'),
+                'Pengetahuan umum dan memiliki wawasan kebangsaan' => $questioner_data->countBy('a_16'),
+                'Bervisi pengembangan peradaban' => $questioner_data->countBy('a_17'),
+                'Berpenampilan happy / Bahagia' => $questioner_data->countBy('a_18'),
+            ],
 
-            'ini c' => $questioner_data->countBy('c_1'),
+            '(b) Seberapa besar kontribusi perguruan tinggi terhadap kompetensi yang Anda kuasai?' => [
+                'Ketaqwaan terhadap Tuhan yang maha Esa' => $questioner_data->countBy('b_1'),
+                'Etika dan kecerdasan dalam bertindak' => $questioner_data->countBy('b_2'),
+                'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $questioner_data->countBy('b_3'),
+                'Ketrampilan internet dan computer' => $questioner_data->countBy('b_4'),
+                'Kemampuan belajar' => $questioner_data->countBy('b_5'),
+                'Kemampuan berkomunikasi' => $questioner_data->countBy('b_6'),
+                'Bekerja dalam tim/bekerjasama dengan orang lain' => $questioner_data->countBy('b_7'),
+                'Kemampuan dalam memecahkan masalah' => $questioner_data->countBy('b_8'),
+                'Inovasi dan/atau kreatifitas' => $questioner_data->countBy('b_9'),
+                'Pengetahuan di bidang atau disiplin ilmu anda' => $questioner_data->countBy('b_10'),
+                'Pengetahuan di luar bidang atau disiplin ilmu anda' => $questioner_data->countBy('b_11'),
+                'Keseimbangan antara pikir dan zikir' => $questioner_data->countBy('b_12'),
+                'Mampu melakukan pendekatan integral-transdisipliner' => $questioner_data->countBy('b_13'),
+                'Memiliki etos dinamis dan berkarakter pengabdi' => $questioner_data->countBy('b_14'),
+                'Berakhlak mulia' => $questioner_data->countBy('b_15'),
+                'Pengetahuan umum dan memiliki wawasan kebangsaan' => $questioner_data->countBy('b_16'),
+                'Berpenampilan happy / Bahagia' => $questioner_data->countBy('b_17'),
+                'Bervisi pengembangan peradaban' => $questioner_data->countBy('b_18'),
+            ],
 
+            '(c) Peningkatan kompetensi yang anda peroleh didapat paling banyak dari:' =>[
+                'Peningkatan kompetensi yang anda peroleh didapat paling banyak dari:' => $questioner_data->countBy('c_1'),
+            ],
 
+            '(d) Seberapa besar penekanan pada aspek-aspek pembelajaran di bawah ini dilaksanakan di program studi Anda?' => [
+                'Perkuliahan' => $questioner_data->countBy('d_1'),
+                'Demonstrasi/peragaan pembelajaran' => $questioner_data->countBy('d_2'),
+                'Partisipasi dalam proyek riset' => $questioner_data->countBy('d_3'),
+                'Diskusi' => $questioner_data->countBy('d_4'),
+                'Magang' => $questioner_data->countBy('d_5'),
+            ],
 
+            '(e) Bagaimana penilaian Anda terhadap aspek belajar mengajar di bawah ini?' => [
+                'Kesempatan untuk berinteraksi dengan dosen-dosen di luar jadwal kuliah' => $questioner_data->countBy('e_1'),
+                'Bimbingan akademik' => $questioner_data->countBy('e_2'),
+                'Variasi mata kuliah' => $questioner_data->countBy('e_3'),
+                'Kesempatan untuk memasuki dan menjadi bagian dari jejaring ilmuwan professional' => $questioner_data->countBy('e_4'),
+                'Beasiswa' => $questioner_data->countBy('e_5'),
+            ],
 
+            '(f) Bagaimana penilaian Anda terhadap fasilitas kampus di bawah ini?' => [
+                'Perpustakaan' => $questioner_data->countBy('f_1'),
+                'Teknologi informasi dan komunikasi' => $questioner_data->countBy('f_2'),
+                'Pusat Bahasa' => $questioner_data->countBy('f_3'),
+                'Fasilitas olahraga' => $questioner_data->countBy('f_4'),
+                'Laboratorium/studio/workshop' => $questioner_data->countBy('f_5'),
+                'Kondisi dan sistem keamanan serta keselamatan' => $questioner_data->countBy('f_6'),
+                'Kondisi serta fasilitas toilet dan sanitari lainnya' => $questioner_data->countBy('f_7'),
+                'Kantin, koperasi dan sarana perbelanjaan di dalam kampus' => $questioner_data->countBy('f_8'),
+                'Pusat kegiatan mahasiswa beserta fasilitasnya dan ruang rekreasi' => $questioner_data->countBy('f_9'),
+                'Fasilitas layanan Kesehatan' => $questioner_data->countBy('f_10'),
+            ],
 
+            '(g) Seberapa besar program studi Anda bermanfaat untuk hal-hal di bawah ini?' => [
+                'Memulai pekerjaan' => $questioner_data->countBy('g_1'),
+                'Pembelajaran yang berkelanjutan dalam pekerjaan' => $questioner_data->countBy('g_2'),
+                'Kinerja dalam menjalankan tugas' => $questioner_data->countBy('g_3'),
+                'Informasi karir dan peluang kerja' => $questioner_data->countBy('g_4'),
+                'Pengembangan diri' => $questioner_data->countBy('g_5'),
+                'Meningkatkan keterampilan kewirausahaan' => $questioner_data->countBy('g_6'),
+            ]
+        ];
+    }
+
+    public function dataStakeholder(Request $request){
+        $stakeholder_data = QuestionerStackHolder::get();
+
+        return [
+            '(e)Menurut anda, seberapa PENTINGkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?' => [
+                'Ketaqwaan terhadap Tuhan yang maha Esa' => $stakeholder_data->countBy('e_1'),
+                'Etika dan kecerdasan dalam bertindak' => $stakeholder_data->countBy('e_2'),
+                'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $stakeholder_data->countBy('e_3'),
+                'Ketrampilan internet dan komputer' => $stakeholder_data->countBy('e_4'),
+                'Kemampuan belajar' => $stakeholder_data->countBy('e_5'),
+                'Kemampuan berkomunikasi' => $stakeholder_data->countBy('e_6'),
+                'Bekerja dalam tim/bekerjasama dengan orang lain' => $stakeholder_data->countBy('e_7'),
+                'Kemampuan dalam memecahkan masalah' => $stakeholder_data->countBy('e_8'),
+                'Inovasi dan/atau kreativitas' => $stakeholder_data->countBy('e_9'),
+                'Pengetahuan di bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('e_10'),
+                'Pengetahuan di luar bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('e_11'),
+                'Keseimbangan antara pikir dan zikir' => $stakeholder_data->countBy('e_12'),
+                'Mampu melakukan pendekatan integral-transdisipliner' => $stakeholder_data->countBy('e_13'),
+                'Memiliki etos dinamis dan berkarakter pengabdi' => $stakeholder_data->countBy('e_14'),
+                'Berakhlak mulia' => $stakeholder_data->countBy('e_15'),
+                'Pengetahuan umum dan memiliki wawasan kebangsaan' => $stakeholder_data->countBy('e_16'),
+                'Bervisi pengembangan peradaban' => $stakeholder_data->countBy('e_17'),
+                'Berpenampilan happy / Bahagia' => $stakeholder_data->countBy('e_18'),
+            ],
+
+            '(f) Bagaimanakah tingkat KEPUASAN anda terhadap Alumni FEBI UIN SU Medan yang bekerja di kantor/perusahaan anda, tentang hal-hal di bawah ini?' => [
+                'Etika dan kecerdasan dalam bertindak' => $stakeholder_data->countBy('f_1'),
+                'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $stakeholder_data->countBy('f_2'),
+                'Ketrampilan internet dan komputer' => $stakeholder_data->countBy('f_3'),
+                'Kemampuan belajar' => $stakeholder_data->countBy('f_4'),
+                'Kemampuan berkomunikasi' => $stakeholder_data->countBy('f_5'),
+                'Bekerja dalam tim/bekerjasama dengan orang lain' => $stakeholder_data->countBy('f_6'),
+                'Kemampuan dalam memecahkan masalah' => $stakeholder_data->countBy('f_7'),
+                'Inovasi dan/atau kreativitas' => $stakeholder_data->countBy('f_8'),
+                'Pengetahuan di bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('f_9'),
+                'Pengetahuan di luar bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('f_10'),
+                'Keseimbangan antara pikir dan zikir' => $stakeholder_data->countBy('f_11'),
+                'Mampu melakukan pendekatan integral-transdisipliner' => $stakeholder_data->countBy('f_12'),
+                'Memiliki etos dinamis dan berkarakter pengabdi' => $stakeholder_data->countBy('f_13'),
+                'Berakhlak mulia' => $stakeholder_data->countBy('f_14'),
+                'Pengetahuan umum dan memiliki wawasan kebangsaan' => $stakeholder_data->countBy('f_15'),
+                'Bervisi pengembangan peradaban' => $stakeholder_data->countBy('f_16'),
+                'Berpenampilan happy / Bahagia' => $stakeholder_data->countBy('f_17'),
+            ]
         ];
     }
 
     /**
      * DRY functions
      */
-
     private function moneyRange($value, $category){
         $money_counts = [
             '<1000000' => 0,
@@ -162,13 +279,15 @@ class VisualisasiController extends Controller
             '2022' => 0,
             '2021' => 0,
             '2020' => 0,
-            '2019' => 0
+            '<=2019' => 0
         ];
     
         foreach ($value as $record) {
             $date = $record->$category;
             $year = date('Y', strtotime($date));
-            if (array_key_exists($year, $date_counts)) {
+            if ($year <= '2019') {
+                $date_counts['<=2019']++;
+            } elseif (array_key_exists($year, $date_counts)) {
                 $date_counts[$year]++;
             }
         }
