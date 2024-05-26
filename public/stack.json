@@ -6,92 +6,92 @@
             "questions": [
                 {
                     "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
-                    "name": "e-1",
+                    "name": "e_1",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Etika dan kecerdasan dalam bertindak",
-                    "name": "e-2",
+                    "name": "e_2",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
-                    "name": "e-3",
+                    "name": "e_3",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Ketrampilan internet dan komputer",
-                    "name": "e-4",
+                    "name": "e_4",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan belajar",
-                    "name": "e-5",
+                    "name": "e_5",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan berkomunikasi",
-                    "name": "e-6",
+                    "name": "e_6",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
-                    "name": "e-7",
+                    "name": "e_7",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan dalam memecahkan masalah",
-                    "name": "e-8",
+                    "name": "e_8",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Inovasi dan/atau kreativitas",
-                    "name": "e-9",
+                    "name": "e_9",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Pengetahuan di bidang atau disiplin ilmu anda",
-                    "name": "e-10",
+                    "name": "e_10",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
-                    "name": "e-11",
+                    "name": "e_11",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Keseimbangan antara pikir dan zikir",
-                    "name": "e-12",
+                    "name": "e_12",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Mampu melakukan pendekatan integral-transdisipliner",
-                    "name": "e-13",
+                    "name": "e_13",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Memiliki etos dinamis dan berkarakter pengabdi",
-                    "name": "e-14",
+                    "name": "e_14",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Berakhlak mulia",
-                    "name": "e-15",
+                    "name": "e_15",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
-                    "name": "e-16",
+                    "name": "e_16",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Bervisi pengembangan peradaban",
-                    "name": "e-17",
+                    "name": "e_17",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Berpenampilan happy / Bahagia",
-                    "name": "e-18",
+                    "name": "e_18",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 }
             ]
@@ -102,92 +102,92 @@
             "questions": [
                 {
                     "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
-                    "name": "f-1",
+                    "name": "f_1",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Etika dan kecerdasan dalam bertindak",
-                    "name": "f-2",
+                    "name": "f_2",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
-                    "name": "f-3",
+                    "name": "f_3",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Ketrampilan internet dan komputer",
-                    "name": "f-4",
+                    "name": "f_4",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan belajar",
-                    "name": "f-5",
+                    "name": "f_5",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan berkomunikasi",
-                    "name": "f-6",
+                    "name": "f_6",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
-                    "name": "f-7",
+                    "name": "f_7",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Kemampuan dalam memecahkan masalah",
-                    "name": "f-8",
+                    "name": "f_8",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Inovasi dan/atau kreativitas",
-                    "name": "f-9",
+                    "name": "f_9",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Pengetahuan di bidang atau disiplin ilmu anda",
-                    "name": "f-10",
+                    "name": "f_10",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
-                    "name": "f-11",
+                    "name": "f_11",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Keseimbangan antara pikir dan zikir",
-                    "name": "f-12",
+                    "name": "f_12",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Mampu melakukan pendekatan integral-transdisipliner",
-                    "name": "f-13",
+                    "name": "f_13",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Memiliki etos dinamis dan berkarakter pengabdi",
-                    "name": "f-14",
+                    "name": "f_14",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Berakhlak mulia",
-                    "name": "f-15",
+                    "name": "f_15",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
-                    "name": "f-16",
+                    "name": "f_16",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Bervisi pengembangan peradaban",
-                    "name": "f-17",
+                    "name": "f_17",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
                     "text": "Berpenampilan happy / Bahagia",
-                    "name": "f-18",
+                    "name": "f_18",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 } ]
             }

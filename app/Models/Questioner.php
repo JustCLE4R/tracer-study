@@ -53,7 +53,4 @@ class Questioner extends Model
     
         return parent::getAttribute($key);
     }
-    
-    
-
 }
