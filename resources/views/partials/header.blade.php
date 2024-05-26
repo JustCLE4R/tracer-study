@@ -46,10 +46,6 @@
                     onclick="window.location.href='/career'">Career</a>
                 </li>
                 <li class="nav-item">
-                  <a class="page-scroll {{ Request::is('dashboard/questioner')  ? 'active' : '' }}"
-                    href="/dashboard/questioner" onclick="window.location.href='/dashboard/questioner'">Questioner</a>
-                </li>
-                <li class="nav-item">
                   <a class="page-scroll {{ Request::is('laporan') ? 'active' : '' }}" href="#laporan">Laporan</a>
                 </li>
                 @if (auth()->check())

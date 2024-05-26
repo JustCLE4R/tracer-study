@@ -13,7 +13,7 @@
 
           <form class="d-flex" action="/dashboard/pendidikan" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="row">
+            <div class="row justify-content-between">
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Tingkat Pendidikan *</label>
                   <select class="form-select @error('tingkat_pendidikan') is-invalid @enderror" name="tingkat_pendidikan">
@@ -91,27 +91,47 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                  <label class="form-label text-secondary">Wilayah Pendidikan *</label>
+                  <select class="form-select @error('is_linear') is-invalid @enderror" id="wilayahPendidikan" name="is_linear">
+                    <option hidden="">Pilih Wilayah Pendidikan Anda</option>
+                    <option value="0" {{ old('is_linear') == '0' ? 'selected' : '' }}>Didalam Negeri</option>
+                    <option value="1" {{ old('is_linear') == '1' ? 'selected' : '' }}>Diluar Negeri</option>
+                  </select>
+                  @error('is_linear')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Negara *</label>
-                  <input class="form-control @error('negara_pendidikan') is-invalid @enderror" type="text" name="negara_pendidikan" value="{{ old('negara_pendidikan') }}">
+                  <input class="form-control @error('negara_pendidikan') is-invalid @enderror" id="negara" type="text" name="negara_pendidikan" value="{{ old('negara_pendidikan') }}">
                   @error('negara_pendidikan')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
                   @enderror
                 </div>
+                
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Provinsi *</label>
-                  <input class="form-control @error('provinsi_pendidikan') is-invalid @enderror" type="text" name="provinsi_pendidikan" value="{{ old('provinsi_pendidikan') }}">
-                  @error('provinsi_pendidikan')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  <select class="form-select" id="provinsi" name="provinsi">
+                    <option hidden="">Pilih Provinsi</option>
+                  </select>
                 </div>
+                
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label class="form-label text-secondary">Kabupaten *</label>
-                  <input class="form-control @error('kabupaten_pendidikan') is-invalid @enderror" type="text" name="kabupaten_pendidikan" value="{{ old('kabupaten_pendidikan') }}">
-                  @error('kabupaten_pendidikan')
+                  <label class="form-label text-secondary">Kabupaten/Kota *</label>
+                  <select class="form-select" id="kota" name="kota">
+                    <option hidden="">Pilih Kabupaten/Kota</option>
+                  </select>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                  <label class="form-label text-secondary">Alamat Lengkap *</label>
+                  <input class="form-control @error('alamat_pendidikan') is-invalid @enderror" type="text" name="alamat_pendidikan" value="{{ old('alamat_pendidikan') }}">
+                  @error('alamat_pendidikan')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
@@ -145,4 +165,59 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const apiURL = 'http://127.0.0.1:8000/json/data.json';
+
+    const wilayahPendidikanSelect = document.getElementById('wilayahPendidikan');
+    const negaraInput = document.getElementById('negara');
+    const provinsiSelect = document.getElementById('provinsi');
+    const kotaSelect = document.getElementById('kota');
+
+    wilayahPendidikanSelect.addEventListener('change', function() {
+      const selectedValue = this.value;
+      if (selectedValue === '0') { 
+        negaraInput.value = 'Indonesia';
+        negaraInput.disabled = true;
+        provinsiSelect.disabled = false;
+        kotaSelect.disabled = false;
+      } else if (selectedValue === '1') { 
+        negaraInput.value = '';
+        negaraInput.disabled = false;
+        provinsiSelect.disabled = true;
+        kotaSelect.disabled = true;
+      }
+    });
+
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(prov => {
+          const option = document.createElement('option');
+          option.value = prov.provinsi;
+          option.textContent = prov.provinsi;
+          provinsiSelect.appendChild(option);
+        });
+
+        provinsiSelect.addEventListener('change', function() {
+          kotaSelect.innerHTML = '<option hidden="">Pilih Kabupaten/Kota</option>';
+          
+          const selectedProvinsi = this.value;
+          
+          const selectedData = data.find(prov => prov.provinsi === selectedProvinsi);
+          
+          if (selectedData && selectedData.kota) {
+            selectedData.kota.forEach(kabupaten => {
+              const option = document.createElement('option');
+              option.value = kabupaten;
+              option.textContent = kabupaten;
+              kotaSelect.appendChild(option);
+            });
+          }
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  });
+</script>
 @endsection

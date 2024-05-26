@@ -12,11 +12,11 @@
     @endif
     <div class="row gutters-sm p-3 mt-1">
       <div class="col-md-4 mb-3">
-        <div class="card">
-          <div class="card-body">
+        <div class="card ">
+          <div class="card-body bg-light rounded p-5 border-top border-success border-5">
             <div class="d-flex flex-column align-items-center text-center">
               <div class="rounded-circle overflow-hidden" style="width: 150px; height: 150px;">
-                <img src="{{ $user->foto ? url('https://pmb.uinsu.ac.id/file/photo/' . $user->foto) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Admin" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;">
+                <img src="{{ $user->foto ? url('https://pmb.uinsu.ac.id/file/photo/' . $user->foto) : url('/img/account.png') }}" alt="Admin" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;">
               </div>
               
               <div class="mt-3">
@@ -43,14 +43,14 @@
             <div class="row ">
               <div class="col">
                 <h6 class="my-1"><i class="bi bi-linkedin"></i> Linkedin</h6>
-                <span class="text-secondary my-1">{{ $user->linkedin ? $user->linkedin : 'Belum diisi' }}</span>
+                <span class="text-secondary my-1"><a style="text-decoration: none" class="text-success" href="{{ $user->linkedin ? $user->linkedin : 'Belum diisi' }}">Kunjungi</a></span>
                 <hr>
               </div>
             </div>
             <div class="row ">
               <div class="col">
                 <h6 class="my-1"><i class="bi bi-facebook"></i> Facebook</h6>
-                <span class="text-secondary my-1">{{ $user->facebook ? $user->facebook : 'Belum diisi' }}</span>
+                <span class="text-secondary my-1"><a style="text-decoration: none" class="text-success" href="{{ $user->facebook ? $user->facebook : 'Belum diisi' }}">Kunjungi</a></span>
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
       </div>
       <div class="col-md-8">
         <div class="card mb-3  ">
-          <div class="card-body">
+          <div class="card-body bg-light rounded p-5 border-top border-success border-5">
             <div class="row my-1">
               <div class="col text-center">
                 <span class="h4 "> Informasi Akademik</span>
@@ -269,8 +269,8 @@
     </div>
 
     {{-- perjalanan-karir --}}
-    <div class="row gutters-sm mt-5 justify-content-center">
-      <div class="col-lg-5 col-md-7 col-sm-8 col-xs-8 my-2  position-relative">
+    <div class="row gutters-sm mt-5 justify-content-center p-3">
+      <div class="col-lg-6 col-md-6 col-sm-12  my-2  position-relative">
         <div class="accordion " id="accordionExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingOne">
@@ -356,7 +356,7 @@
         </div>
       </div>
       
-      <div class="col-lg-5 col-md-7 col-sm-8 col-xs-8 my-2  position-relative">
+      <div class="col-lg-6 col-md-6 col-sm-12  my-2  position-relative">
         <div class="accordion" id="accordionEducation">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingEducation">

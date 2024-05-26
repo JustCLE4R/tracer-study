@@ -7,14 +7,14 @@
       <div class="bg-light rounded p-4 border-top border-success border-5">
         <div class="row">
           <div class="col-12">
-            <span class="h4">Tambah Pendidikan</span>
+            <span class="h4">Edit Pendidikan</span>
             <hr>
           </div>
 
           <form class="d-flex" action="/dashboard/pendidikan/{{ $pendidikan->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="row">
+            <div class="row justify-content-between">
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Tingkat Pendidikan *</label>
                   <select class="form-select @error('tingkat_pendidikan') is-invalid @enderror" name="tingkat_pendidikan">
@@ -92,32 +92,56 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                  <label class="form-label text-secondary">Wilayah Pendidikan *</label>
+                  <select class="form-select @error('is_linear') is-invalid @enderror" id="wilayahPendidikan" name="is_linear">
+                    <option hidden="">Pilih Wilayah Pendidikan Anda</option>
+                    <option value="0" {{ old('is_linear', $pendidikan->is_linear) == '0' ? 'selected' : '' }}>Didalam Negeri</option>
+                    <option value="1" {{ old('is_linear', $pendidikan->is_linear) == '1' ? 'selected' : '' }}>Diluar Negeri</option>
+                  </select>
+                  @error('is_linear')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Negara *</label>
-                  <input class="form-control @error('negara_pendidikan') is-invalid @enderror" type="text" name="negara_pendidikan" value="{{ old('negara_pendidikan', $pendidikan->negara_pendidikan) }}">
+                  <input class="form-control @error('negara_pendidikan') is-invalid @enderror" id="negara" type="text" name="negara_pendidikan" value="{{ old('negara_pendidikan', $pendidikan->negara_pendidikan) }}">
                   @error('negara_pendidikan')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
                   @enderror
                 </div>
+                
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Provinsi *</label>
-                  <input class="form-control @error('provinsi_pendidikan') is-invalid @enderror" type="text" name="provinsi_pendidikan" value="{{ old('provinsi_pendidikan', $pendidikan->provinsi_pendidikan) }}">
-                  @error('provinsi_pendidikan')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                  @enderror
+                  <select class="form-select" id="provinsi" name="provinsi_pendidikan">
+                    <option hidden="">Pilih Provinsi</option>
+                    <!-- Options will be populated by JavaScript -->
+                  </select>
                 </div>
+                
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label class="form-label text-secondary">Kabupaten *</label>
-                  <input class="form-control @error('kabupaten_pendidikan') is-invalid @enderror" type="text" name="kabupaten_pendidikan" value="{{ old('kabupaten_pendidikan', $pendidikan->kabupaten_pendidikan) }}">
-                  @error('kabupaten_pendidikan')
+                  <label class="form-label text-secondary">Kabupaten/Kota *</label>
+                  <select class="form-select" id="kota" name="kabupaten_pendidikan">
+                    <option hidden="">Pilih Kabupaten/Kota</option>
+                    <!-- Options will be populated by JavaScript -->
+                  </select>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                  <label class="form-label text-secondary">Alamat Lengkap *</label>
+                  <input class="form-control @error('alamat_pendidikan') is-invalid @enderror" type="text" name="alamat_pendidikan" value="{{ old('alamat_pendidikan', $pendidikan->alamat_pendidikan) }}">
+                  @error('alamat_pendidikan')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
                   @enderror
                 </div>
+                
+                
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label for="bukti_pendidikan" class="form-label">Bukti Pendidikan</label>
                   <input type="hidden" name="oldImage" value="{{ $pendidikan->bukti_pendidikan }}">
@@ -134,9 +158,15 @@
                     </div>
                   @enderror
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label class="form-label text-secondary">&nbsp;</label>
-                  <button class="form-control btn btn-success">Simpan!</button>
+                <div class="col-lg-4 col-md-6 col-sm-12 my-2 d-flex align-items-end justify-content-center">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <a href="/dashboard/perjalanan-karir" class="form-control btn btn-secondary">Kembali</a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <button class="form-control btn btn-success">Simpan!</button>
+                    </div>
+                  </div>
                 </div>
             </div>
           </form>
@@ -146,4 +176,92 @@
     </div>
   </div>
 </div>
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+  const apiURL = 'http://127.0.0.1:8000/json/data.json';
+
+  const wilayahPendidikanSelect = document.getElementById('wilayahPendidikan');
+  const negaraInput = document.getElementById('negara');
+  const provinsiSelect = document.getElementById('provinsi');
+  const kotaSelect = document.getElementById('kota');
+
+  const initWilayahPendidikan = '{{ old("is_linear", $pendidikan->is_linear) }}';
+  const initNegara = '{{ old("negara_pendidikan", $pendidikan->negara_pendidikan) }}';
+  const initProvinsi = '{{ old("provinsi_pendidikan", $pendidikan->provinsi_pendidikan) }}';
+  const initKabupaten = '{{ old("kabupaten_pendidikan", $pendidikan->kabupaten_pendidikan) }}';
+
+  function updateFormFields() {
+    if (initWilayahPendidikan === '0') { 
+      negaraInput.value = 'Indonesia';
+      negaraInput.disabled = true;
+      provinsiSelect.disabled = false;
+      kotaSelect.disabled = false;
+    } else if (initWilayahPendidikan === '1') { 
+      negaraInput.value = '';
+      negaraInput.disabled = false;
+      provinsiSelect.disabled = true;
+      kotaSelect.disabled = true;
+    }
+  }
+
+  wilayahPendidikanSelect.addEventListener('change', function() {
+    const selectedValue = this.value;
+    if (selectedValue === '0') { 
+      negaraInput.value = 'Indonesia';
+      negaraInput.disabled = true;
+      provinsiSelect.disabled = false;
+      kotaSelect.disabled = false;
+    } else if (selectedValue === '1') { 
+      negaraInput.value = '';
+      negaraInput.disabled = false;
+      provinsiSelect.disabled = true;
+      kotaSelect.disabled = true;
+    }
+  });
+
+  fetch(apiURL)
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(prov => {
+        const option = document.createElement('option');
+        option.value = prov.provinsi;
+        option.textContent = prov.provinsi;
+        if (prov.provinsi === initProvinsi) {
+          option.selected = true;
+        }
+        provinsiSelect.appendChild(option);
+      });
+
+      provinsiSelect.addEventListener('change', function() {
+        kotaSelect.innerHTML = '<option hidden="">Pilih Kabupaten/Kota</option>';
+        
+        const selectedProvinsi = this.value;
+        
+        const selectedData = data.find(prov => prov.provinsi === selectedProvinsi);
+        
+        if (selectedData && selectedData.kota) {
+          selectedData.kota.forEach(kabupaten => {
+            const option = document.createElement('option');
+            option.value = kabupaten;
+            option.textContent = kabupaten;
+            if (kabupaten === initKabupaten) {
+              option.selected = true;
+            }
+            kotaSelect.appendChild(option);
+          });
+        }
+      });
+
+      if (initProvinsi) {
+        provinsiSelect.dispatchEvent(new Event('change'));
+      }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+  updateFormFields();
+});
+
+
+</script>
 @endsection

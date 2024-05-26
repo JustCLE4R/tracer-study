@@ -10,7 +10,7 @@
 <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3 shadow ">
   <nav class="navbar">
-    <a href="https://uinsu.ac.id" class="navbar-brand mx-4 ">
+    <a href="/" class="navbar-brand mx-4 ">
       <img src="/img/logo-admin.png" width="160px" alt="">
     </a>
 

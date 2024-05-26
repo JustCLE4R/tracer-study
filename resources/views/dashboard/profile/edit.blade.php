@@ -320,11 +320,14 @@
                 </div>
               </div>
 
-              <div class="row mt-2">
-                <div class="col-12 text-end">
-                  <button class="btn btn-success"><i class="bi bi-pencil-square"></i> Perbaharui Data Diri</button>
+                <div class="row justify-content-end my-3">
+                  <div class="col-lg-4 col-md-4 col-sm-6">
+                    <a href="/dashboard/profile" class="form-control btn btn-secondary">Kembali</a>
+                  </div>
+                  <div class="col-lg-4 col-md-6 col-sm-6">
+                    <button class="form-control btn btn-success">Simpan!</button>
+                  </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>

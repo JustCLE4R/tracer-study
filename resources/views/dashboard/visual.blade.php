@@ -544,7 +544,7 @@
                                         'rgb(2 117 56 / 74%))'
                                     ],
                                     borderColor: [
-                                        'rgb(0 113 39)'
+                                        '#fff'
                                     ],
                                     borderWidth: 1
                                 }]
@@ -642,7 +642,7 @@
                                         'rgb(2 117 5 / 74%))'
                                     ],
                                     borderColor: [
-                                        'rgb(0 113 39)'
+                                        '#fff'
                                     ],
                                     borderWidth: 1
                                 }]
@@ -738,7 +738,7 @@
                                         'rgb(2 117 5 / 74%))'
                                     ],
                                     borderColor: [
-                                        'rgb(0 113 39)'
+                                        '#fff'
                                     ],
                                     borderWidth: 1
                                 }]

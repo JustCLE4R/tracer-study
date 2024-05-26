@@ -71,7 +71,7 @@
                         <div class="hero-figure-box hero-figure-box-07"></div>
                         <div class="hero-figure-box hero-figure-box-08 " data-wow-delay=".5s" data-rotation="-22deg"
                             style="transform: rotate(-22deg) scale(1); opacity: 1;"></div>
-                        <img src="https://preview.uideck.com/items/bliss/assets/img/hero/hero-img.svg" alt="" style="max-width: 600px">
+                        <img src="/img/hero-1.png" alt="" style="max-width: 600px">
                     </div>
 
                 </div>
@@ -225,7 +225,7 @@
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="about-img text-lg-right wow fadeInUp" data-wow-delay=".5s">
-                        <img src="https://cdni.iconscout.com/illustration/premium/thumb/job-application-2161927-1816233.png"
+                        <img src="/img/hero-2.webp"
                             alt="">
                     </div>
                 </div>

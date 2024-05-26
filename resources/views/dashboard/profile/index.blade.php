@@ -11,7 +11,7 @@
     <div class="row gutters-sm">
       <div class="col-md-4 mb-3">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body bg-light ">
             <div class="d-flex flex-column align-items-center text-center">
               <div class="rounded-circle overflow-hidden" style="width: 150px; height: 150px;">
                 <img src="{{ Auth::user()->foto ? url('https://pmb.uinsu.ac.id/file/photo/' . Auth::user()->foto) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Admin" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;">
@@ -41,14 +41,14 @@
             <div class="row ">
               <div class="col">
                 <h6 class="my-1"><i class="bi bi-linkedin"></i> Linkedin</h6>
-                <span class="text-secondary my-1">{{ Auth::user()->linkedin ? Auth::user()->linkedin : 'Belum diisi' }}</span>
+                <span class="text-secondary my-1"><a style="text-decoration: none" class="text-success" href="{{ Auth::user()->linkedin ? Auth::user()->linkedin : 'Belum diisi' }}">Kunjungi</a></span>
                 <hr>
               </div>
             </div>
             <div class="row ">
               <div class="col">
                 <h6 class="my-1"><i class="bi bi-facebook"></i> Facebook</h6>
-                <span class="text-secondary my-1">{{ Auth::user()->facebook ? Auth::user()->facebook : 'Belum diisi' }}</span>
+                <span class="text-secondary my-1"><a style="text-decoration: none" class="text-success" href="{{ Auth::user()->facebook ? Auth::user()->facebook : 'Belum diisi' }}">Kunjungi</a></span>
               </div>
             </div>
           </div>
@@ -56,7 +56,7 @@
       </div>
       <div class="col-md-8">
         <div class="card mb-3  ">
-          <div class="card-body">
+          <div class="card-body bg-light ">
             <div class="row my-1">
               <div class="col text-center">
                 <span class="h4 "> Informasi Akademik</span>
