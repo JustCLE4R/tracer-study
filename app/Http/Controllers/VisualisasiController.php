@@ -88,11 +88,22 @@ class VisualisasiController extends Controller
     public function dataPendidikan(Request $request){
         $pendidikan_data = Pendidikan::get();
 
+        $negara = $pendidikan_data->map(function($item){
+            if($item->negara_pendidikan == "Indonesia"){
+                return "Dalam Negeri";
+            }else{
+                return "Luar Negeri";
+            }
+        })->countBy();
+
         return [
             'is_studying' => $pendidikan_data->countBy('is_studying'),
             'Tingkat Pendidikan' => $pendidikan_data->countBy('tingkat_pendidikan'),
             'Tgl Surat Penerimaan Pendidikan' => $this->dateRange($pendidikan_data, 'tgl_surat_penerimaan_pendidikan'),
             'Tgl Mulai Pendidikan' => $this->dateRange($pendidikan_data, 'tgl_mulai_pendidikan'),
+            'Negara Pendidikan' => $negara,
+            'provinsi_pendidikan' => $pendidikan_data->whereNotNull('provinsi_pendidikan')->countBy('provinsi_pendidikan'),
+            'kabupaten_pendidikan' => $pendidikan_data->whereNotNull('kabupaten_pendidikan')->countBy('kabupaten_pendidikan'),
             'Satu Linear' => $pendidikan_data->countBy('is_linear'),
         ];
     }
@@ -268,13 +279,15 @@ class VisualisasiController extends Controller
             '2022' => 0,
             '2021' => 0,
             '2020' => 0,
-            '2019' => 0
+            '<=2019' => 0
         ];
     
         foreach ($value as $record) {
             $date = $record->$category;
             $year = date('Y', strtotime($date));
-            if (array_key_exists($year, $date_counts)) {
+            if ($year <= '2019') {
+                $date_counts['<=2019']++;
+            } elseif (array_key_exists($year, $date_counts)) {
                 $date_counts[$year]++;
             }
         }

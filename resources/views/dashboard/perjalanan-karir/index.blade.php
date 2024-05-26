@@ -125,9 +125,9 @@
 									</div>
 									<div class="timeline__event__content">
 										<div class="timeline__event__title">
-											@if ($pendidikan->tingkat_pendidikan == 'a')
+											@if ($pendidikan->getRawOriginal('tingkat_pendidikan') == 'a')
 												Strata 1 (S1)
-											@elseif ($pendidikan->tingkat_pendidikan == 'b')
+											@elseif ($pendidikan->getRawOriginal('tingkat_pendidikan') == 'b')
 												Strata 2 (S2)
 											@else
 												Strata 3 (S3)

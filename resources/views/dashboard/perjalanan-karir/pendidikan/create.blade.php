@@ -92,12 +92,12 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Wilayah Pendidikan *</label>
-                  <select class="form-select @error('is_linear') is-invalid @enderror" id="wilayahPendidikan" name="is_linear">
+                  <select class="form-select @error('wilayahPendidikan') is-invalid @enderror" id="wilayahPendidikan" name="wilayahPendidikan">
                     <option hidden="">Pilih Wilayah Pendidikan Anda</option>
-                    <option value="0" {{ old('is_linear') == '0' ? 'selected' : '' }}>Didalam Negeri</option>
-                    <option value="1" {{ old('is_linear') == '1' ? 'selected' : '' }}>Diluar Negeri</option>
+                    <option value="0" {{ old('wilayahPendidikan') == '0' ? 'selected' : '' }}>Didalam Negeri</option>
+                    <option value="1" {{ old('wilayahPendidikan') == '1' ? 'selected' : '' }}>Diluar Negeri</option>
                   </select>
-                  @error('is_linear')
+                  @error('wilayahPendidikan')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
@@ -116,16 +116,26 @@
                 
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Provinsi *</label>
-                  <select class="form-select" id="provinsi" name="provinsi">
-                    <option hidden="">Pilih Provinsi</option>
+                  <select class="form-select @error('provinsi_pendidikan') is-invalid @enderror" id="provinsi_pendidikan" name="provinsi_pendidikan">
+                    <option value="" hidden>Pilih Provinsi</option>
                   </select>
+                  @error('provinsi_pendidikan')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
                 </div>
                 
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Kabupaten/Kota *</label>
-                  <select class="form-select" id="kota" name="kota">
-                    <option hidden="">Pilih Kabupaten/Kota</option>
+                  <select class="form-select @error('kabupaten_pendidikan') is-invalid @enderror" id="kabupaten_pendidikan" name="kabupaten_pendidikan">
+                    <option value="" hidden>Pilih Kabupaten/Kota</option>
                   </select>
+                  @error('kabupaten_pendidikan')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
                 </div>
                 
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
@@ -168,23 +178,23 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const apiURL = 'http://127.0.0.1:8000/json/data.json';
+    const apiURL = '/json/data.json';
 
     const wilayahPendidikanSelect = document.getElementById('wilayahPendidikan');
     const negaraInput = document.getElementById('negara');
-    const provinsiSelect = document.getElementById('provinsi');
-    const kotaSelect = document.getElementById('kota');
+    const provinsiSelect = document.getElementById('provinsi_pendidikan');
+    const kotaSelect = document.getElementById('kabupaten_pendidikan');
 
     wilayahPendidikanSelect.addEventListener('change', function() {
       const selectedValue = this.value;
       if (selectedValue === '0') { 
         negaraInput.value = 'Indonesia';
-        negaraInput.disabled = true;
+        negaraInput.readOnly = true;
         provinsiSelect.disabled = false;
         kotaSelect.disabled = false;
       } else if (selectedValue === '1') { 
         negaraInput.value = '';
-        negaraInput.disabled = false;
+        negaraInput.readOnly = false;
         provinsiSelect.disabled = true;
         kotaSelect.disabled = true;
       }
@@ -201,7 +211,7 @@
         });
 
         provinsiSelect.addEventListener('change', function() {
-          kotaSelect.innerHTML = '<option hidden="">Pilih Kabupaten/Kota</option>';
+          kotaSelect.innerHTML = '<option hidden>Pilih Kabupaten/Kota</option>';
           
           const selectedProvinsi = this.value;
           

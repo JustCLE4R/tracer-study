@@ -38,12 +38,15 @@ class PendidikanController extends Controller
       "is_studying" => "required|in:0,1,2",
       "is_linear" => "required|in:0,1",
       "negara_pendidikan" => "required",
-      "provinsi_pendidikan" => "required",
-      "kabupaten_pendidikan" => "required",
+      "provinsi_pendidikan" => "required_if:negara_pendidikan,Indonesia",
+      "kabupaten_pendidikan" => "required_if:negara_pendidikan,Indonesia",
+      "alamat_pendidikan" => "required",
       "bukti_pendidikan" => "required|image|file|mimes:jpeg,png,jpg|max:2048",
     ],
     [
       'required' => ':attribute tidak boleh kosong',
+      'required_unless' => ':attribute harus diisi jika :other :value',
+      'required_if' => ':attribute harus diisi jika :other :value',
       'date' => ':attribute harus berupa tanggal',
       'in' => ':attribute tidak valid.',
       'image' => ':attribute harus berupa gambar',
@@ -61,6 +64,7 @@ class PendidikanController extends Controller
       'negara_pendidikan' => 'Negara',
       'provinsi_pendidikan' => 'Provinsi',
       'kabupaten_pendidikan' => 'Kabupaten',
+      'alamat_pendidikan' => 'Alamat',
       'bukti_pendidikan' => 'Bukti Tanda Terima Kuliah'
     ]);
 
@@ -135,12 +139,15 @@ class PendidikanController extends Controller
       "is_studying" => "required|in:0,1,2",
       "is_linear" => "required|in:0,1",
       "negara_pendidikan" => "required",
-      "provinsi_pendidikan" => "required",
-      "kabupaten_pendidikan" => "required",
+      "provinsi_pendidikan" => "required_if:negara_pendidikan,Indonesia",
+      "kabupaten_pendidikan" => "required_if:negara_pendidikan,Indonesia",
+      "alamat_pendidikan" => "required",
       "bukti_pendidikan" => "image|file|mimes:jpeg,png,jpg|max:2048",
     ],
     [
       'required' => ':attribute tidak boleh kosong',
+      'required_unless' => ':attribute harus diisi jika :other :value',
+      'required_if' => ':attribute harus diisi jika :other :value',
       'date' => ':attribute harus berupa tanggal',
       'in' => ':attribute tidak valid.',
       'image' => ':attribute harus berupa gambar',
@@ -158,6 +165,7 @@ class PendidikanController extends Controller
       'negara_pendidikan' => 'Negara',
       'provinsi_pendidikan' => 'Provinsi',
       'kabupaten_pendidikan' => 'Kabupaten',
+      'alamat_pendidikan' => 'Alamat',
       'bukti_pendidikan' => 'Bukti Tanda Terima Kuliah'
     ]);
 

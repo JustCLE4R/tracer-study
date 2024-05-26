@@ -179,7 +179,7 @@
 
 <script>
  document.addEventListener('DOMContentLoaded', function() {
-  const apiURL = 'http://127.0.0.1:8000/json/data.json';
+  const apiURL = '/json/data.json';
 
   const wilayahPendidikanSelect = document.getElementById('wilayahPendidikan');
   const negaraInput = document.getElementById('negara');
