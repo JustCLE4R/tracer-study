@@ -61,6 +61,10 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::get('/visual', function () {
     return view('dashboard.visual');
   });
+  Route::get('/gratitude', function () {
+    return view('dashboard.questioner.gratitude');
+  });
+
   // admin routes
   Route::middleware('is-admin')->group(function () {
     Route::resource('/admin/laporan', LaporanController::class)->except(['show']);
