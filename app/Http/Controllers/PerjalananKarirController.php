@@ -16,10 +16,11 @@ class PerjalananKarirController extends Controller
 	public function index(){
 		$user_id = auth()->user()->id;
 
-		$pekerjaans = Pekerja::select(DB::raw("'pekerja' as tipe_kerja"), 'id', 'jabatan_pekerjaan', 'detail_pekerjaan', 'is_active', 'tgl_mulai_kerja as tanggal_mulai', 'tgl_akhir_kerja as tanggal_akhir')
-				->where('user_id', $user_id);
+		$pekerjaans = Pekerja::select(DB::raw("'pekerja' as tipe_kerja"), 'pekerjas.id', 'jabatan_pekerjaan', 'detail_pekerjaan', 'is_active', 'tgl_mulai_kerja as tanggal_mulai', 'tgl_akhir_kerja as tanggal_akhir', 'detail_perusahaans.token')
+				->leftJoin('detail_perusahaans', 'detail_perusahaans.pekerja_id', '=', 'pekerjas.id')
+				->where('pekerjas.user_id', $user_id);
 
-		$wirausaha = Wirausaha::select(DB::raw("'wirausaha' as tipe_kerja"), 'id', DB::raw("'a'"), 'nama_usaha', 'is_active', 'tgl_mulai_usaha as tanggal_mulai', 'tgl_akhir_usaha as tanggal_akhir')
+		$wirausaha = Wirausaha::select(DB::raw("'wirausaha' as tipe_kerja"), 'id', DB::raw("'a'"), 'nama_usaha', 'is_active', 'tgl_mulai_usaha as tanggal_mulai', 'tgl_akhir_usaha as tanggal_akhir', DB::raw("null"))
 				->where('user_id', $user_id);
 
 		$unioned = $pekerjaans->union($wirausaha)->orderBy('is_active', 'desc')->orderBy('tanggal_mulai', 'asc')->orderBy('tipe_kerja', 'desc')->get();

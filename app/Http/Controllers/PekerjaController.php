@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApiIntegration;
 use App\Models\Pekerja;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -124,10 +125,17 @@ class PekerjaController extends Controller
             return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
         }
 
+        $token = null;
         // pembuatan token untuk link public yang diakses oleh stakeholder
-        do {
-            $token = Str::random(255);
-        } while (DetailPerusahaan::where('token', $token)->first());
+        if(!isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])){
+            do {
+                $token = Str::random(255);
+            } while (DetailPerusahaan::where('token', $token)->first());
+
+            (new ApiIntegration)->whatsappGateway($rules['nomor-telepon-atasan'],
+                "╔═════*.·:·.✧ UINSU MEDAN ✧.·:·.*═════╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$token}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\n\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
+            );
+        }
 
         $detail_perusahaan = [
             'pekerja_id' => $pekerja->id,
@@ -141,10 +149,7 @@ class PekerjaController extends Controller
         ];
 
         DetailPerusahaan::create($detail_perusahaan);
-
-        // TODO: Adding whatsapp gateway
-        // kirim notif ke stakeholder
-
+        
         return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
     }
 
@@ -295,16 +300,17 @@ class PekerjaController extends Controller
         ];
 
         // cek jika nomor telepon atasan berubah atau tidak untuk membuat token baru
-        if ($rules['nomor-telepon-atasan'] != $pekerja->detailPerusahaan->telepon_atasan) {
+        if ($rules['nomor-telepon-atasan'] != $pekerja->detailPerusahaan->telepon_atasan && !isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])) {
             do {
                 $detail_perusahaan['token'] = Str::random(255);
             } while (DetailPerusahaan::where('token', $detail_perusahaan['token'])->first());
+
+            (new ApiIntegration)->whatsappGateway($rules['nomor-telepon-atasan'],
+            "╔═════*.·:·.✧ UINSU MEDAN ✧.·:·.*═════╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$detail_perusahaan['token']}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\n\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
+        );
         }
 
         DetailPerusahaan::where('pekerja_id', $pekerja->id)->update($detail_perusahaan);
-
-        // TODO: Adding whatsapp gateway
-        // Kirim notif ke stakeholder
 
         if (auth()->user()->role != 'mahasiswa') {
             return redirect('/dashboard/admin/' . $pekerja->user->id)->with('success', 'Data pekerjaan berhasil diubah!');

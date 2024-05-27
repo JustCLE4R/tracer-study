@@ -33,7 +33,7 @@ Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::post('/login', [LoginController::class, 'authenticate']);
 
   Route::get('/questioner/{questioner:token}', [QuestionerController::class, 'getPublicQuestioner']);
-  Route::post('/questioner/{questioner:token}', [QuestionerController::class, 'postPublicQuestioner']);
+  Route::post('//{questioner:token}', [QuestionerController::class, 'postPublicQuestioner']);
 });
 
 //dashboard routes
@@ -60,9 +60,6 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
 
   Route::get('/visual', function () {
     return view('dashboard.visual');
-  });
-  Route::get('/gratitude', function () {
-    return view('dashboard.questioner.gratitude');
   });
 
   // admin routes

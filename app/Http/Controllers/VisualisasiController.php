@@ -12,8 +12,9 @@ use Illuminate\Http\Request;
 class VisualisasiController extends Controller
 {
     public function dataWirausaha(Request $request){
+        $wirausaha_data = Wirausaha::with('user')->get();
 
-        $wirausaha_data = Wirausaha::get();
+        $wirausaha_data = $this->filterByAngkatanFakultas($wirausaha_data, $request->query('angkatan'), $request->query('fakultas'));
 
         $pemodal_counts = [
             "Pribadi / Tabungan" => 0,
@@ -55,7 +56,7 @@ class VisualisasiController extends Controller
         $tgl_akhir_usaha_counts = $this->dateRange($wirausaha_data, 'tgl_akhir_usaha');
         $kesesuaian_counts = $wirausaha_data->countBy('kesesuaian');
 
-        return [
+        return response()->json([
             'is_active' => $is_active_counts,
             'Tingkat / Ukuran Tempat Usaha' => $tingkat_tempat_usaha_counts,
             'Pemodal Usaha' => $pemodal_counts,
@@ -65,11 +66,13 @@ class VisualisasiController extends Controller
             'Tanggal Mulai Usaha' => $tgl_mulai_usaha_counts,
             'Tanggal Akhir Usaha' => $tgl_akhir_usaha_counts,
             'Kesesuaian Usaha dengan Prodi' => $kesesuaian_counts,
-        ];
+        ]);
     }
 
     public function dataPekerja(Request $request){
         $pekerja_data = Pekerja::get();
+
+        $pekerja_data = $this->filterByAngkatanFakultas($pekerja_data, $request->query('angkatan'), $request->query('fakultas'));
 
         return [
             'is_active' => $pekerja_data->countBy('is_active'),
@@ -96,7 +99,7 @@ class VisualisasiController extends Controller
             }
         })->countBy();
 
-        return [
+        return response()->json([
             'is_studying' => $pendidikan_data->countBy('is_studying'),
             'Tingkat Pendidikan' => $pendidikan_data->countBy('tingkat_pendidikan'),
             'Tgl Surat Penerimaan Pendidikan' => $this->dateRange($pendidikan_data, 'tgl_surat_penerimaan_pendidikan'),
@@ -105,13 +108,15 @@ class VisualisasiController extends Controller
             'provinsi_pendidikan' => $pendidikan_data->whereNotNull('provinsi_pendidikan')->countBy('provinsi_pendidikan'),
             'kabupaten_pendidikan' => $pendidikan_data->whereNotNull('kabupaten_pendidikan')->countBy('kabupaten_pendidikan'),
             'Satu Linear' => $pendidikan_data->countBy('is_linear'),
-        ];
+        ]);
     }
 
     public function dataQuestioner(Request $request){
         $questioner_data = Questioner::get();
 
-        return[
+        $questioner_data = $this->filterByAngkatanFakultas($questioner_data, $request->query('angkatan'), $request->query('fakultas'));
+
+        return response()->json([
             '(a) Seberapa besar kompetensi di bawah ini Anda kuasai?' => [
                 'Ketaqwaan terhadap Tuhan yang maha Esa' => $questioner_data->countBy('a_1'),
                 'Etika dan kecerdasan dalam bertindak' => $questioner_data->countBy('a_2'),
@@ -195,13 +200,15 @@ class VisualisasiController extends Controller
                 'Pengembangan diri' => $questioner_data->countBy('g_5'),
                 'Meningkatkan keterampilan kewirausahaan' => $questioner_data->countBy('g_6'),
             ]
-        ];
+        ]);
     }
 
     public function dataStakeholder(Request $request){
         $stakeholder_data = QuestionerStackHolder::get();
 
-        return [
+        $stakeholder_data = $this->filterByAngkatanFakultas($stakeholder_data, $request->query('angkatan'), $request->query('fakultas'));
+
+        return response()->json([
             '(e)Menurut anda, seberapa PENTINGkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?' => [
                 'Ketaqwaan terhadap Tuhan yang maha Esa' => $stakeholder_data->countBy('e_1'),
                 'Etika dan kecerdasan dalam bertindak' => $stakeholder_data->countBy('e_2'),
@@ -242,7 +249,7 @@ class VisualisasiController extends Controller
                 'Bervisi pengembangan peradaban' => $stakeholder_data->countBy('f_16'),
                 'Berpenampilan happy / Bahagia' => $stakeholder_data->countBy('f_17'),
             ]
-        ];
+        ]);
     }
 
     /**
@@ -294,4 +301,25 @@ class VisualisasiController extends Controller
 
         return $date_counts;
     }
+
+    private function filterByAngkatanFakultas($collection, $angkatan = null, $fakultas = null)
+    {
+        return $collection->filter(function($table) use ($angkatan, $fakultas) {
+            // Check if the angkatan matches
+            $matchesAngkatan = true;
+            if ($angkatan) {
+                $matchesAngkatan = $table->user && $table->user->tahun_masuk == $angkatan;
+            }
+    
+            // Check if the fakultas matches
+            $matchesFakultas = true;
+            if ($fakultas) {
+                $matchesFakultas = $table->user && $table->user->fakultas == $fakultas;
+            }
+    
+            // Return true if both conditions match (but its always true lol xD)
+            return $matchesAngkatan && $matchesFakultas;
+        });
+    }
+    
 }

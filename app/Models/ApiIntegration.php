@@ -52,6 +52,19 @@ class ApiIntegration extends Model
     }
   }
 
+  public function whatsappGateway($phone, $message){
+    try {
+      $response = Http::post(env('WA_GATEWAY'), [
+        'number' => $phone,
+        'message' => $message
+      ]);
+
+      return $response->json();
+    } catch (Throwable $e) {
+      return ['modelError' => $e->getMessage()];
+    }
+  }
+
   public function calculatePredicate($ipk){
     if($ipk >= 3.51){
       return 'Terpuji';
