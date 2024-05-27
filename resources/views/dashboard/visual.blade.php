@@ -474,33 +474,61 @@
         <div class="row  justify-content-center border-top border-success border-5 rounded p-4 mx-1 bg-light ">
             <div class="col-lg-12 col-sm-12 d-flex align-items-center justify-content-between mb-4">
                 <span class="mb-0 h4 ">Visualisasi Data Questioner</span>
-                <a href="/dashboard" class="btn btn-success">Kembali</a>
             </div>
 
             <div class="row my-2">
                 <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-12 wow fadeInUp" id="urutan1">
                     <hr>
-                    <span class="mb-2 h5 ">Kriteria Pekerjaan</span>
+                    <span class="mb-2 h5 ">(a) Seberapa besar kompetensi di bawah ini Anda kuasai?</span>
                 </div>
-                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-lg-6 col-md-6 col-sm-12 p-2  wow fadeInUp ">
-                    <canvas id="kriteriaPekerjaanChart" width="400" height="400"></canvas>
-                </div>
-                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-lg-6 col-md-6 col-sm-12  wow fadeInUp"
-                    id="urutan3">
-                    <div class="table-responsive">
-                        <table id="kriteriaPekerjaanTable"
-                            class="table text-start align-middle border table-striped table-hover mb-0">
-                            <thead data-wow-duration="1s" data-wow-delay="0.9s" class="wow fadeInUp">
-                                <tr class="text-dark" style="font-weight:700;">
-                                </tr>
-                            </thead>
-                            <tbody data-wow-duration="1s" data-wow-delay="0.9s" class="wow fadeInUp">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                <div class="row" id="questioner-a"></div>
             </div>
-
+            <div class="row my-2">
+                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-12 wow fadeInUp" id="urutan1">
+                    <hr>
+                    <span class="mb-2 h5 ">(b) Seberapa besar kontribusi perguruan tinggi terhadap kompetensi yang Anda
+                        kuasai?</span>
+                </div>
+                <div class="row" id="questioner-b"></div>
+            </div>
+            <div class="row my-2">
+                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-12 wow fadeInUp" id="urutan1">
+                    <hr>
+                    <span class="mb-2 h5 ">(c) Peningkatan kompetensi yang anda peroleh didapat paling banyak dari:</span>
+                </div>
+                <div class="row" id="questioner-c"></div>
+            </div>
+            <div class="row my-2">
+                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-12 wow fadeInUp" id="urutan1">
+                    <hr>
+                    <span class="mb-2 h5 ">(d) Seberapa besar penekanan pada aspek-aspek pembelajaran di bawah ini
+                        dilaksanakan di program studi Anda?</span>
+                </div>
+                <div class="row" id="questioner-d"></div>
+            </div>
+            <div class="row my-2">
+                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-12 wow fadeInUp" id="urutan1">
+                    <hr>
+                    <span class="mb-2 h5 ">(e) Bagaimana penilaian Anda terhadap aspek belajar mengajar di bawah
+                        ini?</span>
+                </div>
+                <div class="row" id="questioner-e"></div>
+            </div>
+            <div class="row my-2">
+                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-12 wow fadeInUp" id="urutan1">
+                    <hr>
+                    <span class="mb-2 h5 ">(f) Bagaimana penilaian Anda terhadap fasilitas kampus di bawah ini?</span>
+                </div>
+                <div class="row" id="questioner-f"></div>
+            </div>
+            <div class="row my-2">
+                <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-12 wow fadeInUp" id="urutan1">
+                    <hr>
+                    <span class="mb-2 h5 ">(g) Seberapa besar program studi Anda bermanfaat untuk hal-hal di bawah
+                        ini?</span>
+                </div>
+                <div class="row" id="questioner-g"></div>
+            </div>
         </div>
     </div>
 
@@ -508,6 +536,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+        // Chart Pekerja
         $(document).ready(function() {
             $.ajax({
                 url: 'http://127.0.0.1:8000/api/visualisasi/pekerja',
@@ -610,8 +639,7 @@
             });
         });
 
-
-
+        // Chart Wirausaha
         $(document).ready(function() {
             $.ajax({
                 url: 'http://127.0.0.1:8000/api/visualisasi/wirausaha',
@@ -696,8 +724,9 @@
                         'Omset'], 'Omset');
                     createChartAndTable('jumlahWirausahaChart', 'jumlahWirausahaTable', response[
                         'Pendapatan'], 'Pendapatan');
-                    createChartAndTable('kesesuaianWirausahaChart', 'kesesuaianWirausahaTable', response[
-                        'Kesesuaian Usaha dengan Prodi'], 'Kesesuaian Usaha dengan Prodi');
+                    createChartAndTable('kesesuaianWirausahaChart', 'kesesuaianWirausahaTable',
+                        response[
+                            'Kesesuaian Usaha dengan Prodi'], 'Kesesuaian Usaha dengan Prodi');
                 },
                 error: function(error) {
                     console.error('Error fetching data:', error);
@@ -705,8 +734,7 @@
             });
         });
 
-
-
+        // Chart Pendidikan
         $(document).ready(function() {
             $.ajax({
                 url: 'http://127.0.0.1:8000/api/visualisasi/pendidikan',
@@ -786,8 +814,9 @@
                         'is_studying'], 'is_studying');
                     createChartAndTable('tingkatPendidikanChart', 'tingkatPendidikanTable', response[
                         'Tingkat Pendidikan'], 'Tingkat Pendidikan');
-                    createChartAndTable('penerimaanPendidikanChart', 'penerimaanPendidikanTable', response[
-                        'Tgl Surat Penerimaan Pendidikan'], 'Tgl Surat Penerimaan Pendidikan');
+                    createChartAndTable('penerimaanPendidikanChart', 'penerimaanPendidikanTable',
+                        response[
+                            'Tgl Surat Penerimaan Pendidikan'], 'Tgl Surat Penerimaan Pendidikan');
                     createChartAndTable('mulaiPendidikanChart', 'mulaiPendidikanTable', response[
                         'Tgl Mulai Pendidikan'], 'Tgl Mulai Pendidikan');
                     createChartAndTable('linearPendidikanChart', 'linearPendidikanTable', response[
@@ -796,6 +825,123 @@
                 error: function(error) {
                     console.error('Error fetching data:', error);
                 }
+            });
+        });
+
+        // Chart Questioner
+        function createChart(chartId, data, label) {
+            const labels = Object.keys(data);
+            const values = Object.values(data);
+
+            const ctx = document.getElementById(chartId).getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: values,
+                        backgroundColor: [
+                            'rgb(0 157 84 / 74%)',
+                            'rgb(2 117 64 / 74%)',
+                            'rgb(2 81 44 / 74%)',
+                            'rgb(43 205 129 / 74%)',
+                            'rgb(0 177 4 / 74%)',
+                            'rgb(0 127 4 / 74%)',
+                            'rgb(2 117 5 / 74%))'
+                        ],
+                        borderColor: ['#fff'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) label += ': ';
+                                    if (context.raw !== null) label += context.raw;
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function fetchAndRenderCharts(category, containerId, startIndex) {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/visualisasi/questioner',
+                method: 'GET',
+                success: function(response) {
+                    const competencies = response[category];
+                    Object.entries(competencies).forEach(([competency, data], index) => {
+                        const chartId = `chart-${startIndex + index}`;
+                        $(`#${containerId}`).append(`
+                            <div class="col-lg-4 col-md-4 col-sm-12 p-2">
+                                <span style="font-size:0.8rem;">${index + 1}. ${competency}</span>
+                                <canvas id="${chartId}" width="400" height="400"></canvas>
+                            </div>
+                        `);
+                        createChart(chartId, data, competency);
+                    });
+                },
+                error: function(error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            const categories = [{
+                    category: "(a) Seberapa besar kompetensi di bawah ini Anda kuasai?",
+                    containerId: "questioner-a",
+                    startIndex: 1
+                },
+                {
+                    category: "(b) Seberapa besar kontribusi perguruan tinggi terhadap kompetensi yang Anda kuasai?",
+                    containerId: "questioner-b",
+                    startIndex: 19
+                },
+                {
+                    category: "(c) Peningkatan kompetensi yang anda peroleh didapat paling banyak dari:",
+                    containerId: "questioner-c",
+                    startIndex: 37
+                },
+                {
+                    category: "(d) Seberapa besar penekanan pada aspek-aspek pembelajaran di bawah ini dilaksanakan di program studi Anda?",
+                    containerId: "questioner-d",
+                    startIndex: 38
+                },
+                {
+                    category: "(e) Bagaimana penilaian Anda terhadap aspek belajar mengajar di bawah ini?",
+                    containerId: "questioner-e",
+                    startIndex: 43
+                },
+                {
+                    category: "(f) Bagaimana penilaian Anda terhadap fasilitas kampus di bawah ini?",
+                    containerId: "questioner-f",
+                    startIndex: 48
+                },
+                {
+                    category: "(g) Seberapa besar program studi Anda bermanfaat untuk hal-hal di bawah ini?",
+                    containerId: "questioner-g",
+                    startIndex: 58
+                }
+            ];
+
+            categories.forEach(({
+                category,
+                containerId,
+                startIndex
+            }) => {
+                fetchAndRenderCharts(category, containerId, startIndex);
             });
         });
     </script>
