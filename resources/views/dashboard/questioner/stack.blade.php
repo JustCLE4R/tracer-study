@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
   <!-- Libraries Stylesheet -->
-  <link rel="stylesheet" href="http://127.0.0.1:8000/lib/owlcarousel/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="http://127.0.0.1:8000/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
+  <link rel="stylesheet" href="/lib/owlcarousel/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
@@ -32,22 +32,17 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
   
-  <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/css/trix.css">
+  <link rel="stylesheet" type="text/css" href="/css/trix.css">
 
   <!-- Custom Stylesheet -->
-  <link href="http://127.0.0.1:8000/css/dashboard.css" rel="stylesheet">
-  <link href="http://127.0.0.1:8000/css/timeline.css" rel="stylesheet">
+  <link href="/css/dashboard.css" rel="stylesheet">
+  <link href="/css/timeline.css" rel="stylesheet">
   
   </head>
 
 <body>
 
 <div class="row justify-content-center bg-white p-0 mb-4">
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-        <span class="sr-only">Loading...</span>
-    </div>
-    </div>
 
     <div class="content" style="width:100% !important; margin-left:0 !important; padding:0 !important;">
     <div class="container-fluid pt-4">
@@ -315,14 +310,14 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="/js/wow.min.js"></script>
   
-  <script src="http://127.0.0.1:8000/lib/waypoints/waypoints.min.js"></script>
-  <script src="http://127.0.0.1:8000/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="http://127.0.0.1:8000/lib/tempusdominus/js/moment.min.js"></script>
-  <script src="http://127.0.0.1:8000/lib/tempusdominus/js/moment-timezone.min.js"></script>
-  <script src="http://127.0.0.1:8000/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script src="/lib/waypoints/waypoints.min.js"></script>
+  <script src="/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/lib/tempusdominus/js/moment.min.js"></script>
+  <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
   
-  <script type="text/javascript" src="http://127.0.0.1:8000/js/trix.js"></script>
+  <script type="text/javascript" src="/js/trix.js"></script>
   <script>    
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
@@ -331,7 +326,7 @@
   </script>
 
   <!-- Custom Javascript -->
-  <script src="http://127.0.0.1:8000/js/dashboard.js"></script>
+  <script src="/js/dashboard.js"></script>
   
   
   
