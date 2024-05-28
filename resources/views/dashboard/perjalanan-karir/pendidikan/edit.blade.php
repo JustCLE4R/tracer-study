@@ -93,12 +93,12 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Wilayah Pendidikan *</label>
-                  <select class="form-select @error('is_linear') is-invalid @enderror" id="wilayahPendidikan" name="is_linear">
+                  <select class="form-select @error('wilayah_pendidikan') is-invalid @enderror" id="wilayahPendidikan" name="wilayah_pendidikan">
                     <option hidden="">Pilih Wilayah Pendidikan Anda</option>
-                    <option value="0" {{ old('is_linear', $pendidikan->is_linear) == '0' ? 'selected' : '' }}>Didalam Negeri</option>
-                    <option value="1" {{ old('is_linear', $pendidikan->is_linear) == '1' ? 'selected' : '' }}>Diluar Negeri</option>
+                    <option value="0" {{ old('wilayah_pendidikan', $pendidikan->wilayah_pendidikan) == '0' ? 'selected' : '' }}>Didalam Negeri</option>
+                    <option value="1" {{ old('wilayah_pendidikan', $pendidikan->wilayah_pendidikan) == '1' ? 'selected' : '' }}>Diluar Negeri</option>
                   </select>
-                  @error('is_linear')
+                  @error('wilayah_pendidikan')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
@@ -178,7 +178,7 @@
 </div>
 
 <script>
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   const apiURL = '/json/data.json';
 
   const wilayahPendidikanSelect = document.getElementById('wilayahPendidikan');
@@ -192,13 +192,13 @@
   const initKabupaten = '{{ old("kabupaten_pendidikan", $pendidikan->kabupaten_pendidikan) }}';
 
   function updateFormFields() {
-    if (initWilayahPendidikan === '0') { 
+    if (initWilayahPendidikan === '0') {
       negaraInput.value = 'Indonesia';
       negaraInput.disabled = true;
       provinsiSelect.disabled = false;
       kotaSelect.disabled = false;
-    } else if (initWilayahPendidikan === '1') { 
-      negaraInput.value = '';
+    } else if (initWilayahPendidikan === '1') {
+      negaraInput.value = initNegara || '';
       negaraInput.disabled = false;
       provinsiSelect.disabled = true;
       kotaSelect.disabled = true;
@@ -207,12 +207,12 @@
 
   wilayahPendidikanSelect.addEventListener('change', function() {
     const selectedValue = this.value;
-    if (selectedValue === '0') { 
+    if (selectedValue === '0') {
       negaraInput.value = 'Indonesia';
       negaraInput.disabled = true;
       provinsiSelect.disabled = false;
       kotaSelect.disabled = false;
-    } else if (selectedValue === '1') { 
+    } else if (selectedValue === '1') {
       negaraInput.value = '';
       negaraInput.disabled = false;
       provinsiSelect.disabled = true;
@@ -261,7 +261,6 @@
 
   updateFormFields();
 });
-
 
 </script>
 @endsection

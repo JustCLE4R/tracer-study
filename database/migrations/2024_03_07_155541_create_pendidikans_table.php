@@ -24,6 +24,7 @@ return new class extends Migration
       $table->string('negara_pendidikan')->nullable();
       $table->string('provinsi_pendidikan')->nullable();
       $table->string('kabupaten_pendidikan')->nullable();
+      $table->string('alamat_pendidikan')->nullable();
       $table->string('bukti_pendidikan')->nullable();
       $table->timestamps();
     });
