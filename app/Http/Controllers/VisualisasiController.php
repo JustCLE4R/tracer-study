@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Pekerja;
 use App\Models\Wirausaha;
 use App\Models\Pendidikan;
 use App\Models\Questioner;
-use App\Models\QuestionerStackHolder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\QuestionerStackHolder;
 
 class VisualisasiController extends Controller
 {
     public function dataWirausaha(Request $request){
         $wirausaha_data = Wirausaha::with('user')->get();
 
-        $wirausaha_data = $this->filterByAngkatanFakultas($wirausaha_data, $request->query('angkatan'), $request->query('fakultas'));
+        $wirausaha_data = $this->filterByThnWisudahFakultas($wirausaha_data, $request->query('lulus'), $request->query('fakultas'));
 
         $pemodal_counts = [
             "Pribadi / Tabungan" => 0,
@@ -72,7 +74,7 @@ class VisualisasiController extends Controller
     public function dataPekerja(Request $request){
         $pekerja_data = Pekerja::get();
 
-        $pekerja_data = $this->filterByAngkatanFakultas($pekerja_data, $request->query('angkatan'), $request->query('fakultas'));
+        $pekerja_data = $this->filterByThnWisudahFakultas($pekerja_data, $request->query('lulus'), $request->query('fakultas'));
 
         return [
             'is_active' => $pekerja_data->countBy('is_active'),
@@ -114,7 +116,7 @@ class VisualisasiController extends Controller
     public function dataQuestioner(Request $request){
         $questioner_data = Questioner::get();
 
-        $questioner_data = $this->filterByAngkatanFakultas($questioner_data, $request->query('angkatan'), $request->query('fakultas'));
+        $questioner_data = $this->filterByThnWisudahFakultas($questioner_data, $request->query('lulus'), $request->query('fakultas'));
 
         return response()->json([
             '(a) Seberapa besar kompetensi di bawah ini Anda kuasai?' => [
@@ -206,7 +208,7 @@ class VisualisasiController extends Controller
     public function dataStakeholder(Request $request){
         $stakeholder_data = QuestionerStackHolder::get();
 
-        $stakeholder_data = $this->filterByAngkatanFakultas($stakeholder_data, $request->query('angkatan'), $request->query('fakultas'));
+        $stakeholder_data = $this->filterByThnWisudahFakultas($stakeholder_data, $request->query('lulus'), $request->query('fakultas'));
 
         return response()->json([
             '(e)Menurut anda, seberapa PENTINGkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?' => [
@@ -252,6 +254,61 @@ class VisualisasiController extends Controller
         ]);
     }
 
+    public function dataPerbandingan(Request $request) {
+        $thnWisuda = $request->query('lulus');
+        $fakultas = $request->query('fakultas');
+
+        $user_data = User::with(['pendidikan', 'pekerja', 'wirausaha'])
+                            ->when($thnWisuda, function($query) use ($thnWisuda) {
+                                return $query->whereYear('tgl_wisuda', $thnWisuda);
+                            })
+                            ->when($fakultas, function($query) use ($fakultas) {
+                                return $query->where('fakultas', $fakultas);
+                            })
+                            ->get();
+
+        // Counts users by gender
+        $genderCounts = $user_data->countBy('jenis_kelamin');
+
+        $statusCounts = [
+            'Pendidikan' => 0,
+            'Pekerja' => 0,
+            'Wirausaha' => 0
+        ];
+
+        foreach ($user_data as $user) {
+            if($user->pendidikan){
+                foreach ($user->pendidikan as $pendidikan) {
+                    $statusCounts['Pendidikan'] = $pendidikan->getRawOriginal('is_studying') == 1 ? $statusCounts['Pendidikan'] + 1 : $statusCounts['Pendidikan'];
+                }
+            }
+
+            if($user->pekerja){
+                foreach ($user->pekerja as $pekerja) {
+                    $statusCounts['Pekerja'] = $pekerja->getRawOriginal('is_active') == 1  ? $statusCounts['Pekerja'] + 1 : $statusCounts['Pekerja'];
+                }
+            }
+
+            if($user->wirausaha){
+                foreach ($user->wirausaha as $wirausaha) {
+                    $statusCounts['Wirausaha'] = $wirausaha->getRawOriginal('is_active') == 1 ? $statusCounts['Wirausaha'] + 1 : $statusCounts['Wirausaha'];
+                }
+            }
+        }
+
+        return response()->json([
+            'Jenis kelamin' => $genderCounts,
+            'Status' => [
+                'Pendidikan' => $statusCounts['Pendidikan'],
+                'Pekerja'=> $statusCounts['Pekerja'],
+                'Wirausaha' => $statusCounts['Wirausaha']
+            ]
+        ]);
+    }
+    
+    
+
+
     /**
      * DRY functions
      */
@@ -291,7 +348,7 @@ class VisualisasiController extends Controller
     
         foreach ($value as $record) {
             $date = $record->$category;
-            $year = date('Y', strtotime($date));
+            $year = $date ? date('Y', strtotime($date)) : null;
             if ($year <= '2019') {
                 $date_counts['<=2019']++;
             } elseif (array_key_exists($year, $date_counts)) {
@@ -302,23 +359,24 @@ class VisualisasiController extends Controller
         return $date_counts;
     }
 
-    private function filterByAngkatanFakultas($collection, $angkatan = null, $fakultas = null)
+    private function filterByThnWisudahFakultas($collection, $ThnWisudah = null, $fakultas = null)
     {
-        return $collection->filter(function($table) use ($angkatan, $fakultas) {
-            // Check if the angkatan matches
-            $matchesAngkatan = true;
-            if ($angkatan) {
-                $matchesAngkatan = $table->user && $table->user->tahun_masuk == $angkatan;
+        return $collection->filter(function($query) use ($ThnWisudah, $fakultas) {
+            // Check if the ThnWisudah matches
+            $matchesThnWisudah = true;
+            if ($ThnWisudah) {
+                $tgl_wisuda = $query->user ? $query->user->tgl_wisuda : null;
+                $matchesThnWisudah = $tgl_wisuda ? date('Y', strtotime($tgl_wisuda)) == $ThnWisudah : false;
             }
     
             // Check if the fakultas matches
             $matchesFakultas = true;
             if ($fakultas) {
-                $matchesFakultas = $table->user && $table->user->fakultas == $fakultas;
+                $matchesFakultas = $query->user && $query->user->fakultas == $fakultas;
             }
     
             // Return true if both conditions match (but its always true lol xD)
-            return $matchesAngkatan && $matchesFakultas;
+            return $matchesThnWisudah && $matchesFakultas;
         });
     }
     

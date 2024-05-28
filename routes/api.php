@@ -24,8 +24,11 @@ Route::get('/questions', [QuestionController::class, 'getQuestions']);
 Route::get('/questions/category/{question:category}', [QuestionController::class, 'getQuestionByCategory']);
 Route::get('/questions/type/{question:type}', [QuestionController::class, 'getQuestionByType']);
 
-Route::get('/visualisasi/wirausaha', [VisualisasiController::class, 'dataWirausaha']);
-Route::get('/visualisasi/pekerja', [VisualisasiController::class, 'dataPekerja']);
-Route::get('/visualisasi/pendidikan', [VisualisasiController::class, 'dataPendidikan']);
-Route::get('/visualisasi/questioner', [VisualisasiController::class, 'dataQuestioner']);
-Route::get('/visualisasi/stakeholder', [VisualisasiController::class, 'dataStakeholder']);
+Route::prefix('visualisasi')->group(function () {
+    Route::get('/wirausaha', [VisualisasiController::class, 'dataWirausaha']);
+    Route::get('/pekerja', [VisualisasiController::class, 'dataPekerja']);
+    Route::get('/pendidikan', [VisualisasiController::class, 'dataPendidikan']);
+    Route::get('/questioner', [VisualisasiController::class, 'dataQuestioner']);
+    Route::get('/stakeholder', [VisualisasiController::class, 'dataStakeholder']);
+    Route::get('/perbandingan', [VisualisasiController::class, 'dataPerbandingan']);
+});
