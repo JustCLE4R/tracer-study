@@ -77,8 +77,8 @@
 											<p>{{ \Carbon\Carbon::parse($pekerjaan->tanggal_mulai)->translatedFormat('d F Y') .' - '. ($pekerjaan->getRawOriginal('is_active') ? 'Sekarang' : \Carbon\Carbon::parse($pekerjaan->tanggal_akhir)->translatedFormat('d F Y')) }}</p>
 										</div>
 										<div class="col mt-2 float-end">
-											@if ($pekerjaan->getRawOriginal('is_active') == 1 && $pekerjaan->tipe_kerja == 'pekerja')
-												<a href="https://tracerstudy.uinsu.ac.id/questioner/{{ $pekerjaan->token }}" class="btn btn-link btn-sm text-success m-0 p-0" id="copyLink"><i class="bi bi-share"></i></a>
+											@if ($pekerjaan->token)
+												<a href="https://tracerstudy.uinsu.ac.id/questioner/{{ $pekerjaan->token }}" class="copyLink btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-share"></i></a>
 											@endif
 											<a href="/dashboard/{{ $pekerjaan->tipe_kerja }}/{{ $pekerjaan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
 											<form class="d-inline" action="/dashboard/{{ $pekerjaan->tipe_kerja }}/{{ $pekerjaan->id }}" method="POST">
@@ -163,17 +163,28 @@
 
 
 <script>
-	document.getElementById('copyLink').addEventListener('click', function(event) {
-			event.preventDefault();
-			var link = this.getAttribute('href');
-			var tempInput = document.createElement('input');
-			tempInput.setAttribute('value', link);
-			document.body.appendChild(tempInput);
-			tempInput.select();
-			document.execCommand('copy');
-			document.body.removeChild(tempInput);
-			// Optionally, provide some feedback to the user
-			alert('Link copied to clipboard');
+	document.addEventListener('DOMContentLoaded', function() {
+			const copyLinks = document.querySelectorAll('.copyLink');
+
+			copyLinks.forEach(link => {
+					link.addEventListener('click', function(event) {
+							event.preventDefault();
+							const href = link.getAttribute('href');
+							copyToClipboard(href);
+					});
+			});
+
+			function copyToClipboard(text) {
+					const tempInput = document.createElement('input');
+					tempInput.style.position = 'absolute';
+					tempInput.style.left = '-9999px';
+					tempInput.value = text;
+					document.body.appendChild(tempInput);
+					tempInput.select();
+					document.execCommand('copy');
+					document.body.removeChild(tempInput);
+					alert('Link copied to clipboard!');
+			}
 	});
 </script>
 @endsection

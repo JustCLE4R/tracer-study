@@ -16,6 +16,7 @@ class SecurityHeader
     private $unwantedHeaderList = [
         'X-Powered-By',
         'Server',
+        'ETag'
     ];
 
     public function handle(Request $request, Closure $next): Response
