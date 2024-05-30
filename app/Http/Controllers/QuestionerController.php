@@ -29,36 +29,36 @@ class QuestionerController extends Controller
         $data = $request->validated();
 
         $b_data = array_filter($data, function($key) {
-            return strpos($key, 'b-') === 0;
+            return strpos($key, 'b_') === 0;
         }, ARRAY_FILTER_USE_KEY);
 
         $data = array_diff_key($data, $b_data);
 
         $data['detail_perusahaan_id'] = $questioner->id;
 
-        $data['c-1'] = json_encode($data['c-1']);
-        $data['d-1'] = json_encode($data['d-1']);
+        $data['c_1'] = json_encode($data['c_1']);
+        $data['d_1'] = json_encode($data['d_1']);
         
         QuestionerStackHolder::create($data);
         
         $fields = [
-            'b-1' => 'nama_perusahaan',
-            'b-2' => 'nama_atasan',
-            'b-3' => 'jabatan_atasan',
-            'b-4' => 'telepon_atasan',
-            'b-5' => 'alamat_perusahaan',
-            'b-6' => 'email_atasan',
+            'b_1' => 'nama_perusahaan',
+            'b_2' => 'nama_atasan',
+            'b_3' => 'jabatan_atasan',
+            'b_4' => 'telepon_atasan',
+            'b_5' => 'alamat_perusahaan',
+            'b_6' => 'email_atasan',
         ];
 
         foreach ($fields as $key => $property) {
             if ($b_data[$key] != $questioner->$property) {
                 $questioner->update([
-                    'nama_perusahaan' => $b_data['b-1'],
-                    'nama_atasan' => $b_data['b-2'],
-                    'jabatan_atasan' => $b_data['b-3'],
-                    'telepon_atasan' => $b_data['b-4'],
-                    'alamat_perusahaan' => $b_data['b-5'],
-                    'email_atasan' => $b_data['b-6'],
+                    'nama_perusahaan' => $b_data['b_1'],
+                    'nama_atasan' => $b_data['b_2'],
+                    'jabatan_atasan' => $b_data['b_3'],
+                    'telepon_atasan' => $b_data['b_4'],
+                    'alamat_perusahaan' => $b_data['b_5'],
+                    'email_atasan' => $b_data['b_6'],
                 ]);
                 break;
             }

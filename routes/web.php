@@ -33,7 +33,7 @@ Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::post('/login', [LoginController::class, 'authenticate']);
 
   Route::get('/questioner/{questioner:token}', [QuestionerController::class, 'getPublicQuestioner']);
-  Route::post('//{questioner:token}', [QuestionerController::class, 'postPublicQuestioner']);
+  Route::post('/questioner/{questioner:token}', [QuestionerController::class, 'postPublicQuestioner']);
 });
 
 //dashboard routes
