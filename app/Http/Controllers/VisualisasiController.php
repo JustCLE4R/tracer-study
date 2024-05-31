@@ -92,6 +92,7 @@ class VisualisasiController extends Controller
 
     public function dataPendidikan(Request $request){
         $pendidikan_data = Pendidikan::get();
+        $pendidikan_data = $this->filterByThnWisudahFakultas($pendidikan_data, $request->query('lulus'), $request->query('fakultas'));
 
         $negara = $pendidikan_data->map(function($item){
             if($item->negara_pendidikan == "Indonesia"){

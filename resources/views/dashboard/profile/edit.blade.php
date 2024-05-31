@@ -260,15 +260,6 @@
                 </div>
               </div>
               <hr>
-              {{-- <div class="row">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Status Pernikahan</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text" class="form-control" name="">
-                </div>
-              </div>
-              <hr> --}}
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0">Kewarganegaraan</h6>
@@ -284,7 +275,8 @@
                 </div>
                 <div class="col-sm-9 text-secondary">
                   <ul>
-                    <li class="mb-1"><span>Provinsi</span><input type="text" class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" value="{{ old('provinsi', Auth::user()->provinsi) }}">
+
+                    {{-- <li class="mb-1"><span>Provinsi</span><input type="text" class="form-control @error('provinsi') is-invalid @enderror" name="provinsi" value="{{ old('provinsi', Auth::user()->provinsi) }}">
                       @error('provinsi')
                         <div class="invalid-feedback">
                           {{ $message }}
@@ -300,15 +292,41 @@
                         </div>
                       @enderror
                     </li>
+                    </li> --}}
 
-                    <li class="my-1"><span>Kecamatan</span><input type="text" class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan" value="{{ old('kecamatan', Auth::user()->kecamatan) }}">
+                    
+                    <li class="mb-1">
+                      <span>Provinsi</span>
+                      <select class="form-select @error('provinsi') is-invalid @enderror" id="provinsi"  name="provinsi" value="{{ old('provinsi', Auth::user()->provinsi) }}">
+                        <option value="" hidden>Pilih Provinsi</option>
+                      </select>
+                      @error('provinsi')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                      @enderror
+                    </li>
+                    <li class="my-1">
+                      <span>Kabupaten/Kota</span>
+                      <select class="form-select @error('kabupaten') is-invalid @enderror" id="kabupaten"  name="kabupaten" value="{{ old('kabupaten', Auth::user()->kabupaten) }}">
+                        <option value="" hidden>Pilih kabupaten</option>
+                      </select>
+                      @error('kabupaten')
+                        <div class="invalid-feedback">
+                          {{ $message }}
+                        </div>
+                      @enderror
+                    </li>
+                    <li class="my-1">
+                      <span>Kecamatan</span>
+                      <input type="text" class="form-control @error('kecamatan') is-invalid @enderror" name="kecamatan" value="{{ old('kecamatan', Auth::user()->kecamatan) }}">
                       @error('kecamatan')
                         <div class="invalid-feedback">
                           {{ $message }}
                         </div>
                       @enderror
                     </li>
-
+                   
                     <li class="my-1"><span>Alamat</span><input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{ old('alamat', Auth::user()->alamat) }}">
                       @error('alamat')
                         <div class="invalid-feedback">
@@ -335,4 +353,42 @@
     </div>
   </div>
 </div>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    const apiURL = '/json/data.json';
+
+    const provinsiSelect = document.getElementById('provinsi');
+    const kotaSelect = document.getElementById('kabupaten');
+
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        data.forEach(prov => {
+          const option = document.createElement('option');
+          option.value = prov.provinsi;
+          option.textContent = prov.provinsi;
+          provinsiSelect.appendChild(option);
+        });
+
+        provinsiSelect.addEventListener('change', function() {
+          kotaSelect.innerHTML = '<option hidden>Pilih Kabupaten/Kota</option>';
+          
+          const selectedProvinsi = this.value;
+          
+          const selectedData = data.find(prov => prov.provinsi === selectedProvinsi);
+          
+          if (selectedData && selectedData.kota) {
+            selectedData.kota.forEach(kabupaten => {
+              const option = document.createElement('option');
+              option.value = kabupaten;
+              option.textContent = kabupaten;
+              kotaSelect.appendChild(option);
+            });
+          }
+        });
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  });
+</script>
 @endsection

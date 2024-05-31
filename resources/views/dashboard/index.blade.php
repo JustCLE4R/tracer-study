@@ -53,23 +53,19 @@ n="1000">
 
     <div class="col-sm-12 col-xl-6">
       <div class="bg-light  border-top border-success border-5 rounded h-100 p-4">
-        <h6 class="mb-4 text-primary wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s" >Mahasiswa Yang Sukses</h6>
+        <h6 class="mb-4 text-primary text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s" >Selamat Datang di Tracer Study UIN Sumatera Utara</h6>
         <div class="owl-carousel testimonial-carousel">
           <div class="testimonial-item text-center"> 
             <img data-wow-duration="1s" data-wow-delay="0.9s"  class="img-fluid rounded-circle mx-auto mb-4 wow fadeInUp"
-              src="img/user.jpg" style="width: 100px; height: 100px;">
-            <h5  class="mb-1 ">Paris Alvito</h5>
-            <p >Web Developer</p>
-            <p  class="mb-0">Lorem ipsum dolor sit amet consectetur
-              adipisicing elit. Dolor, voluptate?</p>
+              src="img/hero-1.png" style="width: 250px;">
+            <h4  class="mb-2 ">Lengkapi Profile Biodata</h4>
+            <p  class="mb-0">Agar dapat melakukan Pengisian Data Perjalanan karir, Questioner & Berita Lowongan Pekerjaan. <br>Sihlakan lengkapi profil biodata anda terlebih dahulu!</p>
           </div>
           <div class="testimonial-item text-center" data-wow-duration="1s" data-wow-delay="0.9s" >
-            <img class="img-fluid rounded-circle mx-auto mb-4" src="img/testimonial-2.jpg"
-              style="width: 100px; height: 100px;">
-            <h5 class="mb-1">Alex Yudistira</h5>
-            <p>Backend Developer</p>
-            <p class="mb-0">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore
-              diam</p>
+            <img class="img-fluid rounded-circle mx-auto mb-4" src="img/hero-2.webp"
+              style="width: 250px;">
+            <h4 class="mb-2">Dapatkan Sertifikasi</h4>
+            <p class="mb-0">Jika anda telah menyelesaikan pengisian perjalanan karir & Questioner, maka anda akan <br> mendapatkan Sertifikasi yang dapat digunakan untuk penyelesaian administrasi akhir </p>
           </div>
         </div>
       </div>
@@ -87,35 +83,6 @@ n="1000">
   </div>
 </div>
 <!-- header End -->
-
-<div class="container-fluid pt-4 px-4 ms-0 my-4">
-
-    <div class="row  justify-content-center border-top border-success border-5 rounded p-4 mx-1 bg-light " >
-      <!-- Chart 1 -->
-    
-        <div class="col-lg-12 col-sm-12 d-flex align-items-center justify-content-between mb-4">
-          <span  class="mb-0 h4 ">Visualisasi Data Tracer Study</span>
-          <a href="/dashboard/visual" class="btn btn-success">Tampilkan Semua</a>
-          
-        </div> 
-
-        <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-lg-6 col-sm-12  wow fadeInUp "
-          id="urutan2">    
-          <canvas data-wow-duration="1s" data-wow-delay="0.9s" class="wow fadeInUp" id="bar"></canvas>
-        </div>
-        
-        <div data-wow-duration="1s" data-wow-delay="0.9s" class="col-lg-6 col-sm-12  wow fadeInUp"
-          id="urutan3">
-          <div id="legend-container"></div>
-        </div>
-
-      <!-- End Chart 1 -->
-
-    
-    </div>
-
-</div>
-
 
 {{-- table start --}}
 <div class="container-fluid pt-4 px-4 ms-0">

@@ -4,10 +4,10 @@
     <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
-                <div class="bg-light rounded p-5 border-top border-success border-5" >
+                <div class="bg-light rounded p-5 border-top border-success border-5" style="min-height: 70vh;">
                     <div class="row">
                         <div class="col-12">
-                            <span class="h4">Kuesioner</span><br>
+                            <span class="h4">Questioner</span><br>
                             Status Pengisian:
                             @if ($questioner->isNotEmpty())
                                 <span class="btn btn-sm btn-success">Sudah Mengisi <i class="bi bi-check-lg"></i></span>  

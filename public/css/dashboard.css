@@ -1,9 +1,9 @@
 /********** Template CSS **********/
-*{
-    font-family:  "Open Sans" !important;
+* {
+    font-family: "Open Sans" !important;
 }
-ol li{
-    margin-bottom:1.5vh;
+ol li {
+    margin-bottom: 1.5vh;
 }
 :root {
     --primary: #009cff;
@@ -15,15 +15,51 @@ ol li{
     z-index: 3;
     color: white !important;
     background-color: green !important;
-    border-color: green !important; 
+    border-color: green !important;
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-weight:700 !important;
-  }
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700 !important;
+}
 
-.page-item .page-link{
-    color:green !important;
+.scroll-top {
+    width: 45px;
+    height: 45px;
+    background: #077d0b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    cursor: pointer;
+    transition: all 0.3s ease-out 0s;
+}
+a {
+    text-decoration: none !important;
+}
+#card-header:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.page-item .page-link {
+    color: green !important;
 }
 .title {
     display: flex;
@@ -60,7 +96,6 @@ ol li{
 .table {
     --bs-table-bg: transparent;
 }
-
 
 #hidden {
     overflow: hidden;
