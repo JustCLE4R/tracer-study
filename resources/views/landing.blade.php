@@ -14,8 +14,8 @@
                         <div class="about-counter mt-50 ">
                             <div class="row">
                                 <div class="col-sm-4 ">
-                                    <div class="single-counter counter-color-1 d-flex wow fadeInUp"
-                                        data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <div class="single-counter counter-color-1 d-flex wow fadeInUp" data-wow-duration="1s"
+                                        data-wow-delay="0.3s">
                                         <div class="counter-shape">
                                             <span class="shape-1"></span>
                                             <span class="shape-2"></span>
@@ -29,8 +29,8 @@
                                     </div> <!-- single counter -->
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="single-counter counter-color-2 d-flex wow fadeInUp"
-                                        data-wow-duration="1s" data-wow-delay="0.6s">
+                                    <div class="single-counter counter-color-2 d-flex wow fadeInUp" data-wow-duration="1s"
+                                        data-wow-delay="0.6s">
                                         <div class="counter-shape">
                                             <span class="shape-1"></span>
                                             <span class="shape-2"></span>
@@ -44,8 +44,8 @@
                                     </div> <!-- single counter -->
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="single-counter counter-color-3 d-flex wow fadeInUp"
-                                        data-wow-duration="1s" data-wow-delay="0.9s">
+                                    <div class="single-counter counter-color-3 d-flex wow fadeInUp" data-wow-duration="1s"
+                                        data-wow-delay="0.9s">
                                         <div class="counter-shape">
                                             <span class="shape-1"></span>
                                             <span class="shape-2"></span>
@@ -86,7 +86,9 @@
             <div id="roker" class="row justify-content-between">
                 <div id="col1" class="col-lg-5 p-5 ">
                     <div id="chart" class="about-img mb-50  wow fadeInUp" data-wow-delay=".5s">
-                        <canvas id="pie-chart"></canvas>
+                        <canvas id="status"></canvas>
+                        <canvas id="jenis-kelamin"></canvas>
+                        <canvas id="pengisi"></canvas>
                     </div>
                 </div>
                 <div id="col2" class="col-lg-7">
@@ -107,20 +109,21 @@
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                     data-bs-parent="#accordionExample">
+
                                     <div class="faq-content d-flex flex-wrap">
-                                        Perbandingan Jumlah Alumni Yang Mengisi Tracer Study 2024
-                                        <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i
-                                                class="lni lni-display"></i></a>
+                                        Perbandingan Berdasarkan Status Alumni Tracer Study 2024
+                                        <a href="#0" class="button-sm radius-30 mt-2 show-chart"
+                                            data-chart="status">Tampilkan <i class="lni lni-display"></i></a>
                                     </div>
                                     <div class="faq-content d-flex flex-wrap">
                                         Perbandingan Jenis Kelamin Yang Mengisi Tracer Study 2024
-                                        <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i
-                                                class="lni lni-display"></i></a>
+                                        <a href="#0" class="button-sm radius-30 mt-2 show-chart"
+                                            data-chart="jenis-kelamin">Tampilkan <i class="lni lni-display"></i></a>
                                     </div>
                                     <div class="faq-content d-flex flex-wrap">
-                                        Perbandingan Berdasarkan Status Alumni Tracer Study 2024
-                                        <a href="#0" class="button-sm radius-30 mt-2">Tampilkan <i
-                                                class="lni lni-display"></i></a>
+                                        Perbandingan Jumlah Alumni Yang Mengisi Tracer Study 2024
+                                        <a href="#0" class="button-sm radius-30 mt-2 show-chart"
+                                            data-chart="pengisi">Tampilkan <i class="lni lni-display"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -225,8 +228,7 @@
                 </div>
                 <div class="col-xl-6 col-lg-6">
                     <div class="about-img text-lg-right wow fadeInUp" data-wow-delay=".5s">
-                        <img src="/img/hero-2.webp"
-                            alt="">
+                        <img src="/img/hero-2.webp" alt="">
                     </div>
                 </div>
             </div>
@@ -260,10 +262,11 @@
                                 @foreach ($laporans as $laporan)
                                     <div class="faq-content">
                                         {{ $laporan->title }}<br>
-                                        <a href="storage/{{ $laporan->laporan }}" class="button-sm radius-30 mt-2" download>Download <i class="lni lni-download"></i></a>
+                                        <a href="storage/{{ $laporan->laporan }}" class="button-sm radius-30 mt-2"
+                                            download>Download <i class="lni lni-download"></i></a>
                                     </div>
                                 @endforeach
-                                
+
                             </div>
 
 
@@ -465,4 +468,119 @@
             </div>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'http://127.0.0.1:8000/api/visualisasi/perbandingan',
+                method: 'GET',
+                success: function(response) {
+                    var statusData = response.Status;
+                    var jenisKelaminData = response["Jenis kelamin"];
+
+                    var statusLabels = Object.keys(statusData);
+                    var statusValues = Object.values(statusData);
+
+                    var ctxStatus = document.getElementById("status").getContext("2d");
+                    var myPolarChart = new Chart(ctxStatus, {
+                        type: "polarArea",
+                        data: {
+                            labels: statusLabels,
+                            datasets: [{
+                                backgroundColor: [
+                                    "rgb(10, 83, 10)",
+                                    "rgba(14, 153, 7, 0.919)",
+                                    "green"
+                                ],
+                                data: statusValues
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: true
+                                }
+                            }
+                        }
+                    });
+
+                    var jkLabels = Object.keys(jenisKelaminData);
+                    var jkValues = Object.values(jenisKelaminData);
+
+                    var ctxJenisKelamin = document.getElementById("jenis-kelamin").getContext("2d");
+                    var myDoughnutChart = new Chart(ctxJenisKelamin, {
+                        type: "doughnut",
+                        data: {
+                            labels: jkLabels,
+                            datasets: [{
+                                backgroundColor: [
+                                    "rgb(10, 83, 10)",
+                                    "rgba(14, 153, 7, 0.919)",
+                                    "green"
+                                ],
+                                data: jkValues
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: true
+                                }
+                            }
+                        }
+                    });
+
+                    var pengisiData = {
+                        "Pengisi": 23,
+                        "Belum Mengisi": 49
+                    };
+
+                    var pengisiLabels = Object.keys(pengisiData);
+                    var pengisiValues = Object.values(pengisiData);
+
+                    var ctxPengisi = document.getElementById("pengisi").getContext("2d");
+                    var myDoughnutPengisiChart = new Chart(ctxPengisi, {
+                        type: "doughnut",
+                        data: {
+                            labels: pengisiLabels,
+                            datasets: [{
+                                backgroundColor: [
+                                    "rgb(10, 83, 10)",
+                                    "rgba(14, 153, 7, 0.919)",
+                                    "green"
+                                ],
+                                data: pengisiValues
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: true
+                                }
+                            }
+                        }
+                    });
+
+                    // Default tampilkan chart status
+                    $("#jenis-kelamin").hide();
+                    $("#pengisi").hide();
+                    $("#status").show();
+
+                    // Event handler untuk tombol-tombol
+                    $(".show-chart").click(function() {
+                        var chartToShow = $(this).data("chart");
+                        $("#status, #jenis-kelamin, #pengisi")
+                    .hide(); // Sembunyikan semua chart
+                        $("#" + chartToShow).show(); // Tampilkan chart yang dipilih
+                    });
+                },
+                error: function(error) {
+                    console.error("Terjadi kesalahan saat mengambil data:", error);
+                }
+            });
+        });
+    </script>
 @endsection

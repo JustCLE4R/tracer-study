@@ -61,6 +61,9 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::get('/visual', function () {
     return view('dashboard.visual');
   });
+  Route::get('/sertifikat', function () {
+    return view('dashboard.sertifikat');
+  });
 
   // admin routes
   Route::middleware('is-admin')->group(function () {
