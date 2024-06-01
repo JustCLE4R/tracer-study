@@ -279,13 +279,40 @@ class VisualisasiController extends Controller
                             })
                             ->get();
 
+        $questioner_stakeholder = QuestionerStackHolder::when($thnWisuda, function($query) use ($thnWisuda) {
+                                                            $query->whereHas('detailPerusahaan.pekerja.user', function($query) use ($thnWisuda) {
+                                                                $query->whereYear('tgl_wisuda', $thnWisuda);
+                                                            });
+                                                        })
+                                                        ->when($fakultas, function($query) use ($fakultas) {
+                                                            $query->whereHas('detailPerusahaan.pekerja.user', function($query) use ($fakultas) {
+                                                                $query->where('fakultas', $fakultas);
+                                                            });
+                                                        })
+                                                        ->get();
+
+        $user_questioner = Questioner::when($thnWisuda, function($query) use ($thnWisuda) {
+                                            $query->whereHas('user', function($query) use ($thnWisuda) {
+                                                $query->whereYear('tgl_wisuda', $thnWisuda);
+                                            });
+                                        })
+                                        ->when($fakultas, function($query) use ($fakultas) {
+                                            $query->whereHas('user', function($query) use ($fakultas) {
+                                                $query->where('fakultas', $fakultas);
+                                            });
+                                        })
+                                        ->get();
+        
+
         // Counts users by gender
         $genderCounts = $user_data->countBy('jenis_kelamin');
 
         $statusCounts = [
             'Pendidikan' => 0,
             'Pekerja' => 0,
-            'Wirausaha' => 0
+            'Wirausaha' => 0,
+            'Questioner Alumni' => 0,
+            'Questioner Stakeholder' => 0
         ];
 
         foreach ($user_data as $user) {
@@ -308,16 +335,22 @@ class VisualisasiController extends Controller
             }
         }
 
+        $statusCounts['Questioner Alumni'] = $user_questioner->count();
+        $statusCounts['Questioner Stakeholder'] = $questioner_stakeholder->count();
+
         return response()->json([
             'Total' => [
                 'Alumni' => 'Dari mana datanya?',
                 'Pengguna' => $user_data->count(),
+
             ],
             'Jenis kelamin' => $genderCounts,
             'Status' => [
                 'Pendidikan' => $statusCounts['Pendidikan'],
                 'Pekerja'=> $statusCounts['Pekerja'],
-                'Wirausaha' => $statusCounts['Wirausaha']
+                'Wirausaha' => $statusCounts['Wirausaha'],
+                'Questioner Alumni' => $statusCounts['Questioner Alumni'],
+                'Questioner Stakeholder' => $statusCounts['Questioner Stakeholder'],
             ]
         ]);
     }
@@ -395,5 +428,4 @@ class VisualisasiController extends Controller
             return $matchesThnWisudah && $matchesFakultas;
         });
     }
-    
 }
