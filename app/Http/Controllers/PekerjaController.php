@@ -133,7 +133,7 @@ class PekerjaController extends Controller
             } while (DetailPerusahaan::where('token', $token)->first());
 
             (new ApiIntegration)->whatsappGateway($rules['nomor-telepon-atasan'],
-                "╔═════*.·:·.✧ UINSU MEDAN ✧.·:·.*═════╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$token}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\n\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
+                "╔══*.·:·.✧ UINSU MEDAN ✧.·:·.*══╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$token}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\\n\\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
             );
         }
 
@@ -306,8 +306,8 @@ class PekerjaController extends Controller
             } while (DetailPerusahaan::where('token', $detail_perusahaan['token'])->first());
 
             (new ApiIntegration)->whatsappGateway($rules['nomor-telepon-atasan'],
-            "╔═════*.·:·.✧ UINSU MEDAN ✧.·:·.*═════╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$detail_perusahaan['token']}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\n\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
-        );
+                "╔══*.·:·.✧ UINSU MEDAN ✧.·:·.*══╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$detail_perusahaan['token']}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\\n\\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
+            );
         }
 
         DetailPerusahaan::where('pekerja_id', $pekerja->id)->update($detail_perusahaan);

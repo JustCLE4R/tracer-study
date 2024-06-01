@@ -25,6 +25,16 @@ class Pekerja extends Model
         'detailPerusahaan'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function detailPerusahaan()
+    {
+        return $this->hasOne(DetailPerusahaan::class);
+    }
+
     /**
      * Just bunch of accessor
      */
@@ -127,15 +137,4 @@ class Pekerja extends Model
     /**
      * end of accessor
      */
-
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function detailPerusahaan()
-    {
-        return $this->hasOne(DetailPerusahaan::class);
-    }
 }

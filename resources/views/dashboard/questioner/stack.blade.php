@@ -265,7 +265,7 @@
                                     const optionDiv = document.createElement('div');
                                     optionDiv.className = 'form-check';
                                     optionDiv.innerHTML = `
-                                <input class="form-check-input" type="radio" name="${question.name}" id="${question.name}-${option}" value="${question.options.length - index - 1}">
+                                <input class="form-check-input" type="radio" name="${question.name}" id="${question.name}-${option}" value="${question.options.length - index - 1}" required>
                                 <label class="form-check-label" for="${question.name}-${option}">
                                     ${option}
                                 </label>
@@ -282,7 +282,7 @@
                                 const optionDiv = document.createElement('div');
                                 optionDiv.className = 'form-check';
                                 optionDiv.innerHTML = `
-                            <input class="form-check-input" type="radio" name="${section.name}" id="${section.name}-${option}" value="${index}">
+                            <input class="form-check-input" type="radio" name="${section.name}" id="${section.name}-${option}" value="${index}" required>
                             <label class="form-check-label" for="${section.name}-${option}">
                                 ${option}
                             </label>

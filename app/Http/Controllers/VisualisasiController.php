@@ -209,7 +209,18 @@ class VisualisasiController extends Controller
     public function dataStakeholder(Request $request){
         $stakeholder_data = QuestionerStackHolder::get();
 
-        $stakeholder_data = $this->filterByThnWisudahFakultas($stakeholder_data, $request->query('lulus'), $request->query('fakultas'));
+        if($request->query('lulus')){
+            $stakeholder_data = $stakeholder_data->filter(function($query) use ($request) {
+                $tgl_wisuda = $query->detailPerusahaan->pekerja->user ? $query->detailPerusahaan->pekerja->user->tgl_wisuda : null;
+                return $tgl_wisuda ? date('Y', strtotime($tgl_wisuda)) == $request->query('lulus') : false;
+            });
+        }
+
+        if($request->query('fakultas')){
+            $stakeholder_data = $stakeholder_data->filter(function($query) use ($request) {
+                return $query->detailPerusahaan->pekerja->user && $query->detailPerusahaan->pekerja->user->fakultas == $request->query('fakultas');
+            });
+        }
 
         return response()->json([
             '(e)Menurut anda, seberapa PENTINGkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?' => [
@@ -298,6 +309,10 @@ class VisualisasiController extends Controller
         }
 
         return response()->json([
+            'Total' => [
+                'Alumni' => 'Dari mana datanya?',
+                'Pengguna' => $user_data->count(),
+            ],
             'Jenis kelamin' => $genderCounts,
             'Status' => [
                 'Pendidikan' => $statusCounts['Pendidikan'],
