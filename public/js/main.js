@@ -1,4 +1,17 @@
 
+//Loader
+window.addEventListener("DOMContentLoaded", function() {
+    const loaderContainer = document.getElementById("loader-container");
+    loaderContainer.classList.add("show");
+});
+
+window.addEventListener("load", function() {
+    const loaderContainer = document.getElementById("loader-container");
+    setTimeout(function() {
+        loaderContainer.classList.remove("show");
+        loaderContainer.style.display = "none";
+    }, 1500); // Jeda 1.5 detik (1500 milidetik)
+});
 
 document.addEventListener("DOMContentLoaded", function() {
     const clientsCount = document.getElementById('clientsCount');
@@ -67,15 +80,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
         
         
-        window.onload = function () {
-            window.setTimeout(fadeout, 500);
-        }
-    
-        function fadeout() {
-            document.querySelector('.preloader').style.opacity = '0';
-            document.querySelector('.preloader').style.display = 'none';
-        }
-    
     
         /*=====================================
         Sticky

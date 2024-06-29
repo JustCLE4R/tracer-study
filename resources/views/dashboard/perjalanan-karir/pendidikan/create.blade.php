@@ -148,7 +148,7 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label for="bukti_pendidikan" class="form-label">Bukti Pendidikan</label>
+                  <label for="bukti_pendidikan" class="form-label">Bukti Pendidikan (KTM/Surat Aktif Kuliah)</label>
                   <img class="img-fluid mb-3 col-sm-5" id="img-preview">
                   <input class="form-control @error('bukti_pendidikan') is-invalid @enderror" type="file" id="bukti_pendidikan" name="bukti_pendidikan" onchange="previewImage()">
                   @error('bukti_pendidikan')

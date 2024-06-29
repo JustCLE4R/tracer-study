@@ -143,7 +143,7 @@
                 
                 
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label for="bukti_pendidikan" class="form-label">Bukti Pendidikan</label>
+                  <label for="bukti_pendidikan" class="form-label">Bukti Pendidikan (KTM/Surat Aktif Kuliah)</label>
                   <input type="hidden" name="oldImage" value="{{ $pendidikan->bukti_pendidikan }}">
                   @if ($pendidikan->bukti_pendidikan)
                     <img src="{{ asset('storage/'.$pendidikan->bukti_pendidikan) }}" class="img-fluid mb-3 col-sm-5 d-block" id="img-preview">

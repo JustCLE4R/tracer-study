@@ -61,15 +61,13 @@
                                 class="img-fluid rounded-circle mx-auto mb-4 wow fadeInUp" src="img/hero-1.png"
                                 style="width: 250px;">
                             <h4 class="mb-2 ">Lengkapi Profile Biodata</h4>
-                            <p class="mb-0">Agar dapat melakukan Pengisian Data Perjalanan karir, Questioner & Berita
-                                Lowongan Pekerjaan. <br>Sihlakan lengkapi profil biodata anda terlebih dahulu!</p>
+                            <p class="mb-0">Agar dapat melakukan pengisian data perjalanan karir, kuesioner, dan berita lowongan pekerjaan, <br>silakan lengkapi profil biodata Anda terlebih dahulu!
+                            </p>
                         </div>
                         <div class="testimonial-item text-center" data-wow-duration="1s" data-wow-delay="0.9s">
                             <img class="img-fluid rounded-circle mx-auto mb-4" src="img/hero-2.webp" style="width: 250px;">
                             <h4 class="mb-2">Dapatkan Sertifikasi</h4>
-                            <p class="mb-0">Jika anda telah menyelesaikan pengisian perjalanan karir & Questioner, maka
-                                anda akan <br> mendapatkan Sertifikasi yang dapat digunakan untuk penyelesaian administrasi
-                                akhir </p>
+                            <p class="mb-0">Jika Anda telah menyelesaikan pengisian perjalanan karir dan kuesioner, maka Anda akan <br> mendapatkan sertifikasi yang dapat digunakan untuk penyelesaian administrasi akhir.</p>
                         </div>
                     </div>
                 </div>
@@ -196,10 +194,12 @@
                         var pekerjaanCount = response.Status.Pekerja || 0;
                         var pendidikanCount = response.Status.Pendidikan || 0;
                         var wirausahaCount = response.Status.Wirausaha || 0;
+                        var alumniCount = response.Status["Questioner Alumni"] || 0;
 
                         $('#pekerjaan').text(pekerjaanCount);
                         $('#pendidikan').text(pendidikanCount);
                         $('#wirausaha').text(wirausahaCount);
+                        $('#alumni').text(alumniCount);
                     },
                     error: function(error) {
                         console.error('Error fetching data:', error);

@@ -472,14 +472,20 @@
     <script>
         $(document).ready(function() {
             $.ajax({
-                url: 'http://127.0.0.1:8000/api/visualisasi/perbandingan',
+                url: '/api/visualisasi/perbandingan',
                 method: 'GET',
                 success: function(response) {
                     var statusData = response.Status;
                     var jenisKelaminData = response["Jenis kelamin"];
 
-                    var statusLabels = Object.keys(statusData);
-                    var statusValues = Object.values(statusData);
+                    var filteredStatusData = {
+                        Pendidikan: statusData.Pendidikan,
+                        Pekerja: statusData.Pekerja,
+                        Wirausaha: statusData.Wirausaha
+                    };
+
+                    var statusLabels = Object.keys(filteredStatusData);
+                    var statusValues = Object.values(filteredStatusData);
 
                     var ctxStatus = document.getElementById("status").getContext("2d");
                     var myPolarChart = new Chart(ctxStatus, {
@@ -564,17 +570,15 @@
                         }
                     });
 
-                    // Default tampilkan chart status
                     $("#jenis-kelamin").hide();
                     $("#pengisi").hide();
                     $("#status").show();
 
-                    // Event handler untuk tombol-tombol
                     $(".show-chart").click(function() {
                         var chartToShow = $(this).data("chart");
                         $("#status, #jenis-kelamin, #pengisi")
-                    .hide(); // Sembunyikan semua chart
-                        $("#" + chartToShow).show(); // Tampilkan chart yang dipilih
+                    .hide(); 
+                        $("#" + chartToShow).show(); 
                     });
                 },
                 error: function(error) {

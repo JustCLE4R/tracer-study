@@ -18,7 +18,7 @@
     </div>
     @endif
 
-    <div class="text-end me-2 flex-grow-1">
+    <div class="text-end me-2 flex-grow-1"> 
       <a href="#">
         <span class="d-none text-success d-lg-inline-flex overflow-hidden" style="max-width: 150px;">{{ Auth::user()->nama }}</span>
       </a>

@@ -63,7 +63,7 @@
                     <i class="bi bi-person-vcard text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Questioner : Stakeholder</p>
-                        <h6 id="stakholder" class="mb-0">94 </h6>
+                        <h6 id="stakeholder" class="mb-0">94 </h6>
                     </div>
                 </div>
             </div>
@@ -158,7 +158,7 @@
             <div class="col-lg-12 col-sm-12 align-items-center justify-content-between mb-4">
                 <div class="row justify-content-between">
                     <div class="col-lg-7">
-                        <span class="mb-0 h4 " id="tracer-wirausaha">Tracer Study : Pendidikan</span>
+                        <span class="mb-0 h4 " id="tracer-pendidikan">Tracer Study : Pendidikan</span>
                     </div>
                     <div class="col-lg-5 col-sm-12">
                         <div class="input-group mb-3">
@@ -387,10 +387,14 @@
                         var pekerjaanCount = response.Status.Pekerja || 0;
                         var pendidikanCount = response.Status.Pendidikan || 0;
                         var wirausahaCount = response.Status.Wirausaha || 0;
+                        var alumniCount = response.Status["Questioner Alumni"] || 0;
+                        var stakeholderCount = response.Status["Questioner Stakeholder"] || 0;
 
                         $('#pekerjaan').text(pekerjaanCount);
                         $('#pendidikan').text(pendidikanCount);
                         $('#wirausaha').text(wirausahaCount);
+                        $('#alumni').text(alumniCount);
+                        $('#stakeholder').text(stakeholderCount);
                     },
                     error: function(error) {
                         console.error('Error fetching data:', error);
