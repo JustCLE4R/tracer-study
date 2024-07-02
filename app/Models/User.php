@@ -73,4 +73,8 @@ class User extends Authenticatable
   public function questioner(){
     return $this->hasOne(Questioner::class);
   }
+
+  public function certCheck(){
+    return $this->hasOne(CertCheck::class);
+  }
 }

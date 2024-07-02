@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CertCheck;
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -72,6 +73,13 @@ class PendidikanController extends Controller
     $rules['user_id'] = auth()->user()->id;
 
     Pendidikan::create($rules);
+
+    CertCheck::updateOrCreate([
+      'user_id' => auth()->user()->id
+    ], [
+      'pendidikan_check' => true
+    ]);
+
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan baru telah ditambahkan!');
   }
 

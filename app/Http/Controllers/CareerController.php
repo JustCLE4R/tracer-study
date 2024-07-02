@@ -235,7 +235,11 @@ class CareerController extends Controller
 
   public function checkSlug(Request $request)
   {
+    if (!$request->has('company_name')) {
+        return abort(404);
+    }
+
     $slug = SlugService::createSlug(Career::class, 'slug', $request->company_name);
-    return response()->json(['slug' => $slug]);
+    return response()->json(['slug' => $slug], 200);
   }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreQuestionerRequest;
 use App\Http\Requests\StoreQuestionerStackHolderRequest;
+use App\Models\CertCheck;
 use App\Models\DetailPerusahaan;
 use App\Models\Questioner;
 use App\Models\QuestionerStackHolder;
@@ -81,6 +82,12 @@ class QuestionerController extends Controller
 
     public function store(StoreQuestionerRequest $request){
         Questioner::create($request->validated());
+
+        CertCheck::updateOrCreate([
+            'user_id' => auth()->user()->id
+        ], [
+            'questioner_check' => true
+        ]);
 
         return redirect('/dashboard/questioner')->with('success', 'Questioner has been created');
     }

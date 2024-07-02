@@ -12,6 +12,7 @@ use App\Http\Controllers\WirausahaController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PerjalananKarirController;
 use App\Http\Controllers\QuestionerController;
+use App\Http\Controllers\SertifikatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ use App\Http\Controllers\QuestionerController;
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/career', [CareerController::class, 'publicIndex']);
 Route::get('/career/{career:slug}', [CareerController::class, 'publicShow'])->name('career.publicShow');
+
+Route::get('/sertifikat/{qr_url}', [SertifikatController::class, 'publicShow']);
 
 Route::middleware(['guest', 'no-cache'])->group(function () {
   Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -58,11 +61,10 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::get('/questioner', [QuestionerController::class, 'index']);
   Route::post('/questioner', [QuestionerController::class, 'store']);
 
+  Route::get('/sertifikat', [SertifikatController::class, 'show']);
+
   Route::get('/visual', function () {
     return view('dashboard.visual');
-  });
-  Route::get('/sertifikat', function () {
-    return view('dashboard.sertifikat');
   });
 
   // admin routes

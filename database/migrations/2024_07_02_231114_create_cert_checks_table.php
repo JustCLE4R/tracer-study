@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('cert_checks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->boolean('profile_check')->default('false');
-            $table->boolean('pendidikan_check')->default('false');
-            $table->boolean('pekerjaan_check')->default('false');
-            $table->boolean('questioner_check')->default('false');
+            $table->boolean('profile_check')->default(false);
+            $table->boolean('pendidikan_check')->default(false);
+            $table->boolean('pekerjaan_check')->default(false);
+            $table->boolean('questioner_check')->default(false);
             $table->string('qr_code')->nullable();
+            $table->string('qr_url')->nullable();
             $table->timestamps();
         });
     }

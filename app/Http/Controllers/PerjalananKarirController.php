@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PekerjaController;
 use App\Http\Controllers\WirausahaController;
+use App\Models\CertCheck;
 
 class PerjalananKarirController extends Controller
 {
@@ -36,6 +37,13 @@ class PerjalananKarirController extends Controller
 	}
 
 	public function store(Request $request){
+
+		CertCheck::updateOrCreate([
+			'user_id' => auth()->user()->id
+		], [
+			'pekerjaan_check' => true
+		]);
+
 		switch ($request->pekerjaan){
 			case 'pekerja':
 				return (new PekerjaController)->store($request);

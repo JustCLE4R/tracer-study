@@ -17,13 +17,14 @@
     <div class="navbar-nav w-100 ">
       <a href="/dashboard" class="nav-item nav-link "><i class="bi bi-house-fill me-2 fs-5"></i>Dashboard</a>
 
-      @if (Auth::user()->role == 'mahasiswa')        
+      @if (Auth::user()->role == 'mahasiswa')
         <a href="/" class="nav-item nav-link"><i class="bi bi-speedometer2 me-2 fs-5"></i>Halaman Depan</a>
         <a href="/dashboard/profile" class="nav-item nav-link"><i class="bi bi-person-circle me-2 fs-5"></i>Profile</a>
         <a href="/dashboard/perjalanan-karir" class="nav-item nav-link"><i class="bi bi-person-fill-gear me-2 fs-5"></i>Perjalanan Karir</a>
         <a href="/dashboard/questioner" class="nav-item nav-link"><i class="bi bi-ui-checks me-2 fs-5"></i>Questioner</a>
+        <a href="/dashboard/sertifikat" class="nav-item nav-link"><i class="bi bi-file-earmark-check me-2 fs-5"></i>Sertifikat</a>
       @endif
-
+      
       <a href="/dashboard/career" class="nav-link "><i class="bi bi-newspaper me-2 fs-5"></i>Career</a>
 
       @if (Auth::user()->role == 'superadmin' OR Auth::user()->role == 'admin')
