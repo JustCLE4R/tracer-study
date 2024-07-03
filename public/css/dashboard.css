@@ -315,7 +315,9 @@ a {
 .sidebar .navbar .navbar-nav .nav-link.active i {
     background: var(--light);
 }
-
+.active{
+    background: var(--light);
+}
 .sidebar .navbar .dropdown-toggle::after {
     position: absolute;
     top: 15px;
