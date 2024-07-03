@@ -9,7 +9,9 @@
                         @foreach($careers->sortByDesc('created_at') as $career)
                         <div class="position-relative overflow-hidden" style="height: 435px;">
                             @if($career->image)
-                            <img class="img-fluid h-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
+                            {{-- <img class="img-fluid h-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;"> --}}
+                            <img class="img-fluid h-100" src="{{ $career->image }}"  style="object-fit: cover;">
+                            
                             @else
                             <img class="img-fluid h-100" src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png"style="object-fit: cover;">
                             @endif                            
@@ -73,7 +75,8 @@
                         <div class="col-lg-6 ">
                             <div id="hover" class="position-relative mb-3 border" onclick="window.location.href='{{ route('career.publicShow', ['career' => $career->slug]) }}'" >
                                 @if($career->image)
-                                <img style="width: 100%; height: 200px; object-fit: cover;" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
+                                {{-- <img style="width: 100%; height: 200px; object-fit: cover;" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;"> --}}
+                                <img style="width: 100%; height: 200px; object-fit: cover;" src="{{ $career->image }}" style="object-fit: cover;">
                                 @else
                                 <img style="width: 100%; height: 200px; object-fit: cover;" src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png" style="object-fit: cover;">
                                 @endif
@@ -106,7 +109,10 @@
                         @foreach($careersLatest->take(6) as $career)
                         <div id="hover" class="d-flex mb-3 border" onclick="window.location.href='{{ route('career.publicShow', ['career' => $career->slug]) }}'">
                             @if($career->image)
-                            <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;">
+                            {{-- <img src="{{ asset('storage/' . $career->image) }}" style="width: 100px; height: 100px; object-fit: cover;"> --}}
+                            <img src="{{ $career->image }}"  style="width: 100px; height: 100px; object-fit: cover;">
+
+                            
                             @else
                             <img  src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png"style="width: 100px; height: 100px; object-fit: cover;">
                             @endif 

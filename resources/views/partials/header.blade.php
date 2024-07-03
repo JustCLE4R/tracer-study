@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
               <ul id="nav" class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <a class=" {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                  <a class=" {{ Request::is('/') ? 'active' : '' }}" href="/">Beranda</a>
                 </li>
                 <li class="nav-item">
                   <a class="page-scroll {{ Request::is('tracer') ? 'active' : '' }}" href="#tracer">Tracer
@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="page-scroll {{ Request::is('career*') ? 'active' : '' }}" href="#career"
-                    onclick="window.location.href='/career'">Career</a>
+                    onclick="window.location.href='/career'">Karir</a>
                 </li>
                 <li class="nav-item">
                   <a class="page-scroll {{ Request::is('laporan') ? 'active' : '' }}" href="#laporan">Laporan</a>
@@ -44,7 +44,7 @@
                 </li>
                 @else
                 <li class="nav-item">
-                  <a class="{{ Request::is('login') ? 'active' : '' }}" href="/login">Login</a>
+                  <a class="{{ Request::is('login') ? 'active' : '' }}" href="/login">Masuk</a>
                 </li>
                 @endif
               </ul>

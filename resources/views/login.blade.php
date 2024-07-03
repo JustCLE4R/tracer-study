@@ -39,7 +39,7 @@
           <div class="login-form">
               <div class="row justify-content-between" data-aos="fade-up" data-aos-duration="800">
                 <div class="col-2">
-                  <div class="title">Login </div>
+                  <div class="title">Masuk </div>
                 </div>
                 <div class="col-3">
                   <span><img src="https://newuinsu.uinsu.ac.id/wp-content/uploads/2024/02/uin-dan-blu-png-2.png"  alt=""></span>
@@ -70,7 +70,7 @@
                   <div class="error error-txt">{{ $message }}</div>
                 @enderror
                 <div class="button input-box" data-aos="fade-up" data-aos-duration="1600">
-                  <input type="submit" value="Login">
+                  <input type="submit" value="Masuk">
                 </div>                
               </div>
             </form>

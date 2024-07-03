@@ -91,7 +91,7 @@
         <div class="bg-light  border-top border-success border-5 text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
                 <span data-wow-duration="1s" data-wow-delay="0.9s" class="mb-0 h4 wow fadeInUp">Data Pengisi Tracer Study &
-                    Questioner</span>
+                    Kuesioner</span>
             </div>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">

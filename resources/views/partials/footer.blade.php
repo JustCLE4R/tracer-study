@@ -75,7 +75,7 @@
         </div>
 
         <div class="copy-right">
-            <p>Copyright © 2024  <a href="https://uinsu.ac.id/" rel="nofollow" target="_blank"> UIN Sumatera Utara Medan </a></p>
+            <p>Copyright © 2024  <a href="https://uinsu.ac.id/" rel="nofollow" target="_blank"> Pustipada </a></p>
         </div>
 
     </div>

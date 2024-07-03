@@ -199,7 +199,7 @@
                 <div class="col-xl-6 col-lg-6">
                     <div class="about-content">
                         <div class="section-title mb-30">
-                            <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Career</h1>
+                            <h1 class="mb-25 wow fadeInUp" data-wow-delay=".2s">Karir</h1>
                             <p class="wow fadeInUp" data-wow-delay=".3s">Kampus UINSU Menyediakan Sarana Bagi Alumni Untuk
                                 Berbagi Berita Lowongan Pekerjaan yang Selalu di Update Setiap Saat</p>
                         </div>
@@ -222,7 +222,7 @@
                             </li>
                         </ul>
                         <a href="/career" onclick="window.location.href='/career'"
-                            class="button  mt-20 radius-10 wow fadeInUp" data-wow-delay=".5s">Kunjungi Career <i
+                            class="button  mt-20 radius-10 wow fadeInUp" data-wow-delay=".5s">Kunjungi Karir <i
                                 class="lni lni-angle-double-right"></i></a>
                     </div>
                 </div>

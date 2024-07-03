@@ -368,7 +368,7 @@
             };
 
             function updatePekerjaan() {
-                var baseUrl = 'http://127.0.0.1:8000/api/visualisasi/perbandingan';
+                var baseUrl = '/api/visualisasi/perbandingan';
                 var params = [];
 
                 if (userFakultas !== "" && fakultasMap.hasOwnProperty(userFakultas)) {
@@ -410,7 +410,7 @@
             function fetchData(type) {
                 var thnlulus = $(`#tahunLulusSelect-${type}`).val();
                 var fakultas = $(`#fakultasSelect-${type}`).val();
-                var baseUrl = `http://127.0.0.1:8000/api/visualisasi/${type}`;
+                var baseUrl = `/api/visualisasi/${type}`;
                 var userFakultas = "{{ Auth::user()->fakultas }}";
                 var fakultasMap = {
                     'Ushuluddin dan Studi Islam': 'Ushuluddin%20dan%20Studi%20Islam',
@@ -812,7 +812,7 @@
                 startIndex
             }) => {
                 fetchAndRenderCharts(category, containerId, startIndex,
-                    'http://127.0.0.1:8000/api/visualisasi/questioner', '#tahunLulusSelect-questioner',
+                    '/api/visualisasi/questioner', '#tahunLulusSelect-questioner',
                     '#fakultasSelect-questioner');
             });
 
@@ -822,19 +822,19 @@
                 startIndex
             }) => {
                 fetchAndRenderCharts(category, containerId, startIndex,
-                    'http://127.0.0.1:8000/api/visualisasi/stakeholder',
+                    '/api/visualisasi/stakeholder',
                     '#tahunLulusSelect-questioner-stakeholder', '#fakultasSelect-questioner-stakeholder'
                 );
             });
 
             $('#tahunLulusSelect-questioner, #fakultasSelect-questioner').on('change', function() {
-                reloadCharts(questionerCategories, 'http://127.0.0.1:8000/api/visualisasi/questioner',
+                reloadCharts(questionerCategories, '/api/visualisasi/questioner',
                     '#tahunLulusSelect-questioner', '#fakultasSelect-questioner');
             });
 
             $('#tahunLulusSelect-questioner-stakeholder, #fakultasSelect-questioner-stakeholder').on('change',
                 function() {
-                    reloadCharts(stakeholderCategories, 'http://127.0.0.1:8000/api/visualisasi/stakeholder',
+                    reloadCharts(stakeholderCategories, '/api/visualisasi/stakeholder',
                         '#tahunLulusSelect-questioner-stakeholder', '#fakultasSelect-questioner-stakeholder'
                     );
                 });

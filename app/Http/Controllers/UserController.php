@@ -16,9 +16,9 @@ class UserController extends Controller
   }
 
   public function update(UpdateUserRequest $request){
-    $rules['predikat_kelulusan'] = $this->calculatePredicate($request->ipk);
+    $request['predikat_kelulusan'] = $this->calculatePredicate($request->ipk);
 
-    $request->user()->update($rules);
+    $request->user()->update($request->all());
 
     CertCheck::updateOrCreate([
       'user_id' => $request->user()->id

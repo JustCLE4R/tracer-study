@@ -7,7 +7,10 @@
                 <div class="col-lg-8">
                     <div class="position-relative mb-3">
                         @if($career->image)
-                        <img class="img-fluid w-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
+                        {{-- <img class="img-fluid w-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;"> --}}
+                        <img class="img-fluid w-100" src="{{ $career->image }}"  style="object-fit: cover;">
+                        
+                         
                         @else
                         <img class="img-fluid w-100" src="https://jobsnews.id/wp-content/uploads/2021/01/Jobsnews-01-300x157.png" style="object-fit: cover;">
                         @endif

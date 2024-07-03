@@ -16,9 +16,7 @@
 
     
     <div class="row justify-content-center">
-      <div class="col-12">
-            <img src="https://tracerstudy.uinsu.ac.id/img/logo.png" alt="Logo" class="img-fluid m-4 " width="120">
-      </div>
+
       <div class="col-md-8">
         <div class="text-center">
           <img src="{{ asset('img/logo.png') }}" alt="Logo" class="img-fluid mb-4" width="150">

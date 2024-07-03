@@ -7,7 +7,7 @@
                 <div class="bg-light rounded p-5 border-top border-success border-5" style="min-height: 70vh ;">
                     <div class="row">
                         <div class="col-12">
-                            <span class="h4">Career</span>
+                            <span class="h4">Karir</span>
                             <hr>
                         </div>
                     </div>
@@ -19,9 +19,9 @@
                     @endif
 
                     <div class="row g-0">
-                        <div class="col-lg-3 col-md-4 col-sm-10">
+                        <div class="col-lg-4 col-md-4 col-sm-10">
                             <a href="/dashboard/career/create" class="btn btn-success btn-sm mb-3"><i
-                                    class="bi bi-plus"></i> Tambah Career</a>
+                                    class="bi bi-plus"></i> Tambah Lowongan Pekerjaan</a>
                         </div>
 
                     </div>

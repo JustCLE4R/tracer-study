@@ -15,17 +15,17 @@
     </a>
 
     <div class="navbar-nav w-100 ">
-      <a href="/dashboard" class="nav-item nav-link {{ Request::is('dashboard') ? 'active' : '' }}"><i class="bi bi-house-fill me-2 fs-5"></i>Dashboard</a>
+      <a href="/dashboard" class="nav-item nav-link {{ Request::is('dashboard') ? 'active' : '' }}"><i class="bi bi-house-fill me-2 fs-5"></i>Beranda</a>
   
       @if (Auth::user()->role == 'mahasiswa')
           <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}"><i class="bi bi-speedometer2 me-2 fs-5"></i>Halaman Depan</a>
-          <a href="/dashboard/profile" class="nav-item nav-link {{ Request::is('dashboard/profile') ? 'active' : '' }}"><i class="bi bi-person-circle me-2 fs-5"></i>Profile</a>
+          <a href="/dashboard/profile" class="nav-item nav-link {{ Request::is('dashboard/profile') ? 'active' : '' }}"><i class="bi bi-person-circle me-2 fs-5"></i>Profil</a>
           <a href="/dashboard/perjalanan-karir" class="nav-item nav-link {{ Request::is('dashboard/perjalanan-karir') ? 'active' : '' }}"><i class="bi bi-person-fill-gear me-2 fs-5"></i>Perjalanan Karir</a>
-          <a href="/dashboard/questioner" class="nav-item nav-link {{ Request::is('dashboard/questioner') ? 'active' : '' }}"><i class="bi bi-ui-checks me-2 fs-5"></i>Questioner</a>
+          <a href="/dashboard/questioner" class="nav-item nav-link {{ Request::is('dashboard/questioner') ? 'active' : '' }}"><i class="bi bi-ui-checks me-2 fs-5"></i>Kuesioner</a>
           <a href="/dashboard/sertifikat" class="nav-item nav-link {{ Request::is('dashboard/sertifikat') ? 'active' : '' }}"><i class="bi bi-file-earmark-check me-2 fs-5"></i>Sertifikat</a>
       @endif
   
-      <a href="/dashboard/career" class="nav-item nav-link {{ Request::is('dashboard/career') ? 'active' : '' }}"><i class="bi bi-newspaper me-2 fs-5"></i>Career</a>
+      <a href="/dashboard/career" class="nav-item nav-link {{ Request::is('dashboard/career') ? 'active' : '' }}"><i class="bi bi-newspaper me-2 fs-5"></i>Karir</a>
   
       @if (Auth::user()->role == 'superadmin' OR Auth::user()->role == 'admin')
           <a href="/dashboard/admin" class="nav-item nav-link {{ Request::is('dashboard/admin') ? 'active' : '' }}"><i class="bi bi-shield-lock me-2 fs-5"></i>Admin</a>
