@@ -25,7 +25,7 @@
             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
               <ul id="nav" class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <a class=" {{ Request::is('/') ? 'active' : '' }}" href="/">Beranda</a>
+                  <a class=" {{ Request::is('/') ? 'active' : '' }}" href="/">Halaman Depan</a>
                 </li>
                 <li class="nav-item">
                   <a class="page-scroll {{ Request::is('tracer') ? 'active' : '' }}" href="#tracer">Tracer
@@ -40,7 +40,7 @@
                 </li>
                 @if (auth()->check())
                 <li class="nav-item">
-                  <a class="{{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Dashboard</a>
+                  <a class="{{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Beranda</a>
                 </li>
                 @else
                 <li class="nav-item">

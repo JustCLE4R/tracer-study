@@ -55,7 +55,7 @@
               <div class="input-boxes">
                 <div class="input-box" data-aos="fade-up" data-aos-duration="1200">
                   <i class="fas fa-envelope"></i>
-                  <input type="text" name="nim" placeholder="Masukan nim.." oninput="validateNumericInput(this)" value="{{ $errors->has('nim') ? '' : old('nim', 41144013) }}" maxlength="12" required>
+                  <input type="text" name="nim" placeholder="Masukan nim.." value="{{ $errors->has('nim') ? '' : old('nim', 41144013) }}" maxlength="12" required>
 
                 </div>
                 @error('nim')
