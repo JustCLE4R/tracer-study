@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserRequest;
 use App\Models\CertCheck;
+use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdateUserPasswordRequest;
 
 class UserController extends Controller
 {
@@ -27,6 +28,24 @@ class UserController extends Controller
     ]);
 
     return redirect('/dashboard/profile')->with('success', 'Profil berhasil diperbarui');
+  }
+
+  public function showUpdatePassword(){
+    return view('dashboard.profile.updatePassword');
+  }
+
+  public function updatePassword(UpdateUserPasswordRequest $request){
+    // $oldPassword = auth()->user()->password;
+
+    // if(md5($request->old_password) != $oldPassword){
+    //   return redirect('/dashboard/profile/updatePassword')->with('error', 'Password lama tidak sesuai');
+    // }
+    
+    $request->user()->update([
+      'password' => md5($request->password)
+    ]);
+
+    return redirect('/dashboard')->with('success', 'Password berhasil diperbarui');
   }
 
   private function calculatePredicate($ipk){

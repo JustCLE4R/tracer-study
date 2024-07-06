@@ -48,6 +48,8 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
   Route::get('/profile', [UserController::class, 'index']);
   Route::get('/profile/edit', [UserController::class, 'edit']);
   Route::patch('/profile/edit', [UserController::class, 'update']);
+  Route::get('/profile/edit/password', [UserController::class, 'showUpdatePassword']);
+  Route::patch('/profile/edit/password', [UserController::class, 'updatePassword']);
 
   Route::get('/career/checkSlug', [CareerController::class, 'checkSlug']);
   Route::delete('/hapusBelumKerja', [PerjalananKarirController::class, 'destroyBelumKerja']);
