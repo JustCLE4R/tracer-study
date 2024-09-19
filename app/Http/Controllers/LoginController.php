@@ -18,7 +18,7 @@ class LoginController extends Controller
 
     $credential = $request->validate(
     [
-      'nim' => 'required|min:6|max:12',
+      'nim' => 'required|min:6|max:20',
       'password' => 'required'
     ],
     [

@@ -13,10 +13,10 @@ return new class extends Migration
   {
     Schema::create('users', function (Blueprint $table) {
       $table->id();
-      $table->string('nim', 10)->unique();
+      $table->string('nim', 20)->unique();
       $table->string('nama');
       $table->string('password');
-      $table->enum('role', ['mahasiswa', 'admin', 'superadmin'])->default('mahasiswa');
+      $table->enum('role', ['mahasiswa', 'surveyor', 'adminprodi', 'admin', 'superadmin'])->default('mahasiswa');
       $table->boolean('is_bekerja')->default(1);
       // informasi akademik
       $table->string('program_studi');
