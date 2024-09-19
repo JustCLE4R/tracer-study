@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\ApiIntegration;
 use App\Models\Pekerja;
@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\DetailPerusahaan;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 
 class PekerjaController extends Controller
 {

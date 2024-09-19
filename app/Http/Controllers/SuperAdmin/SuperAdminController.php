@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SuperAdmin;
 
 use App\Models\User;
 use App\Models\Pekerja;
 use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class SuperAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -148,9 +148,4 @@ class AdminController extends Controller
     {
         //
     }
-
-    // public function route()
-    // {
-    //     return 'user';
-    // }
 }

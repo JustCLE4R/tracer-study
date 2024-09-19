@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\User;
 use App\Models\Pekerja;
@@ -8,9 +8,10 @@ use App\Models\Wirausaha;
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\PekerjaController;
-use App\Http\Controllers\WirausahaController;
+use App\Http\Controllers\Mahasiswa\PekerjaController;
+use App\Http\Controllers\Mahasiswa\WirausahaController;
 use App\Models\CertCheck;
+use App\Http\Controllers\Controller;
 
 class PerjalananKarirController extends Controller
 {
@@ -71,21 +72,21 @@ class PerjalananKarirController extends Controller
 	}
 
 	private static function nganggurStore($request){
-    $request->validate([
-      'saya-belum-memiliki-pekerjaan' => 'required|array|size:1'
-    ], [
-      'required' => 'Centang pernyataan :attribute',
-    ], [
-      'saya-belum-memiliki-pekerjaan' => '"Ya, saya belum bekerja"'
-    ]);
-
-		$user = User::find(auth()->user()->id);
-
-		$user->update([
-			'is_bekerja' => 0
+		$request->validate([
+			'saya-belum-memiliki-pekerjaan' => 'required|array|size:1'
+		], [
+			'required' => 'Centang pernyataan :attribute',
+		], [
+			'saya-belum-memiliki-pekerjaan' => '"Ya, saya belum bekerja"'
 		]);
 
-    return redirect('/dashboard/perjalanan-karir')->with('success', 'Data belum bekerja telah ditambahkan!');
-  }
+			$user = User::find(auth()->user()->id);
+
+			$user->update([
+				'is_bekerja' => 0
+			]);
+
+		return redirect('/dashboard/perjalanan-karir')->with('success', 'Data belum bekerja telah ditambahkan!');
+	}
 	
 }

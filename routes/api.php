@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\VisualisasiController;
+use App\Http\Controllers\Api\QuestionController;
+use App\Http\Controllers\Api\VisualisasiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

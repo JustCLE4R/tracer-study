@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\CertCheck;
 use Endroid\QrCode\Builder\Builder;
 use Endroid\QrCode\Writer\PngWriter;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\Controller;
 
 class SertifikatController extends Controller
 {
@@ -51,17 +52,4 @@ class SertifikatController extends Controller
             'sertifikat' => $certCheck
         ]);
     }
-
-    public function publicShow($qr_url) {
-        $certCheck = CertCheck::where('qr_url', $qr_url)->first();
-    
-        if (!$certCheck) {
-            return view('publicSertifikat.notfound');
-        }
-    
-        return view('publicSertifikat.index', [
-            'sertifikat' => $certCheck
-        ]);
-    }
-    
 }

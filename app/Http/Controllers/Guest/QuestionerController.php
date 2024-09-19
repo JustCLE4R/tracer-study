@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Guest;
 
-use App\Http\Requests\StoreQuestionerRequest;
-use App\Http\Requests\StoreQuestionerStackHolderRequest;
-use App\Models\CertCheck;
 use App\Models\DetailPerusahaan;
-use App\Models\Questioner;
+use App\Http\Controllers\Controller;
 use App\Models\QuestionerStackHolder;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreQuestionerStackHolderRequest;
 
 class QuestionerController extends Controller
 {
-    public function getPublicQuestioner(DetailPerusahaan $questioner){
+    public function show(DetailPerusahaan $questioner){
         if (!$questioner->exists) {
             abort(404);
         }
@@ -22,7 +19,7 @@ class QuestionerController extends Controller
         ]);
     }
 
-    public function postPublicQuestioner(StoreQuestionerStackHolderRequest $request, DetailPerusahaan $questioner){
+    public function store(StoreQuestionerStackHolderRequest $request, DetailPerusahaan $questioner){
         if (!$questioner->exists) {
             abort(404);
         }
@@ -70,25 +67,5 @@ class QuestionerController extends Controller
         ]);
 
         return view('dashboard.questioner.gratitude');
-    }
-
-    public function index(){
-        $data = Questioner::get()->first();
-        return view('dashboard.questioner.index', [
-            'questioner' => Questioner::where('user_id', auth()->user()->id)->with('user')->get(),
-            'data' => $data
-        ]);
-    }
-
-    public function store(StoreQuestionerRequest $request){
-        Questioner::create($request->validated());
-
-        CertCheck::updateOrCreate([
-            'user_id' => auth()->user()->id
-        ], [
-            'questioner_check' => true
-        ]);
-
-        return redirect('/dashboard/questioner')->with('success', 'Questioner has been created');
     }
 }

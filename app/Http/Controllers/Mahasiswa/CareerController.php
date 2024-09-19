@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\Career;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -31,40 +32,6 @@ class CareerController extends Controller
       'careers' => $query->paginate()->appends(request()->query()),
     ]);
   }
-
-  /**
-   * Public Career (for /career) 
-   */
-  public function publicIndex(Request $request){
-    $category = $request->input('category');
-
-    $query = Career::when($category, function ($query) use ($category) {
-      switch ($category) {
-        case 'Instansi Pemerintahan':
-          $query->where('category', 1);
-          break;
-        case 'Lembaga Swadaya Masyarakat':
-          $query->where('category', 2);
-          break;
-        case 'Perusahaan Swasta':
-          $query->where('category', 3);
-          break;
-        case 'Freelancer':
-          $query->where('category', 4);
-          break;
-      }
-    })->latest();
-
-    $careers = $query->paginate(6)->withQueryString();
-    $careersLatest = Career::latest()->take(10)->get();
-
-    return view('publicCareer.index', [
-      'careers' => $careers,
-      'careersLatest' => $careersLatest,
-    ]);
-  }
-
-
 
   /**
    * Show the form for creating a new resource.
@@ -127,13 +94,6 @@ class CareerController extends Controller
     }
 
     return view('dashboard.careers.show', [
-      'career' => $career
-    ]);
-  }
-
-  public function publicShow(Career $career)
-  {
-    return view('publicCareer.show', [
       'career' => $career
     ]);
   }

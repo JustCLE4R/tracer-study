@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Throwable;
-use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Database\Eloquent\Model;
 

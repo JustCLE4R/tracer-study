@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\User;
 use App\Models\Pekerja;
@@ -8,7 +8,7 @@ use App\Models\Wirausaha;
 use App\Models\Pendidikan;
 use App\Models\Questioner;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Models\QuestionerStackHolder;
 
 class VisualisasiController extends Controller
@@ -121,7 +121,7 @@ class VisualisasiController extends Controller
 
         return response()->json([
             '(a) Seberapa besar kompetensi di bawah ini Anda kuasai?' => [
-                'Ketaqwaan terhadap Tuhan yang maha Esa' => $questioner_data->countBy('a_1'),
+                'Ketaqwaan terhadap Tuhan yang maha Esa' => $questioner_data->countBy('a_1') ?: 0,
                 'Etika dan kecerdasan dalam bertindak' => $questioner_data->countBy('a_2'),
                 'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $questioner_data->countBy('a_3'),
                 'Ketrampilan internet dan computer' => $questioner_data->countBy('a_4'),
