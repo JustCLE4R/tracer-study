@@ -16,7 +16,7 @@ return new class extends Migration
       $table->string('nim', 20)->unique();
       $table->string('nama');
       $table->string('password');
-      $table->enum('role', ['mahasiswa', 'surveyor', 'adminprodi', 'admin', 'superadmin'])->default('mahasiswa');
+      $table->enum('role', ['mahasiswa', 'surveyor', 'adminprodi', 'adminfakultas', 'superadmin'])->default('mahasiswa');
       $table->boolean('is_bekerja')->default(1);
       // informasi akademik
       $table->string('program_studi');

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class IsAdminProdi
@@ -15,7 +16,7 @@ class IsAdminProdi
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role != 'adminprodi') {
+        if (Auth::user()->role != 'adminprodi') {
             abort(403);
         }
 

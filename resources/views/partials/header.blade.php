@@ -38,7 +38,7 @@
                 <li class="nav-item">
                   <a class="page-scroll {{ Request::is('laporan') ? 'active' : '' }}" href="#laporan">Laporan</a>
                 </li>
-                @if (auth()->check())
+                @if (Auth::check())
                 <li class="nav-item">
                   <a class="{{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Beranda</a>
                 </li>

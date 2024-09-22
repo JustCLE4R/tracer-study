@@ -22,6 +22,8 @@ return new class extends Migration
             $table->text('description');
             $table->text('excerpt');
             $table->string('image')->nullable();
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->string('reason')->nullable();
             $table->timestamps();
         });
     }

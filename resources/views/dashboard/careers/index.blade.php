@@ -32,7 +32,7 @@
                                     <th style="background-color: transparent !important;" class="col">No</th>
                                     <th style="background-color: transparent !important;" class="col">Perusahaan</th>
                                     <th style="background-color: transparent !important;" class="col">Posisi</th>
-                                    @if (auth()->user()->role == 'admin' or auth()->user()->role == 'superadmin')
+                                    @if (Auth::user()->role == 'admin' or Auth::user()->role == 'superadmin')
                                         <th style="background-color: transparent !important;" class="col">Fakultas</th>
                                     @endif
                                     <th style="background-color: transparent !important;" class="col text-center">Aksi</th>
@@ -46,7 +46,7 @@
                                         <td style="background-color: transparent !important;">{{ $career->company_name }}
                                         </td>
                                         <td style="background-color: transparent !important;">{{ $career->position }}</td>
-                                        @if (auth()->user()->role == 'admin' or auth()->user()->role == 'superadmin')
+                                        @if (Auth::user()->role == 'admin' or Auth::user()->role == 'superadmin')
                                             <td style="background-color: transparent !important;">
                                                 {{ $career->user->fakultas }}</td>
                                         @endif

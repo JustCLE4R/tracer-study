@@ -4,16 +4,17 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\CertCheck;
 use Endroid\QrCode\Builder\Builder;
-use Endroid\QrCode\Writer\PngWriter;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Endroid\QrCode\Writer\PngWriter;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class SertifikatController extends Controller
 {
     public function show()
     {
-        $certCheck = CertCheck::where('user_id', auth()->user()->id)->firstOrCreate([
-            'user_id' => auth()->user()->id,
+        $certCheck = CertCheck::where('user_id', Auth::user()->id)->firstOrCreate([
+            'user_id' => Auth::user()->id,
         ], [
             'profile_check' => false,
             'pendidikan_check' => false,
@@ -34,7 +35,7 @@ class SertifikatController extends Controller
             $path = 'qrcodes/' . $qrcode . '.png';
             Storage::put($path, $result->getString());
 
-            CertCheck::where('user_id', auth()->user()->id)->update([
+            CertCheck::where('user_id', Auth::user()->id)->update([
                 'qr_code' => $path,
                 'qr_url' => $qrcode
             ]);

@@ -6,6 +6,7 @@ use App\Models\Laporan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class LaporanController extends Controller
@@ -15,7 +16,7 @@ class LaporanController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin') {
             return abort(403);
         }
 
@@ -29,7 +30,7 @@ class LaporanController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin') {
             return abort(403);
         }
 
@@ -41,7 +42,7 @@ class LaporanController extends Controller
      */
     public function store(Request $request)
     {
-        if (auth()->user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin') {
             return abort(403);
         }
 
@@ -80,7 +81,7 @@ class LaporanController extends Controller
      */
     public function edit(Laporan $laporan)
     {
-        if (auth()->user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin') {
             return abort(403);
         }
 
@@ -94,7 +95,7 @@ class LaporanController extends Controller
      */
     public function update(Request $request, Laporan $laporan)
     {
-        if (auth()->user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin') {
             return abort(403);
         }
 
@@ -129,7 +130,7 @@ class LaporanController extends Controller
      */
     public function destroy(Laporan $laporan)
     {
-        if (auth()->user()->role != 'superadmin') {
+        if (Auth::user()->role != 'superadmin') {
             return abort(403);
         }
 

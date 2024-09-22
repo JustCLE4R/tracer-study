@@ -8,6 +8,7 @@ use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SuperAdminController extends Controller
 {
@@ -16,7 +17,7 @@ class SuperAdminController extends Controller
      */
     public function index()
     {
-        $query = User::where('id', '!=', Auth()->id())->latest();
+        $query = User::where('id', '!=', Auth::id())->latest();
 
         if (request('search')) {
             $query->where(function($query) {
@@ -26,9 +27,9 @@ class SuperAdminController extends Controller
             });
         }
         
-        if(Auth()->user()->role == 'admin'){
+        if(Auth::user()->role == 'admin'){
             $query->where(function($query) {
-                $query->where('fakultas', Auth()->user()->fakultas)
+                $query->where('fakultas', Auth::user()->fakultas)
                     ->where('role', 'mahasiswa');
             });
         }
@@ -60,7 +61,7 @@ class SuperAdminController extends Controller
      */
     public function show(User $user)
     {
-        if(auth()->user()->fakultas != $user->fakultas && auth()->user()->role != 'superadmin') {
+        if(Auth::user()->fakultas != $user->fakultas && Auth::user()->role != 'superadmin') {
             abort(403);
         }
 
@@ -85,7 +86,7 @@ class SuperAdminController extends Controller
      */
     public function edit(User $user)
     {
-        if(auth()->user()->fakultas != $user->fakultas && auth()->user()->role != 'superadmin') {
+        if(Auth::user()->fakultas != $user->fakultas && Auth::user()->role != 'superadmin') {
             abort(403);
         }
 

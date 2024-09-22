@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Mahasiswa;
 
-use App\Models\ApiIntegration;
 use App\Models\Pekerja;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ApiIntegration;
 use Illuminate\Validation\Rule;
 use App\Models\DetailPerusahaan;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PekerjaController extends Controller
 {
@@ -104,7 +105,7 @@ class PekerjaController extends Controller
         }
 
         $dataPrepare = [
-            'user_id' => auth()->user()->id,
+            'user_id' => Auth::user()->id,
             'status_pekerjaan' => $rules['status-pekerjaan'],
             'kriteria_pekerjaan' => $rules['kriteria-pekerjaan'],
             'bidang_pekerjaan' => $rules['bidang-pekerjaan'],
@@ -159,7 +160,7 @@ class PekerjaController extends Controller
      */
     public function show(Pekerja $pekerja)
     {
-        if ($pekerja->user_id != auth()->user()->id) {
+        if ($pekerja->user_id != Auth::user()->id) {
             return abort(403);
         }
     }
@@ -171,9 +172,9 @@ class PekerjaController extends Controller
     {
         // allowing admin with same faculty to edit the resource
         if (
-            ($pekerja->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+            ($pekerja->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
             ||
-            (auth()->user()->fakultas != $pekerja->user->fakultas && auth()->user()->role == 'admin')
+            (Auth::user()->fakultas != $pekerja->user->fakultas && Auth::user()->role == 'admin')
         ) {
             return abort(403);
         }
@@ -190,9 +191,9 @@ class PekerjaController extends Controller
     {
         // allowing admin with same faculty to edit the resource
         if (
-            ($pekerja->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+            ($pekerja->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
             ||
-            (auth()->user()->fakultas != $pekerja->user->fakultas && auth()->user()->role == 'admin')
+            (Auth::user()->fakultas != $pekerja->user->fakultas && Auth::user()->role == 'admin')
         ) {
             return abort(403);
         }
@@ -263,7 +264,7 @@ class PekerjaController extends Controller
         }
 
         $dataPrepare = [
-            // 'user_id' => auth()->user()->id,
+            // 'user_id' => Auth::user()->id,
             'bidang_pekerjaan' => $rules['bidang-pekerjaan'],
             'tingkat_tempat_bekerja' => $rules['tingkat-ukuran-tempat-bekerja'],
             'jabatan_pekerjaan' => $rules['posisi-jabatan-pekerjaan'],
@@ -282,7 +283,7 @@ class PekerjaController extends Controller
 
         $pekerja->update($dataPrepare);
 
-        if ($pekerja->getRawOriginal('kriteria_pekerjaan') == 'd' && auth()->user()->role != 'mahasiswa') {
+        if ($pekerja->getRawOriginal('kriteria_pekerjaan') == 'd' && Auth::user()->role != 'mahasiswa') {
             return redirect('/dashboard/admin/' . $pekerja->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
         }
 
@@ -313,7 +314,7 @@ class PekerjaController extends Controller
 
         DetailPerusahaan::where('pekerja_id', $pekerja->id)->update($detail_perusahaan);
 
-        if (auth()->user()->role != 'mahasiswa') {
+        if (Auth::user()->role != 'mahasiswa') {
             return redirect('/dashboard/admin/' . $pekerja->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
         }
 
@@ -327,9 +328,9 @@ class PekerjaController extends Controller
     {
         // allowing admin with same faculty to delete the resource
         if (
-            ($pekerja->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+            ($pekerja->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
             ||
-            (auth()->user()->fakultas != $pekerja->user->fakultas && auth()->user()->role == 'admin')
+            (Auth::user()->fakultas != $pekerja->user->fakultas && Auth::user()->role == 'admin')
         ) {
             return abort(403);
         }
@@ -339,7 +340,7 @@ class PekerjaController extends Controller
         }
         $pekerja->delete();
 
-        if (auth()->user()->role != 'mahasiswa') {
+        if (Auth::user()->role != 'mahasiswa') {
             return redirect('/dashboard/admin/' . $pekerja->user->id)->with('success', 'Data pekerjaan berhasil dihapus!');
         }
 

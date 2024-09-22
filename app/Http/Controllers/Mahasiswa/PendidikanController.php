@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Models\CertCheck;
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PendidikanController extends Controller
 {
@@ -71,12 +72,12 @@ class PendidikanController extends Controller
     ]);
 
     $rules['bukti_pendidikan'] = $request->file('bukti_pendidikan')->store('bukti-pendidikan');
-    $rules['user_id'] = auth()->user()->id;
+    $rules['user_id'] = Auth::user()->id;
 
     Pendidikan::create($rules);
 
     CertCheck::updateOrCreate([
-      'user_id' => auth()->user()->id
+      'user_id' => Auth::user()->id
     ], [
       'pendidikan_check' => true
     ]);
@@ -91,9 +92,9 @@ class PendidikanController extends Controller
   {
     // allowing admin with same faculty to edit the resource
     if(
-      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      ($pendidikan->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
       || 
-      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+      (Auth::user()->fakultas != $pendidikan->user->fakultas && Auth::user()->role == 'admin')
     )
     {
       return abort(403);
@@ -111,9 +112,9 @@ class PendidikanController extends Controller
   {
     // allowing admin with same faculty to edit the resource
     if(
-      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      ($pendidikan->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
       || 
-      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+      (Auth::user()->fakultas != $pendidikan->user->fakultas && Auth::user()->role == 'admin')
     )
     {
       return abort(403);
@@ -131,9 +132,9 @@ class PendidikanController extends Controller
   {
     // allowing admin with same faculty to edit the resource
     if(
-      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      ($pendidikan->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
       || 
-      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+      (Auth::user()->fakultas != $pendidikan->user->fakultas && Auth::user()->role == 'admin')
     )
     {
       return abort(403);
@@ -186,7 +187,7 @@ class PendidikanController extends Controller
 
     $pendidikan->update($rules);
 
-    if(auth()->user()->role != 'mahasiswa'){
+    if(Auth::user()->role != 'mahasiswa'){
       return redirect('/dashboard/admin/'.$pendidikan->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
     }
 
@@ -200,9 +201,9 @@ class PendidikanController extends Controller
   {
     // allowing admin with same faculty to edit the resource
     if(
-      ($pendidikan->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      ($pendidikan->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
       || 
-      (auth()->user()->fakultas != $pendidikan->user->fakultas && auth()->user()->role == 'admin')
+      (Auth::user()->fakultas != $pendidikan->user->fakultas && Auth::user()->role == 'admin')
     )
     {
       return abort(403);
@@ -211,7 +212,7 @@ class PendidikanController extends Controller
     Storage::delete($pendidikan->bukti_pendidikan);
     $pendidikan->delete();
 
-    if(auth()->user()->role != 'mahasiswa'){
+    if(Auth::user()->role != 'mahasiswa'){
       return redirect('/dashboard/admin/'.$pendidikan->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
     }
     

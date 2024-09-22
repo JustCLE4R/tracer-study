@@ -6,6 +6,7 @@ use App\Models\Career;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -18,14 +19,14 @@ class CareerController extends Controller
   {
     $query = Career::with('user')->latest();
 
-    if (auth()->user()->role == 'admin') {
+    if (Auth::user()->role == 'admin') {
       $query->whereHas('user', function ($query) {
-        $query->where('fakultas', auth()->user()->fakultas);
+        $query->where('fakultas', Auth::user()->fakultas);
       });
-    } else if (auth()->user()->role == 'superadmin') {
+    } else if (Auth::user()->role == 'superadmin') {
       //
     } else {
-      $query->where('user_id', auth()->user()->id);
+      $query->where('user_id', Auth::user()->id);
     }
 
     return view('dashboard.careers.index', [
@@ -76,7 +77,7 @@ class CareerController extends Controller
       $validatedData['image'] = $request->file('image')->store('careers-images');
     }
 
-    $validatedData['user_id'] = auth()->user()->id;
+    $validatedData['user_id'] = Auth::user()->id;
     $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 100);
 
     Career::create($validatedData);
@@ -89,7 +90,7 @@ class CareerController extends Controller
    */
   public function show(Career $career)
   {
-    if ($career->user_id !== auth()->user()->id AND auth()->user()->role == 'mahasiswa') {
+    if ($career->user_id !== Auth::user()->id AND Auth::user()->role == 'mahasiswa') {
       abort(403);
     }
 
@@ -105,9 +106,9 @@ class CareerController extends Controller
   {
     // allowing admin with same faculty to edit the resource
     if(
-      ($career->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      ($career->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
       || 
-      (auth()->user()->fakultas != $career->user->fakultas && auth()->user()->role == 'admin')
+      (Auth::user()->fakultas != $career->user->fakultas && Auth::user()->role == 'admin')
     )
     {
       return abort(403);
@@ -125,9 +126,9 @@ class CareerController extends Controller
   {
     // allowing admin with same faculty to edit the resource
     if(
-      ($career->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      ($career->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
       || 
-      (auth()->user()->fakultas != $career->user->fakultas && auth()->user()->role == 'admin')
+      (Auth::user()->fakultas != $career->user->fakultas && Auth::user()->role == 'admin')
     )
     {
       return abort(403);
@@ -154,12 +155,12 @@ class CareerController extends Controller
       $validatedData['image'] = $request->file('image')->store('careers-images');
     }
 
-    // $validatedData['user_id'] = auth()->user()->id; //dimatikan agar jika admin mengedit postingan karir tidka mengambil hak milik postingan
+    // $validatedData['user_id'] = Auth::user()->id; //dimatikan agar jika admin mengedit postingan karir tidka mengambil hak milik postingan
     $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 100);
 
     $career->update($validatedData);
 
-    if(auth()->user()->role != 'mahasiswa'){
+    if(Auth::user()->role != 'mahasiswa'){
       return redirect('/dashboard/admin/'.$career->user->id)->with('success', 'Career has been updated!');
     }
 
@@ -173,9 +174,9 @@ class CareerController extends Controller
   {
     // allowing admin with same faculty to delete the resource
     if(
-      ($career->user_id != auth()->user()->id && auth()->user()->role == 'mahasiswa')
+      ($career->user_id != Auth::user()->id && Auth::user()->role == 'mahasiswa')
       || 
-      (auth()->user()->fakultas != $career->user->fakultas && auth()->user()->role == 'admin')
+      (Auth::user()->fakultas != $career->user->fakultas && Auth::user()->role == 'admin')
     )
     {
       return abort(403);
@@ -186,7 +187,7 @@ class CareerController extends Controller
     }
     $career->delete();
 
-    if(auth()->user()->role != 'mahasiswa'){
+    if(Auth::user()->role != 'mahasiswa'){
       return redirect('/dashboard/admin/'.$career->user->id)->with('success', 'Career has been deleted!');
     }
 

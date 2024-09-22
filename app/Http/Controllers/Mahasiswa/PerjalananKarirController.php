@@ -4,19 +4,20 @@ namespace App\Http\Controllers\Mahasiswa;
 
 use App\Models\User;
 use App\Models\Pekerja;
+use App\Models\CertCheck;
 use App\Models\Wirausaha;
 use App\Models\Pendidikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Mahasiswa\PekerjaController;
 use App\Http\Controllers\Mahasiswa\WirausahaController;
-use App\Models\CertCheck;
-use App\Http\Controllers\Controller;
 
 class PerjalananKarirController extends Controller
 {
 	public function index(){
-		$user_id = auth()->user()->id;
+		$user_id = Auth::user()->id;
 
 		$pekerjaans = Pekerja::select(DB::raw("'pekerja' as tipe_kerja"), 'pekerjas.id', 'jabatan_pekerjaan', 'detail_pekerjaan', 'is_active', 'tgl_mulai_kerja as tanggal_mulai', 'tgl_akhir_kerja as tanggal_akhir', 'detail_perusahaans.token')
 				->leftJoin('detail_perusahaans', 'detail_perusahaans.pekerja_id', '=', 'pekerjas.id')
@@ -29,7 +30,7 @@ class PerjalananKarirController extends Controller
 
 		return view('dashboard.perjalanan-karir.index', [
 			'pekerjaans' => $unioned,
-			'pendidikans' => Pendidikan::where('user_id', auth()->user()->id)->orderBy('tingkat_pendidikan', 'asc')->get()
+			'pendidikans' => Pendidikan::where('user_id', Auth::user()->id)->orderBy('tingkat_pendidikan', 'asc')->get()
 		]);
 	}
 
@@ -40,7 +41,7 @@ class PerjalananKarirController extends Controller
 	public function store(Request $request){
 
 		CertCheck::updateOrCreate([
-			'user_id' => auth()->user()->id
+			'user_id' => Auth::user()->id
 		], [
 			'pekerjaan_check' => true
 		]);
@@ -62,7 +63,7 @@ class PerjalananKarirController extends Controller
 	}
 
 	public function destroyBelumKerja(){
-		$user = User::find(auth()->user()->id);
+		$user = User::find(Auth::user()->id);
 
 		$user->update([
 			'is_bekerja' => 1
@@ -80,7 +81,7 @@ class PerjalananKarirController extends Controller
 			'saya-belum-memiliki-pekerjaan' => '"Ya, saya belum bekerja"'
 		]);
 
-			$user = User::find(auth()->user()->id);
+			$user = User::find(Auth::user()->id);
 
 			$user->update([
 				'is_bekerja' => 0

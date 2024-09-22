@@ -49,7 +49,16 @@
 <body>
 
   <div class="container-fluid position-relative bg-white p-0">
-    @include('dashboard.partials.sidebar')
+    {{-- sidebar --}}
+    @if (Auth::user()->role == 'adminfakultas')
+      @include('dashboard.partials.admin-fakultas.sidebar')
+    @elseif (Auth::user()->role == 'adminprodi')
+      @include('dashboard.partials.admin-prodi.sidebar')
+    @elseif (Auth::user()->role == 'surveyor')
+      @include('dashboard.partials.surveyor.sidebar')
+    @elseif (Auth::user()->role == 'mahasiswa')
+      @include('dashboard.partials.mahasiswa.sidebar')
+    @endif
 
     <div class="content">
       @include('dashboard.partials.navbar')

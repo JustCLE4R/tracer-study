@@ -21,14 +21,14 @@
 						<div class="timeline mx-3 pb-5">
 							<div class="row justify-content-between">
 								<div class="col-7 ">
-									<a href="/dashboard/perjalanan-karir/create" class="btn btn-success btn-sm @if (auth()->user()->is_bekerja == 0) disabled @endif"><i class="bi bi-plus-lg"></i> Tambah Riwayat</a>
+									<a href="/dashboard/perjalanan-karir/create" class="btn btn-success btn-sm @if (Auth::user()->is_bekerja == 0) disabled @endif"><i class="bi bi-plus-lg"></i> Tambah Riwayat</a>
 								</div>
 								<div class="col-5 text-end">
 									<span class=" mt-1 text-success ">Setelah Lulus</span>
 								</div>
 							</div>
 
-							@if(auth()->user()->is_bekerja == 0)
+							@if(Auth::user()->is_bekerja == 0)
 								<div class="timeline__event animated fadeInUp delay-1s timeline__event--type1">
 									<div class="timeline__event__icon">
 										<i class="bi bi-person-workspace"></i>

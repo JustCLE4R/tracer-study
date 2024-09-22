@@ -68,8 +68,10 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'no-cache' => \App\Http\Middleware\NoCache::class,
-        'is-admin' => \App\Http\Middleware\IsAdmin::class,
         'is-mahasiswa' => \App\Http\Middleware\IsMahasiswa::class,
         'is-surveyor' => \App\Http\Middleware\IsSurveyor::class,
+        'is-admin-prodi' => \App\Http\Middleware\IsAdminProdi::class,
+        'is-admin-fakultas' => \App\Http\Middleware\IsAdminFakultas::class,
+        'is-super-admin' => \App\Http\Middleware\IsSuperAdmin::class
     ];
 }

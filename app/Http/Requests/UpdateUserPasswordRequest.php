@@ -24,7 +24,7 @@ class UpdateUserPasswordRequest extends FormRequest
     {
         return [
             'old_password' => ['required', 'string', 'max:255', function ($attribute, $value, $fail) {
-                if (!Hash::check(md5($value), auth()->user()->password)) {
+                if (!Hash::check(md5($value), Auth::user()->password)) {
                     $fail('Password lama tidak sesuai.');
                 }
             }],

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsSurveyor
+class IsAdminFakultas
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class IsSurveyor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()->role != 'surveyor') {
+        if (Auth::user()->role != 'adminfakultas') {
             abort(403);
         }
 
