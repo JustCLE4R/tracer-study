@@ -15,7 +15,7 @@
             <div class="bg-light rounded p-5 border-top border-success border-5">
                 <div class="row">
                     <div class="col-12">
-                        <span class="h4">Daftar Karir</span>
+                        <span class="h4">Daftar Karir</span> ({{ ucfirst($from) }})
                         <hr>
                     </div>
                 </div>
@@ -51,9 +51,9 @@
                                     {{ $career->created_at->format('d M Y H:i') }}
                                 </td>
 
-                                <td style="background-color: transparent !important;" class="text-center" width="10%">
-                                    <a href="/dashboard/admin/fakultas/career/{{ $career->id }}/judge?from={{ $from }}"
-                                        class="btn btn-success btn-sm px-1 m-1 py-0 text-white"><i
+                                <td style="background-color: transparent !important;" class="text-center">
+                                    <a href="/dashboard/admin/fakultas/career/{{ $career->slug }}/judge?from={{ $from }}"
+                                        class="btn btn-success btn-sm px-1 py-0 text-white"><i
                                             class="bi bi-arrow-right"></i></a>
                                 </td>
                             </tr>

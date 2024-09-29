@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\AdminFakultas;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateJudgeRequest;
 use App\Models\career;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\UpdateJudgeRequest;
+use App\Http\Requests\AdminFakultas\UpdateCareerRequest;
 
 class CareerController extends Controller
 {
@@ -46,23 +48,45 @@ class CareerController extends Controller
      */
     public function edit(career $career)
     {
-        //
+        return view('dashboard.admin-fakultas.career.edit', [
+            'career' => $career
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, career $career)
+    public function update(UpdateCareerRequest $request, career $career)
     {
-        //
+        $prepareData = $request->all();
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $prepareData['image'] = $request->file('image')->store('careers-images');
+        }
+
+        $career->update($prepareData);
+
+        $from = $request->input('from', 'pending');
+        return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(career $career)
+    public function destroy(Request $request, career $career)
     {
-        //
+        $career->delete();
+
+        $from = $request->input('from', 'pending');
+
+        if($request->input('from')) {
+            return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil dihapus');
+        }
+
+        return redirect()->back()->with('success', 'Pengajuan karir berhasil dihapus');
     }
 
     public function judgeCareer(career $career)

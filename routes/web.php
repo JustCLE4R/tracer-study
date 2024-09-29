@@ -43,6 +43,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
     Route::patch('/profile/edit/password', [UserController::class, 'updatePassword']);
 
     Route::view('/visual', 'dashboard.visual');
+    Route::get('/career/checkSlug', [MhsCareerController::class, 'checkSlug']);
 
     // mahasiswa routes
     Route::middleware('is-mahasiswa')->group(function () {
@@ -50,7 +51,6 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
         Route::get('/profile/edit', [MhsUserController::class, 'edit']);
         Route::patch('/profile/edit', [MhsUserController::class, 'update']);
 
-        Route::get('/career/checkSlug', [MhsCareerController::class, 'checkSlug']);
         Route::delete('/hapusBelumKerja', [MhsPerjalananKarirController::class, 'destroyBelumKerja']);
 
         Route::resource('/career', MhsCareerController::class);
@@ -75,8 +75,8 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
         Route::resource('/user', AdminFakultasUserController::class);
 
         Route::prefix('career')->group(function () {
-            Route::get('/{career:id}/judge', [AdminFakultasCareerController::class, 'judgeCareer']);
-            Route::patch('/{career:id}/judge', [AdminFakultasCareerController::class, 'updateJudge']);
+            Route::get('/{career}/judge', [AdminFakultasCareerController::class, 'judgeCareer']);
+            Route::patch('/{career}/judge', [AdminFakultasCareerController::class, 'updateJudge']);
             Route::get('/pending', [AdminFakultasCareerController::class, 'pendingCareers']);
             Route::get('/rejected', [AdminFakultasCareerController::class, 'rejectedCareers']);
             Route::get('/approved', [AdminFakultasCareerController::class, 'approvedCareers']);

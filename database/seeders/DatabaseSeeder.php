@@ -41,9 +41,11 @@ class DatabaseSeeder extends Seeder
     $this->createAdmin('0400000000', 'Admin FSH', md5('123'), 'adminfakultas', 'Syariah dan Hukum', 'fsh@uinsu.ac.id', '0888888888');
     $this->createAdmin('0500000000', 'Admin FITK', md5('123'), 'adminfakultas', 'Ilmu Tarbiyah dan Keguruan', 'fitk@uinsu.ac.id', '0888888888');
     $this->createAdmin('0600000000', 'Admin FIS', md5('123'), 'adminfakultas', 'Ilmu Sosial', 'fis@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0700000000', 'Admin Saintek', md5('123'), 'adminfakultas', 'Sains dan Teknologi', 'saintek@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminsaintek', 'Admin Saintek', md5('123'), 'adminfakultas', 'Sains dan Teknologi', 'saintek@uinsu.ac.id', '0888888888');
     $this->createAdmin('0800000000', 'Admin FKM', md5('123'), 'adminfakultas', 'Kesehatan Masyarakat', 'fkm@uinsu.ac.id', '0888888888');
     $this->createAdmin('0900000000', 'Admin Pascasarjana', md5('123'), 'adminfakultas', 'Pascasarjana', 'pascasarjana@uinsu.ac.id', '0888888888');
+
+    $this->createAdmin('adminilkomp', 'Admin Ilkomp', md5('123'), 'adminprodi', 'Ilmu Komputer', 'ilkomp@uinsu.ac.id', '0888888888');
 
 
     User::factory(100)->create();
