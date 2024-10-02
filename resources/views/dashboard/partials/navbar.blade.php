@@ -18,6 +18,48 @@
     </div>
     @endif
 
+    {{-- print all error --}}
+    @if (session()->has('error'))
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <ul class="mb-0">
+      @if(is_array(session('error')))
+        @foreach (session('error') as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      @else
+        <li>{{ session('error') }}</li>
+      @endif
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+      setTimeout(() => {
+      document.querySelector('.alert').classList.remove('show');
+      }, 5000);
+    </script>
+    @endif
+
+    @if (session()->has('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <ul class="mb-0">
+      @if(is_array(session('success')))
+        @foreach (session('success') as $success)
+        <li>{{ $success }}</li>
+        @endforeach
+      @else
+        <li>{{ session('success') }}</li>
+      @endif
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+      setTimeout(() => {
+      document.querySelector('.alert').classList.remove('show');
+      }, 5000);
+    </script>
+    @endif
+
+
     <div class="text-end me-2 flex-grow-1"> 
       <a href="#">
         <span class="d-none text-success d-lg-inline-flex overflow-hidden" style="max-width: 150px;">{{ Auth::user()->nama }}</span>

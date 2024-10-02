@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\AdminFakultas;
+namespace App\Http\Controllers\AdminProdi;
 
-use App\Models\career;
+use App\Models\Career;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\AdminFakultas\UpdateJudgeRequest;
-use App\Http\Requests\AdminFakultas\UpdateCareerRequest;
+use App\Http\Requests\AdminProdi\UpdateJudgeRequest;
+use App\Http\Requests\AdminProdi\UpdateCareerRequest;
 
 class CareerController extends Controller
 {
@@ -48,7 +48,7 @@ class CareerController extends Controller
      */
     public function edit(career $career)
     {
-        return view('dashboard.admin-fakultas.career.edit', [
+        return view('dashboard.admin-prodi.career.edit', [
             'career' => $career
         ]);
     }
@@ -58,8 +58,6 @@ class CareerController extends Controller
      */
     public function update(UpdateCareerRequest $request, career $career)
     {
-        // if($career->user)
-
         $prepareData = $request->all();
 
         if ($request->file('image')) {
@@ -93,7 +91,7 @@ class CareerController extends Controller
 
     public function judgeCareer(career $career)
     {
-        return view('dashboard.admin-fakultas.career.judge', [
+        return view('dashboard.admin-prodi.career.judge', [
             'career' => $career
         ]);
     }
@@ -113,7 +111,7 @@ class CareerController extends Controller
     {
         $careers = career::where('status', 'pending')->paginate(20);
 
-        return view('dashboard.admin-fakultas.career.index', [
+        return view('dashboard.admin-prodi.career.index', [
             'from' => 'pending',
             'careers' => $careers
         ]);
@@ -123,7 +121,7 @@ class CareerController extends Controller
     {
         $careers = career::where('status', 'rejected')->paginate(20);
 
-        return view('dashboard.admin-fakultas.career.index', [
+        return view('dashboard.admin-prodi.career.index', [
             'from' => 'rejected',
             'careers' => $careers
         ]);
@@ -133,7 +131,7 @@ class CareerController extends Controller
     {
         $careers = career::where('status', 'approved')->paginate(20);
 
-        return view('dashboard.admin-fakultas.career.index', [
+        return view('dashboard.admin-prodi.career.index', [
             'from' => 'approved',
             'careers' => $careers
         ]);

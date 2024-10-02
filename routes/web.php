@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminFakultas\CareerController as AdminFakultasCareerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -9,14 +8,17 @@ use App\Http\Controllers\Mahasiswa\UserController as MhsUserController;
 use App\Http\Controllers\Guest\CareerController as GuestCareerController;
 use App\Http\Controllers\Mahasiswa\CareerController as MhsCareerController;
 use App\Http\Controllers\Mahasiswa\PekerjaController as MhsPekerjaController;
+use App\Http\Controllers\AdminProdi\UserController as AdminProdiUserController;
 use App\Http\Controllers\Guest\QuestionerController as GuestQuestionerController;
 use App\Http\Controllers\Guest\SertifikatController as GuestSertifikatController;
 use App\Http\Controllers\Mahasiswa\WirausahaController as MhsWirausahaController;
+use App\Http\Controllers\AdminProdi\CareerController as AdminProdiCareerController;
 use App\Http\Controllers\Mahasiswa\PendidikanController as MhsPendidikanController;
 use App\Http\Controllers\Mahasiswa\QuestionerController as MhsQuestionerController;
 use App\Http\Controllers\Mahasiswa\SertifikatController as MhsSertifikatController;
 use App\Http\Controllers\AdminFakultas\UserController as AdminFakultasUserController;
 use App\Http\Controllers\SuperAdmin\LaporanController as SuperAdminLaporanController;
+use App\Http\Controllers\AdminFakultas\CareerController as AdminFakultasCareerController;
 use App\Http\Controllers\Mahasiswa\PerjalananKarirController as MhsPerjalananKarirController;
 
 
@@ -44,7 +46,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
 
     Route::view('/visual', 'dashboard.visual');
     Route::get('/career/checkSlug', [MhsCareerController::class, 'checkSlug']);
-
+    
     // mahasiswa routes
     Route::middleware('is-mahasiswa')->group(function () {
         Route::get('/profile', [MhsUserController::class, 'index']);
@@ -67,7 +69,16 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
 
     // admin prodi routes
     Route::middleware('is-admin-prodi')->prefix('admin/prodi')->group(function () {
-        // 
+        Route::resource('/user', AdminProdiUserController::class);
+
+        Route::prefix('career')->group(function () {
+            Route::get('/{career}/judge', [AdminProdiCareerController::class, 'judgeCareer']);
+            Route::patch('/{career}/judge', [AdminProdiCareerController::class, 'updateJudge']);
+            Route::get('/pending', [AdminProdiCareerController::class, 'pendingCareers']);
+            Route::get('/rejected', [AdminProdiCareerController::class, 'rejectedCareers']);
+            Route::get('/approved', [AdminProdiCareerController::class, 'approvedCareers']);
+        });
+        Route::resource('/career', AdminProdiCareerController::class)->except(['index']);
     });
 
     // admin fakultas routes
@@ -87,5 +98,6 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
     // super admin routes
     Route::middleware('is-super-admin')->prefix('admin/super')->group(function () {
         Route::resource('/laporan', SuperAdminLaporanController::class)->except(['show']);
+        Route::get('/laporan/checkSlug', [SuperAdminLaporanController::class, 'checkSlug']);
     });
 });

@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
   public function run(): void
   {
     User::create([
-      "nim" => "0000000000",
+      "nim" => "superadmin",
       "nama" => "Super Admin",
       "password" => Hash::make(md5('123')),
       "role" => 'superadmin',
@@ -35,17 +35,18 @@ class DatabaseSeeder extends Seeder
       'remember_token' => Str::random(10),
       'alamat' => fake()->address,
     ]);
-    $this->createAdmin('0100000000', 'Admin FUSI', md5('123'), 'adminfakultas', 'Ushuluddin dan Studi Islam', 'fusi@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0200000000', 'Admin FEBI', md5('123'), 'adminfakultas', 'Ekonomi dan Bisnis Islam', 'febi@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0300000000', 'Admin FDK', md5('123'), 'adminfakultas', 'Dakwah dan Komunikasi', 'fdk@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0400000000', 'Admin FSH', md5('123'), 'adminfakultas', 'Syariah dan Hukum', 'fsh@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0500000000', 'Admin FITK', md5('123'), 'adminfakultas', 'Ilmu Tarbiyah dan Keguruan', 'fitk@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0600000000', 'Admin FIS', md5('123'), 'adminfakultas', 'Ilmu Sosial', 'fis@uinsu.ac.id', '0888888888');
-    $this->createAdmin('adminsaintek', 'Admin Saintek', md5('123'), 'adminfakultas', 'Sains dan Teknologi', 'saintek@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0800000000', 'Admin FKM', md5('123'), 'adminfakultas', 'Kesehatan Masyarakat', 'fkm@uinsu.ac.id', '0888888888');
-    $this->createAdmin('0900000000', 'Admin Pascasarjana', md5('123'), 'adminfakultas', 'Pascasarjana', 'pascasarjana@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminfusi', 'Admin FUSI', md5('123'), 'adminfakultas', '-', 'Ushuluddin dan Studi Islam', 'fusi@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminfebi', 'Admin FEBI', md5('123'), 'adminfakultas', '-', 'Ekonomi dan Bisnis Islam', 'febi@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminfdk', 'Admin FDK', md5('123'), 'adminfakultas', '-', 'Dakwah dan Komunikasi', 'fdk@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminfsh', 'Admin FSH', md5('123'), 'adminfakultas', '-', 'Syariah dan Hukum', 'fsh@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminfitk', 'Admin FITK', md5('123'), 'adminfakultas', '-', 'Ilmu Tarbiyah dan Keguruan', 'fitk@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminfis', 'Admin FIS', md5('123'), 'adminfakultas', '-', 'Ilmu Sosial', 'fis@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminsaintek', 'Admin Saintek', md5('123'), 'adminfakultas', '-', 'Sains dan Teknologi', 'saintek@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminfkm', 'Admin FKM', md5('123'), 'adminfakultas', '-', 'Kesehatan Masyarakat', 'fkm@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminpasca', 'Admin Pascasarjana', md5('123'), 'adminfakultas', '-', 'Pascasarjana', 'pascasarjana@uinsu.ac.id', '0888888888');
 
-    $this->createAdmin('adminilkomp', 'Admin Ilkomp', md5('123'), 'adminprodi', 'Ilmu Komputer', 'ilkomp@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminilkomp', 'Admin Ilkomp', md5('123'), 'adminprodi', 'Ilmu Komputer', 'Sains dan Teknologi', 'ilkomp@uinsu.ac.id', '0888888888');
+    $this->createAdmin('adminsi', 'Admin SI', md5('123'), 'adminprodi', 'Sistem Informasi', 'Sains dan Teknologi', 'si@uinsu.ac.id', '0888888888');
 
 
     User::factory(100)->create();
@@ -68,14 +69,14 @@ class DatabaseSeeder extends Seeder
   }
 
 
-  public function createAdmin(string $nim, string $nama, string $password, string $admin, string $fakultas, string $email, string $telepon): void
+  public function createAdmin(string $nim, string $nama, string $password, string $admin, string $prodi, string $fakultas, string $email, string $telepon): void
   {
     User::create([
         "nim" => $nim,
         "nama" => $nama,
         "password" => Hash::make($password),
         "role" => $admin,
-        'program_studi' => '-',
+        'program_studi' => $prodi,
         'fakultas' => $fakultas,
         'tahun_masuk' => fake()->year,
         'tempat_lahir' => '-',

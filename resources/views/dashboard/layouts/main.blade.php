@@ -50,7 +50,9 @@
 
   <div class="container-fluid position-relative bg-white p-0">
     {{-- sidebar --}}
-    @if (Auth::user()->role == 'adminfakultas')
+    @if(Auth::user()->role == 'superadmin')
+      @include('dashboard.partials.super-admin.sidebar')
+    @elseif (Auth::user()->role == 'adminfakultas')
       @include('dashboard.partials.admin-fakultas.sidebar')
     @elseif (Auth::user()->role == 'adminprodi')
       @include('dashboard.partials.admin-prodi.sidebar')
@@ -109,6 +111,8 @@
   @if (Request::is('dashboard/career*'))
     <script src="{{ asset('js/career.js') }}"></script>
   @endif
+
+  @stack('scripts')
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AdminFakultas;
+namespace App\Http\Controllers\AdminProdi;
 
 use App\Models\User;
 use App\Models\Pekerja;
@@ -8,8 +8,8 @@ use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminFakultas\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AdminProdi\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $query = User::where('id', '!=', Auth::id())
-                    ->where('fakultas', Auth::user()->fakultas)
+                    ->where('program_studi', Auth::user()->program_studi)
                     ->latest();
 
         if (request('search')) {
@@ -30,7 +30,7 @@ class UserController extends Controller
             });
         }
         
-        return view('dashboard.admin-fakultas.user.index', [
+        return view('dashboard.admin-prodi.user.index', [
             'users' => $query->paginate(20)->withQueryString()
         ]);
     }
@@ -56,8 +56,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        if ($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
+        if ($user->program_studi != Auth::user()->program_studi) {
+            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
         };
 
         $user->load(['pendidikan', 'career']);
@@ -70,7 +70,7 @@ class UserController extends Controller
 
         $unioned = $pekerjaans->union($wirausaha)->orderBy('is_active', 'desc')->orderBy('tanggal_mulai', 'asc')->orderBy('tipe_kerja', 'desc')->get();
 
-        return view('dashboard.admin-fakultas.user.show', [
+        return view('dashboard.admin-prodi.user.show', [
             'user' => $user,
             'pekerjaans' => $unioned
         ]);
@@ -81,11 +81,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        if($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
+        if ($user->program_studi != Auth::user()->program_studi) {
+            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
         };
 
-        return view('dashboard.admin-fakultas.user.edit', [
+        return view('dashboard.admin-prodi.user.edit', [
             'user' => $user
         ]);
     }
@@ -95,12 +95,12 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        if($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
+        if ($user->program_studi != Auth::user()->program_studi) {
+            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
         };
 
         $user->update($request->all());
-        return redirect('/dashboard/admin/fakultas/user/' . $user->id)->with('success', 'Profil berhasil diperbarui');
+        return redirect('/dashboard/admin/prodi/user/' . $user->id)->with('success', 'Profil berhasil diperbarui');
     }
 
     /**
@@ -108,11 +108,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
+        if ($user->program_studi != Auth::user()->program_studi) {
+            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
         };
 
         $user->delete();
-        return redirect('/dashboard/admin/fakultas/user')->with('success', 'User has been deleted!');
+        return redirect('/dashboard/admin/prodi/user')->with('success', 'User has been deleted!');
     }
 }
