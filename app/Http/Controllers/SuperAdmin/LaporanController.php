@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\SuperAdmin;
 
 use App\Models\Laporan;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SuperAdmin\StoreLaporanRequest;
+use App\Http\Requests\SuperAdmin\UpdateLaporanRequest;
 use Illuminate\Support\Facades\Storage;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -36,6 +36,7 @@ class LaporanController extends Controller
     public function store(StoreLaporanRequest $request)
     {
         $dataPrepare = $request->all();
+        dd($dataPrepare);
 
         $dataPrepare['laporan'] = $request->file('laporan')->storeAs('laporan', $request->slug . '.' . $request->file('laporan')->extension(), 'public');
 
@@ -64,28 +65,13 @@ class LaporanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Laporan $laporan)
+    public function update(UpdateLaporanRequest $request, Laporan $laporan)
     {
-        $rules = $request->validate([
-            'title' => 'required|string|max:255',
-            'laporan' => 'file|mimes:pdf|max:51200',
-        ],[
-            'required' => 'Kolom :attribute wajib diisi.',
-            'string' => 'Kolom :attribute harus berupa teks.',
-            'max' => 'Kolom :attribute maksimal :max.',
-            'mimes' => 'Kolom :attribute harus berupa berkas berformat PDF.',
-        ],[
-            'title' => 'Judul',
-            'laporan' => 'Laporan',
-        ]);
-
-        $dataPrepare = [
-            'title' => $rules['title'],
-        ];
+        $dataPrepare = $request->all();
 
         if($request->file('laporan')){
             Storage::delete($laporan->laporan);
-            $dataPrepare['laporan'] =$request->file('laporan')->storeAs('laporan', Str::slug($rules['title']) . '.' . $request->file('laporan')->extension(), 'public');
+            $dataPrepare['laporan'] = $request->file('laporan')->storeAs('laporan', $request->slug . '.' . $request->file('laporan')->extension(), 'public');
         }
 
         $laporan->update($dataPrepare);

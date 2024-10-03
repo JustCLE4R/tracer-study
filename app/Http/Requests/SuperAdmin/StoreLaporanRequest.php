@@ -32,15 +32,15 @@ class StoreLaporanRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'Kolom Judul wajib diisi.',
-            'title.string' => 'Kolom Judul harus berupa teks.',
-            'title.max' => 'Kolom Judul maksimal 255 karakter.',
-            'slug.required' => 'Kolom Slug wajib diisi.',
-            'slug.unique' => 'Slug sudah digunakan.',
-            'laporan.required' => 'Kolom Laporan wajib diisi.',
-            'laporan.file' => 'Kolom Laporan harus berupa berkas.',
-            'laporan.mimes' => 'Kolom Laporan harus berupa berkas berformat PDF.',
-            'laporan.max' => 'Kolom Laporan maksimal 51200 kilobyte.',
+            'title.required' => ':attribute wajib diisi.',
+            'title.string' => ':attribute harus berupa teks.',
+            'title.max' => ':attribute maksimal 255 karakter.',
+            'slug.required' => ':attribute wajib diisi.',
+            'slug.unique' => ':attribute sudah digunakan.',
+            'laporan.required' => ':attribute wajib diisi.',
+            'laporan.file' => ':attribute harus berupa berkas.',
+            'laporan.mimes' => ':attribute harus berupa berkas berformat PDF.',
+            'laporan.max' => ':attribute maksimal 51200 kilobyte.',
         ];
     }
 
@@ -49,7 +49,7 @@ class StoreLaporanRequest extends FormRequest
         return [
             'title' => 'Judul',
             'slug' => 'Slug',
-            'laporan' => 'Laporan',
+            'laporan' => 'File Laporan',
         ];
     }
 }

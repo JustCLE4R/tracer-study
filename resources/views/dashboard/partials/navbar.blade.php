@@ -34,7 +34,7 @@
     </div>
     <script>
       setTimeout(() => {
-      document.querySelector('.alert').classList.remove('show');
+        document.querySelector('.alert').classList.remove('show');
       }, 5000);
     </script>
     @endif

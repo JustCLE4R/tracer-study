@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mt-4">
+                            <div class="row mt-4 justify-content-center">
                                 <div class="col-md-3">
                                     <div class="card">
                                         <div class="card-body text-center">
@@ -52,7 +52,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                {{-- <div class="col-md-3">
                                     <div class="card">
                                         <div class="card-body text-center">
                                             <h5 class="card-title">Pendidikan</h5>
@@ -67,6 +67,16 @@
                                         <div class="card-body text-center">
                                             <h5 class="card-title">Pekerjaan</h5>
                                             <p class="card-text">{!! $sertifikat->pekerjaan_check
+                                                ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
+                                                : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <div class="col-md-3">
+                                    <div class="card">
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">Karir</h5>
+                                            <p class="card-text">{!! $sertifikat->karir_check
                                                 ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
                                                 : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
                                         </div>

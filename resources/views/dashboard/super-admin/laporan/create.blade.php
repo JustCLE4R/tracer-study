@@ -31,11 +31,12 @@
                             <input type="hidden" name="slug" id="slug" value="{{ old('slug') }}">
 
                             @push('scripts')
-                                <script>
+                            <script>
                                 const title = $('#title');
                                 const slug = $('#slug');
 
-                                title.on('keyup', () => {
+                                $('form').on('submit', (e) => {
+                                    e.preventDefault();
                                     $.ajax({
                                         url: '/dashboard/admin/super/laporan/checkSlug',
                                         data: {
@@ -43,9 +44,10 @@
                                         }
                                     }).done((data) => {
                                         slug.val(data.slug);
+                                        e.currentTarget.submit();
                                     });
                                 });
-                                </script>
+                            </script>
                             @endpush
                             {{-- make the logic of slug --}}
 

@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Http\Controllers\AdminProdi;
+namespace App\Http\Controllers\SuperAdmin;
 
 use App\Models\User;
 use App\Models\Pekerja;
@@ -9,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\AdminProdi\UpdateUserRequest;
+use App\Http\Requests\SuperAdmin\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -18,9 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $query = User::where('id', '!=', Auth::id())
-                    ->where('program_studi', Auth::user()->program_studi)
-                    ->latest();
+        $query = User::where('id', '!=', Auth::id())->latest();
 
         if (request('search')) {
             $query->where(function($query) {
@@ -35,6 +32,8 @@ class UserController extends Controller
         ]);
     }
 
+
+    // TODO: Make touch method account from main API
     /**
      * Show the form for creating a new resource.
      */
@@ -56,10 +55,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        if ($user->program_studi != Auth::user()->program_studi) {
-            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
-        };
-
         $user->load(['pendidikan', 'career']);
 
         $pekerjaans = Pekerja::select(DB::raw("'pekerja' as tipe_kerja"), 'id', 'jabatan_pekerjaan', 'detail_pekerjaan', 'is_active', 'tgl_mulai_kerja as tanggal_mulai', 'tgl_akhir_kerja as tanggal_akhir')
@@ -81,10 +76,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        if ($user->program_studi != Auth::user()->program_studi) {
-            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
-        };
-
         return view('dashboard.admin.user.edit', [
             'user' => $user
         ]);
@@ -95,12 +86,8 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        if ($user->program_studi != Auth::user()->program_studi) {
-            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
-        };
-
         $user->update($request->all());
-        return redirect('/dashboard/admin/prodi/user/' . $user->id)->with('success', 'Profil berhasil diperbarui');
+        return redirect('/dashboard/admin/super/user/' . $user->id)->with('success', 'Profil berhasil diperbarui');
     }
 
     /**
@@ -108,11 +95,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if ($user->program_studi != Auth::user()->program_studi) {
-            return redirect('/dashboard/admin/prodi/user')->with('error', 'User not found!');
-        };
-
         $user->delete();
-        return redirect('/dashboard/admin/prodi/user')->with('success', 'User has been deleted!');
+        return redirect('/dashboard/admin/super/user')->with('success', 'User has been deleted!');
     }
 }

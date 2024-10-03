@@ -9,6 +9,7 @@ use App\Http\Controllers\Guest\CareerController as GuestCareerController;
 use App\Http\Controllers\Mahasiswa\CareerController as MhsCareerController;
 use App\Http\Controllers\Mahasiswa\PekerjaController as MhsPekerjaController;
 use App\Http\Controllers\AdminProdi\UserController as AdminProdiUserController;
+use App\Http\Controllers\SuperAdmin\UserController as SuperAdminUserController;
 use App\Http\Controllers\Guest\QuestionerController as GuestQuestionerController;
 use App\Http\Controllers\Guest\SertifikatController as GuestSertifikatController;
 use App\Http\Controllers\Mahasiswa\WirausahaController as MhsWirausahaController;
@@ -20,7 +21,7 @@ use App\Http\Controllers\AdminFakultas\UserController as AdminFakultasUserContro
 use App\Http\Controllers\SuperAdmin\LaporanController as SuperAdminLaporanController;
 use App\Http\Controllers\AdminFakultas\CareerController as AdminFakultasCareerController;
 use App\Http\Controllers\Mahasiswa\PerjalananKarirController as MhsPerjalananKarirController;
-
+use App\Http\Controllers\SuperAdmin\CareerController as SuperAdminCareerController;
 
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/career', [GuestCareerController::class, 'index']);
@@ -99,5 +100,16 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
     Route::middleware('is-super-admin')->prefix('admin/super')->group(function () {
         Route::resource('/laporan', SuperAdminLaporanController::class)->except(['show']);
         Route::get('/laporan/checkSlug', [SuperAdminLaporanController::class, 'checkSlug']);
+
+        Route::resource('/user', SuperAdminUserController::class);
+
+        Route::prefix('career')->group(function () {
+            Route::get('/{career}/judge', [SuperAdminCareerController::class, 'judgeCareer']);
+            Route::patch('/{career}/judge', [SuperAdminCareerController::class, 'updateJudge']);
+            Route::get('/pending', [SuperAdminCareerController::class, 'pendingCareers']);
+            Route::get('/rejected', [SuperAdminCareerController::class, 'rejectedCareers']);
+            Route::get('/approved', [SuperAdminCareerController::class, 'approvedCareers']);
+        });
+        Route::resource('/career', SuperAdminCareerController::class)->except(['index']);
     });
 });

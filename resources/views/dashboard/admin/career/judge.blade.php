@@ -8,6 +8,9 @@
         </div>
         <div class="card-body">
             <div class="float-end">
+                <a href="/dashboard/admin/prodi/user/{{ $career->user->id }}"
+                    class="btn btn-info btn-sm px-1 py-0 text-white"><i
+                        class="bi bi-person"></i></a>
                 <a href="/dashboard/admin/prodi/career/{{ $career->slug }}/edit"
                     class="btn btn-warning btn-sm px-1 py-0 text-white"><i
                         class="bi bi-pencil"></i></a>

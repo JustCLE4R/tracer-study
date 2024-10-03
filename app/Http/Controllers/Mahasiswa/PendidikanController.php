@@ -79,7 +79,8 @@ class PendidikanController extends Controller
     CertCheck::updateOrCreate([
       'user_id' => Auth::user()->id
     ], [
-      'pendidikan_check' => true
+      // 'pendidikan_check' => true
+      'karir_check' => true
     ]);
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan baru telah ditambahkan!');

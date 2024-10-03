@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\AdminFakultas;
+namespace App\Http\Controllers\SuperAdmin;
 
-use App\Models\career;
+use App\Models\Career;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\AdminFakultas\UpdateJudgeRequest;
-use App\Http\Requests\AdminFakultas\UpdateCareerRequest;
+use App\Http\Requests\SuperAdmin\UpdateJudgeRequest;
+use App\Http\Requests\SuperAdmin\UpdateCareerRequest;
 
 class CareerController extends Controller
 {
@@ -58,8 +58,6 @@ class CareerController extends Controller
      */
     public function update(UpdateCareerRequest $request, career $career)
     {
-        // if($career->user)
-
         $prepareData = $request->all();
 
         if ($request->file('image')) {
@@ -72,7 +70,7 @@ class CareerController extends Controller
         $career->update($prepareData);
 
         $from = $request->input('from', 'pending');
-        return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil diubah');
+        return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir berhasil diubah');
     }
 
     /**
@@ -85,7 +83,7 @@ class CareerController extends Controller
         $from = $request->input('from', 'pending');
 
         if($request->input('from')) {
-            return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil dihapus');
+            return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir berhasil dihapus');
         }
 
         return redirect()->back()->with('success', 'Pengajuan karir berhasil dihapus');
@@ -106,7 +104,7 @@ class CareerController extends Controller
         ]);
 
         $from = $request->input('from', 'pending');
-        return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir ditolak');
+        return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir ditolak');
     }
 
     public function pendingCareers()

@@ -48,7 +48,7 @@ class CareerController extends Controller
      */
     public function edit(career $career)
     {
-        return view('dashboard.admin-prodi.career.edit', [
+        return view('dashboard.admin.career.edit', [
             'career' => $career
         ]);
     }
@@ -91,7 +91,7 @@ class CareerController extends Controller
 
     public function judgeCareer(career $career)
     {
-        return view('dashboard.admin-prodi.career.judge', [
+        return view('dashboard.admin.career.judge', [
             'career' => $career
         ]);
     }
@@ -111,7 +111,7 @@ class CareerController extends Controller
     {
         $careers = career::where('status', 'pending')->paginate(20);
 
-        return view('dashboard.admin-prodi.career.index', [
+        return view('dashboard.admin.career.index', [
             'from' => 'pending',
             'careers' => $careers
         ]);
@@ -121,7 +121,7 @@ class CareerController extends Controller
     {
         $careers = career::where('status', 'rejected')->paginate(20);
 
-        return view('dashboard.admin-prodi.career.index', [
+        return view('dashboard.admin.career.index', [
             'from' => 'rejected',
             'careers' => $careers
         ]);
@@ -131,7 +131,7 @@ class CareerController extends Controller
     {
         $careers = career::where('status', 'approved')->paginate(20);
 
-        return view('dashboard.admin-prodi.career.index', [
+        return view('dashboard.admin.career.index', [
             'from' => 'approved',
             'careers' => $careers
         ]);
