@@ -7,7 +7,7 @@
             <div class="bg-light rounded p-5 border-top border-success border-5" style="min-height: 80vh;">
                 <div class="row">
                     <div class="col-12">
-                        <span class="h4">Import User</span>
+                        <h4 class="d-inline-block">Import User</h4> <h6 class="d-inline-block text-muted">{{ $title }}</h6>
                         <hr>
                     </div>
                 </div>
@@ -17,6 +17,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            
 
                 <form action="{{ $url }}" method="POST" enctype="multipart/form-data">
                     @csrf
