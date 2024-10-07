@@ -44,6 +44,8 @@
   @if (Request::is('dashboard/perjalanan-karir*'))
     <link href="{{ asset('css/perjalanan-karir.css') }}" rel="stylesheet">
   @endif
+
+  @stack('styles')
 </head>
 
 <body>

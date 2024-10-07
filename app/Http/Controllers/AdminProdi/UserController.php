@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AdminProdi\UpdateUserRequest;
+use App\Models\ApiIntegration;
 
 class UserController extends Controller
 {
@@ -40,7 +41,30 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $searchData = session('data');
+
+        return view('dashboard.admin.user.create',[
+            'searchData' => $searchData
+        ]);
+    }
+
+    public function searchUser(Request $request)
+    {
+        $searchTarget = $request->search;
+
+        $data = (new ApiIntegration)->getAlumniData($searchTarget);
+
+        if(isset($data['modelError'])){
+            return redirect('/dashboard/admin/prodi/user/create')->with('error', $data['modelError']);
+        }
+
+        if(!isset($data['DataAlumni'][0]['nim'])){
+            return redirect('/dashboard/admin/prodi/user')->with('error', 'NIM tidak ditemukan');
+        }
+
+        $data = $data['DataAlumni'][0];
+
+        return redirect('/dashboard/admin/prodi/user/create')->with('data', $data);
     }
 
     /**

@@ -24,7 +24,7 @@ class LoginController extends Controller
     [
       'nim.required' => 'NIM harus diisi',
       'nim.min' => 'NIM minimal 6 digit',
-      'nim.max' => 'NIM maksimal 12 digit',
+      'nim.max' => 'NIM maksimal 20 digit',
       'password.required' => 'Password harus diisi'
     ]);
 

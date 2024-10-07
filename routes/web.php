@@ -17,11 +17,12 @@ use App\Http\Controllers\AdminProdi\CareerController as AdminProdiCareerControll
 use App\Http\Controllers\Mahasiswa\PendidikanController as MhsPendidikanController;
 use App\Http\Controllers\Mahasiswa\QuestionerController as MhsQuestionerController;
 use App\Http\Controllers\Mahasiswa\SertifikatController as MhsSertifikatController;
+use App\Http\Controllers\SuperAdmin\CareerController as SuperAdminCareerController;
 use App\Http\Controllers\AdminFakultas\UserController as AdminFakultasUserController;
 use App\Http\Controllers\SuperAdmin\LaporanController as SuperAdminLaporanController;
 use App\Http\Controllers\AdminFakultas\CareerController as AdminFakultasCareerController;
+use App\Http\Controllers\SuperAdmin\ImportUserController as SuperAdminImportUserController;
 use App\Http\Controllers\Mahasiswa\PerjalananKarirController as MhsPerjalananKarirController;
-use App\Http\Controllers\SuperAdmin\CareerController as SuperAdminCareerController;
 
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/career', [GuestCareerController::class, 'index']);
@@ -71,6 +72,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
     // admin prodi routes
     Route::middleware('is-admin-prodi')->prefix('admin/prodi')->group(function () {
         Route::resource('/user', AdminProdiUserController::class);
+        Route::post('/user/search', [AdminProdiUserController::class, 'searchUser']);
 
         Route::prefix('career')->group(function () {
             Route::get('/{career}/judge', [AdminProdiCareerController::class, 'judgeCareer']);
@@ -111,5 +113,18 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
             Route::get('/approved', [SuperAdminCareerController::class, 'approvedCareers']);
         });
         Route::resource('/career', SuperAdminCareerController::class)->except(['index']);
+
+        Route::prefix('import')->group(function () {
+            Route::get('/', [SuperAdminImportUserController::class, 'index']);
+            
+            Route::get('/full-time', [SuperAdminImportUserController::class, 'importFullTime']);
+            Route::post('/full-time', [SuperAdminImportUserController::class, 'storeFullTime']);
+
+            Route::get('/wirausaha', [SuperAdminImportUserController::class, 'importWirausaha']);
+            Route::post('/wirausaha', [SuperAdminImportUserController::class, 'storeWirausaha']);
+
+            Route::get('/lanjut-studi', [SuperAdminImportUserController::class, 'importLanjutStudi']);
+            Route::post('/lanjut-studi', [SuperAdminImportUserController::class, 'storeLanjutStudi']);
+        });
     });
 });

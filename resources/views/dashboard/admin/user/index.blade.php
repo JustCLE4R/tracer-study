@@ -11,6 +11,7 @@
         @endif
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded p-5 border-top border-success border-5">
+                <a class="btn btn-success btn-sm mb-3" href="/dashboard/admin/prodi/user/create">Touch</a>
                 <div class="row">
                     <div class="col-12">
                         <span class="h4">Daftar Akun</span>
