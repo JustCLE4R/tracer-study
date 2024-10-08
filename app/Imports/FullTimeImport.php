@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\DetailPerusahaan;
 use App\Models\User;
 use App\Models\Pekerja;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -22,11 +23,11 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
     */
     public function model(array $row)
     {
-        $user = User::firstOrCreate(
+        $user = User::updateOrCreate(
             ['nim' => $row['nim']],
             [
                 'nama' => $row['nama'],
-                'password' => $row['password'],
+                'password' => md5($row['password']),
                 'program_studi' => $row['program_studi'],
                 'fakultas' => $row['fakultas'],
                 'strata' => $row['strata'],
@@ -44,7 +45,7 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
             ]
         );
 
-        Pekerja::firstOrCreate(
+        $pekerja = Pekerja::updateOrCreate(
             ['user_id' => $user->id],
             [
                 'status_pekerjaan' => $row['status_pekerjaan'],
@@ -61,6 +62,18 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
                 'bukti_bekerja' => $row['bukti_bekerja'],
             ]
         );
+
+        DetailPerusahaan::updateOrCreate(
+            ['pekerja_id' => $pekerja->id],
+            [
+                'nama_perusahaan' => $row['nama_perusahaan'],
+                'nama_atasan' => $row['nama_atasan'],
+                'jabatan_atasan' => $row['jabatan_atasan'],
+                'telepon_atasan' => $row['telepon_atasan'],
+                'alamat_perusahaan' => $row['alamat_perusahaan'],
+                'email_atasan' => $row['email_atasan'],
+            ]
+            );
     }
 
     // Validation rules
@@ -97,6 +110,13 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
             'provinsi_kerja' => 'required|string|max:255',
             'kabupaten_kerja' => 'required|string|max:255',
             'bukti_bekerja' => 'required|string|max:255',
+
+            'nama_perusahaan' => 'required|string|max:255',
+            'nama_atasan' => 'required|string|max:255',
+            'jabatan_atasan' => 'required|string|max:255',
+            'telepon_atasan' => 'required|string|max:15',
+            'alamat_perusahaan' => 'required|string|max:500',
+            'email_atasan' => 'required|email|max:255',
         ];
     }
 
@@ -151,6 +171,7 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Email harus berupa alamat email yang valid.',
             'email.max' => 'Email maksimal 255 karakter.',
+
             'status_pekerjaan.required' => 'Status Pekerjaan wajib diisi.',
             'status_pekerjaan.string' => 'Status Pekerjaan harus berupa teks.',
             'status_pekerjaan.max' => 'Status Pekerjaan maksimal 255 karakter.',
@@ -190,6 +211,25 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
             'bukti_bekerja.required' => 'Bukti Bekerja wajib diisi.',
             'bukti_bekerja.string' => 'Bukti Bekerja harus berupa teks.',
             'bukti_bekerja.max' => 'Bukti Bekerja maksimal 255 karakter.',
+
+            'nama_perusahaan.required' => 'Nama Perusahaan wajib diisi.',
+            'nama_perusahaan.string' => 'Nama Perusahaan harus berupa teks.',
+            'nama_perusahaan.max' => 'Nama Perusahaan maksimal 255 karakter.',
+            'nama_atasan.required' => 'Nama Atasan wajib diisi.',
+            'nama_atasan.string' => 'Nama Atasan harus berupa teks.',
+            'nama_atasan.max' => 'Nama Atasan maksimal 255 karakter.',
+            'jabatan_atasan.required' => 'Jabatan Atasan wajib diisi.',
+            'jabatan_atasan.string' => 'Jabatan Atasan harus berupa teks.',
+            'jabatan_atasan.max' => 'Jabatan Atasan maksimal 255 karakter.',
+            'telepon_atasan.required' => 'Telepon Atasan wajib diisi.',
+            'telepon_atasan.string' => 'Telepon Atasan harus berupa teks.',
+            'telepon_atasan.max' => 'Telepon Atasan maksimal 15 karakter.',
+            'alamat_perusahaan.required' => 'Alamat Perusahaan wajib diisi.',
+            'alamat_perusahaan.string' => 'Alamat Perusahaan harus berupa teks.',
+            'alamat_perusahaan.max' => 'Alamat Perusahaan maksimal 500 karakter.',
+            'email_atasan.required' => 'Email Atasan wajib diisi.',
+            'email_atasan.email' => 'Email Atasan harus berupa alamat email yang valid.',
+            'email_atasan.max' => 'Email Atasan maksimal 255 karakter.',
         ];
     }
 

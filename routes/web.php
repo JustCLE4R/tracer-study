@@ -125,6 +125,12 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
 
             Route::get('/lanjut-studi', [SuperAdminImportUserController::class, 'importLanjutStudi']);
             Route::post('/lanjut-studi', [SuperAdminImportUserController::class, 'storeLanjutStudi']);
+
+            Route::get('/mhs-questioner', [SuperAdminImportUserController::class, 'importMhsQuestioner']);
+            Route::post('/mhs-questioner', [SuperAdminImportUserController::class, 'storeMhsQuestioner']);
+            
+            Route::get('/stk-questioner', [SuperAdminImportUserController::class, 'importStkQuestioner']);
+            Route::post('/stk-questioner', [SuperAdminImportUserController::class, 'storeStkQuestioner']);
         });
     });
 });

@@ -22,11 +22,11 @@ class WirausahaImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
     */
     public function model(array $row)
     {
-        $user = User::firstOrCreate(
+        $user = User::updateOrCreate(
             ['nim' => $row['nim']],
             [
                 'nama' => $row['nama'],
-                'password' => $row['password'],
+                'password' => md5($row['password']),
                 'program_studi' => $row['program_studi'],
                 'fakultas' => $row['fakultas'],
                 'strata' => $row['strata'],
@@ -44,7 +44,7 @@ class WirausahaImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
             ]
         );
 
-        Wirausaha::firstOrCreate(
+        Wirausaha::updateOrCreate(
             ['user_id' => $user->id],
             [
                 'nama_usaha' => $row['nama_usaha'],

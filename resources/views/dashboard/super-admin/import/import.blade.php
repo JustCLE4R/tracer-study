@@ -29,7 +29,7 @@
                 @endif
             
 
-                <form action="{{ $url }}" method="POST" enctype="multipart/form-data">
+                <form action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="file" class="form-label">Upload Excel</label>

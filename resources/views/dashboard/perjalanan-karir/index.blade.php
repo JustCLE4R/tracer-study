@@ -78,7 +78,7 @@
 										</div>
 										<div class="col mt-2 float-end">
 											@if ($pekerjaan->token)
-												<a href="https://tracerstudy.uinsu.ac.id/questioner/{{ $pekerjaan->token }}" class="copyLink btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-share"></i></a>
+												<a href="{{ config('app.url') }}/questioner/{{ $pekerjaan->token }}" class="copyLink btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-share"></i></a>
 											@endif
 											<a href="/dashboard/{{ $pekerjaan->tipe_kerja }}/{{ $pekerjaan->id }}/edit" class="btn btn-link btn-sm text-success m-0 p-0"><i class="bi bi-pencil-square"></i></a>
 											<form class="d-inline" action="/dashboard/{{ $pekerjaan->tipe_kerja }}/{{ $pekerjaan->id }}" method="POST">

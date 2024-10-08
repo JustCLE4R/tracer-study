@@ -22,11 +22,11 @@ class LanjutStudiImport implements ToModel, WithHeadingRow, WithValidation, Skip
     */
     public function model(array $row)
     {
-        $user = User::firstOrCreate(
+        $user = User::updateOrCreate(
             ['nim' => $row['nim']],
             [
                 'nama' => $row['nama'],
-                'password' => $row['password'],
+                'password' => md5($row['password']),
                 'program_studi' => $row['program_studi'],
                 'fakultas' => $row['fakultas'],
                 'strata' => $row['strata'],
@@ -44,7 +44,7 @@ class LanjutStudiImport implements ToModel, WithHeadingRow, WithValidation, Skip
             ]
         );
 
-        Pendidikan::firstOrCreate(
+        Pendidikan::updateOrCreate(
             ['user_id' => $user->id],
             [
                 'tingkat_pendidikan' => $row['tingkat_pendidikan'],

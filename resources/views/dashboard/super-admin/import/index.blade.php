@@ -7,7 +7,7 @@
             <div class="bg-light rounded p-5 border-top border-success border-5" style="min-height: 80vh;">
                 <div class="row">
                     <div class="col-12">
-                        <span class="h4">Import User</span>
+                        <span class="h4">Import</span>
                         <hr>
                     </div>
                 </div>
@@ -50,6 +50,30 @@
                                 <i class="bi bi-book-fill" style="font-size: 2rem;"></i>
                                 <h5 class="card-title mt-3">Import Lanjut Studi</h5>
                                 <a href="/dashboard/admin/super/import/lanjut-studi" class="btn btn-success mt-2">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- end card --}}
+
+                    {{-- begin card --}}
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <i class="bi bi-question-circle-fill" style="font-size: 2rem;"></i>
+                                <h5 class="card-title mt-3">Import Questioner Mahasiswa</h5>
+                                <a href="/dashboard/admin/super/import/mhs-questioner" class="btn btn-success mt-2">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- end card --}}
+
+                    {{-- begin card --}}
+                    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <i class="bi bi-clipboard-fill" style="font-size: 2rem;"></i>
+                                <h5 class="card-title mt-3">Import Questioner Stack Holder</h5>
+                                <a href="/dashboard/admin/super/import/stk-questioner" class="btn btn-success mt-2">Go somewhere</a>
                             </div>
                         </div>
                     </div>
