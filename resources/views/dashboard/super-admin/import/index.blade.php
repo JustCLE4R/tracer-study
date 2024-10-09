@@ -72,7 +72,7 @@
                         <div class="card text-center">
                             <div class="card-body">
                                 <i class="bi bi-clipboard-fill" style="font-size: 2rem;"></i>
-                                <h5 class="card-title mt-3">Import Questioner Stack Holder</h5>
+                                <h5 class="card-title mt-3">Import Questioner Stake Holder</h5>
                                 <a href="/dashboard/admin/super/import/stk-questioner" class="btn btn-success mt-2">Go somewhere</a>
                             </div>
                         </div>

@@ -43,7 +43,7 @@ class PerjalananKarirController extends Controller
 		CertCheck::updateOrCreate([
 			'user_id' => Auth::user()->id
 		], [
-			'pekerjaan_check' => true
+			'perjalanan_karir_check' => true
 		]);
 
 		switch ($request->pekerjaan){
@@ -87,7 +87,7 @@ class PerjalananKarirController extends Controller
 				'is_bekerja' => 0
 			]);
 
-		return redirect('/dashboard/perjalanan-karir')->with('success', 'Data belum bekerja telah ditambahkan!');
+		return redirect('/dashboard/questioner')->with('success', 'Data belum bekerja telah ditambahkan!');
 	}
 	
 }

@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+  </head>
 <body>
   
   <div class="container">
@@ -55,7 +55,7 @@
               <div class="input-boxes">
                 <div class="input-box" data-aos="fade-up" data-aos-duration="1200">
                   <i class="fas fa-envelope"></i>
-                  <input type="text" name="nim" placeholder="Masukan nim.." value="{{ $errors->has('nim') ? '' : old('nim', 41144013) }}" maxlength="20" required>
+                  <input type="text" name="nim" placeholder="Masukan NIM" value="{{ $errors->has('nim') ? '' : old('nim') }}" maxlength="20" required>
                 </div>
                 @error('nim')
                 <div class="error error-txt">{{ $message }}</div>

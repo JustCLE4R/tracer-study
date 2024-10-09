@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\QuestionerStackHolder;
+use App\Models\QuestionerStakeHolder;
 use App\Models\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
@@ -21,7 +21,7 @@ class StkQuestionerImport implements ToModel, WithHeadingRow, WithValidation, Sk
     */
     public function model(array $row)
     {
-        return QuestionerStackHolder::updateOrCreate(
+        return QuestionerStakeHolder::updateOrCreate(
             ['detail_perusahaan_id' => $row['detail_perusahaan_id']],
             [
                 'c_1' => json_encode($row['c_1']),

@@ -27,6 +27,6 @@ class QuestionerController extends Controller
             'questioner_check' => true
         ]);
 
-        return redirect('/dashboard/questioner')->with('success', 'Questioner has been created');
+        return redirect('/dashboard/sertifikat')->with('success', 'Questioner berhasil ditambahkan');
     }
 }

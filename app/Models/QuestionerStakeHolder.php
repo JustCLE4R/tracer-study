@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class QuestionerStackHolder extends Model
+class QuestionerStakeHolder extends Model
 {
     use HasFactory;
 

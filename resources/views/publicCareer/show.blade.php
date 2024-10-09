@@ -7,8 +7,8 @@
                 <div class="col-lg-8">
                     <div class="position-relative mb-3">
                         @if($career->image)
-                        {{-- <img class="img-fluid w-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;"> --}}
-                        <img class="img-fluid w-100" src="{{ $career->image }}"  style="object-fit: cover;">
+                        <img class="img-fluid w-100" src="{{ asset('storage/' . $career->image) }}" style="object-fit: cover;">
+                        {{-- <img class="img-fluid w-100" src="{{ $career->image }}"  style="object-fit: cover;"> --}}
                         
                          
                         @else

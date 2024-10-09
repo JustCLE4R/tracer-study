@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questioner_stack_holders', function (Blueprint $table) {
+        Schema::create('questioner_stake_holders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('detail_perusahaan_id')->constrained('detail_perusahaans')->onDelete('cascade');
 
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questioner_stack_holders');
+        Schema::dropIfExists('questioner_stake_holders');
     }
 };

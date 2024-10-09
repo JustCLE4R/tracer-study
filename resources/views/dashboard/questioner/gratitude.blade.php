@@ -30,8 +30,8 @@
                     Tracer Study UINSU
                 </div>
                 <div class="card-body">
-                  <h4 class="card-title">Terimakasih Telah Mengisi Stackholder</h4>
-                  <p class="card-text text-body-secondary">Kami Mengucapkan Terimakasih Kepada Bapak/Ibu karena telah membantu dalam pengisian <br> Questioner Stackholder Bagi Alumni UIN Sumatera Utara Medan</p>
+                  <h4 class="card-title">Terimakasih Telah Mengisi StakeHolder</h4>
+                  <p class="card-text text-body-secondary">Kami Mengucapkan Terimakasih Kepada Bapak/Ibu karena telah membantu dalam pengisian <br> Questioner StakeHolder Bagi Alumni UIN Sumatera Utara Medan</p>
                   <a href="/" class="btn btn-success">Kunjungi Tracer Study <i class="bi bi-send"></i></a>
                 </div>
                 <div class="card-footer text-body-secondary">

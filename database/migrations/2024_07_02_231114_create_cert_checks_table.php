@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('profile_check')->default(false);
             // $table->boolean('pendidikan_check')->default(false);
             // $table->boolean('pekerjaan_check')->default(false);
-            $table->boolean('karir_check')->default(false);
+            $table->boolean('perjalanan_karir_check')->default(false);
             $table->boolean('questioner_check')->default(false);
             $table->string('qr_code')->nullable();
             $table->string('qr_url')->nullable();

@@ -19,12 +19,12 @@ class SertifikatController extends Controller
             'profile_check' => false,
             // 'pendidikan_check' => false,
             // 'pekerjaan_check' => false,
-            'karir_check' => false,
+            'perjalanan_karir_check' => false,
             'questioner_check' => false,
         ]);
 
         // if ($certCheck->profile_check && $certCheck->pendidikan_check && $certCheck->pekerjaan_check && $certCheck->questioner_check && !$certCheck->qr_code) 
-        if ($certCheck->profile_check && $certCheck->karir_check && $certCheck->questioner_check && !$certCheck->qr_code)
+        if ($certCheck->profile_check && $certCheck->perjalanan_karir_check && $certCheck->questioner_check && !$certCheck->qr_code)
         {
             $qrcode = uniqid("cert-", true);
 

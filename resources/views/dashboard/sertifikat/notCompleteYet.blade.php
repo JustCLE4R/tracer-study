@@ -75,8 +75,8 @@
                                 <div class="col-md-3">
                                     <div class="card">
                                         <div class="card-body text-center">
-                                            <h5 class="card-title">Karir</h5>
-                                            <p class="card-text">{!! $sertifikat->karir_check
+                                            <h5 class="card-title">Perjalana Karir</h5>
+                                            <p class="card-text">{!! $sertifikat->perjalanan_karir_check
                                                 ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
                                                 : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
                                         </div>

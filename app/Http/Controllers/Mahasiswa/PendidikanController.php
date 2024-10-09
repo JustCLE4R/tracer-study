@@ -80,7 +80,7 @@ class PendidikanController extends Controller
       'user_id' => Auth::user()->id
     ], [
       // 'pendidikan_check' => true
-      'karir_check' => true
+      'perjalanan_karir_check' => true
     ]);
 
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan baru telah ditambahkan!');

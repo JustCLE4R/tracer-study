@@ -36,19 +36,19 @@ class PekerjaController extends Controller
     public function store($request)
     {
         $rules = $request->validate([
-            'pekerjaan' => 'required|string',
-            'status-pekerjaan' => 'required|string',
+            'pekerjaan' => 'required|string|max:255',
+            'status-pekerjaan' => 'required|string|max:255',
             'kriteria-pekerjaan' => 'required|string|in:a,b,c,d',
             'bidang-pekerjaan' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u',
             'tingkat-ukuran-tempat-bekerja' => 'required|string|in:a,b,c',
             'posisi-jabatan-pekerjaan' => 'required|string|in:a,b,c,d,e,f',
-            'detail-pekerjaan' => 'required|string',
-            'jumlah-pendapatan-perbulan' => 'required|numeric',
+            'detail-pekerjaan' => 'required|string|max:255',
+            'jumlah-pendapatan-perbulan' => 'required|numeric|min:0|max:1000000000',
             'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
             'tanggal-mulai-bekerja' => 'required|date',
             'tanggal-akhir-kerja-kosongkan-jika-masih-bekerja' => 'nullable|date',
-            'provinsi' => 'required|string',
-            'kabupaten' => 'required|string',
+            'provinsi' => 'required|string|max:255',
+            'kabupaten' => 'required|string|max:255',
             'fotobukti-telah-bekerja' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
 
             // info perusahaan
@@ -67,6 +67,7 @@ class PekerjaController extends Controller
             'date' => 'Kolom :attribute harus berupa tanggal yang valid.',
             'image' => 'Kolom :attribute harus berupa gambar.',
             'mimes' => 'Kolom :attribute harus memiliki format: :values.',
+            'min' => 'Kolom :attribute harus minimal :min',
             'max' => 'Kolom :attribute tidak boleh lebih dari :max',
         ], [
             'pekerjaan' => 'Pekerjaan',
@@ -124,7 +125,7 @@ class PekerjaController extends Controller
 
         // cek jika freelance dan early return 
         if ($rules['status-pekerjaan'] == 'b' && $rules['kriteria-pekerjaan'] == 'd') {
-            return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
+            return redirect('/dashboard/questioner')->with('success', 'Data pekerjaan berhasil ditambahkan!');
         }
 
         $token = null;
@@ -151,8 +152,12 @@ class PekerjaController extends Controller
         ];
 
         DetailPerusahaan::create($detail_perusahaan);
+
+        if(Auth::user()->pekerja->count() > 1 || Auth::user()->wirausaha->count() > 1 ){
+            return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
+        }
         
-        return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
+        return redirect('/dashboard/questioner')->with('success', 'Data pekerjaan berhasil ditambahkan!');
     }
 
     /**
@@ -202,13 +207,13 @@ class PekerjaController extends Controller
             'bidang-pekerjaan' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u',
             'tingkat-ukuran-tempat-bekerja' => 'required|string|in:a,b,c',
             'posisi-jabatan-pekerjaan' => 'required|string|in:a,b,c,d,e,f',
-            'detail-pekerjaan' => 'required|string',
+            'detail-pekerjaan' => 'required|string|max:255',
             'jumlah-pendapatan-perbulan' => 'required|numeric',
             'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
             'tanggal-mulai-bekerja' => 'required|date',
             'tanggal-akhir-kerja' => 'nullable|date',
-            'provinsi' => 'required|string',
-            'kabupaten' => 'required|string',
+            'provinsi' => 'required|string|max:255',
+            'kabupaten' => 'required|string|max:255',
             'fotobukti-telah-bekerja' => 'file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
 
             // info perusahaan

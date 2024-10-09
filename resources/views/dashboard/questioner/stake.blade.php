@@ -62,7 +62,7 @@
                     <form action="{{ $questioner->token }}" method="POST">
                         <div class="row">
                             <div class="col-12">
-                                <span class="h4">Kuesioner Stack Holder</span>
+                                <span class="h4">Kuesioner Stake Holder</span>
                                 <hr>
                             </div>
                         </div>

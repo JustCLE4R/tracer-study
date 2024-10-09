@@ -38,8 +38,8 @@ class WirausahaController extends Controller
             'tingkat-ukuran-tempat-usaha' => 'required|string',
             'bidang-usaha' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u',
             'detail-usaha' => 'required|string|max:255',
-            'jumlah-pendapatan-perbulan-omset-penjualan' => 'required|numeric',
-            'jumlah-pendapatan-bersih-perbulan' => 'required|numeric',
+            'jumlah-pendapatan-perbulan-omset-penjualan' => 'required|numeric|min:0|max:1000000000',
+            'jumlah-pendapatan-bersih-perbulan' => 'required|numeric|min:0|max:1000000000',
             'pemodal-saat-ini' => 'required|array|min:1|max:4|in:a,b,c,d',
             'kesesuaian-usaha-dengan-prodi' => 'required|string|in:a,b,c',
             'tanggal-mulai-usaha' => 'required|date',
@@ -57,6 +57,7 @@ class WirausahaController extends Controller
             'date' => 'Kolom :attribute harus berupa tanggal yang valid.',
             'image' => 'Kolom :attribute harus berupa gambar.',
             'mimes' => 'Kolom :attribute harus memiliki format: :values.',
+            'min' => 'Kolom :attribute minimal :min.',
             'max' => 'Kolom :attribute tidak boleh lebih dari :max',
         ], [
             'pekerjaan' => 'Pekerjaan',
@@ -104,7 +105,11 @@ class WirausahaController extends Controller
 
         Wirausaha::create($dataPrepare);
 
-        return redirect('/dashboard/perjalanan-karir')->with('success', 'Data Wirausaha telah ditambahkan!');
+        if(Auth::user()->wirausaha->count() > 1 || Auth::user()->pekerja->count() > 1){
+            return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
+        }
+
+        return redirect('/dashboard/questioner')->with('success', 'Data Wirausaha telah ditambahkan!');
     }
 
     /**

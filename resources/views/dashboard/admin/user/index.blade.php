@@ -11,7 +11,7 @@
         @endif
         <div class="col-sm-12 col-xl-12">
             <div class="bg-light rounded p-5 border-top border-success border-5">
-                <a class="btn btn-success btn-sm mb-3" href="/dashboard/admin/prodi/user/create">Touch</a>
+                <a class="btn btn-success btn-sm mb-3" href="/dashboard/admin/super/user/create">Touch</a>
                 <div class="row">
                     <div class="col-12">
                         <span class="h4">Daftar Akun</span>
@@ -59,13 +59,13 @@
                                 </td>
 
                                 <td style="background-color: transparent !important;" class="text-center">
-                                    <a href="/dashboard/admin/prodi/user/{{ $user->id }}"
+                                    <a href="/dashboard/admin/super/user/{{ $user->id }}"
                                         class="btn btn-success btn-sm px-1 m-1 py-0 text-white"><i
                                             class="bi bi-eye"></i></a>
-                                    {{-- <a href="/dashboard/admin/prodi/user/{{ $user->id }}/edit"
+                                    {{-- <a href="/dashboard/admin/super/user/{{ $user->id }}/edit"
                                         class="btn btn-success btn-sm px-1 m-1 py-0 text-white"><i
                                             class="bi bi-pencil-square"></i></a> --}}
-                                    <form class="d-inline" action="/dashboard/admin/prodi/user/{{ $user->id }}" method="post">
+                                    <form class="d-inline" action="/dashboard/admin/super/user/{{ $user->id }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-success m-1 btn-sm px-1 py-0 text-white"

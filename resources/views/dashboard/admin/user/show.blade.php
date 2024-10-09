@@ -260,7 +260,7 @@
             </div>
             <div class="row mt-2">
               <div class="col-12 text-end">
-                <a href="/dashboard/admin/prodi/user/{{ $user->id }}/edit" class="btn btn-warning text-white"><i class="bi bi-pencil-square"></i> Perbaharui Data Diri</a>
+                <a href="/dashboard/admin/super/user/{{ $user->id }}/edit" class="btn btn-warning text-white"><i class="bi bi-pencil-square"></i> Perbaharui Data Diri</a>
               </div>
             </div>
           </div>
@@ -447,9 +447,9 @@
                           <td style="background-color: transparent !important;">{{ $career->company_name }}</td>
                           <td style="background-color: transparent !important;">{{ $career->position }}</td>
                           <td style="background-color: transparent !important;" class="text-center">
-                            <a  href="/dashboard/admin/prodi/career/{{ $career->slug }}/judge" class="btn btn-success btn-sm px-1 m-1 py-0 text-white"><i class="bi bi-eye"></i></a>
-                            <a href="/dashboard/admin/prodi/career/{{ $career->slug }}/edit" class="btn btn-success btn-sm px-1 m-1 py-0 text-white"><i class="bi bi-pencil-square"></i></a>
-                            <form class="d-inline" action="/dashboard/admin/prodi/career/{{ $career->slug }}" method="post">
+                            <a  href="/dashboard/admin/super/career/{{ $career->slug }}/judge" class="btn btn-success btn-sm px-1 m-1 py-0 text-white"><i class="bi bi-eye"></i></a>
+                            <a href="/dashboard/admin/super/career/{{ $career->slug }}/edit" class="btn btn-success btn-sm px-1 m-1 py-0 text-white"><i class="bi bi-pencil-square"></i></a>
+                            <form class="d-inline" action="/dashboard/admin/super/career/{{ $career->slug }}" method="post">
                               @csrf
                               @method('DELETE')
                               <button class="btn btn-success m-1 btn-sm px-1 py-0 text-white" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></button>

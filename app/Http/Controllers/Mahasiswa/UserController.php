@@ -27,7 +27,7 @@ class UserController extends Controller
       'profile_check' => true
     ]);
 
-    return redirect('/dashboard/profile')->with('success', 'Profil berhasil diperbarui');
+    return redirect('/dashboard/perjalanan-karir')->with('success', 'Profil berhasil diperbarui');
   }
 
   private function calculatePredicate($ipk){

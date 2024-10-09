@@ -9,7 +9,7 @@ use App\Models\Pendidikan;
 use App\Models\Questioner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\QuestionerStackHolder;
+use App\Models\QuestionerStakeHolder;
 
 class VisualisasiController extends Controller
 {
@@ -207,7 +207,7 @@ class VisualisasiController extends Controller
     }
 
     public function dataStakeholder(Request $request){
-        $stakeholder_data = QuestionerStackHolder::get();
+        $stakeholder_data = QuestionerStakeHolder::get();
 
         if($request->query('lulus')){
             $stakeholder_data = $stakeholder_data->filter(function($query) use ($request) {
@@ -279,7 +279,7 @@ class VisualisasiController extends Controller
                             })
                             ->get();
 
-        $questioner_stakeholder = QuestionerStackHolder::when($thnWisuda, function($query) use ($thnWisuda) {
+        $questioner_stakeholder = QuestionerStakeHolder::when($thnWisuda, function($query) use ($thnWisuda) {
                                                             $query->whereHas('detailPerusahaan.pekerja.user', function($query) use ($thnWisuda) {
                                                                 $query->whereYear('tgl_wisuda', $thnWisuda);
                                                             });

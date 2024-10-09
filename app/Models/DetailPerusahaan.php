@@ -21,7 +21,7 @@ class DetailPerusahaan extends Model
         return $this->belongsTo(Pekerja::class);
     }
 
-    public function questionerStackHolder(){
-        return $this->hasOne(QuestionerStackHolder::class);
+    public function questionerStakeHolder(){
+        return $this->hasOne(QuestionerStakeHolder::class);
     }
 }

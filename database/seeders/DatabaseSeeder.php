@@ -49,8 +49,8 @@ class DatabaseSeeder extends Seeder
     $this->createAdmin('adminsi', 'Admin SI', md5('123'), 'adminprodi', 'Sistem Informasi', 'Sains dan Teknologi', 'si@uinsu.ac.id', '0888888888');
 
 
-    User::factory(100)->create();
-    Career::factory(1354)->create();
+    // User::factory(100)->create();
+    // Career::factory(1354)->create();
 
 
     $filePath = storage_path('json/questionSeeder.json');

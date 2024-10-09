@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Guest;
 
 use App\Models\DetailPerusahaan;
 use App\Http\Controllers\Controller;
-use App\Models\QuestionerStackHolder;
-use App\Http\Requests\StoreQuestionerStackHolderRequest;
+use App\Models\QuestionerStakeHolder;
+use App\Http\Requests\StoreQuestionerStakeHolderRequest;
 
 class QuestionerController extends Controller
 {
@@ -14,12 +14,12 @@ class QuestionerController extends Controller
             abort(404);
         }
 
-        return view('dashboard.questioner.stack', [
+        return view('dashboard.questioner.stake', [
             'questioner' => $questioner
         ]);
     }
 
-    public function store(StoreQuestionerStackHolderRequest $request, DetailPerusahaan $questioner){
+    public function store(StoreQuestionerStakeHolderRequest $request, DetailPerusahaan $questioner){
         if (!$questioner->exists) {
             abort(404);
         }
@@ -37,7 +37,7 @@ class QuestionerController extends Controller
         $data['c_1'] = json_encode($data['c_1']);
         $data['d_1'] = json_encode($data['d_1']);
         
-        QuestionerStackHolder::create($data);
+        QuestionerStakeHolder::create($data);
         
         $fields = [
             'b_1' => 'nama_perusahaan',
