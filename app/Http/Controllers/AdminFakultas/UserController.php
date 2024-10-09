@@ -30,7 +30,7 @@ class UserController extends Controller
             });
         }
         
-        return view('dashboard.admin.user.index', [
+        return view('dashboard.admin-fakultas.user.index', [
             'users' => $query->paginate(20)->withQueryString()
         ]);
     }
@@ -70,7 +70,7 @@ class UserController extends Controller
 
         $unioned = $pekerjaans->union($wirausaha)->orderBy('is_active', 'desc')->orderBy('tanggal_mulai', 'asc')->orderBy('tipe_kerja', 'desc')->get();
 
-        return view('dashboard.admin.user.show', [
+        return view('dashboard.admin-fakultas.user.show', [
             'user' => $user,
             'pekerjaans' => $unioned
         ]);
@@ -85,7 +85,7 @@ class UserController extends Controller
             return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
         };
 
-        return view('dashboard.admin.user.edit', [
+        return view('dashboard.admin-fakultas.user.edit', [
             'user' => $user
         ]);
     }

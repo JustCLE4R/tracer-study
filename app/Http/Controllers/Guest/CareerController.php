@@ -12,24 +12,24 @@ class CareerController extends Controller
         $category = $request->input('category');
 
         $query = Career::when($category, function ($query) use ($category) {
-        switch ($category) {
+            switch ($category) {
             case 'Instansi Pemerintahan':
-            $query->where('category', 1);
-            break;
+                $query->where('category', 1);
+                break;
             case 'Lembaga Swadaya Masyarakat':
-            $query->where('category', 2);
-            break;
+                $query->where('category', 2);
+                break;
             case 'Perusahaan Swasta':
-            $query->where('category', 3);
-            break;
+                $query->where('category', 3);
+                break;
             case 'Freelancer':
-            $query->where('category', 4);
-            break;
-        }
-        })->latest();
+                $query->where('category', 4);
+                break;
+            }
+        })->where('status', 'approved')->latest();
 
         $careers = $query->paginate(6)->withQueryString();
-        $careersLatest = Career::latest()->take(10)->get();
+        $careersLatest = Career::where('status', 'approved')->latest()->take(10)->get();
 
         return view('publicCareer.index', [
         'careers' => $careers,
@@ -40,6 +40,10 @@ class CareerController extends Controller
     
     public function show(Career $career)
     {
+        if($career->status != 'approved'){
+            abort(404);
+        }
+        
         return view('publicCareer.show', [
         'career' => $career
         ]);
