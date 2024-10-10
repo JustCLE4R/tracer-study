@@ -57,7 +57,12 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
 
         Route::delete('/hapusBelumKerja', [MhsPerjalananKarirController::class, 'destroyBelumKerja']);
 
-        Route::resource('/career', MhsCareerController::class);
+        Route::resource('/career', MhsCareerController::class)->names([
+            'create' => 'mahasiswa.career.create',
+            'store' => 'mahasiswa.career.store',
+            'show' => 'mahasiswa.career.show',
+        ]);
+
         Route::resource('/perjalanan-karir', MhsPerjalananKarirController::class)->only(['index', 'create', 'store']);
         Route::resource('/pekerja', MhsPekerjaController::class)->except(['index', 'create', 'store']);
         Route::resource('/wirausaha', MhsWirausahaController::class)->except(['index', 'create', 'store']);
@@ -81,7 +86,12 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
             Route::get('/rejected', [AdminProdiCareerController::class, 'rejectedCareers']);
             Route::get('/approved', [AdminProdiCareerController::class, 'approvedCareers']);
         });
-        Route::resource('/career', AdminProdiCareerController::class)->except(['index']);
+
+        Route::resource('/career', AdminProdiCareerController::class)->except(['index'])->names([
+            'create' => 'admin-prodi.career.create',
+            'store' => 'admin-prodi.career.store',
+            'show' => 'admin-prodi.career.show',
+        ]);
     });
 
     // admin fakultas routes
@@ -95,7 +105,12 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
             Route::get('/rejected', [AdminFakultasCareerController::class, 'rejectedCareers']);
             Route::get('/approved', [AdminFakultasCareerController::class, 'approvedCareers']);
         });
-        Route::resource('/career', AdminFakultasCareerController::class)->except(['index']);
+
+        Route::resource('/career', AdminFakultasCareerController::class)->except(['index'])->names([
+            'create' => 'admin-fakultas.career.create',
+            'store' => 'admin-fakultas.career.store',
+            'show' => 'admin-fakultas.career.show',
+        ]);
     });
 
     // super admin routes
@@ -112,7 +127,12 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
             Route::get('/rejected', [SuperAdminCareerController::class, 'rejectedCareers']);
             Route::get('/approved', [SuperAdminCareerController::class, 'approvedCareers']);
         });
-        Route::resource('/career', SuperAdminCareerController::class)->except(['index']);
+
+        Route::resource('/career', SuperAdminCareerController::class)->except(['index'])->names([
+            'create' => 'super-admin.career.create',
+            'store' => 'super-admin.career.store',
+            'show' => 'super-admin.career.show',
+        ]);
 
         Route::prefix('import')->group(function () {
             Route::get('/', [SuperAdminImportUserController::class, 'index']);

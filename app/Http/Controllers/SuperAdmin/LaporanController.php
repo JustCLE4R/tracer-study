@@ -36,7 +36,6 @@ class LaporanController extends Controller
     public function store(StoreLaporanRequest $request)
     {
         $dataPrepare = $request->all();
-        dd($dataPrepare);
 
         $dataPrepare['laporan'] = $request->file('laporan')->storeAs('laporan', $request->slug . '.' . $request->file('laporan')->extension(), 'public');
 
