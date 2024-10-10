@@ -24,7 +24,7 @@
           <a href="/dashboard/admin/prodi/career/rejected" class="dropdown-item {{ Request::is('dashboard/admin/prodi/career/rejected') ? 'active' : '' }}">Rejected</a>
         </div>
       </div>
-      <a href="/dashboard/admin/prodi/user" class="nav-item nav-link {{ Request::is('dashboard/admin/prodi/user') ? 'active' : '' }}"><i class="bi bi-shield-lock me-2 fs-5"></i>Admin</a>
+      <a href="/dashboard/admin/prodi/user" class="nav-item nav-link {{ Request::is('dashboard/admin/prodi/user') ? 'active' : '' }}"><i class="bi bi-shield-lock me-2 fs-5"></i>Akun</a>
       <a href="/dashboard/visual" class="nav-item nav-link {{ Request::is('dashboard/visual') ? 'active' : '' }}"><i class="bi bi-graph-down me-2 fs-5"></i>Visualisasi</a>
       <a href="/dashboard/logout" class="nav-item nav-link"><i class="bi bi-box-arrow-right me-2 fs-5"></i>Logout</a>
   </div>

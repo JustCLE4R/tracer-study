@@ -35,9 +35,9 @@
                   <a class="page-scroll {{ Request::is('career*') ? 'active' : '' }}" href="#career"
                     onclick="window.location.href='/career'">Karir</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                   <a class="page-scroll {{ Request::is('laporan') ? 'active' : '' }}" href="#laporan">Laporan</a>
-                </li>
+                </li> --}}
                 @if (Auth::check())
                 <li class="nav-item">
                   <a class="{{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Beranda</a>

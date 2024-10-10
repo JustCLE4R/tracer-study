@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mahasiswa\UserController as MhsUserController;
 use App\Http\Controllers\Guest\CareerController as GuestCareerController;
 use App\Http\Controllers\Mahasiswa\CareerController as MhsCareerController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\SuperAdmin\UserController as SuperAdminUserController;
 use App\Http\Controllers\Guest\QuestionerController as GuestQuestionerController;
 use App\Http\Controllers\Guest\SertifikatController as GuestSertifikatController;
 use App\Http\Controllers\Mahasiswa\WirausahaController as MhsWirausahaController;
+use App\Http\Controllers\VisualisasiController as SuperAdminVisualisasiController;
 use App\Http\Controllers\AdminProdi\CareerController as AdminProdiCareerController;
 use App\Http\Controllers\Mahasiswa\PendidikanController as MhsPendidikanController;
 use App\Http\Controllers\Mahasiswa\QuestionerController as MhsQuestionerController;
@@ -40,13 +42,12 @@ Route::middleware(['guest', 'no-cache'])->group(function () {
 
 //dashboard routes
 Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () {
-    Route::get('/', fn() => view('dashboard.index'))->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [LoginController::class, 'logout']);
 
     Route::get('/profile/edit/password', [UserController::class, 'showUpdatePassword']);
     Route::patch('/profile/edit/password', [UserController::class, 'updatePassword']);
 
-    Route::view('/visual', 'dashboard.visual');
     Route::get('/career/checkSlug', [MhsCareerController::class, 'checkSlug']);
     
     // mahasiswa routes
@@ -103,6 +104,8 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
 
     // super admin routes
     Route::middleware('is-super-admin')->prefix('admin/super')->group(function () {
+        Route::get('/visual', [SuperAdminVisualisasiController::class, 'index']);
+
         Route::resource('/laporan', SuperAdminLaporanController::class)->except(['show']);
         Route::get('/laporan/checkSlug', [SuperAdminLaporanController::class, 'checkSlug']);
 

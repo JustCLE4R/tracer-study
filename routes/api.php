@@ -32,3 +32,5 @@ Route::prefix('visualisasi')->group(function () {
     Route::get('/stakeholder', [VisualisasiController::class, 'dataStakeholder']);
     Route::get('/perbandingan', [VisualisasiController::class, 'dataPerbandingan']);
 });
+
+Route::get('/visualisasi/export', [VisualisasiController::class, 'visualisasiExport']);

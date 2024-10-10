@@ -9,13 +9,40 @@
                         <span class="mb-0 h4 ">Visualisasi Data Tracer Study & Questioner</span>
                     </div>
                 </div>
-
+                <div class="row my-3">
+                    <div class="col-lg-12">
+                        <form action="/api/visualisasi/export" method="GET" id="exportForm" target="_blank">
+                            <div class="input-group">
+                                <select id="exportTahunLulusSelect" name="tahun" class="form-select me-2">
+                                    <option value="" selected hidden disabled>Pilih Tahun</option>
+                                    @foreach ($exportOptions['tahun'] as $tahun)
+                                        <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                    @endforeach
+                                </select>
+                                <select id="exportFakultasSelect" name="fakultas" class="form-select me-2">
+                                    <option value="" selected hidden disabled>Pilih Fakultas</option>
+                                    @foreach ($exportOptions['fakultas'] as $fakultas)
+                                        <option value="{{ $fakultas }}">{{ $fakultas }}</option>
+                                    @endforeach
+                                </select>
+                                <select name="jenisVisualisasi" id="" class="form-select me-2">
+                                    <option value="" selected hidden disabled>Pilih Jenis</option>
+                                    <option value="pekerja">Full Time</option>
+                                    <option value="wirausaha">Wirausaha</option>
+                                    <option value="pendidikan">Pendidikan</option>
+                                    <option value="questioner">Kuesioner Mahasiswa</option>
+                                    <option value="pekerja.detailPerusahaan.questionerStakeHolder">Kuesioner Stakeholder</option>
+                                </select>
+                                <button type="submit" class="btn btn-success">Export Data</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
     <div class="container-fluid  ms-0" style="padding: 0 28px;">
-        <div class="row justify-content-between ">
+        <div class="row justify-content-evenly">
             <div class="col-sm-6 col-lg-4">
                 <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('tracer-pekerja')"
                     n="1000">

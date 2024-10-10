@@ -99,59 +99,19 @@
                         <tr class="text-dark">
                             <th scope="col">No</th>
                             <th scope="col">Tahun</th>
-                            <th scope="col">Total Mahasiswa</th>
-                            <th scope="col">Total Mahasiswa Lulus</th>
-                            <th scope="col">Total Fakultas</th>
-                            <th scope="col">Total Prodi</th>
-                            <th scope="col">Grafik</th>
+                            <th scope="col">Total Alumni</th>
+                            <th scope="col">Total Alumni Mengisi</th>
                         </tr>
                     </thead>
                     <tbody data-wow-duration="1s" data-wow-delay="0.9s" class="wow fadeInUp">
-                        <tr>
-                            <td>1</td>
-                            <td>2020</td>
-                            <td>18.231</td>
-                            <td>393</td>
-                            <td>16</td>
-                            <td>87</td>
-                            <td><a class="btn btn-sm btn-success" href="">Lihat</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2021</td>
-                            <td>20.281</td>
-                            <td>830</td>
-                            <td>17</td>
-                            <td>89</td>
-                            <td><a class="btn btn-sm btn-success" href="">Lihat</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2022</td>
-                            <td>19.821</td>
-                            <td>324</td>
-                            <td>17</td>
-                            <td>93</td>
-                            <td><a class="btn btn-sm btn-success" href="">Lihat</a></td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2023</td>
-                            <td>24.280</td>
-                            <td>322</td>
-                            <td>18</td>
-                            <td>93</td>
-                            <td><a class="btn btn-sm btn-success" href="">Lihat</a></td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2024</td>
-                            <td>28.092</td>
-                            <td>456</td>
-                            <td>18</td>
-                            <td>94</td>
-                            <td><a class="btn btn-sm btn-success" href="">Lihat</a></td>
-                        </tr>
+                        @foreach ($dataPengisi as $pengisi)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $pengisi->tahun_masuk }}</td>
+                                <td>3210</td>
+                                <td>{{ $pengisi->total_pengisi }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

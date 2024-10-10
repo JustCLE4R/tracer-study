@@ -13,73 +13,35 @@ window.addEventListener("load", function() {
     }, 1500); // Jeda 1.5 detik (1500 milidetik)
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const clientsCount = document.getElementById('clientsCount');
-    const satisfactionCount = document.getElementById('satisfactionCount');
-    const projectsCount = document.getElementById('projectsCount');
-
-    let clients = 2000;
-    let satisfaction = 2000;
-    let projects = 0;
-
-    const interval = setInterval(() => {
-        clients++;
-        clientsCount.textContent = clients;
-        if (clients >= 4350) {
-            clearInterval(interval);
-        }
-    }, 1); 
-
-    const interval2 = setInterval(() => {
-        satisfaction++;
-        satisfactionCount.textContent = satisfaction;
-        if (satisfaction >= 2899) {
-            clearInterval(interval2);
-        }
-    }, 1); 
-
-    const interval3 = setInterval(() => {
-        projects++;
-        projectsCount.textContent = projects;
-        if (projects >= 63) {
-            clearInterval(interval3);
-        }
-    }, 5); 
-});
-
 (function() {
     //===== Prealoder
         // ===== pricing-style-4 slider
         tns({
-            container: '.pricing-active',
+            container: ".pricing-active",
             autoplay: false,
             mouseDrag: true,
             gutter: 0,
             nav: false,
             controls: true,
             controlsText: [
-              '<i class="lni lni-chevron-left prev"></i>',
-              '<i class="lni lni-chevron-right prev"></i>',
+                '<i class="lni lni-chevron-left prev"></i>',
+                '<i class="lni lni-chevron-right prev"></i>',
             ],
             responsive: {
-              0: {
-                items: 1,
-              },
-              768: {
-                items: 2,
-              },
-              992: {
-                items: 1.2,
-              },
-              1200: {
-                items: 2,
-              }
-            }
-          });
-    
-    
-        
-        
+                0: {
+                    items: 1,
+                },
+                768: {
+                    items: 2,
+                },
+                992: {
+                    items: 1.2,
+                },
+                1200: {
+                    items: 2,
+                },
+            },
+        });
     
         /*=====================================
         Sticky
@@ -93,8 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
             } else {
                 header_navbar.classList.remove("sticky");
             }
-    
-    
     
             // show or hide the back-top-top button
             var backToTo = document.querySelector(".scroll-top");
@@ -153,10 +113,8 @@ document.addEventListener("DOMContentLoaded", function() {
             navbarToggler.classList.toggle("active");
         }) 
     
-    
         // WOW active
         new WOW().init();
-    
         
         //====== counter up 
         var cu = new counterUp({

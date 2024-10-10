@@ -25,6 +25,7 @@
       
   @endif
 
+  @stack('styles')
 
 </head>
 <body>
@@ -39,6 +40,7 @@
 
   <script src="/js/bootstrap-5.0.0-beta2.min.js"></script>    
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
   <script src="/js/count-up.min.js"></script>
   <script src="/js/glightbox.min.js"></script>
   <script src="/js/tiny-slider.js"></script>
@@ -54,6 +56,8 @@
   @if (Request::is('career*'))
   <script src="/js/public-carrer.js"></script>
   @endif
+
+  @stack('scripts')
 
 </body>
 </html>

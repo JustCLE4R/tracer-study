@@ -354,6 +354,60 @@ class VisualisasiController extends Controller
             ]
         ]);
     }
+
+    public function visualisasiExport(Request $request){
+        if(!$request->get('fakultas') || !$request->get('jenisVisualisasi') || !$request->get('tahun')){
+            return response()->json([
+                'status' => false,
+                'message' => 'Fakultas, Prodi dan Jenis Visualisasi harus diisi!'
+            ]);
+        }
+
+
+        $tahun = $request->get('tahun');
+        $fakultas = $request->get('fakultas');
+        $jenisVisualisasi = $request->get('jenisVisualisasi');
+
+        if (in_array($jenisVisualisasi, ['wirausaha', 'pekerja', 'pendidikan', 'questioner'])) {
+            $exportData = User::with($jenisVisualisasi)
+                        ->whereYear('tgl_wisuda', $tahun)
+                        ->where('fakultas', $fakultas)
+                        ->get();
+        } else {
+            $exportData = QuestionerStakeHolder::join('detail_perusahaans', 'questioner_stake_holders.detail_perusahaan_id', '=', 'detail_perusahaans.id')
+                        ->join('pekerjas', 'detail_perusahaans.pekerja_id', '=', 'pekerjas.id')
+                        ->join('users', 'pekerjas.user_id', '=', 'users.id')
+                        ->whereYear('users.tgl_wisuda', $tahun)
+                        ->where('users.fakultas', $fakultas)
+                        ->select('users.nim', 'users.nama', 'users.password', 'users.role', 'users.is_bekerja', 'users.program_studi', 'users.fakultas', 'users.strata', 'users.tahun_masuk', 'users.tgl_lulus', 'users.tgl_yudisium', 'users.tgl_wisuda', 'users.ipk', 'users.sks_kumulatif', 'users.predikat_kelulusan', 'users.judul_tugas_akhir', 'users.foto', 'users.nomor_ktp', 'users.tempat_lahir', 'users.tgl_lahir', 'users.jenis_kelamin', 'users.kewarganegaraan', 'users.provinsi', 'users.kabupaten', 'users.kecamatan', 'users.alamat', 'users.telepon', 'users.email', 'users.linkedin', 'users.facebook', 'questioner_stake_holders.*')
+                        ->get();
+        }
+
+
+        $filename = $tahun . '-' . $fakultas . '-' . $jenisVisualisasi . '-' . time() . '.csv';
+        $handle = fopen($filename, 'w+');
+
+        // Add headers dynamically, excluding any 'id' and any timestamps
+        $headers = [];
+        if ($exportData->isNotEmpty()) {
+            $headers = array_filter(array_keys($this->flattenArray($exportData->first()->toArray())), function($header) {
+                return !preg_match('/id$/', $header) && !preg_match('/_id$/', $header) && !preg_match('/_at$/', $header);
+            });
+            fputcsv($handle, $headers);
+        }
+
+        // Add data dynamically, excluding any 'id' and any timestamps
+        foreach ($exportData as $user) {
+            $data = array_filter($this->flattenArray($user->toArray()), function($key) {
+                return !preg_match('/id$/', $key) && !preg_match('/_id$/', $key) && !preg_match('/_at$/', $key);
+            }, ARRAY_FILTER_USE_KEY);
+            fputcsv($handle, $data);
+        }
+
+        fclose($handle);
+
+        return response()->download($filename)->deleteFileAfterSend(true);
+    }
     
     
 
@@ -361,6 +415,21 @@ class VisualisasiController extends Controller
     /**
      * DRY functions
      */
+
+    // Flatten a multi-dimensional array into a single-dimensional array
+    private function flattenArray(array $array, $prefix = '') {
+        $result = [];
+        foreach ($array as $key => $value) {
+            $new_key = $prefix === '' ? $key : $prefix . '_' . $key;
+            if (is_array($value)) {
+                $result = array_merge($result, $this->flattenArray($value, $new_key));
+            } else {
+                $result[$new_key] = $value;
+            }
+        }
+        return $result;
+    }
+
     private function moneyRange($value, $category){
         $money_counts = [
             '<1000000' => 0,

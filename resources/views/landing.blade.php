@@ -13,7 +13,7 @@
 
                         <div class="about-counter mt-50 ">
                             <div class="row">
-                                <div class="col-sm-4 ">
+                                {{-- <div class="col-sm-4 ">
                                     <div class="single-counter counter-color-1 d-flex wow fadeInUp" data-wow-duration="1s"
                                         data-wow-delay="0.3s">
                                         <div class="counter-shape">
@@ -27,7 +27,7 @@
                                             <p class="text">Mahasiswa</p>
                                         </div>
                                     </div> <!-- single counter -->
-                                </div>
+                                </div> --}}
                                 <div class="col-sm-4">
                                     <div class="single-counter counter-color-2 d-flex wow fadeInUp" data-wow-duration="1s"
                                         data-wow-delay="0.6s">
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="counter-content media-body">
                                             <div class="counter-count">
-                                                <div class="counter" id="projectsCount">63</div>
+                                                <div class="counter" id="projectsCount">0</div>
                                             </div>
                                             <p class="text">Telah Mengisi</p>
                                         </div>
@@ -83,12 +83,18 @@
 
     <section id="tracer" class="about-section pt-100">
         <div class="container">
+
+
+
+
             <div id="roker" class="row justify-content-between">
                 <div id="col1" class="col-lg-5 p-5 ">
                     <div id="chart" class="about-img mb-50  wow fadeInUp" data-wow-delay=".5s">
-                        <canvas id="status"></canvas>
+                        {{-- <canvas id="status"></canvas>
                         <canvas id="jenis-kelamin"></canvas>
-                        <canvas id="pengisi"></canvas>
+                        <canvas id="pengisi"></canvas> --}}
+                        <canvas id="myChart" width="400" height="200"></canvas>
+
                     </div>
                 </div>
                 <div id="col2" class="col-lg-7">
@@ -100,7 +106,7 @@
                                 karir, serta dampak pendidikan dari universitas setiap tahunnya.</p>
                         </div>
 
-                        <div class="accordion pb-15 wow fadeInUp" data-wow-delay=".2s" id="accordionExample">
+                        {{-- <div class="accordion pb-15 wow fadeInUp" data-wow-delay=".2s" id="accordionExample">
                             <div class="single-faq">
                                 <button class="w-100 text-start" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -127,7 +133,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
@@ -235,7 +241,7 @@
         </div>
     </section>
 
-    <section id="laporan" class="cta-section img-bg pt-110 pb-60">
+    {{-- <section id="laporan" class="cta-section img-bg pt-110 pb-60">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-7 col-lg-7">
@@ -276,7 +282,7 @@
 
                 </div>
             </div>
-    </section>
+    </section> --}}
 
     <section id="pricing" class="pricing-section pricing-style-4 bg-light">
         <div class="container">
@@ -468,123 +474,209 @@
             </div>
         </div>
     </section>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $.ajax({
-                url: '/api/visualisasi/perbandingan',
-                method: 'GET',
-                success: function(response) {
-                    var statusData = response.Status;
-                    var jenisKelaminData = response["Jenis kelamin"];
 
-                    var filteredStatusData = {
-                        Pendidikan: statusData.Pendidikan,
-                        Pekerja: statusData.Pekerja,
-                        Wirausaha: statusData.Wirausaha
-                    };
-
-                    var statusLabels = Object.keys(filteredStatusData);
-                    var statusValues = Object.values(filteredStatusData);
-
-                    var ctxStatus = document.getElementById("status").getContext("2d");
-                    var myPolarChart = new Chart(ctxStatus, {
-                        type: "polarArea",
-                        data: {
-                            labels: statusLabels,
-                            datasets: [{
-                                backgroundColor: [
-                                    "rgb(10, 83, 10)",
-                                    "rgba(14, 153, 7, 0.919)",
-                                    "green"
-                                ],
-                                data: statusValues
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        }
-                    });
-
-                    var jkLabels = Object.keys(jenisKelaminData);
-                    var jkValues = Object.values(jenisKelaminData);
-
-                    var ctxJenisKelamin = document.getElementById("jenis-kelamin").getContext("2d");
-                    var myDoughnutChart = new Chart(ctxJenisKelamin, {
-                        type: "doughnut",
-                        data: {
-                            labels: jkLabels,
-                            datasets: [{
-                                backgroundColor: [
-                                    "rgb(10, 83, 10)",
-                                    "rgba(14, 153, 7, 0.919)",
-                                    "green"
-                                ],
-                                data: jkValues
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        }
-                    });
-
-                    var pengisiData = {
-                        "Pengisi": 23,
-                        "Belum Mengisi": 49
-                    };
-
-                    var pengisiLabels = Object.keys(pengisiData);
-                    var pengisiValues = Object.values(pengisiData);
-
-                    var ctxPengisi = document.getElementById("pengisi").getContext("2d");
-                    var myDoughnutPengisiChart = new Chart(ctxPengisi, {
-                        type: "doughnut",
-                        data: {
-                            labels: pengisiLabels,
-                            datasets: [{
-                                backgroundColor: [
-                                    "rgb(10, 83, 10)",
-                                    "rgba(14, 153, 7, 0.919)",
-                                    "green"
-                                ],
-                                data: pengisiValues
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            plugins: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        }
-                    });
-
-                    $("#jenis-kelamin").hide();
-                    $("#pengisi").hide();
-                    $("#status").show();
-
-                    $(".show-chart").click(function() {
-                        var chartToShow = $(this).data("chart");
-                        $("#status, #jenis-kelamin, #pengisi")
-                    .hide(); 
-                        $("#" + chartToShow).show(); 
-                    });
-                },
-                error: function(error) {
-                    console.error("Terjadi kesalahan saat mengambil data:", error);
-                }
-            });
-        });
-    </script>
 @endsection
+
+@push('scripts')
+{{-- <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: '/api/visualisasi/perbandingan',
+            method: 'GET',
+            success: function(response) {
+                var statusData = response.Status;
+                var jenisKelaminData = response["Jenis kelamin"];
+
+                var filteredStatusData = {
+                    Pendidikan: statusData.Pendidikan,
+                    Pekerja: statusData.Pekerja,
+                    Wirausaha: statusData.Wirausaha
+                };
+
+                var statusLabels = Object.keys(filteredStatusData);
+                var statusValues = Object.values(filteredStatusData);
+
+                var ctxStatus = document.getElementById("status").getContext("2d");
+                var myPolarChart = new Chart(ctxStatus, {
+                    type: "polarArea",
+                    data: {
+                        labels: statusLabels,
+                        datasets: [{
+                            backgroundColor: [
+                                "rgb(10, 83, 10)",
+                                "rgba(14, 153, 7, 0.919)",
+                                "green"
+                            ],
+                            data: statusValues
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+
+                var jkLabels = Object.keys(jenisKelaminData);
+                var jkValues = Object.values(jenisKelaminData);
+
+                var ctxJenisKelamin = document.getElementById("jenis-kelamin").getContext("2d");
+                var myDoughnutChart = new Chart(ctxJenisKelamin, {
+                    type: "doughnut",
+                    data: {
+                        labels: jkLabels,
+                        datasets: [{
+                            backgroundColor: [
+                                "rgb(10, 83, 10)",
+                                "rgba(14, 153, 7, 0.919)",
+                                "green"
+                            ],
+                            data: jkValues
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+
+                var pengisiData = {
+                    "Pengisi": 23,
+                    "Belum Mengisi": 49
+                };
+
+                var pengisiLabels = Object.keys(pengisiData);
+                var pengisiValues = Object.values(pengisiData);
+
+                var ctxPengisi = document.getElementById("pengisi").getContext("2d");
+                var myDoughnutPengisiChart = new Chart(ctxPengisi, {
+                    type: "doughnut",
+                    data: {
+                        labels: pengisiLabels,
+                        datasets: [{
+                            backgroundColor: [
+                                "rgb(10, 83, 10)",
+                                "rgba(14, 153, 7, 0.919)",
+                                "green"
+                            ],
+                            data: pengisiValues
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+
+                $("#jenis-kelamin").hide();
+                $("#pengisi").hide();
+                $("#status").show();
+
+                $(".show-chart").click(function() {
+                    var chartToShow = $(this).data("chart");
+                    $("#status, #jenis-kelamin, #pengisi")
+                .hide(); 
+                    $("#" + chartToShow).show(); 
+                });
+            },
+            error: function(error) {
+                console.error("Terjadi kesalahan saat mengambil data:", error);
+            }
+        });
+    });
+</script> --}}
+
+<script>
+const avgMhsIpk = {{ $avgMhsIpk }}; // Ambil data rata-rata dari backend
+    const maxIpk = 4; // Nilai maksimal IPK
+    
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'doughnut', // Menggunakan grafik donat
+        data: {
+            labels: ['Rata-rata IPK Alumni'], // Label untuk data yang diisi dan sisa
+            datasets: [{
+                data: [avgMhsIpk, maxIpk - avgMhsIpk], // Nilai rata-rata dan sisa dari max
+                backgroundColor: [
+                    'rgba(43, 205, 129, 0.74)', // Warna bagian yang terisi (nilai rata-rata)
+                    'rgba(211, 211, 211, 0.3)', // Warna bagian sisa (belum terisi)
+                ],
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom', // Posisi legend di bawah grafik
+                },
+                datalabels: {  // Plugin untuk menampilkan nilai data
+                    color: '#000', // Warna teks
+                    font: {
+                        size: 16, // Ukuran font untuk data
+                        weight: 'bold' // Tebal font
+                    },
+                    formatter: function(value, context) {
+                        if (context.dataIndex === 0) {
+                            return value.toFixed(2); // Tampilkan hanya nilai rata-rata IPK
+                        }
+                        return ''; // Jangan tampilkan apa pun untuk bagian "Sisa"
+                    },
+                    anchor: 'center',
+                    align: 'center'
+                }
+            },
+        },
+        plugins: [ChartDataLabels] // Mengaktifkan plugin Data Labels
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const clientsCount = document.getElementById('clientsCount');
+    const satisfactionCount = document.getElementById('satisfactionCount');
+    const projectsCount = document.getElementById('projectsCount');
+
+    let clients = 2000;
+    let satisfaction = 2000;
+    let projects = 0;
+
+    const interval = setInterval(() => {
+        clients++;
+        clientsCount.textContent = clients;
+        if (clients >= 4350) {
+            clearInterval(interval);
+        }
+    }, 1); 
+
+    const interval2 = setInterval(() => {
+        satisfaction++;
+        satisfactionCount.textContent = satisfaction;
+        if (satisfaction >= 2899) {
+            clearInterval(interval2);
+        }
+    }, 1); 
+
+    const interval3 = setInterval(() => {
+        projects++;
+        projectsCount.textContent = projects;
+        if (projects >= {{ $mhsCount }}) {
+            clearInterval(interval3);
+        }
+    }, 100); 
+});
+</script>
+@endpush

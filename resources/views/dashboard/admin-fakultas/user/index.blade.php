@@ -29,7 +29,7 @@
                                 <th style="background-color: transparent !important;" class="col">Email</th>
                                 <th style="background-color: transparent !important;" class="col">Fakultas</th>
                                 <th style="background-color: transparent !important;" class="col">Prodi</th>
-                                <th style="background-color: transparent !important;" class="col">Created at</th>
+                                {{-- <th style="background-color: transparent !important;" class="col">Created at</th> --}}
                                 <th style="background-color: transparent !important;" class="col text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -54,9 +54,9 @@
                                 <td style="background-color: transparent !important;">
                                     {{ $user->program_studi }}
                                 </td>
-                                <td style="background-color: transparent !important;">
+                                {{-- <td style="background-color: transparent !important;">
                                     {{ $user->created_at }}
-                                </td>
+                                </td> --}}
 
                                 <td style="background-color: transparent !important;" class="text-center">
                                     <a href="/dashboard/admin/fakultas/user/{{ $user->id }}"

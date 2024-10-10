@@ -11,10 +11,11 @@ use App\Http\Requests\StoreQuestionerRequest;
 class QuestionerController extends Controller
 {
     public function index(){
-        $data = Questioner::get()->first();
+        return view('dashboard.questioner.notperiod');
+
+
         return view('dashboard.questioner.index', [
             'questioner' => Questioner::where('user_id', Auth::user()->id)->with('user')->get(),
-            'data' => $data
         ]);
     }
 
