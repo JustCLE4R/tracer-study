@@ -26,7 +26,7 @@
                                 <th style="background-color: transparent !important;" class="col">No</th>
                                 <th style="background-color: transparent !important;" class="col">NIM</th>
                                 <th style="background-color: transparent !important;" class="col">Nama</th>
-                                <th style="background-color: transparent !important;" class="col">Email</th>
+                                {{-- <th style="background-color: transparent !important;" class="col">Email</th> --}}
                                 <th style="background-color: transparent !important;" class="col">Fakultas</th>
                                 <th style="background-color: transparent !important;" class="col">Prodi</th>
                                 {{-- <th style="background-color: transparent !important;" class="col">Created at</th> --}}
@@ -45,9 +45,9 @@
                                 <td style="background-color: transparent !important;">
                                     {{ $user->nama }}
                                 </td>
-                                <td style="background-color: transparent !important;">
+                                {{-- <td style="background-color: transparent !important;">
                                     {{ $user->email }}
-                                </td>
+                                </td> --}}
                                 <td style="background-color: transparent !important;">
                                     {{ $user->fakultas }}
                                 </td>

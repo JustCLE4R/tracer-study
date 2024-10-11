@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Header Start -->
-    <div class="container-fluid pt-4 px-4">
+    {{-- <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
             <div class="col-sm-6 col-xl-3">
                 <div class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4 wow fadeInUp"
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="container-fluid pt-4 px-4">
@@ -104,14 +104,12 @@
                         </tr>
                     </thead>
                     <tbody data-wow-duration="1s" data-wow-delay="0.9s" class="wow fadeInUp">
-                        @foreach ($dataPengisi as $pengisi)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $pengisi->tahun_masuk }}</td>
-                                <td>3210</td>
-                                <td>{{ $pengisi->total_pengisi }}</td>
-                            </tr>
-                        @endforeach
+                        <tr>
+                            <td>1</td>
+                            <td>{{ $dataPengisi[0]->tahun_masuk }}</td>
+                            <td>2899</td>
+                            <td>{{ $dataPengisi[0]->total_pengisi }}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
