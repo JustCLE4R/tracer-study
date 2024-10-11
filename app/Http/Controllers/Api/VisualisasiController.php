@@ -370,16 +370,17 @@ class VisualisasiController extends Controller
 
         if (in_array($jenisVisualisasi, ['wirausaha', 'pekerja', 'pendidikan', 'questioner'])) {
             $exportData = User::with($jenisVisualisasi)
-                        ->whereYear('tgl_wisuda', $tahun)
+                        ->whereYear('tgl_lulus', $tahun)
                         ->where('fakultas', $fakultas)
+                        ->whereHas($jenisVisualisasi)
                         ->get();
         } else {
             $exportData = QuestionerStakeHolder::join('detail_perusahaans', 'questioner_stake_holders.detail_perusahaan_id', '=', 'detail_perusahaans.id')
                         ->join('pekerjas', 'detail_perusahaans.pekerja_id', '=', 'pekerjas.id')
                         ->join('users', 'pekerjas.user_id', '=', 'users.id')
-                        ->whereYear('users.tgl_wisuda', $tahun)
+                        ->whereYear('users.tgl_lulus', $tahun)
                         ->where('users.fakultas', $fakultas)
-                        ->select('users.nim', 'users.nama', 'users.password', 'users.role', 'users.is_bekerja', 'users.program_studi', 'users.fakultas', 'users.strata', 'users.tahun_masuk', 'users.tgl_lulus', 'users.tgl_yudisium', 'users.tgl_wisuda', 'users.ipk', 'users.sks_kumulatif', 'users.predikat_kelulusan', 'users.judul_tugas_akhir', 'users.foto', 'users.nomor_ktp', 'users.tempat_lahir', 'users.tgl_lahir', 'users.jenis_kelamin', 'users.kewarganegaraan', 'users.provinsi', 'users.kabupaten', 'users.kecamatan', 'users.alamat', 'users.telepon', 'users.email', 'users.linkedin', 'users.facebook', 'questioner_stake_holders.*')
+                        ->select('users.nim', 'users.nama', 'users.password', 'users.role', 'users.is_bekerja', 'users.program_studi', 'users.fakultas', 'users.strata', 'users.tahun_masuk', 'users.tgl_lulus', 'users.tgl_yudisium', 'users.tgl_lulus', 'users.ipk', 'users.sks_kumulatif', 'users.predikat_kelulusan', 'users.judul_tugas_akhir', 'users.foto', 'users.nomor_ktp', 'users.tempat_lahir', 'users.tgl_lahir', 'users.jenis_kelamin', 'users.kewarganegaraan', 'users.provinsi', 'users.kabupaten', 'users.kecamatan', 'users.alamat', 'users.telepon', 'users.email', 'users.linkedin', 'users.facebook', 'questioner_stake_holders.*')
                         ->get();
         }
 

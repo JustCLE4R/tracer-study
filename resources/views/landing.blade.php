@@ -665,7 +665,7 @@ const avgMhsIpk = {{ $avgMhsIpk }}; // Ambil data rata-rata dari backend
     const interval2 = setInterval(() => {
         satisfaction++;
         satisfactionCount.textContent = satisfaction;
-        if (satisfaction >= 2899) {
+        if (satisfaction >= 3182) {
             clearInterval(interval2);
         }
     }, 1); 

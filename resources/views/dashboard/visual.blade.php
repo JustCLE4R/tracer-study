@@ -15,15 +15,26 @@
                             <div class="input-group">
                                 <select id="exportTahunLulusSelect" name="tahun" class="form-select me-2">
                                     <option value="" selected hidden disabled>Pilih Tahun</option>
-                                    @foreach ($exportOptions['tahun'] as $tahun)
-                                        <option value="{{ $tahun }}">{{ $tahun }}</option>
-                                    @endforeach
+                                    {{-- @foreach ($exportOptions['tahun'] as $tahun)
+                                    <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                    @endforeach --}}
+                                    <option value="2021">2021</option>
                                 </select>
                                 <select id="exportFakultasSelect" name="fakultas" class="form-select me-2">
                                     <option value="" selected hidden disabled>Pilih Fakultas</option>
-                                    @foreach ($exportOptions['fakultas'] as $fakultas)
+                                    {{-- @foreach ($exportOptions['fakultas'] as $fakultas)
                                         <option value="{{ $fakultas }}">{{ $fakultas }}</option>
-                                    @endforeach
+                                    @endforeach --}}
+                                    <option value="FITK">FITK</option>
+                                    <option value="PASCA">PASCA</option>
+                                    <option value="FUSI">FUSI</option>
+                                    <option value="PPS">PPS</option>
+                                    <option value="FEBI">FEBI</option>
+                                    <option value="FDK">FDK</option>
+                                    <option value="FST">FST</option>
+                                    <option value="FKM">FKM</option>
+                                    <option value="FIS">FIS</option>
+                                    <option value="FSH">FSH</option>
                                 </select>
                                 <select name="jenisVisualisasi" id="" class="form-select me-2">
                                     <option value="" selected hidden disabled>Pilih Jenis</option>
