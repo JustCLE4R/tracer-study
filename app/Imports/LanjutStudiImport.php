@@ -2,8 +2,9 @@
 
 namespace App\Imports;
 
-use App\Models\Pendidikan;
 use App\Models\User;
+use App\Models\Pendidikan;
+use App\Models\ApiIntegration;
 use Maatwebsite\Excel\Concerns\ToModel;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\SkipsFailures;

@@ -79,7 +79,7 @@
 
                             {{-- add download guide --}}
                             <div data-aos="fade-up" data-aos-duration="1800">
-                                <p style="text-align: center; font-size: .7rem;"><a href="/document/Tutorial Isi Tracer.pdf" download>Download Panduan Tracer</a></p>
+                                <p style="text-align: center; font-size: .7rem;"><a href="/document/Panduan Penggunaan Aplikasi Tracer Study.pdf" download>Download Panduan Tracer</a></p>
                             </div>
 
                         </div>

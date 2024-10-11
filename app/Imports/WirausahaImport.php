@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\User;
 use App\Models\Wirausaha;
+use App\Models\ApiIntegration;
 use Maatwebsite\Excel\Concerns\ToModel;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Maatwebsite\Excel\Concerns\SkipsFailures;
@@ -69,7 +70,7 @@ class WirausahaImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
     public function rules(): array
     {
         return [
-            'nim' => 'required|string|max:10',
+            'nim' => 'required|string|max:20',
             'nama' => 'required|string|max:255',
             'password' => 'required',
             'program_studi' => 'required|string|max:255',
@@ -79,7 +80,7 @@ class WirausahaImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
             'tgl_lulus' => 'required|date',
             'tgl_yudisium' => 'required|date',
             'tgl_wisuda' => 'required|date',
-            'ipk' => 'required|numeric|min:0|max:4',
+            'ipk' => 'required|min:0|max:4',
             'tempat_lahir' => 'required|string|max:255',
             'tgl_lahir' => 'required|date',
             'jenis_kelamin' => 'required|string|in:L,P',
@@ -91,8 +92,8 @@ class WirausahaImport implements ToModel, WithHeadingRow, WithValidation, SkipsO
             'tingkat_tempat_usaha' => 'required|string',
             'bidang_usaha' => 'required|string|in:a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u',
             'detail_usaha' => 'required|string|max:255',
-            'omset' => 'required|numeric',
-            'pendapatan' => 'required|numeric',
+            'omset' => 'required',
+            'pendapatan' => 'required',
             'pemodal' => 'required|array|min:1|max:4|in:a,b,c,d',
             'kesesuaian' => 'required|string|in:a,b,c',
             'tgl_mulai_usaha' => 'required|date',

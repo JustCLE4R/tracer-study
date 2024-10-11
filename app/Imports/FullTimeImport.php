@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\ApiIntegration;
 use App\Models\DetailPerusahaan;
 use App\Models\User;
 use App\Models\Pekerja;
@@ -80,23 +81,23 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
     public function rules(): array
     {
         return [
-            'nim' => 'required|string|max:10',
+            'nim' => 'required|string|max:20',
             'nama' => 'required|string|max:255',
             'password' => 'required',
             'program_studi' => 'required|string|max:255',
             'fakultas' => 'required|string|max:255',
             'strata' => 'required|string|max:10',
             'tahun_masuk' => 'required|integer|min:1900|max:' . date('Y'),
-            'tgl_lulus' => 'required|date',
-            'tgl_yudisium' => 'required|date',
-            'tgl_wisuda' => 'required|date',
+            // 'tgl_lulus' => 'required|date',
+            // 'tgl_yudisium' => 'required|date',
+            // 'tgl_wisuda' => 'required|date',
             'ipk' => 'required|numeric|min:0|max:4',
             'tempat_lahir' => 'required|string|max:255',
             'tgl_lahir' => 'required|date',
             'jenis_kelamin' => 'required|string|in:L,P',
             'alamat' => 'required|string|max:500',
             'telepon' => 'required|string|max:15',
-            'email' => 'required|email|max:255',
+            // 'email' => 'required|email|max:255',
             
             'status_pekerjaan' => 'required|string|max:255',
             'kriteria_pekerjaan' => 'required|string|in:a,b,c,d',
@@ -124,7 +125,7 @@ class FullTimeImport implements ToModel, WithHeadingRow, WithValidation, SkipsOn
     public function customValidationMessages()
     {
         return [
-            'nim.required' => 'NIM wajib diisi.',
+            'nim.required' => 'NIM wajib diisi atau NIM tidak valid.',
             'nim.string' => 'NIM harus berupa teks.',
             'nim.max' => 'NIM maksimal 10 karakter.',
             'nama.required' => 'Nama wajib diisi.',

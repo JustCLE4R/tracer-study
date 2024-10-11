@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="counter-content media-body">
                                             <div class="counter-count">
-                                                <div class="counter" id="satisfactionCount">2899</div>
+                                                <div class="counter" id="satisfactionCount">3182</div>
                                             </div>
                                             <p class="text">Alumni</p>
                                         </div>
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="counter-content media-body">
                                             <div class="counter-count">
-                                                <div class="counter" id="projectsCount">0</div>
+                                                <div class="counter" id="projectsCount">1951</div>
                                             </div>
                                             <p class="text">Telah Mengisi</p>
                                         </div>
@@ -652,7 +652,7 @@ const avgMhsIpk = {{ $avgMhsIpk }}; // Ambil data rata-rata dari backend
 
     let clients = 2000;
     let satisfaction = 2000;
-    let projects = 0;
+    let projects = 1000;
 
     const interval = setInterval(() => {
         clients++;
@@ -673,10 +673,10 @@ const avgMhsIpk = {{ $avgMhsIpk }}; // Ambil data rata-rata dari backend
     const interval3 = setInterval(() => {
         projects++;
         projectsCount.textContent = projects;
-        if (projects >= {{ $mhsCount }}) {
+        if (projects >= 1951) {
             clearInterval(interval3);
         }
-    }, 100); 
+    }, 1); 
 });
 </script>
 @endpush
