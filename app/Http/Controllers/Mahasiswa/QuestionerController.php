@@ -11,8 +11,7 @@ use App\Http\Requests\StoreQuestionerRequest;
 class QuestionerController extends Controller
 {
     public function index(){
-        return view('dashboard.questioner.notperiod');
-
+        // return view('dashboard.questioner.notperiod');
 
         return view('dashboard.questioner.index', [
             'questioner' => Questioner::where('user_id', Auth::user()->id)->with('user')->get(),

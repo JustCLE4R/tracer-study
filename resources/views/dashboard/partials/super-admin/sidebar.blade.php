@@ -26,8 +26,8 @@
       </div>
       <a href="/dashboard/admin/super/user" class="nav-item nav-link {{ Request::is('dashboard/admin/super/user') ? 'active' : '' }}"><i class="bi bi-shield-lock me-2 fs-5"></i>Akun</a>
       <a href="/dashboard/admin/super/visual" class="nav-item nav-link {{ Request::is('dashboard/visual') ? 'active' : '' }}"><i class="bi bi-graph-down me-2 fs-5"></i>Visualisasi</a>
-      {{-- <a href="/dashboard/admin/super/laporan" class="nav-item nav-link {{ Request::is('dashboard/admin/super/laporan') ? 'active' : '' }}"><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a> --}}
-      {{-- <a href="/dashboard/admin/super/import" class="nav-item nav-link {{ Request::is('dashboard/admin/super/import') ? 'active' : '' }}"><i class="bi bi-person-badge me-2 fs-5"></i>Import User</a> --}}
+      <a href="/dashboard/admin/super/laporan" class="nav-item nav-link {{ Request::is('dashboard/admin/super/laporan') ? 'active' : '' }}"><i class="bi bi-bookmark-check-fill me-2 fs-5"></i>Laporan</a>
+      <a href="/dashboard/admin/super/import" class="nav-item nav-link {{ Request::is('dashboard/admin/super/import') ? 'active' : '' }}"><i class="bi bi-person-badge me-2 fs-5"></i>Import User</a>
       <a href="/dashboard/logout" class="nav-item nav-link"><i class="bi bi-box-arrow-right me-2 fs-5"></i>Logout</a>
   </div>
   

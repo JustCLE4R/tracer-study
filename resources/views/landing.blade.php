@@ -13,7 +13,7 @@
 
                         <div class="about-counter mt-50 ">
                             <div class="row">
-                                {{-- <div class="col-sm-4 ">
+                                <div class="col-sm-4 ">
                                     <div class="single-counter counter-color-1 d-flex wow fadeInUp" data-wow-duration="1s"
                                         data-wow-delay="0.3s">
                                         <div class="counter-shape">
@@ -27,7 +27,7 @@
                                             <p class="text">Mahasiswa</p>
                                         </div>
                                     </div> <!-- single counter -->
-                                </div> --}}
+                                </div>
                                 <div class="col-sm-4">
                                     <div class="single-counter counter-color-2 d-flex wow fadeInUp" data-wow-duration="1s"
                                         data-wow-delay="0.6s">
@@ -90,9 +90,9 @@
             <div id="roker" class="row justify-content-between">
                 <div id="col1" class="col-lg-5 p-5 ">
                     <div id="chart" class="about-img mb-50  wow fadeInUp" data-wow-delay=".5s">
-                        {{-- <canvas id="status"></canvas>
+                        <canvas id="status"></canvas>
                         <canvas id="jenis-kelamin"></canvas>
-                        <canvas id="pengisi"></canvas> --}}
+                        <canvas id="pengisi"></canvas>
                         <canvas id="myChart" width="400" height="200"></canvas>
 
                     </div>
@@ -106,7 +106,7 @@
                                 karir, serta dampak pendidikan dari universitas setiap tahunnya.</p>
                         </div>
 
-                        {{-- <div class="accordion pb-15 wow fadeInUp" data-wow-delay=".2s" id="accordionExample">
+                        <div class="accordion pb-15 wow fadeInUp" data-wow-delay=".2s" id="accordionExample">
                             <div class="single-faq">
                                 <button class="w-100 text-start" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -133,7 +133,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
 
                     </div>
                 </div>
@@ -241,7 +241,7 @@
         </div>
     </section>
 
-    {{-- <section id="laporan" class="cta-section img-bg pt-110 pb-60">
+    <section id="laporan" class="cta-section img-bg pt-110 pb-60">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-7 col-lg-7">
@@ -282,7 +282,7 @@
 
                 </div>
             </div>
-    </section> --}}
+    </section>
 
     <section id="pricing" class="pricing-section pricing-style-4 bg-light">
         <div class="container">
@@ -478,7 +478,7 @@
 @endsection
 
 @push('scripts')
-{{-- <script>
+<script>
     $(document).ready(function() {
         $.ajax({
             url: '/api/visualisasi/perbandingan',
@@ -595,7 +595,7 @@
             }
         });
     });
-</script> --}}
+</script>
 
 <script>
 const avgMhsIpk = {{ $avgMhsIpk }}; // Ambil data rata-rata dari backend
