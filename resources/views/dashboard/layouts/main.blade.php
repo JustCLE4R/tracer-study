@@ -54,6 +54,8 @@
     {{-- sidebar --}}
     @if(Auth::user()->role == 'superadmin')
       @include('dashboard.partials.super-admin.sidebar')
+    @elseif (Auth::user()->role == 'superadmin2')
+      @include('dashboard.partials.super-admin2.sidebar')
     @elseif (Auth::user()->role == 'adminfakultas')
       @include('dashboard.partials.admin-fakultas.sidebar')
     @elseif (Auth::user()->role == 'adminprodi')

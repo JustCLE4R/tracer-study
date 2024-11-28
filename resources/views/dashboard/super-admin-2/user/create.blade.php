@@ -18,8 +18,8 @@
                 </form>
             </div>
         </div>
-        
-        @if (isset($searchData))
+@dd($searchData)
+        @if ($searchData)
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
                 <thead>
@@ -44,6 +44,11 @@
                         </td>
                         <td style="background-color: transparent !important;">
                             {{ $searchData['PRODI'] }}
+                        </td>
+                        <td style="background-color: transparent !important;" class="text-center">
+                            <a href="/dashboard/admin/super/career/{{ $career->slug }}/judge?from={{ $from }}"
+                                class="btn btn-success btn-sm px-1 py-0 text-white"><i
+                                    class="bi bi-arrow-right"></i></a>
                         </td>
                     </tr>
                 </tbody>

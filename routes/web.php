@@ -110,6 +110,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
         Route::get('/laporan/checkSlug', [SuperAdminLaporanController::class, 'checkSlug']);
 
         Route::resource('/user', SuperAdminUserController::class);
+        Route::get('/user-admin', [SuperAdminUserController::class, 'indexAdmin']);
 
         Route::prefix('career')->group(function () {
             Route::get('/{career}/judge', [SuperAdminCareerController::class, 'judgeCareer']);

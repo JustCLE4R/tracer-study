@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $query = User::where('id', '!=', Auth::id())->latest();
+        $query = User::where('role', 'mahasiswa')->latest();
 
         if (request('search')) {
             $query->where(function($query) {
@@ -32,6 +32,22 @@ class UserController extends Controller
         ]);
     }
 
+    public function indexAdmin()
+    {
+        $query = User::where('role', '!=', 'mahasiswa')->latest();
+
+        if (request('search')) {
+            $query->where(function($query) {
+                $query->where('nama', 'like', '%' . request('search') . '%')
+                    ->orWhere('email', 'like', '%' . request('search') . '%');
+            });
+        }
+        
+        return view('dashboard.super-admin.user.index-admin', [
+            'users' => $query->paginate(20)->withQueryString()
+        ]);
+    }
+
 
     // TODO: Make touch method account from main API
     /**
@@ -39,7 +55,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.super-admin.user.create');
     }
 
     /**
