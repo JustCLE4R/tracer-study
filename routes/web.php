@@ -22,6 +22,7 @@ use App\Http\Controllers\Mahasiswa\SertifikatController as MhsSertifikatControll
 use App\Http\Controllers\SuperAdmin\CareerController as SuperAdminCareerController;
 use App\Http\Controllers\AdminFakultas\UserController as AdminFakultasUserController;
 use App\Http\Controllers\SuperAdmin\LaporanController as SuperAdminLaporanController;
+use App\Http\Controllers\SuperAdmin\UserAdminController as UserSuperAdminUserController;
 use App\Http\Controllers\AdminFakultas\CareerController as AdminFakultasCareerController;
 use App\Http\Controllers\SuperAdmin\ImportUserController as SuperAdminImportUserController;
 use App\Http\Controllers\Mahasiswa\PerjalananKarirController as MhsPerjalananKarirController;
@@ -110,7 +111,7 @@ Route::middleware(['auth', 'no-cache'])->prefix('dashboard')->group(function () 
         Route::get('/laporan/checkSlug', [SuperAdminLaporanController::class, 'checkSlug']);
 
         Route::resource('/user', SuperAdminUserController::class);
-        Route::get('/user-admin', [SuperAdminUserController::class, 'indexAdmin']);
+        Route::resource('/user-admin', UserSuperAdminUserController::class)->parameters(['user-admin' => 'user']);
 
         Route::prefix('career')->group(function () {
             Route::get('/{career}/judge', [SuperAdminCareerController::class, 'judgeCareer']);

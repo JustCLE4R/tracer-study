@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,6 +54,16 @@ class User extends Authenticatable
     'email_verified_at' => 'datetime',
     'password' => 'hashed',
   ];
+
+  public static function enumValues($column)
+  {
+      $table = (new self)->getTable();
+      $type = DB::selectOne("SHOW COLUMNS FROM {$table} WHERE Field = ?", [$column]);
+      preg_match('/^enum\((.*)\)$/', $type->Type, $matches);
+      return array_map(function ($value) {
+          return trim($value, "'");
+      }, explode(',', $matches[1]));
+  }
 
   public function career(){
     return $this->hasMany(Career::class);

@@ -7,7 +7,6 @@ use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SuperAdmin\UpdateUserRequest;
 
 class UserController extends Controller
@@ -31,23 +30,6 @@ class UserController extends Controller
             'users' => $query->paginate(20)->withQueryString()
         ]);
     }
-
-    public function indexAdmin()
-    {
-        $query = User::where('role', '!=', 'mahasiswa')->latest();
-
-        if (request('search')) {
-            $query->where(function($query) {
-                $query->where('nama', 'like', '%' . request('search') . '%')
-                    ->orWhere('email', 'like', '%' . request('search') . '%');
-            });
-        }
-        
-        return view('dashboard.super-admin.user.index-admin', [
-            'users' => $query->paginate(20)->withQueryString()
-        ]);
-    }
-
 
     // TODO: Make touch method account from main API
     /**

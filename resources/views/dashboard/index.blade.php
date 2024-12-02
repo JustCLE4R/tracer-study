@@ -106,9 +106,9 @@
                     <tbody data-wow-duration="1s" data-wow-delay="0.9s" class="wow fadeInUp">
                         <tr>
                             <td>1</td>
-                            <td>{{ $dataPengisi[0]->tahun_masuk }}</td>
+                            <td>{{ $dataPengisi->tahun_masuk }}</td>
                             <td>2899</td>
-                            <td>{{ $dataPengisi[0]->total_pengisi }}</td>
+                            <td>{{ $dataPengisi->total_pengisi }}</td>
                         </tr>
                     </tbody>
                 </table>
