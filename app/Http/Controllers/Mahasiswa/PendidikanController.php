@@ -83,7 +83,11 @@ class PendidikanController extends Controller
       'perjalanan_karir_check' => true
     ]);
 
-    return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan baru telah ditambahkan!');
+    if(Auth::user()->wirausaha->count() > 1 || Auth::user()->pekerja->count() > 1){
+      return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
+    }
+
+    return redirect('/dashboard/questioner')->with('success', 'Pendidikan baru telah ditambahkan!');
   }
 
   /**
@@ -188,10 +192,6 @@ class PendidikanController extends Controller
 
     $pendidikan->update($rules);
 
-    if(Auth::user()->role != 'mahasiswa'){
-      return redirect('/dashboard/admin/'.$pendidikan->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
-    }
-
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan telah diperbarui!');
   }
 
@@ -212,10 +212,6 @@ class PendidikanController extends Controller
 
     Storage::delete($pendidikan->bukti_pendidikan);
     $pendidikan->delete();
-
-    if(Auth::user()->role != 'mahasiswa'){
-      return redirect('/dashboard/admin/'.$pendidikan->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
-    }
     
     return redirect('/dashboard/perjalanan-karir')->with('success', 'Pendidikan telah dihapus!');
   }

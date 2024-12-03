@@ -31,6 +31,9 @@ Route::prefix('visualisasi')->group(function () {
     Route::get('/questioner', [VisualisasiController::class, 'dataQuestioner']);
     Route::get('/stakeholder', [VisualisasiController::class, 'dataStakeholder']);
     Route::get('/perbandingan', [VisualisasiController::class, 'dataPerbandingan']);
+    Route::get('/ipk', [VisualisasiController::class, 'dataIpk']);
+    Route::get('/career', [VisualisasiController::class, 'dataCareer']);
+    Route::get('/lama-studi', [VisualisasiController::class, 'dataLamaStudi']);
 });
 
 Route::get('/visualisasi/export', [VisualisasiController::class, 'visualisasiExport']);

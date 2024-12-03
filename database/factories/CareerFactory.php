@@ -17,7 +17,7 @@ class CareerFactory extends Factory
   public function definition(): array
   {
     return [
-      'user_id' => $this->faker->numberBetween(1, 100),
+      'user_id' => $this->faker->numberBetween(1, 50),
       'category' => $this->faker->numberBetween(1, 4),
       'position' => $this->faker->jobTitle(),
       'slug' => $this->faker->slug(),
@@ -28,6 +28,7 @@ class CareerFactory extends Factory
                       -> join(''),
       'image' => 'https://picsum.photos/200/300?random=' . $this->faker->numberBetween(1, 1000),
       'excerpt' => $this->faker->paragraph(1),
+      'status' => $this->faker->randomElement(['pending', 'approved', 'rejected']),
     ];
   }
 }

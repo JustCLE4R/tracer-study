@@ -9,6 +9,7 @@ use App\Models\Pendidikan;
 use App\Models\Questioner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Career;
 use App\Models\QuestionerStakeHolder;
 
 class VisualisasiController extends Controller
@@ -16,7 +17,7 @@ class VisualisasiController extends Controller
     public function dataWirausaha(Request $request){
         $wirausaha_data = Wirausaha::with('user')->get();
 
-        $wirausaha_data = $this->filterByThnWisudahFakultas($wirausaha_data, $request->query('lulus'), $request->query('fakultas'));
+        $wirausaha_data = $this->filterByThnWisudahProdiFakultas($wirausaha_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
         $pemodal_counts = [
             "Pribadi / Tabungan" => 0,
@@ -74,7 +75,7 @@ class VisualisasiController extends Controller
     public function dataPekerja(Request $request){
         $pekerja_data = Pekerja::get();
 
-        $pekerja_data = $this->filterByThnWisudahFakultas($pekerja_data, $request->query('lulus'), $request->query('fakultas'));
+        $pekerja_data = $this->filterByThnWisudahProdiFakultas($pekerja_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
         return [
             'is_active' => $pekerja_data->countBy('is_active'),
@@ -92,7 +93,7 @@ class VisualisasiController extends Controller
 
     public function dataPendidikan(Request $request){
         $pendidikan_data = Pendidikan::get();
-        $pendidikan_data = $this->filterByThnWisudahFakultas($pendidikan_data, $request->query('lulus'), $request->query('fakultas'));
+        $pendidikan_data = $this->filterByThnWisudahProdiFakultas($pendidikan_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
         $negara = $pendidikan_data->map(function($item){
             if($item->negara_pendidikan == "Indonesia"){
@@ -117,7 +118,7 @@ class VisualisasiController extends Controller
     public function dataQuestioner(Request $request){
         $questioner_data = Questioner::get();
 
-        $questioner_data = $this->filterByThnWisudahFakultas($questioner_data, $request->query('lulus'), $request->query('fakultas'));
+        $questioner_data = $this->filterByThnWisudahProdiFakultas($questioner_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
         return response()->json([
             '(a) Seberapa besar kompetensi di bawah ini Anda kuasai?' => [
@@ -271,13 +272,14 @@ class VisualisasiController extends Controller
         $fakultas = $request->query('fakultas');
 
         $user_data = User::with(['pendidikan', 'pekerja', 'wirausaha'])
-                            ->when($thnWisuda, function($query) use ($thnWisuda) {
-                                return $query->whereYear('tgl_wisuda', $thnWisuda);
-                            })
-                            ->when($fakultas, function($query) use ($fakultas) {
-                                return $query->where('fakultas', $fakultas);
-                            })
-                            ->get();
+                    ->where('role', 'mahasiswa')
+                    ->when($thnWisuda, function($query) use ($thnWisuda) {
+                    return $query->whereYear('tgl_wisuda', $thnWisuda);
+                    })
+                    ->when($fakultas, function($query) use ($fakultas) {
+                    return $query->where('fakultas', $fakultas);
+                    })
+                    ->get();
 
         $questioner_stakeholder = QuestionerStakeHolder::when($thnWisuda, function($query) use ($thnWisuda) {
                                                             $query->whereHas('detailPerusahaan.pekerja.user', function($query) use ($thnWisuda) {
@@ -358,7 +360,7 @@ class VisualisasiController extends Controller
     public function visualisasiExport(Request $request){
         if(!$request->get('fakultas') || !$request->get('jenisVisualisasi') || !$request->get('tahun')){
             return response()->json([
-                'status' => false,
+                'status' => "failed",
                 'message' => 'Fakultas, Prodi dan Jenis Visualisasi harus diisi!'
             ]);
         }
@@ -410,7 +412,138 @@ class VisualisasiController extends Controller
         return response()->download($filename)->deleteFileAfterSend(true);
     }
     
+    public function dataIpk(Request $request)
+    {
+        $tahun = $request->get('lulus');
+        $fakultas = $request->get('fakultas');
+        $program_studi = $request->get('prodi');
     
+        $ipk_counts = [
+            '<2.75' => 0,
+            '2.75-3.00' => 0,
+            '3.00-3.25' => 0,
+            '3.25-3.50' => 0,
+            '3.50-3.75' => 0,
+            '>3.75' => 0
+        ];
+    
+        // Build query with filters
+        $query = User::whereNotNull('ipk');
+    
+        if ($tahun) {
+            $query->whereYear('tgl_lulus', $tahun);
+        }
+    
+        if ($program_studi) {
+            $query->where('program_studi', $program_studi);
+        } elseif ($fakultas) {
+            $query->where('fakultas', $fakultas);
+        }
+    
+        // Fetch filtered data
+        $ipk_data = $query->select('ipk')->get();
+    
+        foreach ($ipk_data as $record) {
+            $ipk = $record->ipk;
+            if ($ipk < 2.75) {
+                $ipk_counts['<2.75']++;
+            } elseif ($ipk >= 2.75 && $ipk <= 3.00) {
+                $ipk_counts['2.75-3.00']++;
+            } elseif ($ipk > 3.00 && $ipk <= 3.25) {
+                $ipk_counts['3.00-3.25']++;
+            } elseif ($ipk > 3.25 && $ipk <= 3.50) {
+                $ipk_counts['3.25-3.50']++;
+            } elseif ($ipk > 3.50 && $ipk <= 3.75) {
+                $ipk_counts['3.50-3.75']++;
+            } else {
+                $ipk_counts['>3.75']++;
+            }
+        }
+    
+        $max_ipk = $ipk_data->max('ipk');
+        $min_ipk = $ipk_data->min('ipk');
+        $avg_ipk = round($ipk_data->avg('ipk'), 3);
+    
+        return response()->json([
+            'ipk_counts' => $ipk_counts,
+            'max_ipk' => $max_ipk,
+            'min_ipk' => $min_ipk,
+            'avg_ipk' => $avg_ipk
+        ]);
+    }
+    
+    public function dataCareer(Request $request)
+    {
+        $careers = Career::get();
+        $all_careers = $careers->count();
+        
+        $careers = $this->filterByThnWisudahProdiFakultas($careers, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
+
+        $career_counts = $careers->count();
+
+        $program_studi_counts = $careers->countBy('user.program_studi');
+        $fakultas_counts = $careers->countBy('user.fakultas');
+
+        return response()->json([
+            'all_careers' => $all_careers,
+            'career_counts' => $career_counts,
+            'fakultas_counts' => $fakultas_counts,
+            'program_studi_counts' => $program_studi_counts,
+        ]);
+    }
+
+    public function dataLamaStudi(Request $request)
+    {
+        $query = User::whereNotNull('tgl_wisuda');
+
+        if ($request->query('wisuda')) {
+            $query->whereYear('tgl_wisuda', $request->query('wisuda'));
+        }
+
+        if ($request->query('fakultas')) {
+            $query->where('fakultas', $request->query('fakultas'));
+        } elseif ($request->query('prodi')) {
+            $query->where('program_studi', $request->query('prodi'));
+        }
+
+        $users = $query->get();
+
+        $lama_studi_counts = [
+            '<=4' => 0,
+            '5' => 0,
+            '6' => 0,
+            '7' => 0,
+            '8' => 0,
+            '>8' => 0
+        ];
+
+        foreach ($users as $user) {
+            $tgl_wisuda = $user->tgl_wisuda;
+            $tahun_masuk = $user->tahun_masuk;
+
+            if ($tgl_wisuda && $tahun_masuk) {
+                $lama_studi = date('Y', strtotime($tgl_wisuda)) - $tahun_masuk;
+
+                if ($lama_studi <= 4) {
+                    $lama_studi_counts['<=4']++;
+                } elseif ($lama_studi == 5) {
+                    $lama_studi_counts['5']++;
+                } elseif ($lama_studi == 6) {
+                    $lama_studi_counts['6']++;
+                } elseif ($lama_studi == 7) {
+                    $lama_studi_counts['7']++;
+                } elseif ($lama_studi == 8) {
+                    $lama_studi_counts['8']++;
+                } else {
+                    $lama_studi_counts['>8']++;
+                }
+            }
+        }
+
+        return response()->json([
+            'lama_studi_counts' => $lama_studi_counts
+        ]);
+    }
 
 
     /**
@@ -478,24 +611,35 @@ class VisualisasiController extends Controller
         return $date_counts;
     }
 
-    private function filterByThnWisudahFakultas($collection, $ThnWisudah = null, $fakultas = null)
+    private function filterByThnWisudahProdiFakultas($collection, $ThnWisudah = null, $fakultas = null, $program_studi = null)
     {
-        return $collection->filter(function($query) use ($ThnWisudah, $fakultas) {
-            // Check if the ThnWisudah matches
-            $matchesThnWisudah = true;
+        return $collection->filter(function ($item) use ($ThnWisudah, $fakultas, $program_studi) {
+            $user = $item->user;
+    
+            if (!$user) {
+                return false;
+            }
+    
+            // Check year of graduation
             if ($ThnWisudah) {
-                $tgl_wisuda = $query->user ? $query->user->tgl_wisuda : null;
-                $matchesThnWisudah = $tgl_wisuda ? date('Y', strtotime($tgl_wisuda)) == $ThnWisudah : false;
+                $tgl_wisuda = $user->tgl_wisuda ?? null;
+                if (!$tgl_wisuda || date('Y', strtotime($tgl_wisuda)) != $ThnWisudah) {
+                    return false;
+                }
             }
     
-            // Check if the fakultas matches
-            $matchesFakultas = true;
-            if ($fakultas) {
-                $matchesFakultas = $query->user && $query->user->fakultas == $fakultas;
+            // Check faculty
+            if ($fakultas && !$program_studi && $user->fakultas != $fakultas) {
+                return false;
             }
     
-            // Return true if both conditions match (but its always true lol xD)
-            return $matchesThnWisudah && $matchesFakultas;
+            // Check program of study
+            if ($program_studi && $user->program_studi != $program_studi) {
+                return false;
+            }
+    
+            return true;
         });
     }
+    
 }
