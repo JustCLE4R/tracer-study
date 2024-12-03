@@ -121,7 +121,7 @@
                                 <input type="text" id="formGroupExampleInput" name="provinsi" class="form-control" value="{{ old('provinsi', $pekerja->provinsi_kerja) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                <label class="form-label text-secondary">Kabupaten *</label>
+                                <label class="form-label text-secondary">Kabupaten/Kota *</label>
                                 <input type="text" id="formGroupExampleInput" name="kabupaten" class="form-control" value="{{ old('kabupaten', $pekerja->kabupaten_kerja) }}">
                             </div>
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">

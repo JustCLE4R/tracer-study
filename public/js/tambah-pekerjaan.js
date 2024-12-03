@@ -87,15 +87,26 @@ function isFreelancer(value) {
 function buildDynamicForm(question) {
   var colDiv = $("<div>").addClass("col-lg-4 col-md-6 col-sm-12 my-2");
 
+  //Hapus jika ada duplikat input
   if ($("#question-" + question.id).length > 0) {
       $("#question-" + question.id).remove();
   }
 
+  //Kustom label
   var labelText = question.question;
+  const labelMapping = {
+    12: "Kabupaten/Kota",
+    31: "Kabupaten/Kota"
+  };
+  
+  if (labelMapping[question.id]) {
+      labelText = labelMapping[question.id];
+  }
+  
+
   if (
-      question.category === "bekerja" &&
       question.id !== 10 &&
-      question.id !== 13
+      question.id !== 13 
   ) {
       labelText += " *";
   }
@@ -121,7 +132,7 @@ function buildDynamicForm(question) {
 
       var defaultOption = $("<option>")
           .prop({ selected: true })
-          .text("Pilih " + question.question);
+          .text("Pilih " + labelText); // Use the updated label text
       select.append(defaultOption);
 
       if (question.id === 11) {
@@ -148,7 +159,50 @@ function buildDynamicForm(question) {
           });
       }
       colDiv.append(select);
-  } else if (question.type === "select" && question.id !== 2) {
+  } else if (question.id === 30 || question.id === 31) {
+      var select = $("<select>")
+          .addClass("form-select")
+          .attr("aria-label", "Default select example")
+          .attr(
+              "name",
+              question.question
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")
+                  .replace(/[^a-zA-Z0-9-]/g, "")
+                  .replace(/-{2,}/g, "-")
+          );
+
+      var defaultOption = $("<option>")
+          .prop({ selected: true })
+          .text("Pilih " + labelText); // Use the updated label text
+      select.append(defaultOption);
+
+      if (question.id === 30) {
+          $.ajax({
+              url: "/json/data.json",
+              method: "GET",
+              dataType: "json",
+              success: function (data) {
+                  data.forEach((item) => {
+                      var option = $("<option>")
+                          .val(item.provinsi)
+                          .text(item.provinsi);
+                      select.append(option);
+                  });
+
+                  select.on("change", function () {
+                      var selectedProvince = $(this).val();
+                      populateCityOptions(selectedProvince);
+                  });
+              },
+              error: function (error) {
+                  console.log("Error fetching province data:", error);
+              },
+          });
+      }
+      colDiv.append(select);
+  }
+   else if (question.type === "select" && question.id !== 2) {
       var select = $("<select>")
           .addClass("form-select")
           .attr("aria-label", "Default select example")
@@ -162,7 +216,7 @@ function buildDynamicForm(question) {
           );
       var defaultOption = $("<option>")
           .prop({ selected: true })
-          .text("Pilih " + question.question);
+          .text("Pilih " + labelText); // Use the updated label text
       select.append(defaultOption);
 
       var qanswer = JSON.parse(question.qanswer);
@@ -269,10 +323,10 @@ function populateCityOptions(selectedProvince) {
     var citySelect = $("select[name='kabupaten']"); 
     citySelect.empty(); 
     citySelect.append(
-        $("<option>").prop({ selected: true }).text("Pilih Kabupaten")
+        $("<option>").prop({ selected: true }).text("Pilih Kabupaten/Kota")
     );
 
-    $.ajax({
+    $.ajax({  
         url: "/json/data.json",
         method: "GET",
         dataType: "json",
