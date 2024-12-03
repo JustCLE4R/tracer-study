@@ -273,7 +273,7 @@ function populateCityOptions(selectedProvince) {
     );
 
     $.ajax({
-        url: "http://127.0.0.1:8000/json/data.json",
+        url: "/json/data.json",
         method: "GET",
         dataType: "json",
         success: function (data) {

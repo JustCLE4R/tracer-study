@@ -39,6 +39,15 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                  <label class="form-label text-secondary">Fakultas *</label>
+                  <input class="form-control @error('program_studi') is-invalid @enderror" type="text" name="program_studi" value="{{ old('program_studi', $pendidikan->program_studi) }}">
+                  @error('program_studi')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Perguruan Tinggi *</label>
                   <input class="form-control @error('perguruan_tinggi') is-invalid @enderror" type="text" name="perguruan_tinggi" value="{{ old('perguruan_tinggi', $pendidikan->perguruan_tinggi) }}">
                   @error('perguruan_tinggi')
@@ -48,7 +57,7 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label class="form-label text-secondary">Tanggal Surat Penerimaan Kuliah *</label>
+                  <label class="form-label text-secondary">Tanggal Surat Penerimaan Kuliah </label>
                   <input class="form-control @error('tgl_surat_penerimaan_pendidikan') is-invalid @enderror" type="date" name="tgl_surat_penerimaan_pendidikan" value="{{ old('tgl_surat_penerimaan_pendidikan', $pendidikan->tgl_surat_penerimaan_pendidikan) }}">
                   @error('tgl_surat_penerimaan_pendidikan')
                     <div class="invalid-feedback">
@@ -79,11 +88,11 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label class="form-label text-secondary">Program Studi Satu Linier *</label>
+                  <label class="form-label text-secondary">Linieritas / kesesuaian Program Studi dengan Pendidikan Sebelumnya di UIN Sumatera Utara Medan *</label>
                   <select class="form-select @error('is_linear') is-invalid @enderror" name="is_linear">
                     <option hidden="">Pilih Program Studi Satu Linier</option>
-                    <option value="0" {{ old('is_linear', $pendidikan->getRawOriginal('is_linear')) == '0' ? 'selected' : '' }}>Tidak</option>
-                    <option value="1" {{ old('is_linear', $pendidikan->getRawOriginal('is_linear')) == '1' ? 'selected' : '' }}>Ya</option>
+                    <option value="0" {{ old('is_linear', $pendidikan->getRawOriginal('is_linear')) == '0' ? 'selected' : '' }}>Tidak Linier ( Tidak Sesuai)</option>
+                    <option value="1" {{ old('is_linear', $pendidikan->getRawOriginal('is_linear')) == '1' ? 'selected' : '' }}>Linier (Sesuai)</option>
                   </select>
                   @error('is_linear')
                     <div class="invalid-feedback">

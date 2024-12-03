@@ -38,6 +38,15 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
+                  <label class="form-label text-secondary">Fakultas *</label>
+                  <input class="form-control @error('fakultas') is-invalid @enderror" type="text" name="fakultas" value="{{ old('fakultas') }}">
+                  @error('fakultas')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                   <label class="form-label text-secondary">Perguruan Tinggi *</label>
                   <input class="form-control @error('perguruan_tinggi') is-invalid @enderror" type="text" name="perguruan_tinggi" value="{{ old('perguruan_tinggi') }}">
                   @error('perguruan_tinggi')
@@ -47,7 +56,7 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label class="form-label text-secondary">Tanggal Surat Penerimaan Kuliah *</label>
+                  <label class="form-label text-secondary">Tanggal Surat Penerimaan Kuliah </label>
                   <input class="form-control @error('tgl_surat_penerimaan_pendidikan') is-invalid @enderror" type="date" name="tgl_surat_penerimaan_pendidikan" value="{{ old('tgl_surat_penerimaan_pendidikan') }}">
                   @error('tgl_surat_penerimaan_pendidikan')
                     <div class="invalid-feedback">
@@ -78,11 +87,11 @@
                   @enderror
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                  <label class="form-label text-secondary">Program Studi Satu Linier *</label>
+                  <label class="form-label text-secondary">Linieritas / kesesuaian Program Studi dengan Pendidikan Sebelumnya di UIN Sumatera Utara Medan *</label>
                   <select class="form-select @error('is_linear') is-invalid @enderror" name="is_linear">
                     <option hidden="">Pilih Program Studi Satu Linier</option>
-                    <option value="0" {{ old('is_linear') == '0' ? 'selected' : '' }}>Tidak</option>
-                    <option value="1" {{ old('is_linear') == '1' ? 'selected' : '' }}>Ya</option>
+                    <option value="0" {{ old('is_linear') == '0' ? 'selected' : '' }}>Tidak Linier ( Tidak Sesuai)</option>
+                    <option value="1" {{ old('is_linear') == '1' ? 'selected' : '' }}>Linier (Sesuai)</option>
                   </select>
                   @error('is_linear')
                     <div class="invalid-feedback">
@@ -157,13 +166,13 @@
                     </div>
                   @enderror
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 my-2 d-flex align-items-end justify-content-center">
+                <div class="col-lg-4 col-md-12 col-sm-12 my-2 d-flex align-items-end justify-content-center">
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-4 col-sm-4">
                       <a href="/dashboard/perjalanan-karir" class="form-control btn btn-secondary">Kembali</a>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                      <button class="form-control btn btn-success">Simpan!</button>
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <button class="form-control btn btn-success">Simpan & Lanjutkan</button>
                     </div>
                   </div>
                 </div>
