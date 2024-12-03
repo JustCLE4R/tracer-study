@@ -34,11 +34,13 @@ function fetchQuestion(url, status = null) {
         dataType: "json",
         success: function (data) {
             if (url === "bekerja" && status === "a") {
-              data.questions = data.questions.filter(question => question.id !== 2);
-
+                data.questions = data.questions.filter(
+                    (question) => question.id !== 2
+                );
             } else if (url === "bekerja" && status === "b") {
-              data.questions = data.questions.filter(question => question.id !== 1);
-
+                data.questions = data.questions.filter(
+                    (question) => question.id !== 1
+                );
             }
 
             data.status = status;
@@ -87,289 +89,284 @@ function isFreelancer(value) {
 }
 
 function buildDynamicForm(question) {
-  var colDiv = $("<div>").addClass("col-lg-4 col-md-6 col-sm-12 my-2");
+    var colDiv = $("<div>").addClass("col-lg-4 col-md-6 col-sm-12 my-2");
 
-  //Hapus jika ada duplikat input
-  if ($("#question-" + question.id).length > 0) {
-      $("#question-" + question.id).remove();
-  }
+    //Hapus jika ada duplikat input
+    if ($("#question-" + question.id).length > 0) {
+        $("#question-" + question.id).remove();
+    }
 
-  //Kustom label
-  var labelText = question.question;
-  const labelMapping = {
-    12: "Kabupaten/Kota",
-    31: "Kabupaten/Kota"
-  };
-  
-  if (labelMapping[question.id]) {
-      labelText = labelMapping[question.id];
-  }
-  
+    //Kustom label
+    var labelText = question.question;
+    const labelMapping = {
+        12: "Kabupaten/Kota",
+        31: "Kabupaten/Kota",
+    };
 
-  if (
-      question.id !== 10 &&
-      question.id !== 13 
-  ) {
-      labelText += " *";
-  }
+    if (labelMapping[question.id]) {
+        labelText = labelMapping[question.id];
+    }
 
-  var label = $("<label>")
-      .addClass("form-label text-secondary")
-      .text(labelText);
-  colDiv.append(label);
+    if (question.id !== 10 && question.id !== 13) {
+        labelText += " *";
+    }
 
-  // Cek ID tertentu untuk elemen select
-  if (question.id === 11 || question.id === 12) {
-      var select = $("<select>")
-          .addClass("form-select")
-          .attr("aria-label", "Default select example")
-          .attr(
-              "name",
-              question.question
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-zA-Z0-9-]/g, "")
-                  .replace(/-{2,}/g, "-")
-          );
+    var label = $("<label>")
+        .addClass("form-label text-secondary")
+        .text(labelText);
+    colDiv.append(label);
 
-      var defaultOption = $("<option>")
-          .prop({ selected: true })
-          .text("Pilih " + labelText); // Use the updated label text
-      select.append(defaultOption);
+    // Cek ID tertentu untuk elemen select
+    if (question.id === 11 || question.id === 12) {
+        var select = $("<select>")
+            .addClass("form-select")
+            .attr("aria-label", "Default select example")
+            .attr(
+                "name",
+                question.question
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-zA-Z0-9-]/g, "")
+                    .replace(/-{2,}/g, "-")
+            );
 
-      if (question.id === 11) {
-          $.ajax({
-              url: "/json/data.json",
-              method: "GET",
-              dataType: "json",
-              success: function (data) {
-                  data.forEach((item) => {
-                      var option = $("<option>")
-                          .val(item.provinsi)
-                          .text(item.provinsi);
-                      select.append(option);
-                  });
+        var defaultOption = $("<option>")
+            .prop({ selected: true })
+            .text("Pilih " + labelText); // Use the updated label text
+        select.append(defaultOption);
 
-                  select.on("change", function () {
-                      var selectedProvince = $(this).val();
-                      populateCityOptions(selectedProvince);
-                  });
-              },
-              error: function (error) {
-                  console.log("Error fetching province data:", error);
-              },
-          });
-      }
-      colDiv.append(select);
-  } else if (question.id === 30 || question.id === 31) {
-      var select = $("<select>")
-          .addClass("form-select")
-          .attr("aria-label", "Default select example")
-          .attr(
-              "name",
-              question.question
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-zA-Z0-9-]/g, "")
-                  .replace(/-{2,}/g, "-")
-          );
+        if (question.id === 11) {
+            $.ajax({
+                url: "/json/data.json",
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                    data.forEach((item) => {
+                        var option = $("<option>")
+                            .val(item.provinsi)
+                            .text(item.provinsi);
+                        select.append(option);
+                    });
 
-      var defaultOption = $("<option>")
-          .prop({ selected: true })
-          .text("Pilih " + labelText); // Use the updated label text
-      select.append(defaultOption);
-
-      if (question.id === 30) {
-          $.ajax({
-              url: "/json/data.json",
-              method: "GET",
-              dataType: "json",
-              success: function (data) {
-                  data.forEach((item) => {
-                      var option = $("<option>")
-                          .val(item.provinsi)
-                          .text(item.provinsi);
-                      select.append(option);
-                  });
-
-                  select.on("change", function () {
-                      var selectedProvince = $(this).val();
-                      populateCityOptions(selectedProvince);
-                  });
-              },
-              error: function (error) {
-                  console.log("Error fetching province data:", error);
-              },
-          });
-      }
-      colDiv.append(select);
-  }
-  else if (question.type === "select" && question.id === 2) {
-    var select = $("<select>")
-        .addClass("form-select")
-        .attr("aria-label", "Default select example")
-        .attr(
-            "name",
-            question.question
-                .toLowerCase()
-                .replace(/\s+/g, "-")
-                .replace(/[^a-zA-Z0-9-]/g, "")
-                .replace(/-{2,}/g, "-")
-        );
-    var defaultOption = $("<option>")
-        .prop({ selected: true })
-        .text("Pilih " + labelText); // Use the updated label text
-    select.append(defaultOption);
-
-    var qanswer = JSON.parse(question.qanswer);
-    $.each(qanswer, function (key, value) {
-        var option = $("<option>").val(key).text(value);
-        select.append(option);
-    });
-
-    // Tambahkan event listener untuk menangani perubahan nilai pada select
-    select.on("change", function () {
-        var value = $(this).val();
-        if (value === "d") {
-            // Menghapus form informasiPerusahaan saat memilih "d"
-            informasiPerusahaan.empty();
-        } else {
-            // Menambahkan form informasiPerusahaan jika bukan "d"
-            informasiPerusahaan.append(populateInformasiPerusahaan());
+                    select.on("change", function () {
+                        var selectedProvince = $(this).val();
+                        populateCityOptions(selectedProvince);
+                    });
+                },
+                error: function (error) {
+                    console.log("Error fetching province data:", error);
+                },
+            });
         }
-    });
+        colDiv.append(select);
+    } else if (question.id === 30 || question.id === 31) {
+        var select = $("<select>")
+            .addClass("form-select")
+            .attr("aria-label", "Default select example")
+            .attr(
+                "name",
+                question.question
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-zA-Z0-9-]/g, "")
+                    .replace(/-{2,}/g, "-")
+            );
 
-    colDiv.append(select);
+        var defaultOption = $("<option>")
+            .prop({ selected: true })
+            .text("Pilih " + labelText); // Use the updated label text
+        select.append(defaultOption);
+
+        if (question.id === 30) {
+            $.ajax({
+                url: "/json/data.json",
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                    data.forEach((item) => {
+                        var option = $("<option>")
+                            .val(item.provinsi)
+                            .text(item.provinsi);
+                        select.append(option);
+                    });
+
+                    select.on("change", function () {
+                        var selectedProvince = $(this).val();
+                        populateCityOptions(selectedProvince);
+                    });
+                },
+                error: function (error) {
+                    console.log("Error fetching province data:", error);
+                },
+            });
+        }
+        colDiv.append(select);
+    } else if (question.type === "select" && question.id === 2) {
+        var select = $("<select>")
+            .addClass("form-select")
+            .attr("aria-label", "Default select example")
+            .attr(
+                "name",
+                question.question
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-zA-Z0-9-]/g, "")
+                    .replace(/-{2,}/g, "-")
+            );
+        var defaultOption = $("<option>")
+            .prop({ selected: true })
+            .text("Pilih " + labelText); // Use the updated label text
+        select.append(defaultOption);
+
+        var qanswer = JSON.parse(question.qanswer);
+        $.each(qanswer, function (key, value) {
+            var option = $("<option>").val(key).text(value);
+            select.append(option);
+        });
+
+        select.on("change", function () {
+            var value = $(this).val();
+            if (value === "d") {
+                informasiPerusahaan.empty();
+            } else {
+                informasiPerusahaan.append(populateInformasiPerusahaan());
+            }
+        });
+
+        colDiv.append(select);
+    } else if (question.type === "select") {
+        if (question.id === 2) {
+        } else {
+            var select = $("<select>")
+                .addClass("form-select")
+                .attr("aria-label", "Default select example")
+                .attr(
+                    "name",
+                    question.question
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")
+                        .replace(/[^a-zA-Z0-9-]/g, "")
+                        .replace(/-{2,}/g, "-")
+                );
+            var defaultOption = $("<option>")
+                .prop({ selected: true })
+                .text("Pilih " + labelText);
+            select.append(defaultOption);
+
+            var qanswer = JSON.parse(question.qanswer);
+            $.each(qanswer, function (key, value) {
+                var option = $("<option>").val(key).text(value);
+                select.append(option);
+            });
+
+            colDiv.append(select);
+        }
+    } else if (
+        question.type === "text" ||
+        question.type === "number" ||
+        question.type === "date"
+    ) {
+        var inputID = "question-" + question.id;
+        if ($("#" + inputID).length === 0) {
+            var input = $("<input>")
+                .attr({
+                    type: question.type,
+                    id: inputID,
+                    name: question.question
+                        .toLowerCase()
+                        .replace(/\s+/g, "-")
+                        .replace(/[^a-zA-Z0-9-]/g, "")
+                        .replace(/-{2,}/g, "-"),
+                })
+                .addClass("form-control");
+            colDiv.append(input);
+        }
+    } else if (question.type === "file") {
+        var fileInputContainer = $("<div>").addClass(
+            "d-flex align-items-center"
+        );
+        var fileInput = $("<input>")
+            .attr({
+                type: "file",
+                id: "formGroupExampleFile",
+                name: question.question
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-zA-Z0-9-]/g, "")
+                    .replace(/-{2,}/g, "-"),
+            })
+            .addClass("form-control");
+        var fileInfoSpan = $("<span>").addClass("ms-2").attr({
+            "data-bs-toggle": "popover",
+            "data-bs-title": "Keterangan",
+            "data-bs-content":
+                "File ini bisa berupa foto/screenshot yang membuktikan bahwa anda telah bekerja/berwirausaha, contoh: 1. Surat/Email Penerimaan Bekerja, 2. Surat Keputusan kontrak kerja, 3. Riwayat chat penerimaan /pemanggilan kerja, 4. Foto Tempat Berwirausaha, 5. Dan lain-lain",
+        });
+        var infoIcon = $("<i>").addClass("bi bi-info-circle");
+        fileInfoSpan.append(infoIcon);
+
+        fileInputContainer.append(fileInput);
+        fileInputContainer.append(fileInfoSpan);
+
+        colDiv.append(fileInputContainer);
+    } else if (question.type === "email") {
+        var inputEmail = $("<input>")
+            .attr({
+                type: "email",
+                id: "formGroupExampleInput",
+                name: question.question
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-zA-Z0-9-]/g, "")
+                    .replace(/-{2,}/g, "-"),
+            })
+            .addClass("form-control");
+        colDiv.append(inputEmail);
+    } else if (question.type === "checkbox") {
+        var qanswer = JSON.parse(question.qanswer);
+
+        var labelDiv = $("<div>").addClass("col-12");
+        labelDiv.append(label);
+        colDiv.append(labelDiv);
+
+        Object.keys(qanswer).forEach(function (key) {
+            var checkboxDiv = $("<div>").addClass("form-check col-8");
+
+            var checkboxInput = $("<input>")
+                .attr({
+                    type: "checkbox",
+                    id: "formGroupExampleCheckbox_" + key,
+                    name:
+                        question.question
+                            .toLowerCase()
+                            .replace(/\s+/g, "-")
+                            .replace(/[^a-zA-Z0-9-]/g, "")
+                            .replace(/-{2,}/g, "-") + "[]",
+                    value: key,
+                })
+                .addClass("form-check-input");
+
+            var checkboxLabel = $("<label>")
+                .addClass("form-check-label")
+                .text(qanswer[key]);
+
+            checkboxDiv.append(checkboxInput);
+            checkboxDiv.append(checkboxLabel);
+            colDiv.append(checkboxDiv);
+        });
+    }
+
+    return colDiv;
 }
-else if (question.type === "select") {
-  if (question.id === 2) {
-      // Logic for question with id 2, maybe with a special handling
-  } else {
-      var select = $("<select>")
-          .addClass("form-select")
-          .attr("aria-label", "Default select example")
-          .attr(
-              "name",
-              question.question
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-zA-Z0-9-]/g, "")
-                  .replace(/-{2,}/g, "-")
-          );
-      var defaultOption = $("<option>")
-          .prop({ selected: true })
-          .text("Pilih " + labelText); // Use the updated label text
-      select.append(defaultOption);
-
-      var qanswer = JSON.parse(question.qanswer);
-      $.each(qanswer, function (key, value) {
-          var option = $("<option>").val(key).text(value);
-          select.append(option);
-      });
-
-      colDiv.append(select);
-  }
-} else if (question.type === "text" || question.type === "number" || question.type === "date") {
-      var inputID = "question-" + question.id;
-      if ($("#" + inputID).length === 0) {
-          var input = $("<input>")
-              .attr({
-                  type: question.type,
-                  id: inputID,
-                  name: question.question
-                      .toLowerCase()
-                      .replace(/\s+/g, "-")
-                      .replace(/[^a-zA-Z0-9-]/g, "")
-                      .replace(/-{2,}/g, "-"),
-              })
-              .addClass("form-control");
-          colDiv.append(input);
-      }
-  } else if (question.type === "file") {
-      var fileInputContainer = $("<div>").addClass("d-flex align-items-center");
-      var fileInput = $("<input>")
-          .attr({
-              type: "file",
-              id: "formGroupExampleFile",
-              name: question.question
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-zA-Z0-9-]/g, "")
-                  .replace(/-{2,}/g, "-"),
-          })
-          .addClass("form-control");
-      var fileInfoSpan = $("<span>").addClass("ms-2").attr({
-          "data-bs-toggle": "popover",
-          "data-bs-title": "Keterangan",
-          "data-bs-content":
-              "File ini bisa berupa foto/screenshot yang membuktikan bahwa anda telah bekerja/berwirausaha, contoh: 1. Surat/Email Penerimaan Bekerja, 2. Surat Keputusan kontrak kerja, 3. Riwayat chat penerimaan /pemanggilan kerja, 4. Foto Tempat Berwirausaha, 5. Dan lain-lain",
-      });
-      var infoIcon = $("<i>").addClass("bi bi-info-circle");
-      fileInfoSpan.append(infoIcon);
-
-      fileInputContainer.append(fileInput);
-      fileInputContainer.append(fileInfoSpan);
-
-      colDiv.append(fileInputContainer);
-  } else if (question.type === "email") {
-      var inputEmail = $("<input>")
-          .attr({
-              type: "email",
-              id: "formGroupExampleInput",
-              name: question.question
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")
-                  .replace(/[^a-zA-Z0-9-]/g, "")
-                  .replace(/-{2,}/g, "-"),
-          })
-          .addClass("form-control");
-      colDiv.append(inputEmail);
-  } else if (question.type === "checkbox") {
-      var qanswer = JSON.parse(question.qanswer);
-
-      var labelDiv = $("<div>").addClass("col-12");
-      labelDiv.append(label);
-      colDiv.append(labelDiv);
-
-      Object.keys(qanswer).forEach(function (key) {
-          var checkboxDiv = $("<div>").addClass("form-check col-8");
-
-          var checkboxInput = $("<input>")
-              .attr({
-                  type: "checkbox",
-                  id: "formGroupExampleCheckbox_" + key,
-                  name:
-                      question.question
-                          .toLowerCase()
-                          .replace(/\s+/g, "-")
-                          .replace(/[^a-zA-Z0-9-]/g, "")
-                          .replace(/-{2,}/g, "-") + "[]",
-                  value: key,
-              })
-              .addClass("form-check-input");
-
-          var checkboxLabel = $("<label>")
-              .addClass("form-check-label")
-              .text(qanswer[key]);
-
-          checkboxDiv.append(checkboxInput);
-          checkboxDiv.append(checkboxLabel);
-          colDiv.append(checkboxDiv);
-      });
-  }
-
-  return colDiv;
-}
-
 
 function populateCityOptions(selectedProvince) {
-    var citySelect = $("select[name='kabupaten']"); 
-    citySelect.empty(); 
+    var citySelect = $("select[name='kabupaten']");
+    citySelect.empty();
     citySelect.append(
         $("<option>").prop({ selected: true }).text("Pilih Kabupaten/Kota")
     );
 
-    $.ajax({  
+    $.ajax({
         url: "/json/data.json",
         method: "GET",
         dataType: "json",

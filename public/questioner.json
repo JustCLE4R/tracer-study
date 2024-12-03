@@ -20,7 +20,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Ketrampilan internet dan computer",
+            "text": "Keterampilan Bidang Teknologi Informasi (Internet dan Komputer)",
             "name": "a_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -116,7 +116,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Ketrampilan internet dan computer",
+            "text": "Keterampilan Bidang Teknologi Informasi (Internet dan Komputer)",
             "name": "b_4",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -337,7 +337,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Kinerja dalam menjalankan tugas",
+            "text": "Mendukung kemampuan / kinerja dalam menjalankan tugas",
             "name": "g_3",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },

@@ -88,7 +88,7 @@
                             </div>
                             <div class="row mt-2 justify-content-end">
                                 <div class="col-lg-3 col-md-3 col-sm-10 text-end">
-                                    <button class="btn btn-success btn-sm mb-3">Kirim Jawaban <i class="bi bi-send-fill"></i>
+                                    <button class="btn btn-success btn-sm mb-3">Simpan dan unduh Sertifikat</i>
                                     </button>
                                 </div>    
                             </div>
