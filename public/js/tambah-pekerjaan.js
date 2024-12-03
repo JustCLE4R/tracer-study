@@ -34,9 +34,11 @@ function fetchQuestion(url, status = null) {
         dataType: "json",
         success: function (data) {
             if (url === "bekerja" && status === "a") {
-                data.questions.splice(1, 1);
+              data.questions = data.questions.filter(question => question.id !== 2);
+
             } else if (url === "bekerja" && status === "b") {
-                data.questions.splice(0, 1);
+              data.questions = data.questions.filter(question => question.id !== 1);
+
             }
 
             data.status = status;
@@ -202,7 +204,47 @@ function buildDynamicForm(question) {
       }
       colDiv.append(select);
   }
-   else if (question.type === "select" && question.id !== 2) {
+  else if (question.type === "select" && question.id === 2) {
+    var select = $("<select>")
+        .addClass("form-select")
+        .attr("aria-label", "Default select example")
+        .attr(
+            "name",
+            question.question
+                .toLowerCase()
+                .replace(/\s+/g, "-")
+                .replace(/[^a-zA-Z0-9-]/g, "")
+                .replace(/-{2,}/g, "-")
+        );
+    var defaultOption = $("<option>")
+        .prop({ selected: true })
+        .text("Pilih " + labelText); // Use the updated label text
+    select.append(defaultOption);
+
+    var qanswer = JSON.parse(question.qanswer);
+    $.each(qanswer, function (key, value) {
+        var option = $("<option>").val(key).text(value);
+        select.append(option);
+    });
+
+    // Tambahkan event listener untuk menangani perubahan nilai pada select
+    select.on("change", function () {
+        var value = $(this).val();
+        if (value === "d") {
+            // Menghapus form informasiPerusahaan saat memilih "d"
+            informasiPerusahaan.empty();
+        } else {
+            // Menambahkan form informasiPerusahaan jika bukan "d"
+            informasiPerusahaan.append(populateInformasiPerusahaan());
+        }
+    });
+
+    colDiv.append(select);
+}
+else if (question.type === "select") {
+  if (question.id === 2) {
+      // Logic for question with id 2, maybe with a special handling
+  } else {
       var select = $("<select>")
           .addClass("form-select")
           .attr("aria-label", "Default select example")
@@ -226,7 +268,8 @@ function buildDynamicForm(question) {
       });
 
       colDiv.append(select);
-  } else if (question.type === "text" || question.type === "number" || question.type === "date") {
+  }
+} else if (question.type === "text" || question.type === "number" || question.type === "date") {
       var inputID = "question-" + question.id;
       if ($("#" + inputID).length === 0) {
           var input = $("<input>")
