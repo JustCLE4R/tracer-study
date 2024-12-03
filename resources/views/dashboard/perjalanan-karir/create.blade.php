@@ -52,7 +52,7 @@
                 <i class="bi bi-arrow-left-circle"></i> Kembali
               </a>
               <button class="btn btn-success mx-1">
-                <i class="bi bi-file-earmark-check"></i> Simpan
+                <i class="bi bi-file-earmark-check"></i> Simpan & Lanjutkan
               </button>
             </div>
           </div>
