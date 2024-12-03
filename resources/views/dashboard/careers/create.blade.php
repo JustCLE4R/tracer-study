@@ -55,7 +55,7 @@
                   @enderror
                 </div>
                 <div class="mb-3">
-                  <label for="url" class="form-label">Website Perusahaan</label>
+                  <label for="url" class="form-label">Link Website Resmi Perusahaan / Link Resmi Publikasi Lowongan Pekerjaan</label>
                   <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url"
                     value="{{ old('url') }}">
                   @error('url')
@@ -64,7 +64,7 @@
                   </div>
                   @enderror
                 </div>
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                   <label for="slug" class="form-label">Slug</label>
                   <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
                     value="{{ old('slug') }}" required readonly>
@@ -73,9 +73,32 @@
                     {{ $message }}
                   </div>
                   @enderror
+                </div> --}}
+
+                {{-- New --}}
+                <div class="mb-3">
+                  <label for="start-periode" class="form-label">Periode pendaftaran / Registrasi</label>
+                  <input type="date" class="form-control @error('start-periode') is-invalid @enderror" id="start-periode" name="start-periode"
+                    value="{{ old('start-periode') }}">
+                  @error('start-periode')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
                 </div>
                 <div class="mb-3">
-                  <label for="image" class="form-label">Foto Brosur</label>
+                  <label for="end-periode" class="form-label">Periode Akhir</label>
+                  <input type="date" class="form-control @error('end-periode') is-invalid @enderror" id="end-periode" name="end-periode"
+                    value="{{ old('end-periode') }}">
+                  @error('end-periode')
+                  <div class="invalid-feedback">
+                    {{ $message }}
+                  </div>
+                  @enderror
+                </div>
+                
+                <div class="mb-3">
+                  <label for="image" class="form-label">Dokumentasi Publikasi Lowongan Pekerjaan secara Resmi (Flyer, surat, dan Dokumenn resmi lainnya)</label>
                   <img class="img-preview img-fluid mb-3 col-sm-5">
                   <input class="form-control @error('image') is-invalid @enderror" type="file"
                     id="image" name="image" onchange="previewImage()">
@@ -93,6 +116,9 @@
                   <input id="description" type="hidden" name="description" value="{{ old('description') }}">
                   <trix-editor input="description"></trix-editor>
                 </div>
+
+                
+
                 <div class="row justify-content-end">
                   <div class="col-lg-5 col-md-8 col-sm-12 text-end">
                     <a href="/dashboard/career" class="btn btn-secondary mx-1"><i class="bi bi-arrow-left-circle"></i>
