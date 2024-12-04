@@ -16,7 +16,7 @@ return new class extends Migration
       $table->string('nim', 20)->unique();
       $table->string('nama');
       $table->string('password');
-      $table->enum('role', ['mahasiswa', 'surveyor', 'adminprodi', 'adminfakultas', 'superadmin'])->default('mahasiswa');
+      $table->enum('role', ['mahasiswa', 'surveyor', 'adminprodi', 'adminfakultas', 'superadmin', 'superadmin2'])->default('mahasiswa');
       $table->boolean('is_bekerja')->default(1);
       // informasi akademik
       $table->string('program_studi');
@@ -30,6 +30,7 @@ return new class extends Migration
       $table->integer('sks_kumulatif')->nullable();
       $table->string('predikat_kelulusan', 17)->nullable();
       $table->string('judul_tugas_akhir')->nullable();
+      $table->integer('masa_studi_semester')->nullable();
       // informasi pribadi
       $table->string('foto')->nullable();
       $table->unsignedBigInteger('nomor_ktp')->nullable();
@@ -41,6 +42,7 @@ return new class extends Migration
       $table->string('kabupaten')->nullable();
       $table->string('kecamatan')->nullable();
       $table->string('alamat');
+      $table->integer('lama_mendapatkan_pekerjaan')->nullable();
       // informasi kontak
       $table->string('telepon', 25);
       $table->string('email');

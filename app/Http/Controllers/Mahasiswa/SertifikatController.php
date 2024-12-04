@@ -47,12 +47,12 @@ class SertifikatController extends Controller
         $certCheck->refresh();
 
         if (!$certCheck->qr_code) {
-            return view('dashboard.sertifikat.notCompleteYet', [
+            return view('dashboard.mahasiswa.sertifikat.notCompleteYet', [
                 'sertifikat' => $certCheck
             ]);
         }
 
-        return view('dashboard.sertifikat.index', [
+        return view('dashboard.mahasiswa.sertifikat.index', [
             'sertifikat' => $certCheck
         ]);
     }

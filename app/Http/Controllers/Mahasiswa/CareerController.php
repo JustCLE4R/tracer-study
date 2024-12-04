@@ -29,7 +29,7 @@ class CareerController extends Controller
       $query->where('user_id', Auth::user()->id);
     }
 
-    return view('dashboard.careers.index', [
+    return view('dashboard.mahasiswa.careers.index', [
       'careers' => $query->paginate()->appends(request()->query()),
     ]);
   }
@@ -39,7 +39,7 @@ class CareerController extends Controller
    */
   public function create()
   {
-    return view('dashboard.careers.create');
+    return view('dashboard.mahasiswa.careers.create');
   }
 
   /**
@@ -94,7 +94,7 @@ class CareerController extends Controller
       abort(403);
     }
 
-    return view('dashboard.careers.show', [
+    return view('dashboard.mahasiswa.careers.show', [
       'career' => $career
     ]);
   }
@@ -114,7 +114,7 @@ class CareerController extends Controller
       return abort(403);
     }
 
-    return view('dashboard.careers.edit', [
+    return view('dashboard.mahasiswa.careers.edit', [
       'career' => $career
     ]);
   }

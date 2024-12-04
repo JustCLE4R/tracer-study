@@ -9,11 +9,11 @@ use App\Http\Requests\UpdateUserRequest;
 class UserController extends Controller
 {
   public function index(){
-    return view('dashboard.profile.index');
+    return view('dashboard.mahasiswa.profile.index');
   }
 
   public function edit(){
-    return view('dashboard.profile.edit');
+    return view('dashboard.mahasiswa.profile.edit');
   }
 
   public function update(UpdateUserRequest $request){

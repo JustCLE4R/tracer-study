@@ -13,7 +13,7 @@ class QuestionerController extends Controller
     public function index(){
         // return view('dashboard.questioner.notperiod');
 
-        return view('dashboard.questioner.index', [
+        return view('dashboard.mahasiswa.questioner.index', [
             'questioner' => Questioner::where('user_id', Auth::user()->id)->with('user')->get(),
         ]);
     }

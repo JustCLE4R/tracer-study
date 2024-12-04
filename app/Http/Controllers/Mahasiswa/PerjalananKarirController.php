@@ -28,14 +28,14 @@ class PerjalananKarirController extends Controller
 
 		$unioned = $pekerjaans->union($wirausaha)->orderBy('is_active', 'desc')->orderBy('tanggal_mulai', 'asc')->orderBy('tipe_kerja', 'desc')->get();
 
-		return view('dashboard.perjalanan-karir.index', [
+		return view('dashboard.mahasiswa.perjalanan-karir.index', [
 			'pekerjaans' => $unioned,
 			'pendidikans' => Pendidikan::where('user_id', Auth::user()->id)->orderBy('tingkat_pendidikan', 'asc')->get()
 		]);
 	}
 
 	public function create(){
-    return view('dashboard.perjalanan-karir.create');
+    return view('dashboard.mahasiswa.perjalanan-karir.create');
 	}
 
 	public function store(Request $request){

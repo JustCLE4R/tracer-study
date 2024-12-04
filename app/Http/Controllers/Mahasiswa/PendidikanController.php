@@ -24,7 +24,7 @@ class PendidikanController extends Controller
    */
   public function create()
   {
-    return view('dashboard.perjalanan-karir.pendidikan.create');
+    return view('dashboard.mahasiswa.perjalanan-karir.pendidikan.create');
   }
 
   /**
@@ -105,7 +105,7 @@ class PendidikanController extends Controller
       return abort(403);
     }
 
-    return view('dashboard.perjalanan-karir.pendidikan.show', [
+    return view('dashboard.mahasiswa.perjalanan-karir.pendidikan.show', [
       'pendidikan' => $pendidikan
     ]);
   }
@@ -125,7 +125,7 @@ class PendidikanController extends Controller
       return abort(403);
     }
 
-    return view('dashboard.perjalanan-karir.pendidikan.edit', [
+    return view('dashboard.mahasiswa.perjalanan-karir.pendidikan.edit', [
       'pendidikan' => $pendidikan
     ]);
   }

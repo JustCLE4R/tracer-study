@@ -59,16 +59,16 @@
                         <div class="input-boxes">
                             <div class="input-box" data-aos="fade-up" data-aos-duration="1200">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" name="nim" placeholder="Masukan NIM"
-                                    value="{{ $errors->has('nim') ? '' : old('nim') }}" maxlength="20" required>
+                                {{-- <input type="text" name="nim" placeholder="Masukan NIM" value="{{ $errors->has('nim') ? '' : old('nim') }}" maxlength="20" required> --}}
+                                <input type="text" name="nim" placeholder="Masukan NIM" value="41144013" maxlength="20" required>
                             </div>
                             @error('nim')
                             <div class="error error-txt">{{ $message }}</div>
                             @enderror
                             <div class="input-box" data-aos="fade-up" data-aos-duration="1400">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" name="password" placeholder="Masukan Password" required>
-
+                                {{-- <input type="password" name="password" placeholder="Masukan Password" required> --}}
+                                <input type="password" name="password" placeholder="Masukan Password" value="12345" required>
                             </div>
                             @error('password')
                             <div class="error error-txt">{{ $message }}</div>

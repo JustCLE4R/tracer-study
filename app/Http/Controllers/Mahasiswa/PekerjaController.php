@@ -184,7 +184,7 @@ class PekerjaController extends Controller
             return abort(403);
         }
 
-        return view('dashboard.perjalanan-karir.kerja.editPekerja', [
+        return view('dashboard.mahasiswa.perjalanan-karir.kerja.editPekerja', [
             'pekerja' => $pekerja,
         ]);
     }
