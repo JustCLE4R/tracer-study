@@ -54,6 +54,40 @@
     </div>
     <div class="container-fluid  ms-0" style="padding: 0 28px;">
         <div class="row justify-content-evenly">
+
+            <div class="col-sm-6 col-lg-4">
+                <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('ipk')"
+                    n="1000">
+                    <i class="bi bi-person-fill-gear text-primary fs-1" ></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Visualisasi IPK</p>
+                        <h6 id="ipk" class="mb-0"></h6>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('career')"
+                    n="1000">
+                    <i class="bi bi-person-fill-gear text-primary fs-1" ></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Visualisasi Career</p>
+                        <h6 id="career" class="mb-0"></h6>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('lama-study')"
+                    n="1000">
+                    <i class="bi bi-person-fill-gear text-primary fs-1" ></i>
+                    <div class="ms-3">
+                        <p class="mb-2">Visualisasi Lama Study</p>
+                        <h6 id="lama-study" class="mb-0"></h6>
+                    </div>
+
+                </div>
+            </div>
             <div class="col-sm-6 col-lg-4">
                 <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('tracer-pekerja')"
                     n="1000">
@@ -379,6 +413,138 @@
         </div>
     </div>
 
+    <div class="container-fluid pt-4 px-4 ms-0 my-4">
+        <div class="row  justify-content-center border-top border-success border-5 rounded p-4 mx-1 bg-light ">
+            <div class="col-lg-12 col-sm-12 align-items-center justify-content-between mb-4">
+                <div class="row justify-content-between">
+                    <div class="col-lg-7">
+                        <span class="mb-0 h4 " id="ipk">Visualisasi IPK</span>
+                    </div>
+                    <div class="col-lg-5 col-sm-12">
+                        <div class="input-group mb-3">
+                            <select id="tahunLulusSelect-ipk" class="form-select">
+                                <option value="">Pilih Tahun Lulus</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                            @if (Auth::user()->role == 'superadmin')
+                                <select id="fakultasSelect-ipk" class="form-select">
+                                    <option value="">Pilih Fakultas</option>
+                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
+                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
+                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
+                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
+                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
+                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
+                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
+                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
+                                    <option value="Pascasarjana">Pascasarjana</option>
+                                </select>
+                                <select id="prodiSelect-ipk" class="form-select">
+                                    <option value="">Pilih Prodi</option>
+                                    
+                                </select>
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="charts-ipk">
+                <!-- Chart dan table akan di-generate di sini oleh JavaScript -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid pt-4 px-4 ms-0 my-4">
+        <div class="row  justify-content-center border-top border-success border-5 rounded p-4 mx-1 bg-light ">
+            <div class="col-lg-12 col-sm-12 align-items-center justify-content-between mb-4">
+                <div class="row justify-content-between">
+                    <div class="col-lg-7">
+                        <span class="mb-0 h4 " id="lama-study">Visualisasi Lama Study</span>
+                    </div>
+                    <div class="col-lg-5 col-sm-12">
+                        <div class="input-group mb-3">
+                            <select id="tahunLulusSelect-lama-study" class="form-select">
+                                <option value="">Pilih Tahun Lulus</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
+                            @if (Auth::user()->role == 'superadmin')
+                                <select id="fakultasSelect-lama-study" class="form-select">
+                                    <option value="">Pilih Fakultas</option>
+                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
+                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
+                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
+                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
+                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
+                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
+                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
+                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
+                                    <option value="Pascasarjana">Pascasarjana</option>
+                                </select>
+                                <select id="prodiSelect-lama-study" class="form-select">
+                                    <option value="">Pilih Prodi</option>
+                                    
+                                </select>
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="charts-lama-study">
+                <!-- Chart dan table akan di-generate di sini oleh JavaScript -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="container-fluid pt-4 px-4 ms-0 my-4">
+        <div class="row  justify-content-center border-top border-success border-5 rounded p-4 mx-1 bg-light ">
+            <div class="col-lg-12 col-sm-12 align-items-center justify-content-between mb-4">
+                <div class="row justify-content-between">
+                    <div class="col-lg-7">
+                        <span class="mb-0 h4 " id="career">Visualisasi Career</span>
+                    </div>
+                    <div class="col-lg-5 col-sm-12">
+                        <div class="input-group mb-3">                           
+                            @if (Auth::user()->role == 'superadmin')
+                                <select id="fakultasSelect-career" class="form-select">
+                                    <option value="">Pilih Fakultas</option>
+                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
+                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
+                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
+                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
+                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
+                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
+                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
+                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
+                                    <option value="Pascasarjana">Pascasarjana</option>
+                                </select>
+                                <select id="prodiSelect-career" class="form-select">
+                                    <option value="">Pilih Prodi</option>
+                                    
+                                </select>
+                            @endif
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="charts-career">
+                <!-- Chart dan table akan di-generate di sini oleh JavaScript -->
+            </div>
+
+        </div>
+
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -390,6 +556,9 @@
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+
+
         // Header
         $(document).ready(function() {
             var userFakultas = "{{ Auth::user()->fakultas }}";

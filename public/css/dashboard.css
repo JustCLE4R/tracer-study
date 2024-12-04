@@ -125,8 +125,10 @@ a {
 }
 /* Warna asal pada item dropdown */
 .dropdown-item {
-    color: #000000; /* Warna teks */
+    color: #027a24; /* Warna teks */
     background-color: #ffffff; /* Warna latar belakang */
+    padding: 13px 8px;
+    margin: 5px 0px;
 }
 
 /* Warna pada item dropdown saat di-hover */
