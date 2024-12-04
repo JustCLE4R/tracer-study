@@ -214,6 +214,25 @@
                 </div>
               </div>
               <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Masa Studi (Semester)</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                    <select class="form-select @error('masa_studi_semester') is-invalid @enderror" name="masa_studi_semester">
+                    <option value="" hidden>Pilih Masa Studi</option>
+                    @for ($i = 7; $i <= 14; $i++)
+                      <option value="{{ $i }}" {{ old('masa_studi_semester', Auth::user()->masa_studi_semester) == $i ? 'selected' : '' }}>{{ $i . ' Semester' }}</option>
+                    @endfor
+                    </select>
+                  @error('masa_studi_semester')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                  @enderror
+                </div>
+              </div>
+              <hr>
 
               <div class="row my-2">
                 <div class="col text-center">
@@ -355,40 +374,73 @@
 </div>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-    const apiURL = '/json/data.json';
+document.addEventListener('DOMContentLoaded', function () {
+  const apiURL = '/json/data.json';
 
-    const provinsiSelect = document.getElementById('provinsi');
-    const kotaSelect = document.getElementById('kabupaten');
+  const provinsiSelect = document.getElementById('provinsi');
+  const kotaSelect = document.getElementById('kabupaten');
 
-    fetch(apiURL)
-      .then(response => response.json())
-      .then(data => {
-        data.forEach(prov => {
-          const option = document.createElement('option');
-          option.value = prov.provinsi;
-          option.textContent = prov.provinsi;
-          provinsiSelect.appendChild(option);
-        });
+  fetch(apiURL)
+    .then(response => response.json())
+    .then(data => {
+      // Populate provinsi dropdown
+      data.forEach(prov => {
+        const option = document.createElement('option');
+        option.value = prov.provinsi;
+        option.textContent = prov.provinsi;
+        provinsiSelect.appendChild(option);
+      });
 
-        provinsiSelect.addEventListener('change', function() {
-          kotaSelect.innerHTML = '<option hidden>Pilih Kabupaten/Kota</option>';
-          
-          const selectedProvinsi = this.value;
-          
-          const selectedData = data.find(prov => prov.provinsi === selectedProvinsi);
-          
-          if (selectedData && selectedData.kota) {
-            selectedData.kota.forEach(kabupaten => {
-              const option = document.createElement('option');
-              option.value = kabupaten;
-              option.textContent = kabupaten;
-              kotaSelect.appendChild(option);
-            });
-          }
-        });
-      })
-      .catch(error => console.error('Error fetching data:', error));
-  });
+      // Handle change event for provinsi
+      provinsiSelect.addEventListener('change', function () {
+        kotaSelect.innerHTML = '<option hidden>Pilih Kabupaten/Kota</option>';
+
+        const selectedProvinsi = this.value;
+
+        const selectedData = data.find(prov => prov.provinsi === selectedProvinsi);
+
+        if (selectedData && selectedData.kota) {
+          selectedData.kota.forEach(kabupaten => {
+            const option = document.createElement('option');
+            option.value = kabupaten;
+            option.textContent = kabupaten;
+            kotaSelect.appendChild(option);
+          });
+        }
+      });
+
+      // Repopulate after an error or old values
+      populateAfterError(data);
+    })
+    .catch(error => console.error('Error fetching data:', error));
+});
+
+function populateAfterError(data) {
+  const provinsiSelect = document.getElementById('provinsi');
+  const kotaSelect = document.getElementById('kabupaten');
+
+  const oldProvinsi = '{{ old('provinsi', Auth::user()->provinsi) }}';
+  const oldKabupaten = '{{ old('kabupaten', Auth::user()->kabupaten) }}';
+
+  if (oldProvinsi) {
+    provinsiSelect.value = oldProvinsi;
+
+    // Wait for `change` event to populate kabupaten
+    const selectedData = data.find(prov => prov.provinsi === oldProvinsi);
+
+    if (selectedData && selectedData.kota) {
+      kotaSelect.innerHTML = '<option hidden>Pilih Kabupaten/Kota</option>';
+      selectedData.kota.forEach(kabupaten => {
+        const option = document.createElement('option');
+        option.value = kabupaten;
+        option.textContent = kabupaten;
+        kotaSelect.appendChild(option);
+      });
+
+      // Set old value for kabupaten
+      kotaSelect.value = oldKabupaten;
+    }
+  }
+}
 </script>
 @endsection

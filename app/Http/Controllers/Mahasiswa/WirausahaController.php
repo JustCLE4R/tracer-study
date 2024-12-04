@@ -103,7 +103,14 @@ class WirausahaController extends Controller
             'bukti_berusaha' => $request->file('fotobukti-telah-berwirausaha')->store('bukti-wirausaha'),
         ] + $dataAkhirUsaha;
 
-        Wirausaha::create($dataPrepare);
+        $wirausaha = Wirausaha::create($dataPrepare);
+
+        $lamaMendapatkanPekerjaan = (strtotime($wirausaha->tgl_mulai_usaha) - strtotime(Auth::user()->tgl_wisuda)) / (60 * 60 * 24);
+        if(Auth::user()->lama_mendapatkan_pekerjaan == null || Auth::user()->lama_mendapatkan_pekerjaan > $lamaMendapatkanPekerjaan){
+            Auth::user()->update([
+                'lama_mendapatkan_pekerjaan' => $lamaMendapatkanPekerjaan
+            ]);
+        } 
 
         if(Auth::user()->wirausaha->count() > 1 || Auth::user()->pekerja->count() > 1){
             return redirect('/dashboard/perjalanan-karir')->with('success', 'Data pekerjaan berhasil ditambahkan!');
@@ -230,6 +237,13 @@ class WirausahaController extends Controller
         }
 
         $wirausaha->update($dataPrepare);
+
+        $lamaMendapatkanPekerjaan = (strtotime($wirausaha->tgl_mulai_usaha) - strtotime(Auth::user()->tgl_wisuda)) / (60 * 60 * 24);
+        if(Auth::user()->lama_mendapatkan_pekerjaan == null || Auth::user()->lama_mendapatkan_pekerjaan > $lamaMendapatkanPekerjaan){
+            Auth::user()->update([
+                'lama_mendapatkan_pekerjaan' => $lamaMendapatkanPekerjaan
+            ]);
+        } 
 
         if (Auth::user()->role != 'mahasiswa') {
             return redirect('/dashboard/admin/' . $wirausaha->user->id)->with('success', 'Data pekerjaan berhasil diubah!');

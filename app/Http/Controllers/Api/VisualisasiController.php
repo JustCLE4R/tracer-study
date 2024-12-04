@@ -358,32 +358,40 @@ class VisualisasiController extends Controller
     }
 
     public function visualisasiExport(Request $request){
-        if(!$request->get('fakultas') || !$request->get('jenisVisualisasi') || !$request->get('tahun')){
+        if(!$request->get('program_studi') || !$request->get('fakultas') || !$request->get('jenisVisualisasi') || !$request->get('tahun')){
             return response()->json([
                 'status' => "failed",
                 'message' => 'Fakultas, Prodi dan Jenis Visualisasi harus diisi!'
             ]);
         }
 
-
         $tahun = $request->get('tahun');
         $fakultas = $request->get('fakultas');
+        $program_studi = $request->get('program_studi');
         $jenisVisualisasi = $request->get('jenisVisualisasi');
 
         if (in_array($jenisVisualisasi, ['wirausaha', 'pekerja', 'pendidikan', 'questioner'])) {
             $exportData = User::with($jenisVisualisasi)
-                        ->whereYear('tgl_lulus', $tahun)
-                        ->where('fakultas', $fakultas)
-                        ->whereHas($jenisVisualisasi)
-                        ->get();
+                ->whereYear('tgl_lulus', $tahun)
+                ->when($program_studi, function($query) use ($program_studi) {
+                    return $query->where('program_studi', $program_studi);
+                }, function($query) use ($fakultas) {
+                    return $query->where('fakultas', $fakultas);
+                })
+                ->whereHas($jenisVisualisasi)
+                ->get();
         } else {
             $exportData = QuestionerStakeHolder::join('detail_perusahaans', 'questioner_stake_holders.detail_perusahaan_id', '=', 'detail_perusahaans.id')
-                        ->join('pekerjas', 'detail_perusahaans.pekerja_id', '=', 'pekerjas.id')
-                        ->join('users', 'pekerjas.user_id', '=', 'users.id')
-                        ->whereYear('users.tgl_lulus', $tahun)
-                        ->where('users.fakultas', $fakultas)
-                        ->select('users.nim', 'users.nama', 'users.password', 'users.role', 'users.is_bekerja', 'users.program_studi', 'users.fakultas', 'users.strata', 'users.tahun_masuk', 'users.tgl_lulus', 'users.tgl_yudisium', 'users.tgl_lulus', 'users.ipk', 'users.sks_kumulatif', 'users.predikat_kelulusan', 'users.judul_tugas_akhir', 'users.foto', 'users.nomor_ktp', 'users.tempat_lahir', 'users.tgl_lahir', 'users.jenis_kelamin', 'users.kewarganegaraan', 'users.provinsi', 'users.kabupaten', 'users.kecamatan', 'users.alamat', 'users.telepon', 'users.email', 'users.linkedin', 'users.facebook', 'questioner_stake_holders.*')
-                        ->get();
+                ->join('pekerjas', 'detail_perusahaans.pekerja_id', '=', 'pekerjas.id')
+                ->join('users', 'pekerjas.user_id', '=', 'users.id')
+                ->whereYear('users.tgl_lulus', $tahun)
+                ->when($program_studi, function($query) use ($program_studi) {
+                    return $query->where('users.program_studi', $program_studi);
+                }, function($query) use ($fakultas) {
+                    return $query->where('users.fakultas', $fakultas);
+                })
+                ->select('users.nim', 'users.nama', 'users.password', 'users.role', 'users.is_bekerja', 'users.program_studi', 'users.fakultas', 'users.strata', 'users.tahun_masuk', 'users.tgl_lulus', 'users.tgl_yudisium', 'users.tgl_lulus', 'users.ipk', 'users.sks_kumulatif', 'users.predikat_kelulusan', 'users.judul_tugas_akhir', 'users.foto', 'users.nomor_ktp', 'users.tempat_lahir', 'users.tgl_lahir', 'users.jenis_kelamin', 'users.kewarganegaraan', 'users.provinsi', 'users.kabupaten', 'users.kecamatan', 'users.alamat', 'users.telepon', 'users.email', 'users.linkedin', 'users.facebook', 'questioner_stake_holders.*')
+                ->get();
         }
 
 
@@ -494,54 +502,26 @@ class VisualisasiController extends Controller
 
     public function dataLamaStudi(Request $request)
     {
-        $query = User::whereNotNull('tgl_wisuda');
+        $masa_studi_semester = User::whereNotNull('masa_studi_semester');
 
-        if ($request->query('wisuda')) {
-            $query->whereYear('tgl_wisuda', $request->query('wisuda'));
+        if ($request->query('lulus')) {
+            $masa_studi_semester->whereYear('tgl_lulus', $request->query('lulus'));
         }
 
-        if ($request->query('fakultas')) {
-            $query->where('fakultas', $request->query('fakultas'));
-        } elseif ($request->query('prodi')) {
-            $query->where('program_studi', $request->query('prodi'));
+        if ($request->query('program_studi')) {
+            $masa_studi_semester->where('program_studi', $request->query('program_studi'));
+        } elseif ($request->query('fakultas')) {
+            $masa_studi_semester->where('fakultas', $request->query('fakultas'));
         }
 
-        $users = $query->get();
+        $masa_studi_semester = $masa_studi_semester->select('masa_studi_semester')->get();
 
-        $lama_studi_counts = [
-            '<=4' => 0,
-            '5' => 0,
-            '6' => 0,
-            '7' => 0,
-            '8' => 0,
-            '>8' => 0
-        ];
-
-        foreach ($users as $user) {
-            $tgl_wisuda = $user->tgl_wisuda;
-            $tahun_masuk = $user->tahun_masuk;
-
-            if ($tgl_wisuda && $tahun_masuk) {
-                $lama_studi = date('Y', strtotime($tgl_wisuda)) - $tahun_masuk;
-
-                if ($lama_studi <= 4) {
-                    $lama_studi_counts['<=4']++;
-                } elseif ($lama_studi == 5) {
-                    $lama_studi_counts['5']++;
-                } elseif ($lama_studi == 6) {
-                    $lama_studi_counts['6']++;
-                } elseif ($lama_studi == 7) {
-                    $lama_studi_counts['7']++;
-                } elseif ($lama_studi == 8) {
-                    $lama_studi_counts['8']++;
-                } else {
-                    $lama_studi_counts['>8']++;
-                }
-            }
-        }
+        $masa_studi_semester = $masa_studi_semester->map(function($item){
+            return number_format($item->masa_studi_semester / 2, 1);
+        })->countBy();
 
         return response()->json([
-            'lama_studi_counts' => $lama_studi_counts
+            'masa_studi_semester' => $masa_studi_semester,
         ]);
     }
 

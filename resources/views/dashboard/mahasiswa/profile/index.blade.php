@@ -184,7 +184,7 @@
                 <h6 class="mb-0">Masa Studi (Semester)</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{ Auth::user()->masa_studi ? Auth::user()->masa_studi_semester . ' Semester' : 'Belum diisi' }}
+                {{ Auth::user()->masa_studi_semester ? Auth::user()->masa_studi_semester . ' Semester' : 'Belum diisi' }}
               </div>
             </div>
             <hr>

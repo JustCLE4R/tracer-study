@@ -14,7 +14,7 @@ class QuestionerController extends Controller
             abort(404);
         }
 
-        return view('dashboard.questioner.stake', [
+        return view('dashboard.guest.questioner.stake', [
             'questioner' => $questioner
         ]);
     }
@@ -66,6 +66,6 @@ class QuestionerController extends Controller
             'token' => null,
         ]);
 
-        return view('dashboard.questioner.gratitude');
+        return view('dashboard.guest.questioner.gratitude');
     }
 }

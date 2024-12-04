@@ -22,7 +22,7 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'telepon' => 'numeric|required',
+            'telepon' => 'required|numeric',
             'email' => 'email|max:255',
             'linkedin' => 'nullable|url',
             'facebook' => 'nullable|url',
@@ -34,6 +34,7 @@ class UpdateUserRequest extends FormRequest
             'kabupaten' => 'required|string|max:255',
             'kecamatan' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
+            'masa_studi_semester' => 'required|numeric|between:7,14',
         ];
     }
 
@@ -48,6 +49,7 @@ class UpdateUserRequest extends FormRequest
             'before' => 'Kolom :attribute harus sebelum tanggal hari ini.',
             'string' => 'Kolom :attribute harus berupa teks.',
             'max' => 'Kolom :attribute tidak boleh lebih dari :max karakter.',
+            'between' => 'Kolom :attribute harus diantara :min dan :max.',
         ];
     }
 
@@ -66,6 +68,7 @@ class UpdateUserRequest extends FormRequest
             'kabupaten' => 'Kabupaten',
             'kecamatan' => 'Kecamatan',
             'alamat' => 'Alamat',
+            'masa_studi_semester' => 'Masa Studi (Semester)',
         ];
     }
 }

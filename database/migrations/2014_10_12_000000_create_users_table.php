@@ -33,7 +33,7 @@ return new class extends Migration
       $table->integer('masa_studi_semester')->nullable();
       // informasi pribadi
       $table->string('foto')->nullable();
-      $table->unsignedBigInteger('nomor_ktp')->nullable();
+      $table->string('nomor_ktp', 16)->nullable();
       $table->string('tempat_lahir');
       $table->date('tgl_lahir');
       $table->char('jenis_kelamin', 1);

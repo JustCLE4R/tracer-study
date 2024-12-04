@@ -9,6 +9,7 @@ use App\Models\ApiIntegration;
 use Illuminate\Validation\Rule;
 use App\Models\DetailPerusahaan;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -122,6 +123,13 @@ class PekerjaController extends Controller
         ] + $dataAkhirKerja;
 
         $pekerja = Pekerja::create($dataPrepare);
+
+        $lamaMendapatkanPekerjaan = (strtotime($pekerja->tgl_mulai_kerja) - strtotime(Auth::user()->tgl_wisuda)) / (60 * 60 * 24);
+        if(Auth::user()->lama_mendapatkan_pekerjaan == null || Auth::user()->lama_mendapatkan_pekerjaan > $lamaMendapatkanPekerjaan){
+            Auth::user()->update([
+                'lama_mendapatkan_pekerjaan' => $lamaMendapatkanPekerjaan
+            ]);
+        } 
 
         // cek jika freelance dan early return 
         if ($rules['status-pekerjaan'] == 'b' && $rules['kriteria-pekerjaan'] == 'd') {
@@ -287,6 +295,13 @@ class PekerjaController extends Controller
         }
 
         $pekerja->update($dataPrepare);
+
+        $lamaMendapatkanPekerjaan = (strtotime($pekerja->tgl_mulai_kerja) - strtotime(Auth::user()->tgl_wisuda)) / (60 * 60 * 24);
+        if(Auth::user()->lama_mendapatkan_pekerjaan == null || Auth::user()->lama_mendapatkan_pekerjaan > $lamaMendapatkanPekerjaan){
+            Auth::user()->update([
+                'lama_mendapatkan_pekerjaan' => $lamaMendapatkanPekerjaan
+            ]);
+        } 
 
         if ($pekerja->getRawOriginal('kriteria_pekerjaan') == 'd' && Auth::user()->role != 'mahasiswa') {
             return redirect('/dashboard/admin/' . $pekerja->user->id)->with('success', 'Data pekerjaan berhasil diubah!');
