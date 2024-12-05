@@ -79,21 +79,15 @@
         </div>
     </section>
 
-
-
     <section id="tracer" class="about-section pt-100">
         <div class="container">
-
-
-
-
-            <div id="roker" class="row justify-content-between">
+            <div id="roker" class="row justify-content-between" >
                 <div id="col1" class="col-lg-5 p-5 ">
                     <div id="chart" class="about-img mb-50  wow fadeInUp" data-wow-delay=".5s">
                         <canvas id="status"></canvas>
                         <canvas id="jenis-kelamin"></canvas>
                         <canvas id="pengisi"></canvas>
-                        <canvas id="myChart" width="400" height="200"></canvas>
+                        <canvas style="display:none;" id="myChart" width="400" height="200"></canvas>
 
                     </div>
                 </div>

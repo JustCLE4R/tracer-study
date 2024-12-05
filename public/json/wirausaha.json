@@ -1,0 +1,116 @@
+{
+  "questions": [
+    {
+      "id": 20,
+      "name" : "nama-usaha",
+      "question": "Nama Usaha *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "text"
+    },
+    {
+      "id": 21,
+      "name" : "tingkat-ukuran-tempat-usaha",
+      "question": "Tingkat / Ukuran Tempat Usaha *",
+      "qanswer": "{\"a\": \"Lokal\", \"b\": \"Nasional\", \"c\": \"Multinasional\"}",
+      "category": "wirausaha",
+      "type": "select"
+    },
+    {
+      "id": 22,
+      "name" : "bidang-usaha",
+      "question": "Bidang Usaha *",
+      "qanswer": "{\"a\": \"Pertanian, perikanan, dan kehutanan\", \"b\": \"Pertambangan dan penggalian\", \"c\": \"Industri pengolahan\", \"d\": \"Pengadaaan listrik, gas, uap/air panas, dan udara dingin\", \"e\": \"Pengelolaan air, pengolahan air limbah, pengelolaan dan daur ulang sampah, dan aktivitas remediasi\", \"f\": \"Konstruksi\", \"g\": \"Perdagangan besar dan eceran, reparasi dan perawatan mobil dan sepeda motor\", \"h\": \"Pengangkutan dan pergudangan\", \"i\": \"Penyediaan akomodasi dan penyediaan makanan dan minuman\", \"j\": \"Informasi dan komunikasi\", \"k\": \"Aktivitas keuangan dan asuransi\", \"l\": \"Real estate\", \"m\": \"Aktivitas profesional, ilmiah, dan teknis\", \"n\": \"Aktivitas persewaan dan sewa guna usaha tanpa hak opsi, ketenagakerjaan, agen perjalanan dan penunjang usaha lainnya\", \"o\": \"Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib\", \"p\": \"Aktivitas Pendidikan\", \"q\": \"Aktivitas kesehatan dan aktivitas sosial\", \"r\": \"Kesenian, hiburan dan rekreasi\", \"s\": \"Aktivitas jasa lainnya\", \"t\": \"Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga yang digunakan untuk memenuhi kebutuhan sendiri yang digunakan untuk memenuhi kebutuhan sendiri\", \"u\": \"Aktivitas badan internasional dan badan ekstra internasional lainnya\"}",
+      "category": "wirausaha",
+      "type": "select"
+    },
+    {
+      "id": 23,
+      "name" : "detail-usaha",
+      "question": "Detail Usaha (Grosir, Minimarket, Franchise dan jenis lainnya) *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "text"
+    },
+    {
+      "id": 24,
+      "name" : "jumlah-pendapatan-perbulan-omset-penjualan",
+      "question": "Jumlah Pendapatan Perbulan (Omset Penjualan) *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "number"
+    },
+    {
+      "id": 25,
+      "name" : "jumlah-pendapatan-bersih-perbulan",
+      "question": "Jumlah Pendapatan Bersih Perbulan *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "number"
+    },
+    {
+      "id": 26,
+      "name" : "pemodal-saat-ini",
+      "question": "Pemodal Saat Ini *",
+      "qanswer": "{\"a\": \"Pribadi / Tabungan\", \"b\": \"Bank\", \"c\": \"Keluarga\", \"d\": \"Investor\"}",
+      "category": "wirausaha",
+      "type": "checkbox"
+    },
+    {
+      "id": 27,
+      "name" : "kesesuaian-usaha-dengan-prodi",
+      "question": "Kesesuaian Usaha dengan Prodi *",
+      "qanswer": "{\"a\": \"Tinggi\", \"b\": \"Sedang\", \"c\": \"Rendah\"}",
+      "category": "wirausaha",
+      "type": "select"
+    },
+    {
+      "id": 28,
+      "name" : "tanggal-mulai-usaha",
+      "question": "Tanggal Mulai Usaha *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "date"
+    },
+    {
+      "id": 29,
+      "name" : "tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha",
+      "question": "Tanggal Akhir Usaha (Kosongkan jika masih memiliki usaha)",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "date"
+    },
+    {
+      "id": 30,
+      "name" : "provinsi",
+      "question": "Provinsi *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "text"
+    },
+    {
+      "id": 31,
+      "name" : "kabupaten",
+      "question": "Kabupaten/Kota *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "text"
+    },
+    {
+      "id": 32,
+      "name" : "alamat",
+      "question": "Alamat *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "text"
+    },
+    {
+      "id": 33,
+      "name" : "fotobukti-telah-berwirausaha",
+      "question": "Foto/Bukti Telah Berwirausaha (Surat Izin Usaha, Akta PT/CV dan bukti dukung lainnya) *",
+      "qanswer": "[]",
+      "category": "wirausaha",
+      "type": "file"
+    }
+  ]
+}

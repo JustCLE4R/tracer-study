@@ -1,0 +1,52 @@
+{
+  "questions": [
+    {
+      "id": 14,
+      "name" : "nama-perusahaan",
+      "question": "Nama Perusahaan *",
+      "qanswer": "[]",
+      "category": "info-perusahaan",
+      "type": "text"
+    },
+    {
+      "id": 15,
+      "name" : "nama-atasan",
+      "question": "Nama Atasan *",
+      "qanswer": "[]",
+      "category": "info-perusahaan",
+      "type": "text"
+    },
+    {
+      "id": 16,
+      "name" : "posisi-jabatan-atasan",
+      "question": "Posisi / Jabatan Atasan *",
+      "qanswer": "[]",
+      "category": "info-perusahaan",
+      "type": "text"
+    },
+    {
+      "id": 17,
+      "name" : "nomor-telepon-atasan",
+      "question": "Nomor Telepon Atasan *",
+      "qanswer": "[]",
+      "category": "info-perusahaan",
+      "type": "text"
+    },
+    {
+      "id": 18,
+      "name" : "alamat-perusahaan",
+      "question": "Alamat Perusahaan *",
+      "qanswer": "[]",
+      "category": "info-perusahaan",
+      "type": "text"
+    },
+    {
+      "id": 19,
+      "name" : "alamat-email-aktif-atasan",
+      "question": "Alamat Email Aktif Atasan *",
+      "qanswer": "[]",
+      "category": "info-perusahaan",
+      "type": "email"
+    }
+  ]
+}

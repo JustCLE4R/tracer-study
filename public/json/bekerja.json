@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "name" : "kriteria-pekerjaan",
+      "question": "Kriteria Pekerjaan *",
+      "qanswer": "{\"a\": \"Instansi pemerintah (termasuk BUMN)\", \"b\": \"Organisasi non-profit / lembaga swadaya masyarakat\", \"c\": \"Perusahaan swasta\"}",
+      "category": "bekerja",
+      "type": "select"
+      
+    },
+    {
+      "id": 2,
+      "name" : "kriteria-pekerjaan",
+      "question": "Kriteria Pekerjaan *",
+      "qanswer": "{\"b\": \"Organisasi non-profit / lembaga swadaya masyarakat\", \"c\": \"Perusahaan Swasta\", \"d\": \"Freelance (Self Employed) (termasuk Dai)\"}",
+      "category": "bekerja",
+      "type": "select"
+    },
+    {
+      "id": 3,
+      "name" : "bidang-pekerjaan",
+      "question": "Bidang Pekerjaan *",
+      "qanswer": "{\"a\": \"Pertanian, perikanan, dan kehutanan\", \"b\": \"Pertambangan dan penggalian\", \"c\": \"Industri pengolahan\", \"d\": \"Pengadaaan listrik, gas, uap/air panas, dan udara dingin\", \"e\": \"Pengelolaan air, pengolahan air limbah, pengelolaan dan daur ulang sampah, dan aktivitas remediasi\", \"f\": \"Konstruksi\", \"g\": \"Perdagangan besar dan eceran, reparasi dan perawatan mobil dan sepeda motor\", \"h\": \"Pengangkutan dan pergudangan\", \"i\": \"Penyediaan akomodasi dan penyediaan makanan dan minuman\", \"j\": \"Informasi dan komunikasi\", \"k\": \"Aktivitas keuangan dan asuransi\", \"l\": \"Real estate\", \"m\": \"Aktivitas profesional, ilmiah, dan teknis\", \"n\": \"Aktivitas persewaan dan sewa guna usaha tanpa hak opsi, ketenagakerjaan, agen perjalanan dan penunjang usaha lainnya\", \"o\": \"Administrasi pemerintahan, pertahanan, dan jaminan sosial wajib\", \"p\": \"Aktivitas Pendidikan\", \"q\": \"Aktivitas kesehatan dan aktivitas sosial\", \"r\": \"Kesenian, hiburan dan rekreasi\", \"s\": \"Aktivitas jasa lainnya\", \"t\": \"Aktivitas rumah tangga sebagai pemberi kerja, aktivitas yang menghasilkan barang dan jasa oleh rumah tangga yang digunakan untuk memenuhi kebutuhan sendiri yang digunakan untuk memenuhi kebutuhan sendiri\", \"u\": \"Aktivitas badan internasional dan badan ekstra internasional lainnya\"}",
+      "category": "bekerja",
+      "type": "select"
+    },
+    {
+      "id": 4,
+      "name" : "tingkat-ukuran-tempat-bekerja",
+      "question": "Tingkat / Ukuran Tempat Bekerja *",
+      "qanswer": "{\"a\": \"Lokal\", \"b\": \"Nasional\", \"c\": \"Multinasional\"}",
+      "category": "bekerja",
+      "type": "select"
+    },
+    {
+      "id": 5,
+      "name" : "posisi-jabatan-pekerjaan",
+      "question": "Posisi / Jabatan Pekerjaan *",
+      "qanswer": "{\"b\": \"Direktur\", \"c\": \"Kepala Unit\", \"d\": \"Supervisor\", \"e\": \"Staf\", \"f\": \"Self Employed\"}",
+      "category": "bekerja",
+      "type": "select"
+    },
+    {
+      "id": 6,
+      "name" : "detail-pekerjaan",
+      "question": "Detail Pekerjaan (Guru, Dosen, TNI, Polri, Kepala Departemen, Kepala Pustipada dan lainnya) *",
+      "qanswer": "[]",
+      "category": "bekerja",
+      "type": "text"
+    },
+    {
+      "id": 7,
+      "name" : "jumlah-pendapatan-perbulan",
+      "question": "Jumlah Pendapatan Perbulan *",
+      "qanswer": "[]",
+      "category": "bekerja",
+      "type": "number"
+    },
+    {
+      "id": 8,
+      "name" : "kesesuaian-pekerjaan-dengan-prodi",
+      "question": "Kesesuaian Pekerjaan dengan Prodi *",
+      "qanswer": "{\"a\": \"Tinggi\", \"b\": \"Sedang\", \"c\": \"Rendah\"}",
+      "category": "bekerja",
+      "type": "select"
+    },
+    {
+      "id": 9,
+      "name" : "tanggal-mulai-bekerja",
+      "question": "Tanggal Mulai Bekerja *",
+      "qanswer": "[]",
+      "category": "bekerja",
+      "type": "date"
+    },
+    {
+      "id": 10,
+      "name" : "tanggal-akhir-kerja-kosongkan-jika-masih-bekerja",
+      "question": "Tanggal Akhir Kerja (Kosongkan jika masih bekerja)",
+      "qanswer": "[]",
+      "category": "bekerja",
+      "type": "date"
+    },
+    {
+      "id": 11,
+      "name" : "provinsi",
+      "question": "Provinsi *",
+      "qanswer": "[]",
+      "category": "bekerja",
+      "type": "text"
+    },
+    {
+      "id": 12,
+      "name" : "kabupaten",
+      "question": "Kabupaten/Kota *",
+      "qanswer": "[]",
+      "category": "bekerja",
+      "type": "text"
+    },
+    {
+      "id": 13,
+      "name" : "fotobukti-telah-bekerja",
+      "question": "Foto/Bukti Telah Bekerja (ID Card, SK, Surat Kontrak dan dokumen lainnya) *",
+      "qanswer": "[]",
+      "category": "bekerja",
+      "type": "file"
+    }
+  ]
+}

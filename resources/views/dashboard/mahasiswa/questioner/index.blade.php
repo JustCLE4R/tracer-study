@@ -107,7 +107,7 @@
             document.addEventListener('DOMContentLoaded', function() {
                 const formContainer = document.getElementById('questionnaire-form');
 
-                fetch('/questioner.json')
+                fetch('/json/questioner.json')
                     .then(response => {
                         if (!response.ok) {
                             throw new Error('Network response was not ok ' + response.statusText);

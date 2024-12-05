@@ -29,7 +29,7 @@ function handleStatusChange(value) {
 function fetchQuestion(url, status = null) {
     buttonGroup.removeClass("d-none");
     $.ajax({
-        url: "/api/questions/category/" + url,
+        url: "/json/" + url + ".json",
         method: "GET",
         dataType: "json",
         success: function (data) {
@@ -66,7 +66,7 @@ function populateInformasiPerusahaan() {
         $("<span>").addClass("h4").text("Informasi Perusahaan")
     );
     $.ajax({
-        url: "/api/questions/category/info-perusahaan",
+        url: "/json/info-perusahaan.json",
         method: "GET",
         dataType: "json",
         success: function (data) {
@@ -91,25 +91,8 @@ function isFreelancer(value) {
 function buildDynamicForm(question) {
     var colDiv = $("<div>").addClass("col-lg-4 col-md-6 col-sm-12 my-2");
 
-    //Hapus jika ada duplikat input
-    if ($("#question-" + question.id).length > 0) {
-        $("#question-" + question.id).remove();
-    }
-
     //Kustom label
     var labelText = question.question;
-    const labelMapping = {
-        12: "Kabupaten/Kota",
-        31: "Kabupaten/Kota",
-    };
-
-    if (labelMapping[question.id]) {
-        labelText = labelMapping[question.id];
-    }
-
-    if (question.id !== 10 && question.id !== 13) {
-        labelText += " *";
-    }
 
     var label = $("<label>")
         .addClass("form-label text-secondary")

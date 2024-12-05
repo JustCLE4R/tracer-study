@@ -1,7 +1,7 @@
 {
     "questioner": [
         {
-            "title": "(e)Menurut anda, seberapa PENTINGkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?",
+            "title": "(e) Menurut anda, seberapa pentingkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?",
             "prefix": "e",
             "questions": [
                 {
@@ -20,7 +20,7 @@
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
-                    "text": "Ketrampilan internet dan komputer",
+                    "text": "Keterampilan Bidang Teknologi Informasi (Internet dan Komputer)",
                     "name": "e_4",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
@@ -97,7 +97,7 @@
             ]
         },
         {
-            "title": "(f) Bagaimanakah tingkat KEPUASAN anda terhadap Alumni FEBI UIN SU Medan yang bekerja di kantor/perusahaan anda, tentang hal-hal di bawah ini?",
+            "title": "(f) Bagaimanakah tingkat kepuasan anda terhadap Alumni UIN Sumatera Utara Medan yang bekerja di kantor/perusahaan anda, tentang hal-hal di bawah ini?",
             "prefix": "f",
             "questions": [
                 {
@@ -116,7 +116,7 @@
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
-                    "text": "Ketrampilan internet dan komputer",
+                    "text": "Keterampilan Bidang Teknologi Informasi (Internet dan Komputer)",
                     "name": "f_4",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
