@@ -6,7 +6,7 @@
             <div class="col-lg-12 col-sm-12  mb-4">
                 <div class="row justify-content-between my-1">
                     <div class="col-lg-10 col-sm-12">
-                        <span class="mb-0 h4 ">Visualisasi Data Tracer Study & Questioner</span>
+                        <span class="mb-0 h4 ">Visualisasi Data</span>
                     </div>
                 </div>
                 <div class="row my-3">
@@ -16,13 +16,13 @@
                                 <select id="exportTahunLulusSelect" name="tahun" class="form-select me-2">
                                     <option value="" selected hidden disabled>Pilih Tahun</option>
                                     @foreach ($exportOptions['tahun'] as $tahun)
-                                    <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                        <option value="{{ $tahun }}">{{ $tahun }}</option>
                                     @endforeach
                                 </select>
                                 <select id="exportFakultasSelect" name="fakultas" class="form-select me-2">
                                     <option value="" selected hidden disabled>Pilih Fakultas</option>
                                     @foreach ($exportOptions['fakultas'] as $fakultas)
-                                    <option value="{{ $fakultas }}">{{ $fakultas }}</option>
+                                        <option value="{{ $fakultas }}">{{ $fakultas }}</option>
                                     @endforeach
                                 </select>
                                 <select name="jenisVisualisasi" id="" class="form-select me-2">
@@ -31,7 +31,8 @@
                                     <option value="wirausaha">Wirausaha</option>
                                     <option value="pendidikan">Pendidikan</option>
                                     <option value="questioner">Kuesioner Mahasiswa</option>
-                                    <option value="pekerja.detailPerusahaan.questionerStakeHolder">Kuesioner Stakeholder</option>
+                                    <option value="pekerja.detailPerusahaan.questionerStakeHolder">Kuesioner Stakeholder
+                                    </option>
                                 </select>
                                 <button type="submit" class="btn btn-success">Export Data</button>
                             </div>
@@ -45,9 +46,10 @@
         <div class="row justify-content-evenly">
 
             <div class="col-sm-6 col-lg-4">
-                <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('ipk')"
-                    n="1000">
-                    <i class="bi bi-person-fill-gear text-primary fs-1" ></i>
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
+                    onclick="scrollToElement('ipk')" n="1000">
+                    <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi IPK</p>
                         <h6 id="ipk" class="mb-0"></h6>
@@ -56,9 +58,10 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4">
-                <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('career')"
-                    n="1000">
-                    <i class="bi bi-person-fill-gear text-primary fs-1" ></i>
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
+                    onclick="scrollToElement('career')" n="1000">
+                    <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi Career</p>
                         <h6 id="career" class="mb-0"></h6>
@@ -67,9 +70,10 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4">
-                <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('lama-study')"
-                    n="1000">
-                    <i class="bi bi-person-fill-gear text-primary fs-1" ></i>
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
+                    onclick="scrollToElement('lama-study')" n="1000">
+                    <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi Lama Study</p>
                         <h6 id="lama-study" class="mb-0"></h6>
@@ -78,9 +82,10 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4">
-                <div id="card-header" class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4" onclick="scrollToElement('tracer-pekerja')"
-                    n="1000">
-                    <i class="bi bi-person-fill-gear text-primary fs-1" ></i>
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
+                    onclick="scrollToElement('tracer-pekerja')" n="1000">
+                    <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Tracer Study : Pekerjaan</p>
                         <h6 id="pekerjaan" class="mb-0"></h6>
@@ -89,9 +94,10 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4">
-                <div id="card-header" class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"  onclick="scrollToElement('tracer-wirausaha')"
-                    n="1000">
-                    <i class="bi bi-shop-window text-primary fs-1"></i>                    
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"
+                    onclick="scrollToElement('tracer-wirausaha')" n="1000">
+                    <i class="bi bi-shop-window text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Tracer Study : Wirausaha</p>
                         <h6 id="wirausaha" class="mb-0"></h6>
@@ -99,8 +105,9 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4">
-                <div id="card-header" class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"  onclick="scrollToElement('tracer-pendidikan')"
-                    n="1000">
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"
+                    onclick="scrollToElement('tracer-pendidikan')" n="1000">
                     <i class="bi bi-mortarboard-fill fs-1 text-primary"></i>
                     <div class="ms-3">
                         <p class="mb-2">Tracer Study : Pendidikan</p>
@@ -109,18 +116,20 @@
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4 my-2">
-                <div id="card-header" class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4 pe-5"  onclick="scrollToElement('questioner-alumni')" 
-                    n="1000">
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4 pe-5"
+                    onclick="scrollToElement('questioner-alumni')" n="1000">
                     <i class="bi bi-person-workspace fs-1 text-primary"></i>
-                    <div class="ms-3 text-start"> 
+                    <div class="ms-3 text-start">
                         <p class="mb-2">Questioner : Alumni</p>
                         <h6 id="alumni" class="mb-0">94 </h6>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-lg-4 my-2">
-                <div id="card-header" class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"  onclick="scrollToElement('questioner-stakholder')"
-                    n="1000">
+                <div id="card-header"
+                    class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"
+                    onclick="scrollToElement('questioner-stakholder')" n="1000">
                     <i class="bi bi-person-vcard text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Questioner : Stakeholder</p>
@@ -149,15 +158,11 @@
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-pekerja" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+
+                                </select>
+                                <select id="prodiSelect-pekerja" class="form-select">
+                                    <option value="">Pilih Fakultas</option>
+
                                 </select>
                             @endif
                         </div>
@@ -181,6 +186,7 @@
                         <span class="mb-0 h4 " id="tracer-wirausaha">Tracer Study : Wirausaha</span>
                     </div>
                     <div class="col-lg-5 col-sm-12">
+
                         <div class="input-group mb-3">
                             <select id="tahunLulusSelect-wirausaha" class="form-select">
                                 <option value="">Pilih Tahun</option>
@@ -191,15 +197,11 @@
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-wirausaha" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+                                    {{-- Data diambil dari api /json/fakultas.json --}}
+                                </select>
+                                <select id="prodiSelect-wirausaha" class="form-select">
+                                    <option value="">Pilih Prodi</option>
+                                    {{-- Data diambil dari api /json/fakultas.json --}}
                                 </select>
                             @endif
                         </div>
@@ -232,15 +234,11 @@
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-pendidikan" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+
+                                </select>
+                                <select id="prodiSelect-pendidikan" class="form-select">
+                                    <option value="">Pilih Fakultas</option>
+
                                 </select>
                             @endif
                         </div>
@@ -274,15 +272,11 @@
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-questioner" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+
+                                </select>
+                                <select id="prodiSelect-questioner" class="form-select">
+                                    <option value="">Pilih Fakultas</option>
+
                                 </select>
                             @endif
                         </div>
@@ -365,15 +359,11 @@
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-questioner-stakeholder" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+
+                                </select>
+                                <select id="prodiSelect-questioner-stakeholder" class="form-select">
+                                    <option value="">Pilih Fakultas</option>
+
                                 </select>
                             @endif
                         </div>
@@ -420,19 +410,11 @@
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-ipk" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+
                                 </select>
                                 <select id="prodiSelect-ipk" class="form-select">
                                     <option value="">Pilih Prodi</option>
-                                    
+
                                 </select>
                             @endif
                         </div>
@@ -466,19 +448,11 @@
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-lama-study" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+
                                 </select>
                                 <select id="prodiSelect-lama-study" class="form-select">
                                     <option value="">Pilih Prodi</option>
-                                    
+
                                 </select>
                             @endif
                         </div>
@@ -502,23 +476,15 @@
                         <span class="mb-0 h4 " id="career">Visualisasi Career</span>
                     </div>
                     <div class="col-lg-5 col-sm-12">
-                        <div class="input-group mb-3">                           
+                        <div class="input-group mb-3">
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-career" class="form-select">
                                     <option value="">Pilih Fakultas</option>
-                                    <option value="Ushuluddin%20dan%20Studi%20Islam">Ushuluddin dan Studi Islam</option>
-                                    <option value="Ekonomi%20dan%20Bisnis%20Islam">Ekonomi dan Bisnis Islam</option>
-                                    <option value="Dakwah%20dan%20Komunikasi">Dakwah dan Komunikasi</option>
-                                    <option value="Syariah%20dan%20Hukum">Syariah dan Hukum</option>
-                                    <option value="Ilmu%20Tarbiyah%20dan%20Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                                    <option value="Ilmu%20Sosial">Ilmu Sosial</option>
-                                    <option value="Sains%20dan%20Teknologi">Sains dan Teknologi</option>
-                                    <option value="Kesehatan%20Masyarakat">Kesehatan Masyarakat</option>
-                                    <option value="Pascasarjana">Pascasarjana</option>
+
                                 </select>
                                 <select id="prodiSelect-career" class="form-select">
                                     <option value="">Pilih Prodi</option>
-                                    
+
                                 </select>
                             @endif
                         </div>
@@ -542,11 +508,11 @@
             console.log("Scrolling to element with ID:", elementId);
             var element = document.getElementById(elementId);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({
+                    behavior: 'smooth'
+                });
             }
         }
-
-
 
         // Header
         $(document).ready(function() {
@@ -601,11 +567,74 @@
             updatePekerjaan();
         });
 
+
+        $(document).ready(function() {
+            const fakultasSelectors = [
+                "#fakultasSelect-wirausaha",
+                "#fakultasSelect-pekerja",
+                "#fakultasSelect-pendidikan",
+                "#fakultasSelect-questioner",
+                "#fakultasSelect-questioner-stakeholder",
+                "#fakultasSelect-ipk",
+                "#fakultasSelect-lama-study",
+                "#fakultasSelect-career"
+            ];
+
+            const prodiSelectors = [
+                "#prodiSelect-wirausaha",
+                "#prodiSelect-pekerja",
+                "#prodiSelect-pendidikan",
+                "#prodiSelect-questioner",
+                "#prodiSelect-questioner-stakeholder",
+                "#prodiSelect-ipk",
+                "#prodiSelect-lama-study",
+                "#prodiSelect-career"
+            ];
+
+            $.getJSON("/json/fakultas.json", function(data) {
+                fakultasSelectors.forEach((fakultasSelector) => {
+                    const fakultasDropdown = $(fakultasSelector);
+
+                    $.each(data, function(fakultas, prodis) {
+                        fakultasDropdown.append(
+                            $("<option>", {
+                                value: fakultas,
+                                text: fakultas
+                            })
+                        );
+                    });
+                });
+
+                fakultasSelectors.forEach((fakultasSelector, index) => {
+                    const prodiDropdown = $(prodiSelectors[index]);
+                    $(fakultasSelector).on("change", function() {
+                        const selectedFakultas = $(this).val();
+
+                        prodiDropdown.empty().append(
+                            '<option value="">Pilih Prodi</option>');
+                        if (selectedFakultas && data[selectedFakultas]) {
+                            $.each(data[selectedFakultas], function(i, prodi) {
+                                prodiDropdown.append(
+                                    $("<option>", {
+                                        value: prodi,
+                                        text: prodi
+                                    })
+                                );
+                            });
+                        }
+                    });
+                });
+            }).fail(function() {
+                console.error("Error fetching fakultas data");
+            });
+        });
+
         // Chart Pekerja, Wirausaha & Pendidikan
         $(document).ready(function() {
             function fetchData(type) {
                 var thnlulus = $(`#tahunLulusSelect-${type}`).val();
                 var fakultas = $(`#fakultasSelect-${type}`).val();
+                var prodi = $(`#prodiSelect-${type}`).val(); // Ambil nilai prodi
                 var baseUrl = `/api/visualisasi/${type}`;
                 var userFakultas = "{{ Auth::user()->fakultas }}";
                 var fakultasMap = {
@@ -625,6 +654,10 @@
                     params.push(`fakultas=${fakultas}`);
                 } else if (fakultasMap[userFakultas]) {
                     params.push(`fakultas=${fakultasMap[userFakultas]}`);
+                }
+
+                if (prodi) {
+                    params.push(`prodi=${prodi}`);
                 }
 
                 if (thnlulus) {
@@ -766,6 +799,16 @@
                 });
             }
 
+            $('#fakultasSelect-wirausaha, #prodiSelect-wirausaha, #fakultasSelect-pekerja, #prodiSelect-pekerja, #fakultasSelect-pendidikan, #prodiSelect-pendidikan')
+                .change(function() {
+                    var type = $(this).attr('id').split('-')[1];
+                    fetchData(type);
+                });
+
+            fetchData('wirausaha');
+            fetchData('pekerja');
+            fetchData('pendidikan');
+
             function createChartAndTable(chartId, tableId, data, label) {
                 const labels = Object.keys(data);
                 const values = Object.values(data);
@@ -857,16 +900,19 @@
             var url = apiUrl;
             var params = [];
 
+            // Add fakultas parameter based on user or selected faculty
             if (userFakultas !== "" && fakultasMap.hasOwnProperty(userFakultas)) {
                 params.push(`fakultas=${fakultasMap[userFakultas]}`);
             } else if (fakultas) {
                 params.push(`fakultas=${fakultas}`);
             }
 
+            // Add lulus (graduation year) parameter if provided
             if (thnlulus) {
                 params.push(`lulus=${thnlulus}`);
             }
 
+            // Construct the URL with the parameters if any
             if (params.length > 0) {
                 url += '?' + params.join('&');
             }
@@ -896,6 +942,15 @@
                 }
             });
         }
+
+        $(document).ready(function() {
+            // Fetch charts for various categories (alumni, stakeholder, etc.)
+            fetchAndRenderCharts('Alumni', 'charts-questioner-alumni', 0, '/api/visualisasi/questioner/alumni',
+                '#tahunLulusSelect-questioner', '#fakultasSelect-questioner');
+            fetchAndRenderCharts('Stakeholder', 'charts-questioner-stakeholder', 1,
+                '/api/visualisasi/questioner/stakeholder', '#tahunLulusSelect-questioner-stakeholder',
+                '#fakultasSelect-questioner-stakeholder');
+        });
 
         function createChart(chartId, data, label) {
             const ctx = document.getElementById(chartId).getContext('2d');
