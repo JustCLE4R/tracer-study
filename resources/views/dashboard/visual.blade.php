@@ -48,7 +48,7 @@
             <div class="col-sm-6 col-lg-4">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
-                    onclick="scrollToElement('ipk')" n="1000">
+                    onclick="scrollToElement('charts-ipk')" n="1000">
                     <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi IPK</p>
@@ -60,7 +60,7 @@
             <div class="col-sm-6 col-lg-4">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
-                    onclick="scrollToElement('career')" n="1000">
+                    onclick="scrollToElement('charts-career')" n="1000">
                     <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi Career</p>
@@ -72,7 +72,7 @@
             <div class="col-sm-6 col-lg-4">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
-                    onclick="scrollToElement('lama-study')" n="1000">
+                    onclick="scrollToElement('charts-lama-study')" n="1000">
                     <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi Lama Study</p>
@@ -404,7 +404,7 @@
                         <div class="input-group mb-3">
                             <select id="tahunLulusSelect-ipk" class="form-select">
                                 <option value="">Pilih Tahun Lulus</option>
-                               
+
                                 <option value="2021">2021</option>
                                 <option value="2022">2022</option>
                                 <option value="2023">2023</option>
@@ -480,6 +480,12 @@
                     </div>
                     <div class="col-lg-5 col-sm-12">
                         <div class="input-group mb-3">
+                            <select id="tahunLulusSelect-lama-study" class="form-select">
+                                <option value="">Pilih Tahun Lulus</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                            </select>
                             @if (Auth::user()->role == 'superadmin')
                                 <select id="fakultasSelect-career" class="form-select">
                                     <option value="">Pilih Fakultas</option>
@@ -1035,7 +1041,7 @@
                     containerId: "questioner-stakeholder-b",
                     startIndex: 192
                 }
-            ];  
+            ];
 
             // Render initial charts
             questionerCategories.forEach(({
@@ -1086,5 +1092,505 @@
                 });
             }
         });
+
+        // chart career
+        $(document).ready(function() {
+            function fetchData(type) {
+                var thnlulus = $(`#tahunLulusSelect-${type}`).val();
+                var fakultas = $(`#fakultasSelect-${type}`).val();
+                var prodi = $(`#prodiSelect-${type}`).val(); // Ambil nilai prodi
+                var baseUrl = `/api/visualisasi/${type}`;
+                var userFakultas = "{{ Auth::user()->fakultas }}";
+                var fakultasMap = {
+                    'Ushuluddin dan Studi Islam': 'Ushuluddin%20dan%20Studi%20Islam',
+                    'Ekonomi dan Bisnis Islam': 'Ekonomi%20dan%20Bisnis%20Islam',
+                    'Dakwah dan Komunikasi': 'Dakwah%20dan%20Komunikasi',
+                    'Syariah dan Hukum': 'Syariah%20dan%20Hukum',
+                    'Ilmu Tarbiyah dan Keguruan': 'Ilmu%20Tarbiyah%20dan%20Keguruan',
+                    'Ilmu Sosial': 'Ilmu%20Sosial',
+                    'Sains dan Teknologi': 'Sains%20dan%20Teknologi',
+                    'Kesehatan Masyarakat': 'Kesehatan%20Masyarakat',
+                    'Pascasarjana': 'Pascasarjana'
+                };
+                var params = [];
+
+                if (fakultas) {
+                    params.push(`fakultas=${fakultas}`);
+                } else if (fakultasMap[userFakultas]) {
+                    params.push(`fakultas=${fakultasMap[userFakultas]}`);
+                }
+
+                if (prodi) {
+                    params.push(`prodi=${prodi}`);
+                }
+
+                if (thnlulus) {
+                    params.push(`lulus=${thnlulus}`);
+                }
+
+                var url = params.length ? `${baseUrl}?${params.join('&')}` : baseUrl;
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(response) {
+                        $(`#charts-${type}`).empty();
+
+                        var chartsConfig = {
+                            career: [{
+                                    id: 'fakultasCareer',
+                                    title: 'Jumlah Karir Berdasarkan Fakultas',
+                                    dataKey: 'fakultas_counts'
+                                },
+                                {
+                                    id: 'prodiCareer',
+                                    title: 'Jumlah Karir Berdasarkan Program Studi',
+                                    dataKey: 'program_studi_counts'
+                                }
+                            ]
+                        };
+
+                        chartsConfig[type].forEach(function(chart) {
+                            $(`#charts-${type}`).append(
+                                `<div class="row my-2">
+                            <div class="col-12" >
+                                <hr>
+                                <span class="mb-2 h5">${chart.title}</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 p-2" >
+                                <canvas id="${chart.id}Chart" width="400" height="400"></canvas>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12" >
+                                <div class="table-responsive">
+                                    <table id="${chart.id}Table" class="table text-start align-middle border table-striped table-hover mb-0">
+                                        <thead class="wow fadeInUp" >
+                                            <tr class="text-dark" style="font-weight:700;">
+                                                <th scope="col">No</th>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="wow fadeInUp" ></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>`
+                            );
+                            createChartAndTable(`${chart.id}Chart`, `${chart.id}Table`,
+                                response[chart.dataKey], chart.title);
+                        });
+                    },
+                    error: function(error) {
+                        console.error('Error fetching data:', error);
+                    }
+                });
+            }
+
+            $('#fakultasSelect-career, #prodiSelect-career')
+                .change(function() {
+                    var type = $(this).attr('id').split('-')[1];
+                    fetchData(type);
+                });
+
+            fetchData('career');
+
+            function createChartAndTable(chartId, tableId, data, label) {
+                const labels = Object.keys(data);
+                const values = Object.values(data);
+                const total = values.reduce((acc, val) => acc + val, 0);
+                const percentages = values.map(value => ((value / total) * 100).toFixed(2) + '%');
+                const ctx = document.getElementById(chartId).getContext('2d');
+
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels.map((label, index) => label + ' (' + percentages[index] + ')'),
+                        datasets: [{
+                            label: label,
+                            data: values,
+                            backgroundColor: [
+                                'rgb(0 157 84 / 74%)',
+                                'rgb(2 117 64 / 74%)',
+                                'rgb(2 81 44 / 74%)',
+                                'rgb(43 205 129 / 74%)',
+                                'rgb(0 177 4 / 74%)',
+                                'rgb(0 127 4 / 74%)',
+                                'rgb(2 117 5 / 74%)'
+                            ],
+                            borderColor: ['#fff'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.raw !== null) {
+                                            label += context.raw;
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                $(`#${tableId} tbody`).empty();
+                labels.forEach((label, index) => {
+                    $(`#${tableId} tbody`).append(
+                        `<tr>
+                    <td>${index + 1}</td>
+                    <td>${label}</td>
+                    <td>${values[index]}</td>
+                </tr>`
+                    );
+                });
+            }
+
+            ['career'].forEach(type => {
+                $(`#fakultasSelect-${type}`).change(() => fetchData(type));
+                $(`#prodiSelect-${type}`).change(() => fetchData(type));
+                fetchData(type);
+            });
+        });
+
+        //chart ipk
+        $(document).ready(function() {
+            function fetchData(type) {
+                var thnlulus = $(`#tahunLulusSelect-${type}`).val();
+                var fakultas = $(`#fakultasSelect-${type}`).val();
+                var prodi = $(`#prodiSelect-${type}`).val(); // Ambil nilai prodi
+                var baseUrl = `/api/visualisasi/${type}`;
+                var userFakultas = "{{ Auth::user()->fakultas }}";
+                var fakultasMap = {
+                    'Ushuluddin dan Studi Islam': 'Ushuluddin%20dan%20Studi%20Islam',
+                    'Ekonomi dan Bisnis Islam': 'Ekonomi%20dan%20Bisnis%20Islam',
+                    'Dakwah dan Komunikasi': 'Dakwah%20dan%20Komunikasi',
+                    'Syariah dan Hukum': 'Syariah%20dan%20Hukum',
+                    'Ilmu Tarbiyah dan Keguruan': 'Ilmu%20Tarbiyah%20dan%20Keguruan',
+                    'Ilmu Sosial': 'Ilmu%20Sosial',
+                    'Sains dan Teknologi': 'Sains%20dan%20Teknologi',
+                    'Kesehatan Masyarakat': 'Kesehatan%20Masyarakat',
+                    'Pascasarjana': 'Pascasarjana'
+                };
+                var params = [];
+
+                if (fakultas) {
+                    params.push(`fakultas=${fakultas}`);
+                } else if (fakultasMap[userFakultas]) {
+                    params.push(`fakultas=${fakultasMap[userFakultas]}`);
+                }
+
+                if (prodi) {
+                    params.push(`prodi=${prodi}`);
+                }
+
+                if (thnlulus) {
+                    params.push(`lulus=${thnlulus}`);
+                }
+
+                var url = params.length ? `${baseUrl}?${params.join('&')}` : baseUrl;
+
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(response) {
+                        $(`#charts-${type}`).empty();
+
+                        var chartsConfig = {
+                            ipk: [{
+                                id: 'ipkDistribution',
+                                title: 'Distribusi IPK',
+                                dataKey: 'ipk_counts'
+                            }]
+                        };
+
+                        chartsConfig[type].forEach(function(chart) {
+                            $(`#charts-${type}`).append(
+                                `<div class="row my-2">
+                            <div class="col-12" >
+                                <hr>
+                                <span class="mb-2 h5">${chart.title}</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 p-2" >
+                                <canvas id="${chart.id}Chart" width="400" height="400"></canvas>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12" >
+                                <div class="table-responsive">
+                                    <table id="${chart.id}Table" class="table text-start align-middle border table-striped table-hover mb-0">
+                                        <thead class="wow fadeInUp" >
+                                            <tr class="text-dark" style="font-weight:700;">
+                                                <th scope="col">No</th>
+                                                <th scope="col">Rentang IPK</th>
+                                                <th scope="col">Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="wow fadeInUp" ></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>`
+                            );
+                            createChartAndTable(`${chart.id}Chart`, `${chart.id}Table`,
+                                response[chart.dataKey], chart.title);
+                        });
+                    },
+                    error: function(error) {
+                        console.error('Error fetching data:', error);
+                    }
+                });
+            }
+
+            $('#fakultasSelect-ipk, #prodiSelect-ipk')
+                .change(function() {
+                    var type = $(this).attr('id').split('-')[1];
+                    fetchData(type);
+                });
+
+            fetchData('ipk');
+
+            function createChartAndTable(chartId, tableId, data, label) {
+                const labels = Object.keys(data);
+                const values = Object.values(data);
+                const total = values.reduce((acc, val) => acc + val, 0);
+                const percentages = values.map(value => ((value / total) * 100).toFixed(2) + '%');
+                const ctx = document.getElementById(chartId).getContext('2d');
+
+                new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels.map((label, index) => label + ' (' + percentages[index] + ')'),
+                        datasets: [{
+                            label: label,
+                            data: values,
+                            backgroundColor: [
+                                'rgb(0 157 84 / 74%)',
+                                'rgb(2 117 64 / 74%)',
+                                'rgb(2 81 44 / 74%)',
+                                'rgb(43 205 129 / 74%)',
+                                'rgb(0 177 4 / 74%)',
+                                'rgb(0 127 4 / 74%)',
+                                'rgb(2 117 5 / 74%))'
+                            ],
+                            borderColor: ['#fff'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        if (context.raw !== null) {
+                                            label += context.raw;
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+
+                $(`#${tableId} tbody`).empty();
+                labels.forEach((label, index) => {
+                    $(`#${tableId} tbody`).append(
+                        `<tr>
+                    <td>${index + 1}</td>
+                    <td>${label}</td>
+                    <td>${values[index]}</td>
+                </tr>`
+                    );
+                });
+            }
+
+            ['ipk'].forEach(type => {
+                $(`#tahunLulusSelect-${type}`).change(() => fetchData(type));
+                $(`#fakultasSelect-${type}`).change(() => fetchData(type));
+                fetchData(type);
+            });
+        });
+
+        $(document).ready(function() {
+    function fetchData(type) {
+        var thnlulus = $(`#tahunLulusSelect-${type}`).val();
+        var fakultas = $(`#fakultasSelect-${type}`).val();
+        var prodi = $(`#prodiSelect-${type}`).val(); // Ambil nilai prodi
+        var baseUrl = `/api/visualisasi/${type}`;
+        var userFakultas = "{{ Auth::user()->fakultas }}";
+        var fakultasMap = {
+            'Ushuluddin dan Studi Islam': 'Ushuluddin%20dan%20Studi%20Islam',
+            'Ekonomi dan Bisnis Islam': 'Ekonomi%20dan%20Bisnis%20Islam',
+            'Dakwah dan Komunikasi': 'Dakwah%20dan%20Komunikasi',
+            'Syariah dan Hukum': 'Syariah%20dan%20Hukum',
+            'Ilmu Tarbiyah dan Keguruan': 'Ilmu%20Tarbiyah%20dan%20Keguruan',
+            'Ilmu Sosial': 'Ilmu%20Sosial',
+            'Sains dan Teknologi': 'Sains%20dan%20Teknologi',
+            'Kesehatan Masyarakat': 'Kesehatan%20Masyarakat',
+            'Pascasarjana': 'Pascasarjana'
+        };
+        var params = [];
+
+        if (fakultas) {
+            params.push(`fakultas=${fakultas}`);
+        } else if (fakultasMap[userFakultas]) {
+            params.push(`fakultas=${fakultasMap[userFakultas]}`);
+        }
+
+        if (prodi) {
+            params.push(`prodi=${prodi}`);
+        }
+
+        if (thnlulus) {
+            params.push(`lulus=${thnlulus}`);
+        }
+
+        var url = params.length ? `${baseUrl}?${params.join('&')}` : baseUrl;
+
+        $.ajax({
+            url: url,
+            method: 'GET',
+            success: function(response) {
+                $(`#charts-${type}`).empty();
+
+                var chartsConfig = {
+                    masa_studi: [{
+                        id: 'masaStudiDistribution',
+                        title: 'Distribusi Masa Studi Semester',
+                        dataKey: 'masa_studi_semester'
+                    }]
+                };
+
+                chartsConfig[type].forEach(function(chart) {
+                    $(`#charts-${type}`).append(
+                        `<div class="row my-2">
+                            <div class="col-12">
+                                <hr>
+                                <span class="mb-2 h5">${chart.title}</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 p-2">
+                                <canvas id="${chart.id}Chart" width="400" height="400"></canvas>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="table-responsive">
+                                    <table id="${chart.id}Table" class="table text-start align-middle border table-striped table-hover mb-0">
+                                        <thead class="wow fadeInUp">
+                                            <tr class="text-dark" style="font-weight:700;">
+                                                <th scope="col">No</th>
+                                                <th scope="col">Masa Studi (Semester)</th>
+                                                <th scope="col">Jumlah</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="wow fadeInUp"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>`
+                    );
+                    createChartAndTable(`${chart.id}Chart`, `${chart.id}Table`, response[chart.dataKey], chart.title);
+                });
+            },
+            error: function(error) {
+                console.error('Error fetching data:', error);
+            }
+        });
+    }
+
+    $('#fakultasSelect-masa_studi, #prodiSelect-masa_studi')
+        .change(function() {
+            var type = $(this).attr('id').split('-')[1];
+            fetchData(type);
+        });
+
+    fetchData('masa_studi');
+
+    function createChartAndTable(chartId, tableId, data, label) {
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+        const total = values.reduce((acc, val) => acc + val, 0);
+        const percentages = values.map(value => ((value / total) * 100).toFixed(2) + '%');
+        const ctx = document.getElementById(chartId).getContext('2d');
+
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels.map((label, index) => label + ' (' + percentages[index] + ')'),
+                datasets: [{
+                    label: label,
+                    data: values,
+                    backgroundColor: [
+                        'rgb(0 157 84 / 74%)',
+                        'rgb(2 117 64 / 74%)',
+                        'rgb(2 81 44 / 74%)',
+                        'rgb(43 205 129 / 74%)',
+                        'rgb(0 177 4 / 74%)',
+                        'rgb(0 127 4 / 74%)',
+                        'rgb(2 117 5 / 74%)'
+                    ],
+                    borderColor: ['#fff'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.raw !== null) {
+                                    label += context.raw;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        $(`#${tableId} tbody`).empty();
+        labels.forEach((label, index) => {
+            $(`#${tableId} tbody`).append(
+                `<tr>
+                    <td>${index + 1}</td>
+                    <td>${label}</td>
+                    <td>${values[index]}</td>
+                </tr>`
+            );
+        });
+    }
+
+    ['masa_studi'].forEach(type => {
+        $(`#tahunLulusSelect-${type}`).change(() => fetchData(type));
+        $(`#fakultasSelect-${type}`).change(() => fetchData(type));
+        fetchData(type);
+    });
+});
+
     </script>
 @endsection
