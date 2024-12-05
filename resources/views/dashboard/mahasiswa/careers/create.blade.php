@@ -64,7 +64,7 @@
                   </div>
                   @enderror
                 </div>
-                {{-- <div class="mb-3">
+                <div class="mb-3">
                   <label for="slug" class="form-label">Slug</label>
                   <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
                     value="{{ old('slug') }}" required readonly>
@@ -73,9 +73,7 @@
                     {{ $message }}
                   </div>
                   @enderror
-                </div> --}}
-
-                {{-- New --}}
+                </div> 
                 <div class="mb-3">
                   <label for="start-periode" class="form-label">Periode pendaftaran / Registrasi</label>
                   <input type="date" class="form-control @error('start-periode') is-invalid @enderror" id="start-periode" name="start-periode"
@@ -99,7 +97,7 @@
                 
                 <div class="mb-3">
                   <label for="image" class="form-label">Dokumentasi Publikasi Lowongan Pekerjaan secara Resmi (Flyer, surat, dan Dokumenn resmi lainnya)</label>
-                  <img class="img-preview img-fluid mb-3 col-sm-5">
+                  <img class="img-preview img-fluid mb-3 col-sm-5" >
                   <input class="form-control @error('image') is-invalid @enderror" type="file"
                     id="image" name="image" onchange="previewImage()">
                   @error('image')
@@ -163,6 +161,7 @@
     const imgPreview = $('.img-preview');
     // imgPreview.show();
     imgPreview.css('display', 'block');
+    imgPreview.css('height', '100px');
 
     const blob = URL.createObjectURL($('#image')[0].files[0]);
     imgPreview.attr('src', blob);

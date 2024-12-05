@@ -113,6 +113,9 @@ a {
     color: #027a24 !important;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #28a745 !important;
+}
 /* Ganti warna sesuai keinginan Anda */
 .form-check-input:checked {
     background-color: #006400; /* Warna hijau tua */

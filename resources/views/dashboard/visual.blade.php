@@ -151,6 +151,7 @@
                         <div class="input-group mb-3">
                             <select id="tahunLulusSelect-pekerja" class="form-select">
                                 <option value="">Pilih Tahun</option>
+                                <option value="2021">2021</option>
                                 <option value="2022">2022</option>
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>
@@ -403,6 +404,8 @@
                         <div class="input-group mb-3">
                             <select id="tahunLulusSelect-ipk" class="form-select">
                                 <option value="">Pilih Tahun Lulus</option>
+                               
+                                <option value="2021">2021</option>
                                 <option value="2022">2022</option>
                                 <option value="2023">2023</option>
                                 <option value="2024">2024</option>
@@ -880,122 +883,111 @@
         });
 
         // Chart Questioner Alumni & Stakeholder
-        var userFakultas = "{{ Auth::user()->fakultas }}";
-
-        function fetchAndRenderCharts(category, containerId, startIndex, apiUrl, tahunSelectId, fakultasSelectId) {
-            var thnlulus = $(tahunSelectId).val();
-            var fakultas = $(fakultasSelectId).val();
-            var fakultasMap = {
-                'Ushuluddin dan Studi Islam': 'Ushuluddin%20dan%20Studi%20Islam',
-                'Ekonomi dan Bisnis Islam': 'Ekonomi%20dan%20Bisnis%20Islam',
-                'Dakwah dan Komunikasi': 'Dakwah%20dan%20Komunikasi',
-                'Syariah dan Hukum': 'Syariah%20dan%20Hukum',
-                'Ilmu Tarbiyah dan Keguruan': 'Ilmu%20Tarbiyah%20dan%20Keguruan',
-                'Ilmu Sosial': 'Ilmu%20Sosial',
-                'Sains dan Teknologi': 'Sains%20dan%20Teknologi',
-                'Kesehatan Masyarakat': 'Kesehatan%20Masyarakat',
-                'Pascasarjana': 'Pascasarjana'
-            };
-
-            var url = apiUrl;
-            var params = [];
-
-            // Add fakultas parameter based on user or selected faculty
-            if (userFakultas !== "" && fakultasMap.hasOwnProperty(userFakultas)) {
-                params.push(`fakultas=${fakultasMap[userFakultas]}`);
-            } else if (fakultas) {
-                params.push(`fakultas=${fakultas}`);
-            }
-
-            // Add lulus (graduation year) parameter if provided
-            if (thnlulus) {
-                params.push(`lulus=${thnlulus}`);
-            }
-
-            // Construct the URL with the parameters if any
-            if (params.length > 0) {
-                url += '?' + params.join('&');
-            }
-
-            $.ajax({
-                url: url,
-                method: 'GET',
-                success: function(response) {
-                    const competencies = response[category];
-                    if (!competencies) {
-                        console.error('No data found for the given filters.');
-                        return;
-                    }
-                    Object.entries(competencies).forEach(([competency, data], index) => {
-                        const chartId = `chart-${startIndex + index}`;
-                        $(`#${containerId}`).append(`
-                    <div class="col-lg-4 col-md-4 col-sm-12 p-2">
-                        <span style="font-size:0.8rem;">${index + 1}. ${competency}</span>
-                        <canvas id="${chartId}" width="400" height="400"></canvas>
-                    </div>
-                `);
-                        createChart(chartId, data, competency);
-                    });
-                },
-                error: function(error) {
-                    console.error('Error fetching data:', error);
-                }
-            });
-        }
 
         $(document).ready(function() {
-            // Fetch charts for various categories (alumni, stakeholder, etc.)
-            fetchAndRenderCharts('Alumni', 'charts-questioner-alumni', 0, '/api/visualisasi/questioner/alumni',
-                '#tahunLulusSelect-questioner', '#fakultasSelect-questioner');
-            fetchAndRenderCharts('Stakeholder', 'charts-questioner-stakeholder', 1,
-                '/api/visualisasi/questioner/stakeholder', '#tahunLulusSelect-questioner-stakeholder',
-                '#fakultasSelect-questioner-stakeholder');
-        });
+            // Fungsi untuk mengambil data dan merender chart
+            function fetchAndRenderCharts(category, containerId, startIndex, type, tahunSelectId,
+                fakultasSelectId, prodiSelectId) {
+                const thnlulus = $(tahunSelectId).val();
+                const fakultas = $(fakultasSelectId).val();
+                const prodi = $(prodiSelectId).val(); // Ambil nilai prodi
+                const userFakultas = "{{ Auth::user()->fakultas }}";
 
-        function createChart(chartId, data, label) {
-            const ctx = document.getElementById(chartId).getContext('2d');
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: Object.keys(data),
-                    datasets: [{
-                        label: label,
-                        data: Object.values(data),
-                        backgroundColor: [
-                            'rgba(0, 157, 84, 0.74)',
-                            'rgba(2, 117, 64, 0.74)',
-                            'rgba(2, 81, 44, 0.74)',
-                            'rgba(43, 205, 129, 0.74)',
-                            'rgba(0, 177, 4, 0.74)',
-                            'rgba(0, 127, 4, 0.74)',
-                            'rgba(2, 117, 5, 0.74)'
-                        ],
-                        borderColor: ['#fff'],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top'
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) label += ': ';
-                                    if (context.raw !== null) label += context.raw;
-                                    return label;
+                const fakultasMap = {
+                    'Ushuluddin dan Studi Islam': 'Ushuluddin%20dan%20Studi%20Islam',
+                    'Ekonomi dan Bisnis Islam': 'Ekonomi%20dan%20Bisnis%20Islam',
+                    'Dakwah dan Komunikasi': 'Dakwah%20dan%20Komunikasi',
+                    'Syariah dan Hukum': 'Syariah%20dan%20Hukum',
+                    'Ilmu Tarbiyah dan Keguruan': 'Ilmu%20Tarbiyah%20dan%20Keguruan',
+                    'Ilmu Sosial': 'Ilmu%20Sosial',
+                    'Sains dan Teknologi': 'Sains%20dan%20Teknologi',
+                    'Kesehatan Masyarakat': 'Kesehatan%20Masyarakat',
+                    'Pascasarjana': 'Pascasarjana'
+                };
+
+                // Membuat URL dengan parameter
+                const params = [];
+                if (fakultas) {
+                    params.push(`fakultas=${fakultas}`);
+                } else if (fakultasMap[userFakultas]) {
+                    params.push(`fakultas=${fakultasMap[userFakultas]}`);
+                }
+                if (prodi) params.push(`prodi=${prodi}`);
+                if (thnlulus) params.push(`lulus=${thnlulus}`);
+
+                const url = params.length ? `/api/visualisasi/${type}?${params.join('&')}` :
+                    `/api/visualisasi/${type}`;
+
+                // AJAX request
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(response) {
+                        const competencies = response[category];
+                        if (!competencies) {
+                            console.warn(`No data found for category "${category}".`);
+                            return;
+                        }
+
+                        // Merender chart
+                        Object.entries(competencies).forEach(([competency, data], index) => {
+                            const chartId = `chart-${startIndex + index}`;
+                            $(`#${containerId}`).append(`
+                        <div class="col-lg-4 col-md-4 col-sm-12 p-2">
+                            <span style="font-size:0.8rem;">${index + 1}. ${competency}</span>
+                            <canvas id="${chartId}" width="400" height="400"></canvas>
+                        </div>
+                    `);
+                            createChart(chartId, data, competency);
+                        });
+                    },
+                    error: function(error) {
+                        console.error(`Error fetching data for category "${category}"`, error);
+                    }
+                });
+            }
+
+            // Fungsi untuk membuat chart
+            function createChart(chartId, data, label) {
+                const ctx = document.getElementById(chartId).getContext('2d');
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(data),
+                        datasets: [{
+                            label: label,
+                            data: Object.values(data),
+                            backgroundColor: [
+                                'rgba(0, 157, 84, 0.74)',
+                                'rgba(2, 117, 64, 0.74)',
+                                'rgba(2, 81, 44, 0.74)'
+                            ],
+                            borderColor: ['#fff'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top'
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) label += ': ';
+                                        if (context.raw !== null) label += context.raw;
+                                        return label;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
-        }
+                });
+            }
 
-        $(document).ready(function() {
+            // Data kategori
             const questionerCategories = [{
                     category: "(a) Seberapa besar kompetensi di bawah ini Anda kuasai?",
                     containerId: "questioner-a",
@@ -1043,28 +1035,17 @@
                     containerId: "questioner-stakeholder-b",
                     startIndex: 192
                 }
-            ];
+            ];  
 
-            function reloadCharts(categories, apiUrl, tahunSelectId, fakultasSelectId) {
-                categories.forEach(({
-                    category,
-                    containerId,
-                    startIndex
-                }) => {
-                    $(`#${containerId}`).empty();
-                    fetchAndRenderCharts(category, containerId, startIndex, apiUrl, tahunSelectId,
-                        fakultasSelectId);
-                });
-            }
-
+            // Render initial charts
             questionerCategories.forEach(({
                 category,
                 containerId,
                 startIndex
             }) => {
-                fetchAndRenderCharts(category, containerId, startIndex,
-                    '/api/visualisasi/questioner', '#tahunLulusSelect-questioner',
-                    '#fakultasSelect-questioner');
+                fetchAndRenderCharts(category, containerId, startIndex, 'questioner',
+                    '#tahunLulusSelect-questioner', '#fakultasSelect-questioner',
+                    '#prodiSelect-questioner');
             });
 
             stakeholderCategories.forEach(({
@@ -1072,23 +1053,38 @@
                 containerId,
                 startIndex
             }) => {
-                fetchAndRenderCharts(category, containerId, startIndex,
-                    '/api/visualisasi/stakeholder',
-                    '#tahunLulusSelect-questioner-stakeholder', '#fakultasSelect-questioner-stakeholder'
-                );
+                fetchAndRenderCharts(category, containerId, startIndex, 'stakeholder',
+                    '#tahunLulusSelect-questioner-stakeholder',
+                    '#fakultasSelect-questioner-stakeholder', '#prodiSelect-questioner-stakeholder');
             });
 
-            $('#tahunLulusSelect-questioner, #fakultasSelect-questioner').on('change', function() {
-                reloadCharts(questionerCategories, '/api/visualisasi/questioner',
-                    '#tahunLulusSelect-questioner', '#fakultasSelect-questioner');
-            });
-
-            $('#tahunLulusSelect-questioner-stakeholder, #fakultasSelect-questioner-stakeholder').on('change',
+            // Event untuk reload chart
+            $('#tahunLulusSelect-questioner, #fakultasSelect-questioner, #prodiSelect-questioner').on('change',
                 function() {
-                    reloadCharts(stakeholderCategories, '/api/visualisasi/stakeholder',
-                        '#tahunLulusSelect-questioner-stakeholder', '#fakultasSelect-questioner-stakeholder'
-                    );
+                    reloadCharts(questionerCategories, 'questioner', '#tahunLulusSelect-questioner',
+                        '#fakultasSelect-questioner', '#prodiSelect-questioner');
                 });
+
+            $('#tahunLulusSelect-questioner-stakeholder, #fakultasSelect-questioner-stakeholder, #prodiSelect-questioner-stakeholder')
+                .on('change',
+                    function() {
+                        reloadCharts(stakeholderCategories, 'stakeholder',
+                            '#tahunLulusSelect-questioner-stakeholder',
+                            '#fakultasSelect-questioner-stakeholder', '#prodiSelect-questioner-stakeholder');
+                    });
+
+            // Fungsi reload charts
+            function reloadCharts(categories, type, tahunSelectId, fakultasSelectId, prodiSelectId) {
+                categories.forEach(({
+                    category,
+                    containerId,
+                    startIndex
+                }) => {
+                    $(`#${containerId}`).empty();
+                    fetchAndRenderCharts(category, containerId, startIndex, type, tahunSelectId,
+                        fakultasSelectId, prodiSelectId);
+                });
+            }
         });
     </script>
 @endsection
