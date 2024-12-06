@@ -24,6 +24,10 @@ class PendidikanController extends Controller
    */
   public function create()
   {
+    if (CertCheck::where('user_id', Auth::user()->id)->firstOrCreate(['user_id' => Auth::user()->id])->profile_check == false) {
+			return redirect('/dashboard/profile')->with('warning', 'Lengkapi profil terlebih dahulu!');
+		}
+
     return view('dashboard.mahasiswa.perjalanan-karir.pendidikan.create');
   }
 
@@ -32,6 +36,10 @@ class PendidikanController extends Controller
    */
   public function store(Request $request)
   {
+    if (CertCheck::where('user_id', Auth::user()->id)->firstOrCreate(['user_id' => Auth::user()->id])->profile_check == false) {
+			return redirect('/dashboard/profile')->with('warning', 'Lengkapi profil terlebih dahulu!');
+		}
+
     $rules = $request->validate([
       "tingkat_pendidikan" => "required|in:a,b,c",
       "program_studi" => "required",

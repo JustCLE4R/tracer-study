@@ -74,7 +74,7 @@
     },
     {
       "id": 29,
-      "name" : "tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha",
+      "name" : "tanggal-akhir-usaha",
       "question": "Tanggal Akhir Usaha (Kosongkan jika masih memiliki usaha)",
       "qanswer": "[]",
       "category": "wirausaha",

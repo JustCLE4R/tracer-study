@@ -35,10 +35,17 @@ class PerjalananKarirController extends Controller
 	}
 
 	public function create(){
+		if (CertCheck::where('user_id', Auth::user()->id)->firstOrCreate(['user_id' => Auth::user()->id])->profile_check == false) {
+			return redirect('/dashboard/profile')->with('warning', 'Lengkapi profil terlebih dahulu!');
+		}
+
     return view('dashboard.mahasiswa.perjalanan-karir.create');
 	}
 
 	public function store(Request $request){
+		if (CertCheck::where('user_id', Auth::user()->id)->firstOrCreate(['user_id' => Auth::user()->id])->profile_check == false) {
+			return redirect('/dashboard/profile')->with('warning', 'Lengkapi profil terlebih dahulu!');
+		}
 
 		CertCheck::updateOrCreate([
 			'user_id' => Auth::user()->id

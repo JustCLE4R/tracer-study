@@ -43,7 +43,7 @@ class WirausahaController extends Controller
             'pemodal-saat-ini' => 'required|array|min:1|max:4|in:a,b,c,d',
             'kesesuaian-usaha-dengan-prodi' => 'required|string|in:a,b,c',
             'tanggal-mulai-usaha' => 'required|date',
-            'tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha' => 'nullable|date',
+            'tanggal-akhir-usaha' => 'nullable|date',
             'provinsi' => 'required|string|max:255',
             'kabupaten' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
@@ -71,7 +71,7 @@ class WirausahaController extends Controller
             'pemodal-saat-ini' => 'Pemodal Saat Ini',
             'kesesuaian-usaha-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
             'tanggal-mulai-berusaha' => 'Tanggal Mulai Berusaha',
-            'tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha' => 'Tanggal Akhir Usaha',
+            'tanggal-akhir-usaha' => 'Tanggal Akhir Usaha',
             'provinsi' => 'Provinsi',
             'kabupaten' => 'Kabupaten',
             'alamat' => 'Alamat',
@@ -79,10 +79,10 @@ class WirausahaController extends Controller
         ]);
 
         $dataAkhirUsaha = [];
-        if (isset($rules['tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha'])) {
+        if (isset($rules['tanggal-akhir-usaha'])) {
             $dataAkhirUsaha = [
                 'is_active' => 0,
-                'tgl_akhir_usaha' => $rules['tanggal-akhir-usaha-kosongkan-jika-masih-memiliki-usaha'],
+                'tgl_akhir_usaha' => $rules['tanggal-akhir-usaha'],
             ];
         }
 
@@ -141,7 +141,7 @@ class WirausahaController extends Controller
             return abort(403);
         }
 
-        return view('dashboard.perjalanan-karir.kerja.editWirausaha', [
+        return view('dashboard.mahasiswa.perjalanan-karir.kerja.editWirausaha', [
             'wirausaha' => $wirausaha
         ]);
     }

@@ -39,6 +39,7 @@
     </script>
     @endif
 
+    {{-- print all success --}}
     @if (session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
       <ul class="mb-0">
@@ -59,6 +60,26 @@
     </script>
     @endif
 
+    {{-- print all warning --}}
+    @if (session()->has('warning'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <ul class="mb-0">
+      @if(is_array(session('warning')))
+        @foreach (session('warning') as $warning)
+        <li>{{ $warning }}</li>
+        @endforeach
+      @else
+        <li>{{ session('warning') }}</li>
+      @endif
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+      setTimeout(() => {
+      document.querySelector('.alert').classList.remove('show');
+      }, 5000);
+    </script>
+    @endif
 
     <div class="text-end me-2 flex-grow-1"> 
       <a href="#">

@@ -75,7 +75,7 @@
     },
     {
       "id": 10,
-      "name" : "tanggal-akhir-kerja-kosongkan-jika-masih-bekerja",
+      "name" : "tanggal-akhir-kerja",
       "question": "Tanggal Akhir Kerja (Kosongkan jika masih bekerja)",
       "qanswer": "[]",
       "category": "bekerja",

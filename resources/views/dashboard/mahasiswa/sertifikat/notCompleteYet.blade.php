@@ -43,14 +43,16 @@
                             </div>
                             <div class="row mt-4 justify-content-center">
                                 <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">Profile</h5>
-                                            <p class="card-text">{!! $sertifikat->profile_check
-                                                ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
-                                                : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
+                                    <a href="/dashboard/profile" class="d-block">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">Profile</h5>
+                                                <p class="card-text">{!! $sertifikat->profile_check
+                                                    ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
+                                                    : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 {{-- <div class="col-md-3">
                                     <div class="card">
@@ -73,24 +75,28 @@
                                     </div>
                                 </div> --}}
                                 <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">Perjalana Karir</h5>
-                                            <p class="card-text">{!! $sertifikat->perjalanan_karir_check
-                                                ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
-                                                : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
+                                    <a href="/dashboard/perjalanan-karir">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">Perjalana Karir</h5>
+                                                <p class="card-text">{!! $sertifikat->perjalanan_karir_check
+                                                    ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
+                                                    : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">Questioner</h5>
-                                            <p class="card-text">{!! $sertifikat->questioner_check
-                                                ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
-                                                : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
+                                    <a href="/dashboard/questioner">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <h5 class="card-title">Questioner</h5>
+                                                <p class="card-text">{!! $sertifikat->questioner_check
+                                                    ? '<i class="bi bi-check-circle-fill text-success"></i> Sudah Diisi'
+                                                    : '<i class="bi bi-x-circle-fill text-danger"></i> Belum Diisi' !!}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                             <div class="row my-4">

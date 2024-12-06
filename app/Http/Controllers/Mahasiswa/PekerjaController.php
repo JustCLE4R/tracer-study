@@ -47,7 +47,7 @@ class PekerjaController extends Controller
             'jumlah-pendapatan-perbulan' => 'required|numeric|min:0|max:1000000000',
             'kesesuaian-pekerjaan-dengan-prodi' => 'required|string|in:a,b,c',
             'tanggal-mulai-bekerja' => 'required|date',
-            'tanggal-akhir-kerja-kosongkan-jika-masih-bekerja' => 'nullable|date',
+            'tanggal-akhir-kerja' => 'nullable|date',
             'provinsi' => 'required|string|max:255',
             'kabupaten' => 'required|string|max:255',
             'fotobukti-telah-bekerja' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
@@ -81,7 +81,7 @@ class PekerjaController extends Controller
             'jumlah-pendapatan-perbulan' => 'Jumlah Pendapatan Per Bulan',
             'kesesuaian-pekerjaan-dengan-prodi' => 'Kesesuaian Pekerjaan dengan Program Studi',
             'tanggal-mulai-bekerja' => 'Tanggal Mulai Bekerja',
-            'tanggal-akhir-kerja-kosongkan-jika-masih-bekerja' => 'Tanggal Akhir Bekerja',
+            'tanggal-akhir-kerja' => 'Tanggal Akhir Bekerja',
             'provinsi' => 'Provinsi',
             'kabupaten' => 'Kabupaten',
             'fotobukti-telah-bekerja' => 'Foto Bukti Telah Bekerja',
@@ -99,10 +99,10 @@ class PekerjaController extends Controller
         $dataAkhirKerja = [];
 
         // cek jika inputan tanggal akhir kerja ada dan mematikan is_active
-        if (isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])) {
+        if (isset($rules['tanggal-akhir-kerja'])) {
             $dataAkhirKerja = [
                 'is_active' => 0,
-                'tgl_akhir_kerja' => $rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'],
+                'tgl_akhir_kerja' => $rules['tanggal-akhir-kerja'],
             ];
         }
 
@@ -138,13 +138,13 @@ class PekerjaController extends Controller
 
         $token = null;
         // pembuatan token untuk link public yang diakses oleh stakeholder
-        if(!isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])){
+        if(!isset($rules['tanggal-akhir-kerja'])){
             do {
-                $token = Str::random(255);
+                $token = Str::random(32);
             } while (DetailPerusahaan::where('token', $token)->first());
 
             (new ApiIntegration)->whatsappGateway($rules['nomor-telepon-atasan'],
-                "╔══*.·:·.✧ UINSU MEDAN ✧.·:·.*══╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$token}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\\n\\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
+                "╔══*.·:·.✧ UINSU MEDAN ✧.·:·.*══╗\n\nYth. Bapak/Ibu {$rules['nama-atasan']} \n{$rules['posisi-jabatan-atasan']}\n{$rules['nama-perusahaan']}\n\ndi\n\nTempat\n\nPusat Pengembangan Karir Mahasiswa UIN Sumatera Utara Medan  mengucapkan terima kasih atas kerja sama yang telah terjalin selama ini. Sebagai bagian dari upaya peningkatan kualitas pendidikan dan layanan kami, mohon kesediaan Bapak/Ibu untuk meluangkan waktu mengisi Kuesioner Kepuasan Pengguna Alumni.\nKuesioner ini bertujuan untuk memperoleh masukan berharga terkait kinerja dan kontribusi alumni kami di lingkungan kerja Bapak/Ibu. Data yang dikumpulkan akan dijaga kerahasiaannya dan hanya digunakan untuk keperluan evaluasi dan pengembangan UIN Sumatera Utara Medan\n\nKami sangat menghargai partisipasi Bapak/Ibu dalam memberikan umpan balik yang konstruktif. Untuk pertanyaan lebih lanjut, silakan menghubungi kami dan kunjungi kami pada :\nE-mail\t\t: pusatkarir@uinsu.ac.id \nInstagram \t: pusat.karir_uinsu\nLaman resmi \t: www.tracerstudy.uinsu.ac.id \n\nAtas perhatian dan kerja samanya, kami ucapkan terima kasih.\n\nHormat kami,\nPusat Pengembangan Karir Mahasiswa\nUniversitas Islam Negeri Sumatera Utara\n\nSilakan klik tautan berikut untuk mengisi kuesioner:\nhttps://tracerstudy.uinsu.ac.id/questioner/{$token}\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
             );
         }
 
@@ -322,13 +322,13 @@ class PekerjaController extends Controller
         ];
 
         // cek jika nomor telepon atasan berubah atau tidak untuk membuat token baru
-        if ($rules['nomor-telepon-atasan'] != $pekerja->detailPerusahaan->telepon_atasan && !isset($rules['tanggal-akhir-kerja-kosongkan-jika-masih-bekerja'])) {
+        if ($rules['nomor-telepon-atasan'] != $pekerja->detailPerusahaan->telepon_atasan && !isset($rules['tanggal-akhir-kerja'])) {
             do {
                 $detail_perusahaan['token'] = Str::random(255);
             } while (DetailPerusahaan::where('token', $detail_perusahaan['token'])->first());
 
             (new ApiIntegration)->whatsappGateway($rules['nomor-telepon-atasan'],
-                "╔══*.·:·.✧ UINSU MEDAN ✧.·:·.*══╗\n\n\nUndangan untuk Mengisi Kuesioner Penilaian Kinerja Alumni\n\nHalo {$rules['posisi-jabatan-atasan']} {$rules['nama-perusahaan']},\n\nKami mengundang Anda untuk berpartisipasi dalam penilaian kinerja alumni kami. Kuesioner ini akan membantu kami memahami sejauh mana alumni kami telah mencapai tujuan perusahaan dan bagaimana mereka berkinerja dalam tugas-tugas yang diberikan.\n\nSilakan klik tautan di bawah ini untuk mengisi kuesioner:\n\nhttps://tracerstudy.uinsu.ac.id/questioner/{$detail_perusahaan['token']}\n\nKami sangat menghargai waktu dan masukan Anda. Terima kasih atas partisipasinya!\\n\\nSalam, Tim Tracer Study UINSU Medan\n\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
+                "╔══*.·:·.✧ UINSU MEDAN ✧.·:·.*══╗\n\nYth. Bapak/Ibu {$rules['nama-atasan']} \n{$rules['posisi-jabatan-atasan']}\n{$rules['nama-perusahaan']}\n\ndi\n\nTempat\n\nPusat Pengembangan Karir Mahasiswa UIN Sumatera Utara Medan  mengucapkan terima kasih atas kerja sama yang telah terjalin selama ini. Sebagai bagian dari upaya peningkatan kualitas pendidikan dan layanan kami, mohon kesediaan Bapak/Ibu untuk meluangkan waktu mengisi Kuesioner Kepuasan Pengguna Alumni.\nKuesioner ini bertujuan untuk memperoleh masukan berharga terkait kinerja dan kontribusi alumni kami di lingkungan kerja Bapak/Ibu. Data yang dikumpulkan akan dijaga kerahasiaannya dan hanya digunakan untuk keperluan evaluasi dan pengembangan UIN Sumatera Utara Medan\n\nKami sangat menghargai partisipasi Bapak/Ibu dalam memberikan umpan balik yang konstruktif. Untuk pertanyaan lebih lanjut, silakan menghubungi kami dan kunjungi kami pada :\nE-mail\t\t: pusatkarir@uinsu.ac.id \nInstagram \t: pusat.karir_uinsu\nLaman resmi \t: www.tracerstudy.uinsu.ac.id \n\nAtas perhatian dan kerja samanya, kami ucapkan terima kasih.\n\nHormat kami,\nPusat Pengembangan Karir Mahasiswa\nUniversitas Islam Negeri Sumatera Utara\n\nSilakan klik tautan berikut untuk mengisi kuesioner:\nhttps://tracerstudy.uinsu.ac.id/questioner/{$token}\n\n╚═════*.·:·.✧ ✦ ✧ ✦ ✧.·:·.*═════╝",
             );
         }
 
@@ -365,9 +365,5 @@ class PekerjaController extends Controller
         }
 
         return redirect('/dashboard/perjalanan-karir')->with('success', 'Berhasil menghapus data!');
-    }
-
-    private function whatsappGateway(){
-        // TODO: Adding whatsapp gateway
     }
 }
