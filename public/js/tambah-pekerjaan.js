@@ -106,11 +106,8 @@ function buildDynamicForm(question) {
             .attr("aria-label", "Default select example")
             .attr(
                 "name",
-                question.question
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/[^a-zA-Z0-9-]/g, "")
-                    .replace(/-{2,}/g, "-")
+                question.name
+                    .toLowerCase(),
             );
 
         var defaultOption = $("<option>")
@@ -148,11 +145,8 @@ function buildDynamicForm(question) {
             .attr("aria-label", "Default select example")
             .attr(
                 "name",
-                question.question
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/[^a-zA-Z0-9-]/g, "")
-                    .replace(/-{2,}/g, "-")
+                question.name
+                    .toLowerCase(),
             );
 
         var defaultOption = $("<option>")
@@ -190,11 +184,8 @@ function buildDynamicForm(question) {
             .attr("aria-label", "Default select example")
             .attr(
                 "name",
-                question.question
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/[^a-zA-Z0-9-]/g, "")
-                    .replace(/-{2,}/g, "-")
+                question.name
+                    .toLowerCase(),
             );
         var defaultOption = $("<option>")
             .prop({ selected: true })
@@ -225,11 +216,8 @@ function buildDynamicForm(question) {
                 .attr("aria-label", "Default select example")
                 .attr(
                     "name",
-                    question.question
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")
-                        .replace(/[^a-zA-Z0-9-]/g, "")
-                        .replace(/-{2,}/g, "-")
+                    question.name
+                        .toLowerCase(),
                 );
             var defaultOption = $("<option>")
                 .prop({ selected: true })
@@ -255,11 +243,8 @@ function buildDynamicForm(question) {
                 .attr({
                     type: question.type,
                     id: inputID,
-                    name: question.question
-                        .toLowerCase()
-                        .replace(/\s+/g, "-")
-                        .replace(/[^a-zA-Z0-9-]/g, "")
-                        .replace(/-{2,}/g, "-"),
+                    name: question.name
+                        .toLowerCase(),
                 })
                 .addClass("form-control");
             colDiv.append(input);
@@ -272,11 +257,8 @@ function buildDynamicForm(question) {
             .attr({
                 type: "file",
                 id: "formGroupExampleFile",
-                name: question.question
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/[^a-zA-Z0-9-]/g, "")
-                    .replace(/-{2,}/g, "-"),
+                name: question.name
+                    .toLowerCase(),
             })
             .addClass("form-control");
         var fileInfoSpan = $("<span>").addClass("ms-2").attr({
@@ -297,11 +279,8 @@ function buildDynamicForm(question) {
             .attr({
                 type: "email",
                 id: "formGroupExampleInput",
-                name: question.question
-                    .toLowerCase()
-                    .replace(/\s+/g, "-")
-                    .replace(/[^a-zA-Z0-9-]/g, "")
-                    .replace(/-{2,}/g, "-"),
+                name: question.name
+                    .toLowerCase(),
             })
             .addClass("form-control");
         colDiv.append(inputEmail);
@@ -320,11 +299,8 @@ function buildDynamicForm(question) {
                     type: "checkbox",
                     id: "formGroupExampleCheckbox_" + key,
                     name:
-                        question.question
-                            .toLowerCase()
-                            .replace(/\s+/g, "-")
-                            .replace(/[^a-zA-Z0-9-]/g, "")
-                            .replace(/-{2,}/g, "-") + "[]",
+                        question.name
+                            .toLowerCase(),
                     value: key,
                 })
                 .addClass("form-check-input");
