@@ -1,6 +1,5 @@
 <?php
-
-namespace App\Http\Controllers\AdminFakultas;
+namespace App\Http\Controllers\SuperAdmin2;
 
 use App\Models\User;
 use App\Models\Pekerja;
@@ -8,8 +7,7 @@ use App\Models\Wirausaha;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminFakultas\UpdateUserRequest;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SuperAdmin\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -18,9 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $query = User::where('role', 'mahasiswa')
-                    ->where('fakultas', Auth::user()->fakultas)
-                    ->latest();
+        $query = User::where('role', 'mahasiswa')->latest();
 
         if (request('search')) {
             $query->where(function($query) {
@@ -30,17 +26,18 @@ class UserController extends Controller
             });
         }
         
-        return view('dashboard.admin-fakultas.user.index', [
+        return view('dashboard.super-admin-2.user.index', [
             'users' => $query->paginate(20)->withQueryString()
         ]);
     }
 
+    // TODO: Make touch method account from main API
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('dashboard.super-admin-2.user.create');
     }
 
     /**
@@ -56,10 +53,6 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        if ($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
-        };
-
         $user->load(['pendidikan', 'career']);
 
         $pekerjaans = Pekerja::select(DB::raw("'pekerja' as tipe_kerja"), 'id', 'jabatan_pekerjaan', 'detail_pekerjaan', 'is_active', 'tgl_mulai_kerja as tanggal_mulai', 'tgl_akhir_kerja as tanggal_akhir')
@@ -70,7 +63,7 @@ class UserController extends Controller
 
         $unioned = $pekerjaans->union($wirausaha)->orderBy('is_active', 'desc')->orderBy('tanggal_mulai', 'asc')->orderBy('tipe_kerja', 'desc')->get();
 
-        return view('dashboard.admin-fakultas.user.show', [
+        return view('dashboard.super-admin-2.user.show', [
             'user' => $user,
             'pekerjaans' => $unioned
         ]);
@@ -81,11 +74,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        if($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
-        };
-
-        return view('dashboard.admin-fakultas.user.edit', [
+        return view('dashboard.super-admin-2.user.edit', [
             'user' => $user
         ]);
     }
@@ -95,12 +84,8 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        if($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
-        };
-
         $user->update($request->all());
-        return redirect('/dashboard/admin/fakultas/user/' . $user->id)->with('success', 'Profil berhasil diperbarui');
+        return redirect('/dashboard/admin/super/user/' . $user->id)->with('success', 'Profil berhasil diperbarui');
     }
 
     /**
@@ -108,11 +93,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if($user->fakultas != Auth::user()->fakultas) {
-            return redirect('/dashboard/admin/fakultas/user')->with('error', 'User not found!');
-        };
-
         $user->delete();
-        return redirect('/dashboard/admin/fakultas/user')->with('success', 'User has been deleted!');
+        return redirect('/dashboard/admin/super/user')->with('success', 'User has been deleted!');
     }
 }

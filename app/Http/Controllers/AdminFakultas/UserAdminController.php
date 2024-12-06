@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\AdminFakultas;
 
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserAdminController extends Controller
 {
@@ -14,7 +15,9 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $query = User::where('role', '!=', 'mahasiswa')->latest();
+        $query = User::where('role', 'adminprodi')
+                        ->where('fakultas', Auth::user()->fakultas)
+                        ->latest();
 
         if (request('search')) {
             $query->where(function($query) {
@@ -23,7 +26,7 @@ class UserAdminController extends Controller
             });
         }
         
-        return view('dashboard.super-admin.user-admin.index', [
+        return view('dashboard.admin-fakultas.user-admin.index', [
             'users' => $query->paginate(20)->withQueryString()
         ]);
     }
@@ -49,7 +52,7 @@ class UserAdminController extends Controller
      */
     public function show(User $user)
     {
-        // 
+        dd($user);
     }
 
     /**
@@ -58,7 +61,7 @@ class UserAdminController extends Controller
     public function edit(User $user)
     {
         $roles = User::enumValues('role');
-        return view('dashboard.super-admin.user-admin.edit', [
+        return view('dashboard.admin-fakultas.user-admin.edit', [
             'user' => $user,
             'roles' => $roles
         ]);

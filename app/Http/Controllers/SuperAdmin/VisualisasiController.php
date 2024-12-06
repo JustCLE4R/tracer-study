@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\SuperAdmin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class VisualisasiController extends Controller
 {
@@ -11,8 +12,10 @@ class VisualisasiController extends Controller
     {
         // get all fakultas and prodi and then send to frontend
         $tahun = User::distinct()->pluck('tgl_wisuda')->map(function($date) {
-            return date('Y', strtotime($date));
-        })->toArray();
+            $year = date('Y', strtotime($date));
+            return $year == 1970 ? null : $year;
+        })->filter()->toArray();
+
         $fakultas = User::distinct()->pluck('fakultas')->filter(function($value) {
             return $value !== '-';
         })->toArray();
@@ -27,7 +30,7 @@ class VisualisasiController extends Controller
             'prodi' => $prodi
         ];
 
-        return view('dashboard.visual', [
+        return view('dashboard.super-admin.visual', [
             'exportOptions' => $exportOptions
         ]);
     }

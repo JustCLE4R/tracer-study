@@ -52,7 +52,7 @@
                                 </td>
 
                                 <td style="background-color: transparent !important;" class="text-center">
-                                    <a href="/dashboard/admin/super/career/{{ $career->slug }}/judge?from={{ $from }}"
+                                    <a href="/dashboard/admin/super-2/career/{{ $career->slug }}/judge?from={{ $from }}"
                                         class="btn btn-success btn-sm px-1 py-0 text-white"><i
                                             class="bi bi-arrow-right"></i></a>
                                 </td>

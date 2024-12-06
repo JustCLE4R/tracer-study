@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminProdi;
 use App\Models\Career;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\AdminProdi\UpdateJudgeRequest;
 use App\Http\Requests\AdminProdi\UpdateCareerRequest;
@@ -70,7 +71,7 @@ class CareerController extends Controller
         $career->update($prepareData);
 
         $from = $request->input('from', 'pending');
-        return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil diubah');
+        return redirect('/dashboard/admin/prodi/career/'.$from)->with('success', 'Pengajuan karir berhasil diubah');
     }
 
     /**
@@ -83,7 +84,7 @@ class CareerController extends Controller
         $from = $request->input('from', 'pending');
 
         if($request->input('from')) {
-            return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil dihapus');
+            return redirect('/dashboard/admin/prodi/career/'.$from)->with('success', 'Pengajuan karir berhasil dihapus');
         }
 
         return redirect()->back()->with('success', 'Pengajuan karir berhasil dihapus');
@@ -104,12 +105,17 @@ class CareerController extends Controller
         ]);
 
         $from = $request->input('from', 'pending');
-        return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir ditolak');
+        return redirect('/dashboard/admin/prodi/career/'.$from)->with('success', 'Pengajuan karir ditolak');
     }
 
     public function pendingCareers()
     {
-        $careers = career::where('status', 'pending')->paginate(20);
+        $careers = Career::with('user')
+                        ->where('status', 'pending')
+                        ->whereHas('user', function ($query) {
+                            $query->where('program_studi', Auth::user()->program_studi);
+                        })
+                        ->paginate(20);
 
         return view('dashboard.admin-prodi.career.index', [
             'from' => 'pending',
@@ -119,7 +125,12 @@ class CareerController extends Controller
 
     public function rejectedCareers()
     {
-        $careers = career::where('status', 'rejected')->paginate(20);
+        $careers = Career::with('user')
+                        ->where('status', 'rejected')
+                        ->whereHas('user', function ($query) {
+                            $query->where('program_studi', Auth::user()->program_studi);
+                        })
+                        ->paginate(20);
 
         return view('dashboard.admin-prodi.career.index', [
             'from' => 'rejected',
@@ -129,7 +140,12 @@ class CareerController extends Controller
 
     public function approvedCareers()
     {
-        $careers = career::where('status', 'approved')->paginate(20);
+        $careers = Career::with('user')
+                        ->where('status', 'approved')
+                        ->whereHas('user', function ($query) {
+                            $query->where('program_studi', Auth::user()->program_studi);
+                        })
+                        ->paginate(20);
 
         return view('dashboard.admin-prodi.career.index', [
             'from' => 'approved',

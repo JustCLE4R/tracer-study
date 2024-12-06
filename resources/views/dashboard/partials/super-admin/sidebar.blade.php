@@ -29,6 +29,7 @@
         <div class="dropdown-menu bg-transparent border-0">
           <a href="/dashboard/admin/super/user" class="dropdown-item {{ Request::is('dashboard/admin/super/user') ? 'active' : '' }}">Mahasiswa</a>
           <a href="/dashboard/admin/super/user-admin" class="dropdown-item {{ Request::is('dashboard/admin/super/user-admin') ? 'active' : '' }}">Admin</a>
+          <a href="/dashboard/profile/edit/password" class="dropdown-item {{ Request::is('/dashboard/profile/edit/password') ? 'active' : '' }}">Ganti Password</a>
         </div>
       </div>
       <a href="/dashboard/admin/super/visual" class="nav-item nav-link {{ Request::is('dashboard/visual') ? 'active' : '' }}"><i class="bi bi-graph-down me-2 fs-5"></i>Visualisasi</a>

@@ -71,6 +71,6 @@ class DatabaseSeeder extends Seeder
       };
     }
 
-    // Career::factory(500)->create();
+    Career::factory(500)->create();
   }
 }

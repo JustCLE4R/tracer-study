@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class IsSuperAdmin
+class IsSuperAdmin2
 {
     /**
  * Handle an incoming request.

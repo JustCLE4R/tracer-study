@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\SuperAdmin2;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,7 +23,7 @@ class UserAdminController extends Controller
             });
         }
         
-        return view('dashboard.super-admin.user-admin.index', [
+        return view('dashboard.super-admin-2.user-admin.index', [
             'users' => $query->paginate(20)->withQueryString()
         ]);
     }
@@ -49,7 +49,7 @@ class UserAdminController extends Controller
      */
     public function show(User $user)
     {
-        // 
+        dd($user);
     }
 
     /**
@@ -58,7 +58,7 @@ class UserAdminController extends Controller
     public function edit(User $user)
     {
         $roles = User::enumValues('role');
-        return view('dashboard.super-admin.user-admin.edit', [
+        return view('dashboard.super-admin-2.user-admin.edit', [
             'user' => $user,
             'roles' => $roles
         ]);

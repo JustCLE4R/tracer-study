@@ -4,7 +4,7 @@
 <div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
-      <form class="row" action="/dashboard/admin/super/user/{{ $user->id }}" method="POST">
+      <form class="row" action="/dashboard/admin/fakultas/user/{{ $user->id }}" method="POST">
         @csrf
         @method('PATCH')
         <div class="col-md-4 mb-3">

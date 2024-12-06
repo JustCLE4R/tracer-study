@@ -7,7 +7,7 @@
 
   <div class="navbar-nav w-100 d-flex justify-content-between align-items-center m-2">
 
-    @if (Auth::user()->role != 'mahasiswa')
+    {{-- @if (Auth::user()->role != 'mahasiswa')
     <div class="me-auto">
       <form class="d-flex align-items-center" action="/dashboard/admin" method="GET">
         <div class="input-group">
@@ -16,7 +16,7 @@
         </div>
       </form>
     </div>
-    @endif
+    @endif --}}
 
     {{-- print all error --}}
     @if (session()->has('error'))

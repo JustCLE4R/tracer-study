@@ -10,7 +10,7 @@
     <div class="bg-light rounded p-5 border-top border-success border-5">
         <div class="row">
             <div class="col-12">
-                <form action="/dashboard/admin/super/user/search" method="POST" class="d-flex">
+                <form action="/dashboard/admin/super-2/user/search" method="POST" class="d-flex">
                     @csrf
                     <input type="text" class="form-control me-2" name="search" placeholder="Search ..."
                         value="{{ request()->input('search') ?: old('search') }}" required autofocus>
@@ -46,7 +46,7 @@
                             {{ $searchData['PRODI'] }}
                         </td>
                         <td style="background-color: transparent !important;" class="text-center">
-                            <a href="/dashboard/admin/super/career/{{ $career->slug }}/judge?from={{ $from }}"
+                            <a href="/dashboard/admin/super-2/career/{{ $career->slug }}/judge?from={{ $from }}"
                                 class="btn btn-success btn-sm px-1 py-0 text-white"><i
                                     class="bi bi-arrow-right"></i></a>
                         </td>

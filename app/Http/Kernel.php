@@ -72,6 +72,7 @@ class Kernel extends HttpKernel
         'is-surveyor' => \App\Http\Middleware\IsSurveyor::class,
         'is-admin-prodi' => \App\Http\Middleware\IsAdminProdi::class,
         'is-admin-fakultas' => \App\Http\Middleware\IsAdminFakultas::class,
-        'is-super-admin' => \App\Http\Middleware\IsSuperAdmin::class
+        'is-super-admin' => \App\Http\Middleware\IsSuperAdmin::class,
+        'is-super-admin2' => \App\Http\Middleware\IsSuperAdmin2::class,
     ];
 }

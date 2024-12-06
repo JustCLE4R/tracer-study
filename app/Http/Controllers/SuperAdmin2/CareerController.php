@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\AdminFakultas;
+namespace App\Http\Controllers\SuperAdmin2;
 
-use App\Models\career;
+use App\Models\Career;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\AdminFakultas\UpdateJudgeRequest;
-use App\Http\Requests\AdminFakultas\UpdateCareerRequest;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\SuperAdmin\UpdateJudgeRequest;
+use App\Http\Requests\SuperAdmin\UpdateCareerRequest;
 
 class CareerController extends Controller
 {
@@ -49,7 +48,7 @@ class CareerController extends Controller
      */
     public function edit(career $career)
     {
-        return view('dashboard.admin-fakultas.career.edit', [
+        return view('dashboard.super-admin-2.career.edit', [
             'career' => $career
         ]);
     }
@@ -59,8 +58,6 @@ class CareerController extends Controller
      */
     public function update(UpdateCareerRequest $request, career $career)
     {
-        // if($career->user)
-
         $prepareData = $request->all();
 
         if ($request->file('image')) {
@@ -73,7 +70,7 @@ class CareerController extends Controller
         $career->update($prepareData);
 
         $from = $request->input('from', 'pending');
-        return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil diubah');
+        return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir berhasil diubah');
     }
 
     /**
@@ -86,7 +83,7 @@ class CareerController extends Controller
         $from = $request->input('from', 'pending');
 
         if($request->input('from')) {
-            return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir berhasil dihapus');
+            return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir berhasil dihapus');
         }
 
         return redirect()->back()->with('success', 'Pengajuan karir berhasil dihapus');
@@ -94,7 +91,7 @@ class CareerController extends Controller
 
     public function judgeCareer(career $career)
     {
-        return view('dashboard.admin-fakultas.career.judge', [
+        return view('dashboard.super-admin-2.career.judge', [
             'career' => $career
         ]);
     }
@@ -107,20 +104,14 @@ class CareerController extends Controller
         ]);
 
         $from = $request->input('from', 'pending');
-        return redirect('/dashboard/admin/fakultas/career/'.$from)->with('success', 'Pengajuan karir ditolak');
+        return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir ' . $request->status);
     }
 
     public function pendingCareers()
     {
-        $careers = Career::with('user')
-                        ->where('status', 'pending')
-                        ->whereHas('user', function ($query) {
-                            $query->where('fakultas', Auth::user()->fakultas);
-                        })
-                        ->paginate(20);
-    
+        $careers = career::where('status', 'pending')->paginate(20);
 
-        return view('dashboard.admin-fakultas.career.index', [
+        return view('dashboard.super-admin-2.career.index', [
             'from' => 'pending',
             'careers' => $careers
         ]);
@@ -128,14 +119,9 @@ class CareerController extends Controller
 
     public function rejectedCareers()
     {
-        $careers = Career::with('user')
-                        ->where('status', 'rejected')
-                        ->whereHas('user', function ($query) {
-                            $query->where('fakultas', Auth::user()->fakultas);
-                        })
-                        ->paginate(20);
+        $careers = career::where('status', 'rejected')->paginate(20);
 
-        return view('dashboard.admin-fakultas.career.index', [
+        return view('dashboard.super-admin-2.career.index', [
             'from' => 'rejected',
             'careers' => $careers
         ]);
@@ -143,14 +129,9 @@ class CareerController extends Controller
 
     public function approvedCareers()
     {
-        $careers = Career::with('user')
-                        ->where('status', 'approved')
-                        ->whereHas('user', function ($query) {
-                            $query->where('fakultas', Auth::user()->fakultas);
-                        })
-                        ->paginate(20);
+        $careers = career::where('status', 'approved')->paginate(20);
 
-        return view('dashboard.admin-fakultas.career.index', [
+        return view('dashboard.super-admin-2.career.index', [
             'from' => 'approved',
             'careers' => $careers
         ]);

@@ -486,12 +486,17 @@ class VisualisasiController extends Controller
         $all_careers = $careers->count();
         
         $careers = $this->filterByThnWisudahProdiFakultas($careers, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
-
+        
         $career_counts = $careers->count();
-
-        $program_studi_counts = $careers->countBy('user.program_studi');
-        $fakultas_counts = $careers->countBy('user.fakultas');
-
+        
+        $program_studi_counts = $careers->countBy('user.program_studi')->mapWithKeys(function ($value, $key) {
+            return [ucwords(strtolower($key === '-' ? 'Admin' : $key)) => $value];
+        })->sortDesc();
+        
+        $fakultas_counts = $careers->countBy('user.fakultas')->mapWithKeys(function ($value, $key) {
+            return [$key === '-' ? 'Admin' : $key => $value];
+        })->sortDesc();
+        
         return response()->json([
             'all_careers' => $all_careers,
             'career_counts' => $career_counts,
@@ -499,6 +504,7 @@ class VisualisasiController extends Controller
             'program_studi_counts' => $program_studi_counts,
         ]);
     }
+    
 
     public function dataLamaStudi(Request $request)
     {

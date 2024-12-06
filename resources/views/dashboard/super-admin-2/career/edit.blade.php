@@ -27,7 +27,7 @@
               </div>
               <div class="row justify-content-center">
                   <div class="col-lg-19 col-md-10 col-sm-12">
-                    <form class="mb-5" action="/dashboard/admin/super/career/{{ $career->slug }}" method="POST" enctype="multipart/form-data">
+                    <form class="mb-5" action="/dashboard/admin/super-2/career/{{ $career->slug }}" method="POST" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
                       <div class="mb-3">

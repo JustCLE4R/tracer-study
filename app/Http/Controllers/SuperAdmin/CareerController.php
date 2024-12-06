@@ -104,7 +104,7 @@ class CareerController extends Controller
         ]);
 
         $from = $request->input('from', 'pending');
-        return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir ditolak');
+        return redirect('/dashboard/admin/super/career/'.$from)->with('success', 'Pengajuan karir ' . $request->status);
     }
 
     public function pendingCareers()

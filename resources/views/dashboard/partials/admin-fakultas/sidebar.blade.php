@@ -24,8 +24,16 @@
           <a href="/dashboard/admin/fakultas/career/rejected" class="dropdown-item {{ Request::is('dashboard/admin/fakultas/career/rejected') ? 'active' : '' }}">Rejected</a>
         </div>
       </div>
-      <a href="/dashboard/admin/fakultas/user" class="nav-item nav-link {{ Request::is('dashboard/admin/fakultas/user') ? 'active' : '' }}"><i class="bi bi-shield-lock me-2 fs-5"></i>Akun</a>
-      <a href="/dashboard/visual" class="nav-item nav-link {{ Request::is('dashboard/visual') ? 'active' : '' }}"><i class="bi bi-graph-down me-2 fs-5"></i>Visualisasi</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle {{ Request::is('dashboard/admin/fakultas/user*') ? 'active' : '' }}" data-bs-toggle="dropdown"><i class="bi bi-shield-lock me-2 fs-5"></i>Akun</a>
+        <div class="dropdown-menu bg-transparent border-0">
+          <a href="/dashboard/admin/fakultas/user" class="dropdown-item {{ Request::is('dashboard/admin/fakultas/user') ? 'active' : '' }}">Mahasiswa</a>
+          <a href="/dashboard/admin/fakultas/user-admin" class="dropdown-item {{ Request::is('dashboard/admin/fakultas/user-admin') ? 'active' : '' }}">Admin</a>
+
+          <a href="/dashboard/profile/edit/password" class="dropdown-item {{ Request::is('/dashboard/profile/edit/password') ? 'active' : '' }}">Ganti Password</a>
+        </div>
+      </div>
+      <a href="/dashboard/admin/fakultas/visual" class="nav-item nav-link {{ Request::is('dashboard/admin/fakultas/visual') ? 'active' : '' }}"><i class="bi bi-graph-down me-2 fs-5"></i>Visualisasi</a>
   
       <a href="/dashboard/logout" class="nav-item nav-link"><i class="bi bi-box-arrow-right me-2 fs-5"></i>Logout</a>
   </div>

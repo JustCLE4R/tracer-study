@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateUserPasswordRequest;
 class UserController extends Controller
 {
     public function showUpdatePassword(){
-        return view('dashboard.profile.updatePassword');
+        return view('dashboard.updatePassword');
     }
     
     public function updatePassword(UpdateUserPasswordRequest $request){

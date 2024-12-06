@@ -8,13 +8,13 @@
         </div>
         <div class="card-body">
             <div class="float-end">
-                <a href="/dashboard/admin/super/user/{{ $career->user->id }}"
+                <a href="/dashboard/admin/super-2/user/{{ $career->user->id }}"
                     class="btn btn-info btn-sm px-1 py-0 text-white"><i
                         class="bi bi-person"></i></a>
-                <a href="/dashboard/admin/super/career/{{ $career->slug }}/edit"
+                <a href="/dashboard/admin/super-2/career/{{ $career->slug }}/edit"
                     class="btn btn-warning btn-sm px-1 py-0 text-white"><i
                         class="bi bi-pencil"></i></a>
-                <form action="/dashboard/admin/super/career/{{ $career->slug }}"
+                <form action="/dashboard/admin/super-2/career/{{ $career->slug }}"
                     method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-    <form action="{{ url('dashboard/admin/super/career/' . $career->slug . '/judge') }}" method="POST" class="mt-4">
+    <form action="{{ url('dashboard/admin/super-2/career/' . $career->slug . '/judge') }}" method="POST" class="mt-4">
         @csrf
         @method('PATCH')
         <input type="hidden" name="from" value="{{ request('from') }}">
