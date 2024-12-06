@@ -25,6 +25,10 @@
                                         <option value="{{ $fakultas }}">{{ $fakultas }}</option>
                                     @endforeach
                                 </select>
+                                <select id="exportProdiSelect" name="prodi" class="form-select me-2">
+                                    <option value="" selected hidden disabled>Pilih Prodi</option>
+                                </select>
+
                                 <select name="jenisVisualisasi" id="" class="form-select me-2">
                                     <option value="" selected hidden disabled>Pilih Jenis</option>
                                     <option value="pekerja">Full Time</option>
@@ -45,7 +49,7 @@
     <div class="container-fluid  ms-0" style="padding: 0 28px;">
         <div class="row justify-content-evenly">
 
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
                     onclick="scrollToElement('charts-ipk')" n="1000">
@@ -57,7 +61,7 @@
 
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
                     onclick="scrollToElement('charts-career')" n="1000">
@@ -69,7 +73,7 @@
 
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
                     onclick="scrollToElement('charts-lama-study')" n="1000">
@@ -81,7 +85,7 @@
 
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
                     onclick="scrollToElement('tracer-pekerja')" n="1000">
@@ -93,7 +97,7 @@
 
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"
                     onclick="scrollToElement('tracer-wirausaha')" n="1000">
@@ -104,7 +108,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"
                     onclick="scrollToElement('tracer-pendidikan')" n="1000">
@@ -115,7 +119,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 my-2">
+            <div class="col-sm-6 col-lg-4 my-2 ">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4 pe-5"
                     onclick="scrollToElement('questioner-alumni')" n="1000">
@@ -126,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 my-2">
+            <div class="col-sm-6 col-lg-4 my-2 ">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5 rounded d-flex align-items-center justify-content-center p-4"
                     onclick="scrollToElement('questioner-stakholder')" n="1000">
@@ -513,6 +517,40 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
+        $(document).ready(function() {
+            const fakultasSelect = $("#exportFakultasSelect");
+            const prodiSelect = $("#exportProdiSelect");
+
+            // Reset opsi prodi
+            function resetProdiOptions() {
+                prodiSelect.empty();
+                prodiSelect.append('<option value="" selected hidden disabled>Pilih Prodi</option>');
+            }
+
+            // Ambil data fakultas dan prodi dari API
+            $.ajax({
+                url: "/json/fakultas.json",
+                method: "GET",
+                dataType: "json",
+                success: function(data) {
+                    fakultasSelect.on("change", function() {
+                        const selectedFakultas = $(this).val();
+                        resetProdiOptions();
+
+                        if (data[selectedFakultas]) {
+                            data[selectedFakultas].forEach((prodi) => {
+                                prodiSelect.append(
+                                    `<option value="${prodi}">${prodi}</option>`);
+                            });
+                        }
+                    });
+                },
+                error: function(error) {
+                    console.error("Error fetching fakultas data:", error);
+                },
+            });
+        });
+
         function scrollToElement(elementId) {
             console.log("Scrolling to element with ID:", elementId);
             var element = document.getElementById(elementId);
