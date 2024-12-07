@@ -76,11 +76,11 @@
             <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
-                    onclick="scrollToElement('charts-lama-study')" n="1000">
+                    onclick="scrollToElement('charts-lama-studi')" n="1000">
                     <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi Lama Study</p>
-                        <h6 id="lama-study" class="mb-0"></h6>
+                        <h6 id="lama-studi" class="mb-0"></h6>
                     </div>
 
                 </div>
@@ -442,7 +442,7 @@
             <div class="col-lg-12 col-sm-12 align-items-center justify-content-between mb-4">
                 <div class="row justify-content-between">
                     <div class="col-lg-7">
-                        <span class="mb-0 h4 " id="lama-study">Visualisasi Lama Study</span>
+                        <span class="mb-0 h4 " id="lama-studi">Visualisasi Lama Study</span>
                     </div>
                     <div class="col-lg-5 col-sm-12">
                         <div class="input-group mb-3">

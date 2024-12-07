@@ -209,16 +209,17 @@
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Provinsi *</label>
                                 <select id="provinsi" name="provinsi" class="form-control">
-                                    <option value="">Pilih Provinsi</option>
+                                    <option hidden="">Pilih Provinsi</option>
                                 </select>
                             </div>
 
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
                                 <label class="form-label text-secondary">Kabupaten/Kota *</label>
-                                <select id="kabupaten" name="kabupaten" class="form-control">
-                                    <option value="">Pilih Kabupaten/Kota</option>
+                                <select id="kota" name="kabupaten" class="form-control">
+                                    <option hidden="">Pilih Kabupaten/Kota</option>
                                 </select>
                             </div>
+
 
 
                             <div class="col-lg-4 col-md-6 col-sm-12 my-2">
@@ -316,45 +317,48 @@
             const initKabupaten = '{{ old('kabupaten', $pekerja->kabupaten_pekerja) }}';
 
             fetch(apiURL)
-                .then(response => response.json())
-                .then(data => {
-                    data.forEach(prov => {
+                .then((response) => response.json())
+                .then((data) => {
+                    // Isi provinsi
+                    data.forEach((prov) => {
                         const option = document.createElement('option');
                         option.value = prov.provinsi;
                         option.textContent = prov.provinsi;
+
                         if (prov.provinsi === initProvinsi) {
                             option.selected = true;
                         }
+
                         provinsiSelect.appendChild(option);
                     });
 
+                    // Event handler ketika provinsi dipilih
                     provinsiSelect.addEventListener('change', function() {
                         kotaSelect.innerHTML = '<option hidden="">Pilih Kabupaten/Kota</option>';
 
                         const selectedProvinsi = this.value;
-                        const selectedData = data.find(prov => prov.provinsi === selectedProvinsi);
+                        const selectedData = data.find((prov) => prov.provinsi === selectedProvinsi);
 
                         if (selectedData && selectedData.kota) {
-                            selectedData.kota.forEach(kabupaten => {
+                            selectedData.kota.forEach((kabupaten) => {
                                 const option = document.createElement('option');
                                 option.value = kabupaten;
                                 option.textContent = kabupaten;
+
                                 if (kabupaten === initKabupaten) {
                                     option.selected = true;
                                 }
+
                                 kotaSelect.appendChild(option);
                             });
                         }
                     });
-
                     if (initProvinsi) {
                         provinsiSelect.value = initProvinsi;
                         provinsiSelect.dispatchEvent(new Event('change'));
                     }
                 })
-                .catch(error => console.error('Error fetching data:', error));
-
-            updateFormFields();
+                .catch((error) => console.error('Error fetching data:', error));
         });
     </script>
 @endsection
