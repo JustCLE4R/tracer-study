@@ -15,7 +15,14 @@ use App\Models\QuestionerStakeHolder;
 class VisualisasiController extends Controller
 {
     public function dataWirausaha(Request $request){
-        $wirausaha_data = Wirausaha::with('user')->get();
+        $wirausaha_data = Wirausaha::with('user')
+                                    ->whereHas('user.certcheck', function($query) {
+                                    $query->where('profile_check', true)
+                                        ->where('perjalanan_karir_check', true)
+                                        ->where('questioner_check', true)
+                                        ->where('role', 'mahasiswa');
+                                    })
+                                    ->get();
 
         $wirausaha_data = $this->filterByThnWisudahProdiFakultas($wirausaha_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
@@ -73,7 +80,14 @@ class VisualisasiController extends Controller
     }
 
     public function dataPekerja(Request $request){
-        $pekerja_data = Pekerja::get();
+        $pekerja_data = Pekerja::with('user')
+                                ->whereHas('user.certcheck', function($query) {
+                                $query->where('profile_check', true)
+                                    ->where('perjalanan_karir_check', true)
+                                    ->where('questioner_check', true)
+                                    ->where('role', 'mahasiswa');
+                                })
+                                ->get();
 
         $pekerja_data = $this->filterByThnWisudahProdiFakultas($pekerja_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
@@ -92,7 +106,15 @@ class VisualisasiController extends Controller
     }
 
     public function dataPendidikan(Request $request){
-        $pendidikan_data = Pendidikan::get();
+        $pendidikan_data = Pendidikan::with('user')
+                                    ->whereHas('user.certcheck', function($query) {
+                                    $query->where('profile_check', true)
+                                        ->where('perjalanan_karir_check', true)
+                                        ->where('questioner_check', true)
+                                        ->where('role', 'mahasiswa');
+                                    })
+                                    ->get();
+
         $pendidikan_data = $this->filterByThnWisudahProdiFakultas($pendidikan_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
         $negara = $pendidikan_data->map(function($item){
@@ -116,7 +138,14 @@ class VisualisasiController extends Controller
     }
 
     public function dataQuestioner(Request $request){
-        $questioner_data = Questioner::get();
+        $questioner_data = Questioner::with('user')
+                                    ->whereHas('user.certcheck', function($query) {
+                                    $query->where('profile_check', true)
+                                        ->where('perjalanan_karir_check', true)
+                                        ->where('questioner_check', true)
+                                        ->where('role', 'mahasiswa');
+                                    })
+                                    ->get();
 
         $questioner_data = $this->filterByThnWisudahProdiFakultas($questioner_data, $request->query('lulus'), $request->query('fakultas'), $request->query('prodi'));
 
@@ -436,7 +465,13 @@ class VisualisasiController extends Controller
         ];
     
         // Build query with filters
-        $query = User::whereNotNull('ipk');
+        $query = User::whereNotNull('ipk')
+                        ->where('role', 'mahasiswa')
+                        ->whereHas('certcheck', function ($query) {
+                            $query->where('profile_check', true)
+                                ->where('perjalanan_karir_check', true)
+                                ->where('questioner_check', true);
+                        });
     
         if ($tahun) {
             $query->whereYear('tgl_lulus', $tahun);

@@ -24,7 +24,8 @@
                         <thead>
                             <tr class="text-dark">
                                 <th style="background-color: transparent !important;" class="col">No</th>
-                                <th style="background-color: transparent !important;" class="col">NIM</th>
+                                <th style="background-color: transparent !important;" class="col">Username</th>
+                                <th style="background-color: transparent !important;" class="col">Role</th>
                                 <th style="background-color: transparent !important;" class="col">Nama</th>
                                 {{-- <th style="background-color: transparent !important;" class="col">Email</th> --}}
                                 <th style="background-color: transparent !important;" class="col">Fakultas</th>
@@ -41,6 +42,9 @@
                                 </td>
                                 <td style="background-color: transparent !important;">
                                     {{ $user->nim }}
+                                </td>
+                                <td style="background-color: transparent !important;">
+                                    {{ $user->role }}
                                 </td>
                                 <td style="background-color: transparent !important;">
                                     {{ $user->nama }}

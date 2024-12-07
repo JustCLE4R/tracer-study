@@ -14,7 +14,9 @@ class UserAdminController extends Controller
      */
     public function index()
     {
-        $query = User::where('role', '!=', 'mahasiswa')->latest();
+        $query = User::where('role', '!=', 'mahasiswa')
+                    ->where('role', '!=', 'superadmin')
+                    ->latest();
 
         if (request('search')) {
             $query->where(function($query) {
