@@ -1,98 +1,98 @@
 {
     "questioner": [
         {
-            "title": "(e) Menurut anda, seberapa pentingkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?",
+            "title": "Menurut anda, seberapa pentingkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?",
             "prefix": "e",
             "questions": [
                 {
                     "text": "Ketaqwaan terhadap Tuhan yang maha Esa",
                     "name": "e_1",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Etika dan kecerdasan dalam bertindak",
                     "name": "e_2",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)",
                     "name": "e_3",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Keterampilan Bidang Teknologi Informasi (Internet dan Komputer)",
                     "name": "e_4",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Kemampuan belajar",
                     "name": "e_5",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Kemampuan berkomunikasi",
                     "name": "e_6",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
-                    "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+                    "text": "Kerjasama tim",
                     "name": "e_7",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Kemampuan dalam memecahkan masalah",
                     "name": "e_8",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Inovasi dan/atau kreativitas",
                     "name": "e_9",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Pengetahuan di bidang atau disiplin ilmu anda",
                     "name": "e_10",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Pengetahuan di luar bidang atau disiplin ilmu anda",
                     "name": "e_11",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
-                    "text": "Keseimbangan antara pikir dan zikir",
+                    "text": "Pengembangan diri",
                     "name": "e_12",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Mampu melakukan pendekatan integral-transdisipliner",
                     "name": "e_13",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
-                    "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+                    "text": "Etos Kerja",
                     "name": "e_14",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Berakhlak mulia",
                     "name": "e_15",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Pengetahuan umum dan memiliki wawasan kebangsaan",
                     "name": "e_16",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
                     "text": "Bervisi pengembangan peradaban",
                     "name": "e_17",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 },
                 {
-                    "text": "Berpenampilan happy / Bahagia",
+                    "text": "Aspek Kepemimpinan",
                     "name": "e_18",
-                    "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
+                    "options": ["Sangat Penting", "Penting", "Cukup Penting", "Kurang Penting", "Tidak Penting"]
                 }
             ]
         },
@@ -131,7 +131,7 @@
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
-                    "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+                    "text": "Kerjasama tim",
                     "name": "f_7",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
@@ -156,7 +156,7 @@
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
-                    "text": "Keseimbangan antara pikir dan zikir",
+                    "text": "Pengembangan diri",
                     "name": "f_12",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
@@ -166,7 +166,7 @@
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
-                    "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+                    "text": "Etos Kerja",
                     "name": "f_14",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
@@ -186,7 +186,7 @@
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 },
                 {
-                    "text": "Berpenampilan happy / Bahagia",
+                    "text": "Aspek Kepemimpinan",
                     "name": "f_18",
                     "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
                 } ]

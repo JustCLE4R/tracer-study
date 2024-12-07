@@ -35,7 +35,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+            "text": "Kerjasama tim",
             "name": "a_7",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -60,7 +60,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Keseimbangan antara pikir dan zikir",
+            "text": "Pengembangan diri",
             "name": "a_12",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -70,7 +70,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+            "text": "Etos Kerja",
             "name": "a_14",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -90,7 +90,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Berpenampilan happy / Bahagia",
+            "text": "Aspek Kepemimpinan",
             "name": "a_18",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }
@@ -131,7 +131,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Bekerja dalam tim/bekerjasama dengan orang lain",
+            "text": "Kerjasama tim",
             "name": "b_7",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -156,7 +156,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Keseimbangan antara pikir dan zikir",
+            "text": "Pengembangan diri",
             "name": "b_12",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -166,7 +166,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Memiliki etos dinamis dan berkarakter pengabdi",
+            "text": "Etos Kerja",
             "name": "b_14",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
@@ -186,7 +186,7 @@
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           },
           {
-            "text": "Berpenampilan happy / Bahagia",
+            "text": "Aspek Kepemimpinan",
             "name": "b_18",
             "options": ["Sangat Baik", "Baik", "Cukup", "Kurang Baik", "Tidak Baik"]
           }

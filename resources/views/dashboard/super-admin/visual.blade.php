@@ -871,16 +871,14 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%))'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
-                            borderWidth: 1
+                            borderWidth: 2
                         }]
                     },
                     options: {
@@ -1002,12 +1000,14 @@
                             label: label,
                             data: Object.values(data),
                             backgroundColor: [
-                                'rgba(0, 157, 84, 0.74)',
-                                'rgba(2, 117, 64, 0.74)',
-                                'rgba(2, 81, 44, 0.74)'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
-                            borderWidth: 1
+                            borderWidth: 2
                         }]
                     },
                     options: {
@@ -1247,16 +1247,14 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%)'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
-                            borderWidth: 1
+                            borderWidth: 2
                         }]
                     },
                     options: {
@@ -1412,13 +1410,11 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%))'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
                             borderWidth: 1
@@ -1577,13 +1573,11 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%))'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
                             borderWidth: 1
