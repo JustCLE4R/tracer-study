@@ -24,7 +24,7 @@ class QuestionerController extends Controller
             abort(404);
         }
         
-        $data = $request->validated();
+        $data = $request->toArray();
 
         $b_data = array_filter($data, function($key) {
             return strpos($key, 'b_') === 0;

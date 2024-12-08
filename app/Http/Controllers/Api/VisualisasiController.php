@@ -301,16 +301,23 @@ class VisualisasiController extends Controller
         $fakultas = $request->query('fakultas');
 
         $user_data = User::with(['pendidikan', 'pekerja', 'wirausaha'])
-                    ->where('role', 'mahasiswa')
-                    ->when($thnWisuda, function($query) use ($thnWisuda) {
-                    return $query->whereYear('tgl_wisuda', $thnWisuda);
-                    })
-                    ->when($fakultas, function($query) use ($fakultas) {
-                    return $query->where('fakultas', $fakultas);
-                    })
-                    ->get();
+                        ->where('role', 'mahasiswa')
+                        ->when($thnWisuda, function ($query) use ($thnWisuda) {
+                            return $query->whereYear('tgl_wisuda', $thnWisuda);
+                        })
+                        ->when($fakultas, function ($query) use ($fakultas) {
+                            return $query->where('fakultas', $fakultas);
+                        })
+                        ->whereHas('certcheck', function ($query) {
+                            $query->where('profile_check', true)
+                                ->where('perjalanan_karir_check', true)
+                                ->where('questioner_check', true);
+                        })
+                        ->get();
+    
 
-        $questioner_stakeholder = QuestionerStakeHolder::when($thnWisuda, function($query) use ($thnWisuda) {
+        $questioner_stakeholder = QuestionerStakeHolder::with(['detailPerusahaan.pekerja.user'])
+                                                        ->when($thnWisuda, function($query) use ($thnWisuda) {
                                                             $query->whereHas('detailPerusahaan.pekerja.user', function($query) use ($thnWisuda) {
                                                                 $query->whereYear('tgl_wisuda', $thnWisuda);
                                                             });
@@ -320,17 +327,34 @@ class VisualisasiController extends Controller
                                                                 $query->where('fakultas', $fakultas);
                                                             });
                                                         })
+                                                        ->whereHas('detailPerusahaan.pekerja.user.certcheck', function($query) {
+                                                            $query->where('profile_check', true)
+                                                                ->where('perjalanan_karir_check', true)
+                                                                ->where('questioner_check', true);
+                                                        })
                                                         ->get();
 
-        $user_questioner = Questioner::when($thnWisuda, function($query) use ($thnWisuda) {
-                                            $query->whereHas('user', function($query) use ($thnWisuda) {
+        
+        $user_questioner  = Questioner::with(['user.certcheck', 'user.pekerja.detailPerusahaan'])
+                                        ->when($thnWisuda, function ($query) use ($thnWisuda) {
+                                            $query->whereHas('user', function ($query) use ($thnWisuda) {
+                                                $query->whereYear('tgl_wisuda', $thnWisuda);
+                                            })->orWhereHas('user.pekerja.detailPerusahaan.user', function ($query) use ($thnWisuda) {
                                                 $query->whereYear('tgl_wisuda', $thnWisuda);
                                             });
                                         })
-                                        ->when($fakultas, function($query) use ($fakultas) {
-                                            $query->whereHas('user', function($query) use ($fakultas) {
+                                        ->when($fakultas, function ($query) use ($fakultas) {
+                                            $query->whereHas('user', function ($query) use ($fakultas) {
+                                                $query->where('fakultas', $fakultas);
+                                            })->orWhereHas('user.pekerja.detailPerusahaan.user', function ($query) use ($fakultas) {
                                                 $query->where('fakultas', $fakultas);
                                             });
+                                        })
+                                        ->whereHas('user.certcheck', function ($query) {
+                                            $query->where('profile_check', true)
+                                                ->where('perjalanan_karir_check', true)
+                                                ->where('questioner_check', true)
+                                                ->where('role', 'mahasiswa');
                                         })
                                         ->get();
         

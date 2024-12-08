@@ -63,13 +63,13 @@
                                 </div>
                             @endif
                             <form action="{{ $questioner->token }}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-12">
                                         <span class="h4">Kuesioner StakeHolder</span>
                                         <hr>
                                     </div>
                                 </div>
-                                @csrf
                                 <div class="row my-2">
                                     <div class="h6 mb-2"><b>(a) Menilai</b></div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 mb-3">

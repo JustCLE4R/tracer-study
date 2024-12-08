@@ -13,21 +13,6 @@
 
                         <div class="about-counter mt-50 ">
                             <div class="row">
-                                <div class="col-sm-4 ">
-                                    <div class="single-counter counter-color-1 d-flex wow fadeInUp" data-wow-duration="1s"
-                                        data-wow-delay="0.3s">
-                                        <div class="counter-shape">
-                                            <span class="shape-1"></span>
-                                            <span class="shape-2"></span>
-                                        </div>
-                                        <div class="counter-content media-body">
-                                            <div class="counter-count">
-                                                <div class="counter" id="clientsCount">4350</div>
-                                            </div>
-                                            <p class="text">Mahasiswa</p>
-                                        </div>
-                                    </div> <!-- single counter -->
-                                </div>
                                 <div class="col-sm-4">
                                     <div class="single-counter counter-color-2 d-flex wow fadeInUp" data-wow-duration="1s"
                                         data-wow-delay="0.6s">
@@ -37,7 +22,7 @@
                                         </div>
                                         <div class="counter-content media-body">
                                             <div class="counter-count">
-                                                <div class="counter" id="satisfactionCount">3182</div>
+                                                <div class="counter" id="satisfactionCount">-</div>
                                             </div>
                                             <p class="text">Alumni</p>
                                         </div>
@@ -52,7 +37,7 @@
                                         </div>
                                         <div class="counter-content media-body">
                                             <div class="counter-count">
-                                                <div class="counter" id="projectsCount">1951</div>
+                                                <div class="counter" id="projectsCount">-</div>
                                             </div>
                                             <p class="text">Telah Mengisi</p>
                                         </div>
@@ -592,85 +577,98 @@
 </script>
 
 <script>
-const avgMhsIpk = {{ $avgMhsIpk }}; // Ambil data rata-rata dari backend
-    const maxIpk = 4; // Nilai maksimal IPK
+// const avgMhsIpk = ; // Ambil data rata-rata dari backend
+//     const maxIpk = 4; // Nilai maksimal IPK
     
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'doughnut', // Menggunakan grafik donat
-        data: {
-            labels: ['Rata-rata IPK Alumni'], // Label untuk data yang diisi dan sisa
-            datasets: [{
-                data: [avgMhsIpk, maxIpk - avgMhsIpk], // Nilai rata-rata dan sisa dari max
-                backgroundColor: [
-                    'rgba(43, 205, 129, 0.74)', // Warna bagian yang terisi (nilai rata-rata)
-                    'rgba(211, 211, 211, 0.3)', // Warna bagian sisa (belum terisi)
-                ],
-                borderWidth: 2
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'bottom', // Posisi legend di bawah grafik
-                },
-                datalabels: {  // Plugin untuk menampilkan nilai data
-                    color: '#000', // Warna teks
-                    font: {
-                        size: 16, // Ukuran font untuk data
-                        weight: 'bold' // Tebal font
-                    },
-                    formatter: function(value, context) {
-                        if (context.dataIndex === 0) {
-                            return value.toFixed(2); // Tampilkan hanya nilai rata-rata IPK
-                        }
-                        return ''; // Jangan tampilkan apa pun untuk bagian "Sisa"
-                    },
-                    anchor: 'center',
-                    align: 'center'
-                }
-            },
-        },
-        plugins: [ChartDataLabels] // Mengaktifkan plugin Data Labels
-    });
+//     const ctx = document.getElementById('myChart').getContext('2d');
+//     const myChart = new Chart(ctx, {
+//         type: 'doughnut', // Menggunakan grafik donat
+//         data: {
+//             labels: ['Rata-rata IPK Alumni'], // Label untuk data yang diisi dan sisa
+//             datasets: [{
+//                 data: [avgMhsIpk, maxIpk - avgMhsIpk], // Nilai rata-rata dan sisa dari max
+//                 backgroundColor: [
+//                     'rgba(43, 205, 129, 0.74)', // Warna bagian yang terisi (nilai rata-rata)
+//                     'rgba(211, 211, 211, 0.3)', // Warna bagian sisa (belum terisi)
+//                 ],
+//                 borderWidth: 2
+//             }]
+//         },
+//         options: {
+//             responsive: true,
+//             plugins: {
+//                 legend: {
+//                     position: 'bottom', // Posisi legend di bawah grafik
+//                 },
+//                 datalabels: {  // Plugin untuk menampilkan nilai data
+//                     color: '#000', // Warna teks
+//                     font: {
+//                         size: 16, // Ukuran font untuk data
+//                         weight: 'bold' // Tebal font
+//                     },
+//                     formatter: function(value, context) {
+//                         if (context.dataIndex === 0) {
+//                             return value.toFixed(2); // Tampilkan hanya nilai rata-rata IPK
+//                         }
+//                         return ''; // Jangan tampilkan apa pun untuk bagian "Sisa"
+//                     },
+//                     anchor: 'center',
+//                     align: 'center'
+//                 }
+//             },
+//         },
+//         plugins: [ChartDataLabels] // Mengaktifkan plugin Data Labels
+//     });
 </script>
 
-
-
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const clientsCount = document.getElementById('clientsCount');
-    const satisfactionCount = document.getElementById('satisfactionCount');
-    const projectsCount = document.getElementById('projectsCount');
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('/api/visualisasi/perbandingan')
+    .then(response => response.json())
+    .then(data => {
+        const alumni = document.getElementById('satisfactionCount');
+        const mengisi = document.getElementById('projectsCount');
 
-    let clients = 2000;
-    let satisfaction = 2000;
-    let projects = 1000;
-
-    const interval = setInterval(() => {
-        clients++;
-        clientsCount.textContent = clients;
-        if (clients >= 4350) {
-            clearInterval(interval);
+        // Helper function to round down based on magnitude
+        function roundDownToPowerOfTen(num) {
+            if (num === 0) return 0; // Handle edge case for 0
+            if (num < 10) return 1; // Single-digit numbers round to 1
+            const magnitude = Math.pow(10, Math.floor(Math.log10(num)));
+            const rounded = Math.floor(num / magnitude) * magnitude;
+            return rounded;
         }
-    }, 1); 
 
-    const interval2 = setInterval(() => {
-        satisfaction++;
-        satisfactionCount.textContent = satisfaction;
-        if (satisfaction >= 3182) {
-            clearInterval(interval2);
-        }
-    }, 1); 
+        let alumniCountUp = roundDownToPowerOfTen(data.Total.Alumni);
+        let mengisiCountUp = roundDownToPowerOfTen(data.Total.Pengguna);
 
-    const interval3 = setInterval(() => {
-        projects++;
-        projectsCount.textContent = projects;
-        if (projects >= 1951) {
-            clearInterval(interval3);
+        alumni.textContent = alumniCountUp;
+        mengisi.textContent = mengisiCountUp;
+
+        // Helper function for adaptive counter animation
+        function animateCounter(start, end, element) {
+            const range = end - start;
+            const totalDuration = 2000; // Total duration in ms
+            const steps = Math.min(100, range); // Max steps for smooth animation
+            const step = Math.max(1, Math.ceil(range / steps)); // Dynamic step size
+            const interval = Math.max(10, Math.floor(totalDuration / steps)); // Dynamic interval
+
+            const animation = setInterval(() => {
+                start += step;
+                if (start >= end) {
+                    start = end; // Snap to the final value
+                    clearInterval(animation);
+                }
+                element.textContent = start;
+            }, interval);
         }
-    }, 1); 
+
+        // Animate both counters
+        animateCounter(alumniCountUp, data.Total.Alumni, alumni);
+        animateCounter(mengisiCountUp, data.Total.Pengguna, mengisi);
+    })
+    .catch(error => {
+        console.error('Terjadi kesalahan saat mengambil data:', error);
+    });
 });
 </script>
 @endpush
