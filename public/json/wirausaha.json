@@ -50,7 +50,7 @@
     },
     {
       "id": 26,
-      "name" : "pemodal-saat-ini",
+      "name" : "pemodal-saat-ini[]",
       "question": "Pemodal Saat Ini *",
       "qanswer": "{\"a\": \"Pribadi / Tabungan\", \"b\": \"Bank\", \"c\": \"Keluarga\", \"d\": \"Investor\"}",
       "category": "wirausaha",

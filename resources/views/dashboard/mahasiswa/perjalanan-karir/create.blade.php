@@ -16,12 +16,12 @@
                                 Swal.fire({
                                     title: 'Errors Found!',
                                     html: `
-                        <ul style="text-align: left; list-style: none; padding: 0;">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    `,
+                                            <ul style="text-align: left; list-style: none; padding: 0;">
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        `,
                                     icon: 'error',
                                     confirmButtonColor: '#d33',
                                     confirmButtonText: 'OK',
