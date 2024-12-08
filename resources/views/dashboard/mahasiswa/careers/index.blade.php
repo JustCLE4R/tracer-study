@@ -12,11 +12,21 @@
                         </div>
                     </div>
                     @if (session()->has('success'))
-                        <div class="alert alert-success alert-dismissible fade show col-lg-10" role="alert">
-                            <strong>Success!</strong> {{ session('success') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                Swal.fire({
+                                    title: 'Success!',
+                                    text: '{{ session('success') }}',
+                                    icon: 'success',
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK',
+                                    timer: 3000,
+                                    timerProgressBar: true,
+                                });
+                            });
+                        </script>
                     @endif
+
 
                     <div class="row g-0">
                         <div class="col-lg-4 col-md-4 col-sm-10">
@@ -71,7 +81,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                     <div class="col-lg-12 mt-3">
                         {{ $careers->onEachside(1)->links() }}
                     </div>
@@ -79,4 +89,5 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection

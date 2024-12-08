@@ -22,8 +22,8 @@
                     {{-- begin card --}}
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card text-center">
-                            <div class="card-body">
-                                <i class="bi bi-people-fill" style="font-size: 2rem;"></i>
+                            <div class="card-body ">
+                                <i class="bi bi-people-fill text-success" style="font-size: 2rem;"></i>
                                 <h5 class="card-title mt-3">Import Pekerja Full Time</h5>
                                 <a href="/dashboard/admin/super/import/full-time" class="btn btn-success mt-2">Import Now!</a>
                             </div>
@@ -35,7 +35,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card text-center">
                             <div class="card-body">
-                                <i class="bi bi-briefcase-fill" style="font-size: 2rem;"></i>
+                                <i class="bi bi-briefcase-fill text-success" style="font-size: 2rem;"></i>
                                 <h5 class="card-title mt-3">Import Wirausaha</h5>
                                 <a href="/dashboard/admin/super/import/wirausaha" class="btn btn-success mt-2">Import Now!</a>
                             </div>
@@ -47,7 +47,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card text-center">
                             <div class="card-body">
-                                <i class="bi bi-book-fill" style="font-size: 2rem;"></i>
+                                <i class="bi bi-book-fill text-success" style="font-size: 2rem;"></i>
                                 <h5 class="card-title mt-3">Import Lanjut Studi</h5>
                                 <a href="/dashboard/admin/super/import/lanjut-studi" class="btn btn-success mt-2">Import Now!</a>
                             </div>
@@ -59,7 +59,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card text-center">
                             <div class="card-body">
-                                <i class="bi bi-question-circle-fill" style="font-size: 2rem;"></i>
+                                <i class="bi bi-question-circle-fill text-success" style="font-size: 2rem;"></i>
                                 <h5 class="card-title mt-3">Import Questioner Mahasiswa</h5>
                                 <a href="/dashboard/admin/super/import/mhs-questioner" class="btn btn-success mt-2">Import Now!</a>
                             </div>
@@ -71,7 +71,7 @@
                     <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                         <div class="card text-center">
                             <div class="card-body">
-                                <i class="bi bi-clipboard-fill" style="font-size: 2rem;"></i>
+                                <i class="bi bi-clipboard-fill text-success" style="font-size: 2rem;"></i>
                                 <h5 class="card-title mt-3">Import Questioner StakeHolder</h5>
                                 <a href="/dashboard/admin/super/import/stk-questioner" class="btn btn-success mt-2">Import Now!</a>
                             </div>
