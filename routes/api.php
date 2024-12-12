@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\QuestionController;
-use App\Http\Controllers\Api\VisualisasiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\ExportController;
+use App\Http\Controllers\Api\QuestionController;
+use App\Http\Controllers\Api\VisualisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::prefix('visualisasi')->group(function () {
     Route::get('/ipk', [VisualisasiController::class, 'dataIpk']);
     Route::get('/career', [VisualisasiController::class, 'dataCareer']);
     Route::get('/lama-studi', [VisualisasiController::class, 'dataLamaStudi']);
+    Route::get('/masa-tunggu', [VisualisasiController::class, 'dataMasaTunggu']);
 });
 
-Route::get('/visualisasi/export', [VisualisasiController::class, 'visualisasiExport']);
+Route::get('/visualisasi/export', [ExportController::class, 'export']);

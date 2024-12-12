@@ -25,7 +25,7 @@
                                         <option value="{{ $fakultas }}">{{ $fakultas }}</option>
                                     @endforeach
                                 </select>
-                                <select id="exportProdiSelect" name="prodi" class="form-select me-2">
+                                <select id="exportProdiSelect" name="program_studi" class="form-select me-2">
                                     <option value="" selected hidden disabled>Pilih Prodi</option>
                                 </select>
 
@@ -35,7 +35,7 @@
                                     <option value="wirausaha">Wirausaha</option>
                                     <option value="pendidikan">Pendidikan</option>
                                     <option value="questioner">Kuesioner Mahasiswa</option>
-                                    <option value="pekerja.detailPerusahaan.questionerStakeHolder">Kuesioner Stakeholder
+                                    <option value="questioner_stake_holders">Kuesioner Stakeholder
                                     </option>
                                 </select>
                                 <button type="submit" class="btn btn-success">Export Data</button>

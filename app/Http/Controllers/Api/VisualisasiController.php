@@ -410,69 +410,6 @@ class VisualisasiController extends Controller
         ]);
     }
 
-    public function visualisasiExport(Request $request){
-        if(!$request->get('program_studi') || !$request->get('fakultas') || !$request->get('jenisVisualisasi') || !$request->get('tahun')){
-            return response()->json([
-                'status' => "failed",
-                'message' => 'Fakultas, Prodi dan Jenis Visualisasi harus diisi!'
-            ]);
-        }
-
-        $tahun = $request->get('tahun');
-        $fakultas = $request->get('fakultas');
-        $program_studi = $request->get('program_studi');
-        $jenisVisualisasi = $request->get('jenisVisualisasi');
-
-        if (in_array($jenisVisualisasi, ['wirausaha', 'pekerja', 'pendidikan', 'questioner'])) {
-            $exportData = User::with($jenisVisualisasi)
-                ->whereYear('tgl_lulus', $tahun)
-                ->when($program_studi, function($query) use ($program_studi) {
-                    return $query->where('program_studi', $program_studi);
-                }, function($query) use ($fakultas) {
-                    return $query->where('fakultas', $fakultas);
-                })
-                ->whereHas($jenisVisualisasi)
-                ->get();
-        } else {
-            $exportData = QuestionerStakeHolder::join('detail_perusahaans', 'questioner_stake_holders.detail_perusahaan_id', '=', 'detail_perusahaans.id')
-                ->join('pekerjas', 'detail_perusahaans.pekerja_id', '=', 'pekerjas.id')
-                ->join('users', 'pekerjas.user_id', '=', 'users.id')
-                ->whereYear('users.tgl_lulus', $tahun)
-                ->when($program_studi, function($query) use ($program_studi) {
-                    return $query->where('users.program_studi', $program_studi);
-                }, function($query) use ($fakultas) {
-                    return $query->where('users.fakultas', $fakultas);
-                })
-                ->select('users.nim', 'users.nama', 'users.password', 'users.role', 'users.is_bekerja', 'users.program_studi', 'users.fakultas', 'users.strata', 'users.tahun_masuk', 'users.tgl_lulus', 'users.tgl_yudisium', 'users.tgl_lulus', 'users.ipk', 'users.sks_kumulatif', 'users.predikat_kelulusan', 'users.judul_tugas_akhir', 'users.foto', 'users.nomor_ktp', 'users.tempat_lahir', 'users.tgl_lahir', 'users.jenis_kelamin', 'users.kewarganegaraan', 'users.provinsi', 'users.kabupaten', 'users.kecamatan', 'users.alamat', 'users.telepon', 'users.email', 'users.linkedin', 'users.facebook', 'questioner_stake_holders.*')
-                ->get();
-        }
-
-
-        $filename = $tahun . '-' . $fakultas . '-' . $jenisVisualisasi . '-' . time() . '.csv';
-        $handle = fopen($filename, 'w+');
-
-        // Add headers dynamically, excluding any 'id' and any timestamps
-        $headers = [];
-        if ($exportData->isNotEmpty()) {
-            $headers = array_filter(array_keys($this->flattenArray($exportData->first()->toArray())), function($header) {
-                return !preg_match('/id$/', $header) && !preg_match('/_id$/', $header) && !preg_match('/_at$/', $header);
-            });
-            fputcsv($handle, $headers);
-        }
-
-        // Add data dynamically, excluding any 'id' and any timestamps
-        foreach ($exportData as $user) {
-            $data = array_filter($this->flattenArray($user->toArray()), function($key) {
-                return !preg_match('/id$/', $key) && !preg_match('/_id$/', $key) && !preg_match('/_at$/', $key);
-            }, ARRAY_FILTER_USE_KEY);
-            fputcsv($handle, $data);
-        }
-
-        fclose($handle);
-
-        return response()->download($filename)->deleteFileAfterSend(true);
-    }
-    
     public function dataIpk(Request $request)
     {
         $tahun = $request->get('lulus');
@@ -590,7 +527,78 @@ class VisualisasiController extends Controller
         ]);
     }
 
+    public function dataMasaTunggu(Request $request)
+    {
+        $masa_tunggu_counts = [
+            '<6' => 0,
+            '6-12' => 0,
+            '12-18' => 0,
+            '24-30' => 0,
+            '36-42' => 0,
+            '>42' => 0
+        ];
 
+        $masa_tunggu = User::whereNotNull('lama_mendapatkan_pekerjaan')
+                        ->where('role', 'mahasiswa')
+                        ->whereHas('certcheck', function ($query) {
+                            $query->where('profile_check', true)
+                                ->where('perjalanan_karir_check', true)
+                                ->where('questioner_check', true);
+                        });
+
+        if ($request->query('lulus')) {
+            $masa_tunggu->whereYear('tgl_lulus', $request->query('lulus'));
+        }
+
+        if ($request->query('program_studi')) {
+            $masa_tunggu->where('program_studi', $request->query('program_studi'));
+        } elseif ($request->query('fakultas')) {
+            $masa_tunggu->where('fakultas', $request->query('fakultas'));
+        }
+
+        $masa_tunggu = $masa_tunggu->select('lama_mendapatkan_pekerjaan')->get();
+
+        foreach ($masa_tunggu as $item) {
+            $months = $item->lama_mendapatkan_pekerjaan / 30; // Convert days to months
+            if ($months < 6) {
+            $masa_tunggu_counts['<6']++;
+            } elseif ($months >= 6 && $months <= 12) {
+            $masa_tunggu_counts['6-12']++;
+            } elseif ($months > 12 && $months <= 18) {
+            $masa_tunggu_counts['12-18']++;
+            } elseif ($months > 18 && $months <= 24) {
+            $masa_tunggu_counts['24-30']++;
+            } elseif ($months > 24 && $months <= 30) {
+            $masa_tunggu_counts['30-36']++;
+            } elseif ($months > 30 && $months <= 36) {
+            $masa_tunggu_counts['36-42']++;
+            } else {
+            $masa_tunggu_counts['>42']++;
+            }
+        }
+
+        return response()->json([
+            'masa_tunggu_counts' => $masa_tunggu_counts,
+        ]);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     /**
      * DRY functions
      */
