@@ -7,37 +7,39 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Mahasiswa\UserController as MhsUserController;
+use App\Http\Controllers\Guest\CareerController as GuestCareerController;
 use App\Http\Controllers\Mahasiswa\CareerController as MhsCareerController;
 use App\Http\Controllers\Mahasiswa\PekerjaController as MhsPekerjaController;
+use App\Http\Controllers\AdminProdi\UserController as AdminProdiUserController;
+use App\Http\Controllers\SuperAdmin\UserController as SuperAdminUserController;
+use App\Http\Controllers\Guest\QuestionerController as GuestQuestionerController;
+
+use App\Http\Controllers\Guest\SertifikatController as GuestSertifikatController;
 use App\Http\Controllers\Mahasiswa\WirausahaController as MhsWirausahaController;
+use App\Http\Controllers\SuperAdmin2\UserController as SuperAdmin2UserController;
+
+use App\Http\Controllers\AdminProdi\CareerController as AdminProdiCareerController;
 use App\Http\Controllers\Mahasiswa\PendidikanController as MhsPendidikanController;
+
 use App\Http\Controllers\Mahasiswa\QuestionerController as MhsQuestionerController;
 use App\Http\Controllers\Mahasiswa\SertifikatController as MhsSertifikatController;
-use App\Http\Controllers\Mahasiswa\PerjalananKarirController as MhsPerjalananKarirController;
-
-use App\Http\Controllers\Guest\CareerController as GuestCareerController;
-use App\Http\Controllers\Guest\QuestionerController as GuestQuestionerController;
-use App\Http\Controllers\Guest\SertifikatController as GuestSertifikatController;
-
-use App\Http\Controllers\AdminProdi\UserController as AdminProdiUserController;
-use App\Http\Controllers\AdminProdi\CareerController as AdminProdiCareerController;
-
-use App\Http\Controllers\AdminFakultas\UserController as AdminFakultasUserController;
-use App\Http\Controllers\AdminFakultas\CareerController as AdminFakultasCareerController;
-use App\Http\Controllers\AdminFakultas\UserAdminController as UserAdminFakultasUserController;
-use App\Http\Controllers\AdminFakultas\VisualisasiController as AdminFakultasVisualisasiController;
-
-use App\Http\Controllers\SuperAdmin\UserController as SuperAdminUserController;
 use App\Http\Controllers\SuperAdmin\CareerController as SuperAdminCareerController;
+use App\Http\Controllers\AdminFakultas\UserController as AdminFakultasUserController;
+
+use App\Http\Controllers\SuperAdmin2\CareerController as SuperAdmin2CareerController;
 use App\Http\Controllers\SuperAdmin\LaporanController as SuperAdminLaporanController;
 use App\Http\Controllers\SuperAdmin\UserAdminController as UserSuperAdminUserController;
-use App\Http\Controllers\SuperAdmin\ImportUserController as SuperAdminImportUserController;
-use App\Http\Controllers\SuperAdmin\VisualisasiController as SuperAdminVisualisasiController;
-
-use App\Http\Controllers\SuperAdmin2\UserController as SuperAdmin2UserController;
-use App\Http\Controllers\SuperAdmin2\CareerController as SuperAdmin2CareerController;
+use App\Http\Controllers\AdminFakultas\CareerController as AdminFakultasCareerController;
 use App\Http\Controllers\SuperAdmin2\UserAdminController as UserSuperAdmin2UserController;
+use App\Http\Controllers\SuperAdmin\ImportUserController as SuperAdminImportUserController;
+
+use App\Http\Controllers\Mahasiswa\PerjalananKarirController as MhsPerjalananKarirController;
+use App\Http\Controllers\SuperAdmin\VisualisasiController as SuperAdminVisualisasiController;
+use App\Http\Controllers\AdminFakultas\UserAdminController as UserAdminFakultasUserController;
 use App\Http\Controllers\SuperAdmin2\VisualisasiController as SuperAdmin2VisualisasiController;
+use App\Http\Controllers\AdminFakultas\VisualisasiController as AdminFakultasVisualisasiController;
+
+use App\Http\Controllers\ExportController;
 
 
 Route::get('/', [LandingController::class, 'index']);
@@ -45,6 +47,10 @@ Route::get('/career', [GuestCareerController::class, 'index']);
 Route::get('/career/{career:slug}', [GuestCareerController::class, 'show'])->name('career.publicShow');
 
 Route::get('/sertifikat/{qr_url}', [GuestSertifikatController::class, 'show']);
+
+// Route::middleware(['auth', 'is-not-mahasiswa', 'no-cache'])->group(function () {
+    Route::post('/visualisasi/export', [ExportController::class, 'export']);
+// });
 
 Route::middleware(['guest', 'no-cache'])->group(function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login');

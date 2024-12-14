@@ -11,34 +11,55 @@
                 </div>
                 <div class="row my-3">
                     <div class="col-lg-12">
-                        <form action="/api/visualisasi/export" method="GET" id="exportForm" target="_blank">
-                            <div class="input-group">
-                                <select id="exportTahunLulusSelect" name="tahun" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Tahun</option>
-                                    @foreach ($exportOptions['tahun'] as $tahun)
-                                        <option value="{{ $tahun }}">{{ $tahun }}</option>
-                                    @endforeach
-                                </select>
-                                <select id="exportFakultasSelect" name="fakultas" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Fakultas</option>
-                                    @foreach ($exportOptions['fakultas'] as $fakultas)
-                                        <option value="{{ $fakultas }}">{{ $fakultas }}</option>
-                                    @endforeach
-                                </select>
-                                <select id="exportProdiSelect" name="program_studi" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Prodi</option>
-                                </select>
-
-                                <select name="jenisVisualisasi" id="" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Jenis</option>
-                                    <option value="pekerja">Full Time</option>
-                                    <option value="wirausaha">Wirausaha</option>
-                                    <option value="pendidikan">Pendidikan</option>
-                                    <option value="questioner">Kuesioner Mahasiswa</option>
-                                    <option value="questioner_stake_holders">Kuesioner Stakeholder
-                                    </option>
-                                </select>
-                                <button type="submit" class="btn btn-success">Export Data</button>
+                        <form action="/visualisasi/export" method="POST" id="exportForm">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <select id="exportTahunLulusSelect" name="tahun" class="form-select @error('tahun') is-invalid @enderror">
+                                        <option value="" selected hidden disabled>Pilih Tahun</option>
+                                        @foreach ($exportOptions['tahun'] as $tahun)
+                                            <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('tahun')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="exportFakultasSelect" name="fakultas" class="form-select @error('fakultas') is-invalid @enderror">
+                                        <option value="" selected hidden disabled>Pilih Fakultas</option>
+                                        @foreach ($exportOptions['fakultas'] as $fakultas)
+                                            <option value="{{ $fakultas }}">{{ $fakultas }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('fakultas')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="exportProdiSelect" name="program_studi" class="form-select @error('program_studi') is-invalid @enderror">
+                                        <option value="" selected hidden disabled>Pilih Prodi</option>
+                                    </select>
+                                    @error('program_studi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="jenisVisualisasi" class="form-select @error('jenisVisualisasi') is-invalid @enderror">
+                                        <option value="" selected hidden disabled>Pilih Jenis</option>
+                                        <option value="pekerja">Full Time</option>
+                                        <option value="wirausaha">Wirausaha</option>
+                                        <option value="pendidikan">Pendidikan</option>
+                                        <option value="questioner">Kuesioner Mahasiswa</option>
+                                        <option value="questioner_stake_holders">Kuesioner Stakeholder</option>
+                                    </select>
+                                    @error('jenisVisualisasi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mt-3 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-success">Export Data</button>
+                                </div>
                             </div>
                         </form>
                     </div>

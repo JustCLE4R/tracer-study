@@ -17,7 +17,7 @@ class IsSuperAdmin2
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user()->role != 'superadmin2') {
-            abort(403);
+            return abort(403);
         }
 
         return $next($request);

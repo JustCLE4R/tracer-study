@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -69,6 +70,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'no-cache' => \App\Http\Middleware\NoCache::class,
         'is-mahasiswa' => \App\Http\Middleware\IsMahasiswa::class,
+        'is-not-mahasiswa' => \App\Http\Middleware\IsNotMahasiswa::class,
         'is-surveyor' => \App\Http\Middleware\IsSurveyor::class,
         'is-admin-prodi' => \App\Http\Middleware\IsAdminProdi::class,
         'is-admin-fakultas' => \App\Http\Middleware\IsAdminFakultas::class,

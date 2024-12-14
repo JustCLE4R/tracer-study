@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ExportController;
-use App\Http\Controllers\Api\QuestionController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\Api\VisualisasiController;
 
 /*
@@ -16,15 +14,6 @@ use App\Http\Controllers\Api\VisualisasiController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-  return $request->user();
-});
-
-Route::get('/questions', [QuestionController::class, 'getQuestions']);
-Route::get('/questions/category/{question:category}', [QuestionController::class, 'getQuestionByCategory']);
-Route::get('/questions/type/{question:type}', [QuestionController::class, 'getQuestionByType']);
-
 Route::prefix('visualisasi')->group(function () {
     Route::get('/wirausaha', [VisualisasiController::class, 'dataWirausaha']);
     Route::get('/pekerja', [VisualisasiController::class, 'dataPekerja']);
@@ -38,4 +27,4 @@ Route::prefix('visualisasi')->group(function () {
     Route::get('/masa-tunggu', [VisualisasiController::class, 'dataMasaTunggu']);
 });
 
-Route::get('/visualisasi/export', [ExportController::class, 'export']);
+Route::post('/visualisasi/export', [ExportController::class, 'export']);

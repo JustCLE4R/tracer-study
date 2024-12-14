@@ -17,7 +17,7 @@ class IsSurveyor
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user()->role != 'surveyor') {
-            abort(403);
+            return abort(403);
         }
 
         return $next($request);

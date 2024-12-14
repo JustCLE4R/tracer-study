@@ -1,46 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\QuestionerStakeHolder;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ExportRequest;
 
 class ExportController extends Controller
 {
-    public function export(Request $request)
+    public function export(ExportRequest $request)
     {
-        // Validate the request inputs
-        $validator = Validator::make($request->all(), [
-            'program_studi' => 'nullable|string',
-            'fakultas' => 'nullable|string',
-            'jenisVisualisasi' => 'required|string|in:wirausaha,pekerja,pendidikan,questioner,questioner_stake_holders',
-            'tahun' => 'nullable|integer|min:1900|max:' . date('Y'),
-        ], [
-            'jenisVisualisasi.required' => 'Jenis Visualisasi is required and must be one of: wirausaha, pekerja, pendidikan, questioner, questioner_stake_holders.',
-            'tahun.integer' => 'Tahun must be a valid year.',
-        ]);
-
-        // Check if validation fails
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'failed',
-                'errors' => $validator->errors(),
-            ], 422);
-        }
-
-        // Extract validated data
-        $validated = $validator->validated();
-        $tahun = $validated['tahun'] ?? null;
-        $fakultas = $validated['fakultas'] ?? null;
-        $program_studi = $validated['program_studi'] ?? null;
-        $jenisVisualisasi = $validated['jenisVisualisasi'];
+        $tahun = $request['tahun'] ?? null;
+        $fakultas = $request['fakultas'] ?? null;
+        $program_studi = $request['program_studi'] ?? null;
+        $jenisVisualisasi = $request['jenisVisualisasi'];
 
         // Fetch data for export
-        $exportData = $this->fetchExportData($jenisVisualisasi, $tahun, $fakultas, $program_studi);
+        $exportData = $this->fetchExportData($tahun, $fakultas, $program_studi, $jenisVisualisasi);
 
         // Check if data exists
         if ($exportData->isEmpty()) {
@@ -52,17 +31,19 @@ class ExportController extends Controller
 
         // Generate filename and file path
         $filename = $this->generateFilename($tahun, $fakultas, $program_studi, $jenisVisualisasi);
-        $filepath = "exports/{$filename}";
+        $filepath = "/exports/{$filename}";
 
         // Write CSV and prepare for download
         $headers = $this->getCsvHeaders($exportData);
         $this->writeCsvFile($filepath, $headers, $exportData);
 
+        clearstatcache(); // Clear file status cache to avoid stale data
+        
         // Return the file for download
         return response()->download(Storage::path($filepath))->deleteFileAfterSend(true);
     }
 
-    private function fetchExportData($jenisVisualisasi, $tahun, $fakultas, $program_studi)
+    private function fetchExportData($tahun, $fakultas, $program_studi, $jenisVisualisasi)
     {
         if (in_array($jenisVisualisasi, ['wirausaha', 'pekerja', 'pendidikan', 'questioner'])) {
             return User::with($jenisVisualisasi)
