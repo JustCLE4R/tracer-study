@@ -239,59 +239,108 @@ class VisualisasiController extends Controller
     public function dataStakeholder(Request $request){
         $stakeholder_data = QuestionerStakeHolder::get();
 
-        if($request->query('lulus')){
-            $stakeholder_data = $stakeholder_data->filter(function($query) use ($request) {
-                $tgl_wisuda = $query->detailPerusahaan->pekerja->user ? $query->detailPerusahaan->pekerja->user->tgl_wisuda : null;
-                return $tgl_wisuda ? date('Y', strtotime($tgl_wisuda)) == $request->query('lulus') : false;
-            });
-        }
+        $stakeholder_data = $stakeholder_data->filter(function($query) use ($request) {
+            $user = $query->detailPerusahaan->pekerja->user;
+            if (!$user) return false;
 
-        if($request->query('fakultas')){
-            $stakeholder_data = $stakeholder_data->filter(function($query) use ($request) {
-                return $query->detailPerusahaan->pekerja->user && $query->detailPerusahaan->pekerja->user->fakultas == $request->query('fakultas');
-            });
-        }
+            $tgl_wisuda = $user->tgl_wisuda ? date('Y', strtotime($user->tgl_wisuda)) : null;
+            $lulus = $request->query('lulus');
+            $fakultas = $request->query('fakultas');
+            $prodi = $request->query('prodi');
+
+            return (!$lulus || $tgl_wisuda == $lulus) &&
+                (!$fakultas || $user->fakultas == $fakultas) &&
+                (!$prodi || $user->program_studi == $prodi);
+        });
+
+        // Count occurrences for c_1 and d_1
+        $c1_counts = $stakeholder_data->flatMap(function ($item) {
+            return json_decode($item['c_1']) ?? [];
+        })->map(function ($value) {
+            switch ($value) {
+            case 'a':
+                return 'Sponsorship';
+            case 'b':
+                return 'Rekrutmen';
+            case 'c':
+                return 'Magang';
+            case 'd':
+                return 'Beasiswa';
+            case 'e':
+                return 'Kuliah Tamu';
+            case 'f':
+                return 'Tidak Ada';
+            default:
+                return 'Unknown';
+            }
+        })->countBy();
+
+        $d1_counts = $stakeholder_data->flatMap(function ($item) {
+            return json_decode($item['d_1']) ?? [];
+        })->map(function ($value) {
+            switch ($value) {
+            case 'a':
+                return 'Sponsorship';
+            case 'b':
+                return 'Rekrutmen';
+            case 'c':
+                return 'Magang';
+            case 'd':
+                return 'Beasiswa';
+            case 'e':
+                return 'Kuliah Tamu';
+            case 'f':
+                return 'Tidak Ada';
+            default:
+                return 'Unknown';
+            }
+        })->countBy();
 
         return response()->json([
-            '(e)Menurut anda, seberapa PENTINGkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?' => [
+            '(c) Hubungan kerjasama apakah yang kantor/perusahaan anda Miliki saat ini dengan UINSU?' => $c1_counts,
+
+            '(d) Hubungan apakah yang kantor/perusahaan anda Inginkan saat ini dengan UINSU?' => $d1_counts,
+            
+            '(e) Menurut anda, seberapa pentingkah hal-hal yang tertulis di bawah ini, dimiliki oleh lulusan perguruan tinggi saat mereka bekerja di kantor/perusahaan anda?' => [
                 'Ketaqwaan terhadap Tuhan yang maha Esa' => $stakeholder_data->countBy('e_1'),
                 'Etika dan kecerdasan dalam bertindak' => $stakeholder_data->countBy('e_2'),
                 'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $stakeholder_data->countBy('e_3'),
-                'Ketrampilan internet dan komputer' => $stakeholder_data->countBy('e_4'),
+                'Keterampilan Bidang Teknologi Informasi (Internet dan Komputer)' => $stakeholder_data->countBy('e_4'),
                 'Kemampuan belajar' => $stakeholder_data->countBy('e_5'),
                 'Kemampuan berkomunikasi' => $stakeholder_data->countBy('e_6'),
-                'Bekerja dalam tim/bekerjasama dengan orang lain' => $stakeholder_data->countBy('e_7'),
+                'Kerjasama tim' => $stakeholder_data->countBy('e_7'),
                 'Kemampuan dalam memecahkan masalah' => $stakeholder_data->countBy('e_8'),
                 'Inovasi dan/atau kreativitas' => $stakeholder_data->countBy('e_9'),
                 'Pengetahuan di bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('e_10'),
                 'Pengetahuan di luar bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('e_11'),
-                'Keseimbangan antara pikir dan zikir' => $stakeholder_data->countBy('e_12'),
+                'Pengembangan diri' => $stakeholder_data->countBy('e_12'),
                 'Mampu melakukan pendekatan integral-transdisipliner' => $stakeholder_data->countBy('e_13'),
-                'Memiliki etos dinamis dan berkarakter pengabdi' => $stakeholder_data->countBy('e_14'),
+                'Etos Kerja' => $stakeholder_data->countBy('e_14'),
                 'Berakhlak mulia' => $stakeholder_data->countBy('e_15'),
                 'Pengetahuan umum dan memiliki wawasan kebangsaan' => $stakeholder_data->countBy('e_16'),
                 'Bervisi pengembangan peradaban' => $stakeholder_data->countBy('e_17'),
-                'Berpenampilan happy / Bahagia' => $stakeholder_data->countBy('e_18'),
+                'Aspek Kepemimpinan' => $stakeholder_data->countBy('e_18'),
             ],
 
-            '(f) Bagaimanakah tingkat KEPUASAN anda terhadap Alumni FEBI UIN SU Medan yang bekerja di kantor/perusahaan anda, tentang hal-hal di bawah ini?' => [
-                'Etika dan kecerdasan dalam bertindak' => $stakeholder_data->countBy('f_1'),
-                'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $stakeholder_data->countBy('f_2'),
-                'Ketrampilan internet dan komputer' => $stakeholder_data->countBy('f_3'),
-                'Kemampuan belajar' => $stakeholder_data->countBy('f_4'),
-                'Kemampuan berkomunikasi' => $stakeholder_data->countBy('f_5'),
-                'Bekerja dalam tim/bekerjasama dengan orang lain' => $stakeholder_data->countBy('f_6'),
-                'Kemampuan dalam memecahkan masalah' => $stakeholder_data->countBy('f_7'),
-                'Inovasi dan/atau kreativitas' => $stakeholder_data->countBy('f_8'),
-                'Pengetahuan di bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('f_9'),
-                'Pengetahuan di luar bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('f_10'),
-                'Keseimbangan antara pikir dan zikir' => $stakeholder_data->countBy('f_11'),
-                'Mampu melakukan pendekatan integral-transdisipliner' => $stakeholder_data->countBy('f_12'),
-                'Memiliki etos dinamis dan berkarakter pengabdi' => $stakeholder_data->countBy('f_13'),
-                'Berakhlak mulia' => $stakeholder_data->countBy('f_14'),
-                'Pengetahuan umum dan memiliki wawasan kebangsaan' => $stakeholder_data->countBy('f_15'),
-                'Bervisi pengembangan peradaban' => $stakeholder_data->countBy('f_16'),
-                'Berpenampilan happy / Bahagia' => $stakeholder_data->countBy('f_17'),
+            '(f) Bagaimanakah tingkat kepuasan anda terhadap Alumni UIN Sumatera Utara Medan yang bekerja di kantor/perusahaan anda, tentang hal-hal di bawah ini?' => [
+                'Ketaqwaan terhadap Tuhan yang maha Esa' => $stakeholder_data->countBy('f_1'),
+                'Etika dan kecerdasan dalam bertindak' => $stakeholder_data->countBy('f_2'),
+                'Kemampuan bahasa asing (bahasa Inggris, bahasa Arab)' => $stakeholder_data->countBy('f_3'),
+                'Keterampilan Bidang Teknologi Informasi (Internet dan Komputer)' => $stakeholder_data->countBy('f_4'),
+                'Kemampuan belajar' => $stakeholder_data->countBy('f_5'),
+                'Kemampuan berkomunikasi' => $stakeholder_data->countBy('f_6'),
+                'Kerjasama tim' => $stakeholder_data->countBy('f_7'),
+                'Kemampuan dalam memecahkan masalah' => $stakeholder_data->countBy('f_8'),
+                'Inovasi dan/atau kreativitas' => $stakeholder_data->countBy('f_9'),
+                'Pengetahuan di bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('f_10'),
+                'Pengetahuan di luar bidang atau disiplin ilmu anda' => $stakeholder_data->countBy('f_11'),
+                'Pengembangan diri' => $stakeholder_data->countBy('f_12'),
+                'Mampu melakukan pendekatan integral-transdisipliner' => $stakeholder_data->countBy('f_13'),
+                'Etos Kerja' => $stakeholder_data->countBy('f_14'),
+                'Berakhlak mulia' => $stakeholder_data->countBy('f_15'),
+                'Pengetahuan umum dan memiliki wawasan kebangsaan' => $stakeholder_data->countBy('f_16'),
+                'Bervisi pengembangan peradaban' => $stakeholder_data->countBy('f_17'),
+                'Aspek Kepemimpinan' => $stakeholder_data->countBy('f_18'),
             ]
         ]);
     }

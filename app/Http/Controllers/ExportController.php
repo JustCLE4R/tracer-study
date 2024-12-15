@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\MhsQuestionerExport;
 use App\Exports\PekerjaExport;
 use App\Exports\WirausahaExport;
 use App\Exports\PendidikanExport;
+use App\Exports\MhsQuestionerExport;
+use App\Exports\StkQuestionerExport;
 use App\Http\Requests\ExportRequest;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -23,6 +24,7 @@ class ExportController extends Controller
             'wirausaha' => WirausahaExport::class,
             'pendidikan' => PendidikanExport::class,
             'questioner' => MhsQuestionerExport::class,
+            'questioner_stake_holders' => StkQuestionerExport::class,
         ];
 
         if (!isset($exportClasses[$jenisVisualisasi])) {

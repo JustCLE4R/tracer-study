@@ -28,9 +28,9 @@ class StoreQuestionerStakeHolderRequest extends FormRequest
         }
         $rules["b_6"] = ['required', 'email'];
 
-        $rules["c_1"] = ['nullable', 'array', 'max:5', 'in:a,b,c,d,e'];
+        $rules["c_1"] = ['required', 'array', 'min:1', 'max:5', 'in:a,b,c,d,e,f'];
 
-        $rules["d_1"] = ['nullable', 'array', 'max:5', 'in:a,b,c,d,e'];
+        $rules["d_1"] = ['required', 'array', 'min:1', 'max:5', 'in:a,b,c,d,e,f'];
 
         for ($i = 1; $i <= 18; $i++) {
             $rules["e_$i"] = ['required', 'integer', 'between:0,4'];

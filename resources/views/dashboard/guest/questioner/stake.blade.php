@@ -54,13 +54,13 @@
                         <div class="bg-light rounded p-5 border-top border-success border-5" style="min-height: 70vh ;">
 
                             @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             @endif
                             <form action="{{ $questioner->token }}" method="POST">
                                 @csrf
@@ -102,14 +102,12 @@
                                             value="{{ old('b_3', $questioner->jabatan_atasan) }}" required>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                        <label class="form-label text-secondary" for="b_4">Nomor Telepon
-                                            Atasan:</label>
+                                        <label class="form-label text-secondary" for="b_4">Nomor Telepon Atasan:</label>
                                         <input type="text" id="b_4" name="b_4" class="form-control"
                                             value="{{ old('b_4', $questioner->telepon_atasan) }}" required>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-12 my-2">
-                                        <label class="form-label text-secondary" for="b_5">Alamat
-                                            Perusahaan:</label>
+                                        <label class="form-label text-secondary" for="b_5">Alamat Perusahaan:</label>
                                         <input type="text" id="b_5" name="b_5" class="form-control"
                                             value="{{ old('b_5', $questioner->alamat_perusahaan) }}" required>
                                     </div>
@@ -122,104 +120,102 @@
                                 </div>
                                 <div class="row my-2">
                                     <div class="col-12">
-                                        <div class="h6 mb-2"><b>(c) Hubungan kerjasama apakah yang kantor/perusahaan
-                                                anda Miliki saat ini dengan UINSU?
-                                            </b></div>
+                                        <div class="h6 mb-2"><b>(c) Hubungan kerjasama apakah yang kantor/perusahaan anda Miliki saat ini dengan UINSU?</b></div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12 my-1">
-                                        <div>
-                                            <input class="form-check-input" type="radio" id="c-radio-ada"
-                                                name="c_1[]">
-                                            <label class="form-check-label" for="c-radio-ada">Ada? Tampilkan</label>
-
-                                            <input class="form-check-input ms-3" type="radio" id="c-radio-tidak-ada"
-                                                name="c_1[]" value="f">
-                                            <label class="form-check-label" for="c-radio-tidak-ada">Tidak Ada</label>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="c_1[]" value="f"
+                                                id="c_1-TidakAda" onclick="toggleGroup(this)">
+                                            <label class="form-check-label" for="c_1-TidakAda">
+                                                Tidak Ada
+                                            </label>
                                         </div>
-
-                                        <div id="c-checkbox-group" style="display: none; margin-top: 10px;">
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="c_1[]"
-                                                    value="a" id="checkbox-sponsorship">
-                                                <label class="form-check-label"
-                                                    for="checkbox-sponsorship">Sponsorship</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="c_1[]"
-                                                    value="b" id="checkbox-rekrutmen">
-                                                <label class="form-check-label"
-                                                    for="checkbox-rekrutmen">Rekrutmen</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="c_1[]"
-                                                    value="c" id="checkbox-magang">
-                                                <label class="form-check-label" for="checkbox-magang">Magang</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="c_1[]"
-                                                    value="d" id="checkbox-beasiswa">
-                                                <label class="form-check-label"
-                                                    for="checkbox-beasiswa">Beasiswa</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="c_1[]"
-                                                    value="e" id="checkbox-kuliah-tamu">
-                                                <label class="form-check-label" for="checkbox-kuliah-tamu">Kuliah
-                                                    Tamu</label>
-                                            </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="c_1[]" value="a"
+                                                id="c_1-Sponsorship">
+                                            <label class="form-check-label" for="c_1-Sponsorship">
+                                                Sponsorship
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="c_1[]" value="b"
+                                                id="c_1-Rekrutmen">
+                                            <label class="form-check-label" for="c_1-Rekrutmen">
+                                                Rekrutmen
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="c_1[]" value="c"
+                                                id="c_1-Magang">
+                                            <label class="form-check-label" for="c_1-Magang">
+                                                Magang
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="c_1[]" value="d"
+                                                id="c_1-Beasiswa">
+                                            <label class="form-check-label" for="c_1-Beasiswa">
+                                                Beasiswa
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="c_1[]" value="e"
+                                                id="c_1-Kuliah Tamu">
+                                            <label class="form-check-label" for="c_1-Kuliah Tamu">
+                                                Kuliah Tamu
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row my-2">
                                     <div class="col-12">
-                                        <div class="h6 mb-2"><b>(d) Hubungan apakah yang kantor/perusahaan anda
-                                                Inginkan saat ini dengan UINSU?
-                                            </b></div>
+                                        <div class="h6 mb-2"><b>(d) Hubungan apakah yang kantor/perusahaan anda Inginkan
+                                                saat ini dengan UINSU?</b></div>
                                     </div>
                                     <div class="col-lg-6 col-sm-12 my-1">
-                                        <div>
-                                            <input class="form-check-input" type="radio" id="d-radio-ada"
-                                                name="d_1[]">
-                                            <label class="form-check-label" for="d-radio-ada">Ada? Tampilkan</label>
-
-                                            <input class="form-check-input ms-3" type="radio" id="d-radio-tidak-ada"
-                                                name="d_1[]" value="f">
-                                            <label class="form-check-label" for="d-radio-tidak-ada">Tidak Ada</label>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="d_1[]" value="f"
+                                                id="d_1-TidakAda" onclick="toggleGroup(this)">
+                                            <label class="form-check-label" for="d_1-TidakAda">
+                                                Tidak Ada
+                                            </label>
                                         </div>
-
-                                        <div id="d-checkbox-group" style="display: none; margin-top: 10px;">
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="d_1[]"
-                                                    value="a" id="checkbox-sponsorship">
-                                                <label class="form-check-label"
-                                                    for="checkbox-sponsorship">Sponsorship</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="d_1[]"
-                                                    value="b" id="checkbox-rekrutmen">
-                                                <label class="form-check-label"
-                                                    for="checkbox-rekrutmen">Rekrutmen</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="d_1[]"
-                                                    value="c" id="checkbox-magang">
-                                                <label class="form-check-label" for="checkbox-magang">Magang</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="d_1[]"
-                                                    value="d" id="checkbox-beasiswa">
-                                                <label class="form-check-label"
-                                                    for="checkbox-beasiswa">Beasiswa</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" name="d_1[]"
-                                                    value="e" id="checkbox-kuliah-tamu">
-                                                <label class="form-check-label" for="checkbox-kuliah-tamu">Kuliah
-                                                    Tamu</label>
-                                            </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="d_1[]" value="a"
+                                                id="d_1-Sponsorship">
+                                            <label class="form-check-label" for="d_1-Sponsorship">
+                                                Sponsorship
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="d_1[]" value="b"
+                                                id="d_1-Rekrutmen">
+                                            <label class="form-check-label" for="d_1-Rekrutmen">
+                                                Rekrutmen
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="d_1[]" value="c"
+                                                id="d_1-Magang">
+                                            <label class="form-check-label" for="d_1-Magang">
+                                                Magang
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="d_1[]" value="d"
+                                                id="d_1-Beasiswa">
+                                            <label class="form-check-label" for="d_1-Beasiswa">
+                                                Beasiswa
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input" name="d_1[]" value="e"
+                                                id="d_1-Kuliah Tamu">
+                                            <label class="form-check-label" for="d_1-Kuliah Tamu">
+                                                Kuliah Tamu
+                                            </label>
                                         </div>
                                     </div>
-
                                 </div>
 
                                 <div class="row" id="questionnaire-form"></div>
@@ -270,125 +266,6 @@
                     </div>
                 </div>
             </div>
-
-
-
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    const radioAda = document.getElementById("c-radio-ada");
-                    const radioTidakAda = document.getElementById("c-radio-tidak-ada");
-                    const checkboxGroup = document.getElementById("c-checkbox-group");
-
-                    radioAda.addEventListener("change", function() {
-                        if (radioAda.checked) {
-                            checkboxGroup.style.display = "block";
-                        }
-                    });
-
-                    radioTidakAda.addEventListener("change", function() {
-                        if (radioTidakAda.checked) {
-                            checkboxGroup.style.display = "none";
-                            const checkboxes = checkboxGroup.querySelectorAll("input[type='checkbox']");
-                            checkboxes.forEach(function(checkbox) {
-                                checkbox.checked = false; 
-                            });
-                        }
-                    });
-                });
-
-                document.addEventListener("DOMContentLoaded", function() {
-                    const radioAda = document.getElementById("d-radio-ada");
-                    const radioTidakAda = document.getElementById("d-radio-tidak-ada");
-                    const checkboxGroup = document.getElementById("d-checkbox-group");
-
-                    radioAda.addEventListener("change", function() {
-                        if (radioAda.checked) {
-                            checkboxGroup.style.display = "block";
-                        }
-                    });
-
-                    radioTidakAda.addEventListener("change", function() {
-                        if (radioTidakAda.checked) {
-                            checkboxGroup.style.display = "none";
-                            const checkboxes = checkboxGroup.querySelectorAll("input[type='checkbox']");
-                            checkboxes.forEach(function(checkbox) {
-                                checkbox.checked = false; 
-                            });
-                        }
-                    });
-                });
-
-
-
-                document.addEventListener('DOMContentLoaded', function() {
-                    const formContainer = document.getElementById('questionnaire-form');
-
-                    fetch('/json/stack.json')
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok ' + response.statusText);
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            data.questioner.forEach(section => {
-                                const sectionTitle = document.createElement('div');
-                                sectionTitle.className = 'row';
-                                sectionTitle.innerHTML = `
-                    <div class="col-12">
-                        <span class="h6 mb-2"><b>${section.title}</b></span>
-                    </div>
-                `;
-                                formContainer.appendChild(sectionTitle);
-
-                                if (section.questions) {
-                                    // Create questions
-                                    section.questions.forEach((question, index) => {
-                                        const questionCol = document.createElement('div');
-                                        questionCol.className = 'col-lg-6 col-sm-12 my-1';
-                                        questionCol.innerHTML = `
-                            <span class="mb-1">${index + 1}. ${question.text}</span>
-                        `;
-                                        question.options.forEach((option, index) => {
-                                            const optionDiv = document.createElement('div');
-                                            optionDiv.className = 'form-check';
-                                            optionDiv.innerHTML = `
-                                <input class="form-check-input" type="radio" name="${question.name}" id="${question.name}-${option}" value="${question.options.length - index - 1}" required>
-                                <label class="form-check-label" for="${question.name}-${option}">
-                                    ${option}
-                                </label>
-                            `;
-                                            questionCol.appendChild(optionDiv);
-                                        });
-
-                                        formContainer.appendChild(questionCol);
-                                    });
-                                } else if (section.options) {
-                                    const optionsCol = document.createElement('div');
-                                    optionsCol.className = 'col-lg-6 col-sm-12 my-1';
-                                    section.options.forEach((option, index) => {
-                                        const optionDiv = document.createElement('div');
-                                        optionDiv.className = 'form-check';
-                                        optionDiv.innerHTML = `
-                            <input class="form-check-input" type="radio" name="${section.name}" id="${section.name}-${option}" value="${index}" required>
-                            <label class="form-check-label" for="${section.name}-${option}">
-                                ${option}
-                            </label>
-                        `;
-                                        optionsCol.appendChild(optionDiv);
-                                    });
-
-                                    formContainer.appendChild(optionsCol);
-                                }
-                            });
-                        })
-                        .catch(error => {
-                            console.error('Error fetching the JSON data:', error);
-                        });
-                });
-            </script>
-
-
         </div>
     </div>
 
@@ -406,13 +283,91 @@
     <script src="/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-
     <script type="text/javascript" src="/js/trix.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const formContainer = document.getElementById('questionnaire-form');
+
+            fetch('/json/stack.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    data.questioner.forEach(section => {
+                        const sectionTitle = document.createElement('div');
+                        sectionTitle.className = 'row';
+                        sectionTitle.innerHTML = `
+            <div class="col-12">
+                <span class="h6 mb-2"><b>${section.title}</b></span>
+            </div>
+        `;
+                        formContainer.appendChild(sectionTitle);
+
+                        if (section.questions) {
+                            // Create questions
+                            section.questions.forEach((question, index) => {
+                                const questionCol = document.createElement('div');
+                                questionCol.className = 'col-lg-6 col-sm-12 my-1';
+                                questionCol.innerHTML = `
+                    <span class="mb-1">${index + 1}. ${question.text}</span>
+                `;
+                                question.options.forEach((option, index) => {
+                                    const optionDiv = document.createElement('div');
+                                    optionDiv.className = 'form-check';
+                                    optionDiv.innerHTML = `
+                        <input class="form-check-input" type="radio" name="${question.name}" id="${question.name}-${option}" value="${question.options.length - index - 1}" required>
+                        <label class="form-check-label" for="${question.name}-${option}">
+                            ${option}
+                        </label>
+                    `;
+                                    questionCol.appendChild(optionDiv);
+                                });
+
+                                formContainer.appendChild(questionCol);
+                            });
+                        } else if (section.options) {
+                            const optionsCol = document.createElement('div');
+                            optionsCol.className = 'col-lg-6 col-sm-12 my-1';
+                            section.options.forEach((option, index) => {
+                                const optionDiv = document.createElement('div');
+                                optionDiv.className = 'form-check';
+                                optionDiv.innerHTML = `
+                    <input class="form-check-input" type="radio" name="${section.name}" id="${section.name}-${option}" value="${index}" required>
+                    <label class="form-check-label" for="${section.name}-${option}">
+                        ${option}
+                    </label>
+                `;
+                                optionsCol.appendChild(optionDiv);
+                            });
+
+                            formContainer.appendChild(optionsCol);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching the JSON data:', error);
+                });
+        });
+
         var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
             return new bootstrap.Popover(popoverTriggerEl)
         });
+
+        function toggleGroup(tidakAdaCheckbox) {
+            const groupName = tidakAdaCheckbox.name;
+            
+            const checkboxes = document.querySelectorAll(`input[name="${groupName}"]:not(#${tidakAdaCheckbox.id})`);
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.disabled = tidakAdaCheckbox.checked;
+            });
+        }
+
     </script>
 
     <!-- Custom Javascript -->
