@@ -74,6 +74,8 @@ class WirausahaExport implements FromCollection, WithHeadings, WithMapping, Shou
             'Email',
             'LinkedIn',
             'Facebook',
+            'Lama Studi (Semester)',
+            'Masa Tunggu Mendapatkan Pekerjaan (Hari)',
 
             "Sedang Berwirausaha",
             "Nama Usaha",
@@ -123,6 +125,8 @@ class WirausahaExport implements FromCollection, WithHeadings, WithMapping, Shou
             $user->email,
             $user->linkedin,
             $user->facebook,
+            $user->masa_studi_semester,
+            $user->lama_mendapatkan_pekerjaan,
 
             $user->wirausaha->first()->is_active,
             $user->wirausaha->first()->nama_usaha,

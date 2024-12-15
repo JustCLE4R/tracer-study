@@ -68,6 +68,8 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
             'Email',
             'LinkedIn',
             'Facebook',
+            'Lama Studi (Semester)',
+            'Masa Tunggu Mendapatkan Pekerjaan (Hari)',
 
             'Tingkat Pendidikan',
             'Program Studi',
@@ -114,6 +116,8 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
             ,$user->email,
             $user->linkedin,
             $user->facebook,
+            $user->masa_studi_semester,
+            $user->lama_mendapatkan_pekerjaan,
 
             $user->pendidikan->first()->tingkat_pendidikan,
             $user->pendidikan->first()->program_studi,

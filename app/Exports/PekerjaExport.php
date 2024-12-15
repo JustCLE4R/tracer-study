@@ -76,6 +76,8 @@ class PekerjaExport implements FromCollection, WithHeadings, WithMapping, Should
             'Email',
             'LinkedIn',
             'Facebook',
+            'Lama Studi (Semester)',
+            'Masa Tunggu Mendapatkan Pekerjaan (Hari)',
 
             "Sedang Bekerja",
             "Status Pekerjaan",
@@ -124,6 +126,8 @@ class PekerjaExport implements FromCollection, WithHeadings, WithMapping, Should
             $user->email,
             $user->linkedin,
             $user->facebook,
+            $user->masa_studi_semester,
+            $user->lama_mendapatkan_pekerjaan,
 
             $user->pekerja->first()->is_active,
             $user->pekerja->first()->status_pekerjaan,
