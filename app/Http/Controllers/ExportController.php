@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\MhsQuestionerExport;
 use App\Exports\PekerjaExport;
 use App\Exports\WirausahaExport;
 use App\Exports\PendidikanExport;
@@ -17,17 +18,18 @@ class ExportController extends Controller
         $programStudi = $request->input('program_studi');
         $jenisVisualisasi = $request->input('jenisVisualisasi');
 
-        if ($jenisVisualisasi === 'pekerja') {
-            $export = new PekerjaExport($tahun, $fakultas, $programStudi);
+        $exportClasses = [
+            'pekerja' => PekerjaExport::class,
+            'wirausaha' => WirausahaExport::class,
+            'pendidikan' => PendidikanExport::class,
+            'questioner' => MhsQuestionerExport::class,
+        ];
+
+        if (!isset($exportClasses[$jenisVisualisasi])) {
+            abort(404, 'Export type not found');
         }
 
-        if ($jenisVisualisasi === 'wirausaha') {
-            $export = new WirausahaExport($tahun, $fakultas, $programStudi);
-        }
-
-        if ($jenisVisualisasi === 'pendidikan') {
-            $export = new PendidikanExport($tahun, $fakultas, $programStudi);
-        }
+        $export = new $exportClasses[$jenisVisualisasi]($tahun, $fakultas, $programStudi);
 
         return Excel::download($export, $this->generateFilename($tahun, $fakultas, $programStudi, $jenisVisualisasi));
     }

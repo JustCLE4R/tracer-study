@@ -23,10 +23,15 @@ class WirausahaExport implements FromCollection, WithHeadings, WithMapping, Shou
 
     public function collection()
     {
-        return User::with('wirausaha')
+        return User::with(['wirausaha', 'certCheck'])
         ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
         ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
         ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
+        ->whereHas('certCheck', function ($query) {
+            $query->where('profile_check', true)
+            ->where('perjalanan_karir_check', true)
+            ->where('questioner_check', true);
+        })
         ->whereHas('wirausaha', function ($query) {
             $query->where('is_active', true)
                 ->whereNull('tgl_akhir_usaha')

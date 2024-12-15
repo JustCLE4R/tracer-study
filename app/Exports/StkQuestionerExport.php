@@ -2,13 +2,13 @@
 
 namespace App\Exports;
 
-use App\Models\User;
+use App\Models\QuestionerStakeHolder;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class PendidikanExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize
+class StkQuestionerExport implements FromCollection, WithHeadings, WithMapping, ShouldAutoSize
 {
     protected $tahun;
     protected $fakultas;
@@ -23,7 +23,7 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
 
     public function collection()
     {
-        return User::with(['pendidikan', 'certCheck'])
+        return QuestionerStakeHolder::with(['detailPerusahaan.pekerja.user.certCheck'])
         ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
         ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
         ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
