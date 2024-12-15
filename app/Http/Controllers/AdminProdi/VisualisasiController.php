@@ -30,7 +30,7 @@ class VisualisasiController extends Controller
             'prodi' => $prodi
         ];
 
-        return view('dashboard.visual', [
+        return view('dashboard.admin-prodi.visual', [
             'exportOptions' => $exportOptions
         ]);
     }

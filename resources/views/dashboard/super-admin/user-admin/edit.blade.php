@@ -6,12 +6,24 @@
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded p-5 border-top border-success border-5" style="min-height: 80vh;">
                     <div class="row">
+                        {{-- print all error --}}
+                        @if ($errors->any())
+                            <div class="col-12">
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li class="text-danger">{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
                         <div class="col-12">
                             <span class="h4">{{ $user->nama }}</span>
                             <hr>
                         </div>
                     </div>
-                    <form class="row" action="/dashboard/admin/super/user/{{ $user->id }}" method="POST">
+                    <form class="row" action="/dashboard/admin/super/user-admin/{{ $user->id }}" method="POST">
                         @csrf
                         @method('PATCH')
                         <div class="col-md-4 mb-3">

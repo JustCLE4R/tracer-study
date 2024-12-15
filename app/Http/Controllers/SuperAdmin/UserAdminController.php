@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SuperAdmin\UpdateUserAdminRequest;
 
 class UserAdminController extends Controller
 {
@@ -69,9 +70,19 @@ class UserAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UpdateUserAdminRequest $request, User $user)
     {
-        //
+        if ($request->password) {
+            $request->merge([
+                'password' => bcrypt(md5($request->password))
+            ]);
+        } else {
+            $request->request->remove('password');
+        }
+
+        $user->update($request->all());
+
+        return redirect('/dashboard/admin/super/user-admin/' . $user->id . '/edit')->with('success', 'Profil berhasil diperbarui');
     }
 
     /**

@@ -11,34 +11,52 @@
                 </div>
                 <div class="row my-3">
                     <div class="col-lg-12">
-                        <form action="/api/visualisasi/export" method="GET" id="exportForm" target="_blank">
-                            <div class="input-group">
-                                <select id="exportTahunLulusSelect" name="tahun" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Tahun</option>
-                                    @foreach ($exportOptions['tahun'] as $tahun)
-                                        <option value="{{ $tahun }}">{{ $tahun }}</option>
-                                    @endforeach
-                                </select>
-                                <select id="exportFakultasSelect" name="fakultas" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Fakultas</option>
-                                    @foreach ($exportOptions['fakultas'] as $fakultas)
-                                        <option value="{{ $fakultas }}">{{ $fakultas }}</option>
-                                    @endforeach
-                                </select>
-                                <select id="exportProdiSelect" name="prodi" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Prodi</option>
-                                </select>
-
-                                <select name="jenisVisualisasi" id="" class="form-select me-2">
-                                    <option value="" selected hidden disabled>Pilih Jenis</option>
-                                    <option value="pekerja">Full Time</option>
-                                    <option value="wirausaha">Wirausaha</option>
-                                    <option value="pendidikan">Pendidikan</option>
-                                    <option value="questioner">Kuesioner Mahasiswa</option>
-                                    <option value="pekerja.detailPerusahaan.questionerStakeHolder">Kuesioner Stakeholder
-                                    </option>
-                                </select>
-                                <button type="submit" class="btn btn-success">Export Data</button>
+                        <form action="/visualisasi/export" method="POST" id="exportForm">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <select id="exportTahunLulusSelect" name="tahun" class="form-select @error('tahun') is-invalid @enderror">
+                                        <option value="" selected hidden disabled>Pilih Tahun</option>
+                                        @foreach ($exportOptions['tahun'] as $tahun)
+                                            <option value="{{ $tahun }}">{{ $tahun }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('tahun')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="exportFakultasSelect" name="fakultas" class="form-select @error('fakultas') is-invalid @enderror">
+                                        <option value="{{ Auth::user()->fakultas }}" selected>{{ Auth::user()->fakultas }}</option>
+                                    </select>
+                                    @error('fakultas')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3">
+                                    <select id="exportProdiSelect" name="program_studi" class="form-select @error('program_studi') is-invalid @enderror">
+                                        <option value="{{ Auth::user()->program_studi }}" selected>{{ Auth::user()->program_studi }}</option>
+                                    </select>
+                                    @error('program_studi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3">
+                                    <select name="jenisVisualisasi" class="form-select @error('jenisVisualisasi') is-invalid @enderror">
+                                        <option value="" selected hidden disabled>Pilih Jenis</option>
+                                        <option value="pekerja">Full Time</option>
+                                        <option value="wirausaha">Wirausaha</option>
+                                        <option value="pendidikan">Pendidikan</option>
+                                        <option value="questioner">Kuesioner Mahasiswa</option>
+                                        <option value="questioner_stake_holders">Kuesioner Stakeholder</option>
+                                    </select>
+                                    @error('jenisVisualisasi')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-md-12 mt-3 d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-success">Export Data</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -76,11 +94,11 @@
             <div class="col-sm-6 col-lg-4 my-2">
                 <div id="card-header"
                     class="bg-light  border-top border-success border-5  rounded d-flex align-items-center justify-content-center p-4"
-                    onclick="scrollToElement('charts-lama-study')" n="1000">
+                    onclick="scrollToElement('charts-lama-studi')" n="1000">
                     <i class="bi bi-person-fill-gear text-primary fs-1"></i>
                     <div class="ms-3">
                         <p class="mb-2">Visualisasi Lama Study</p>
-                        <h6 id="lama-study" class="mb-0"></h6>
+                        <h6 id="lama-studi" class="mb-0"></h6>
                     </div>
 
                 </div>
@@ -442,7 +460,7 @@
             <div class="col-lg-12 col-sm-12 align-items-center justify-content-between mb-4">
                 <div class="row justify-content-between">
                     <div class="col-lg-7">
-                        <span class="mb-0 h4 " id="lama-study">Visualisasi Lama Study</span>
+                        <span class="mb-0 h4 " id="lama-studi">Visualisasi Lama Study</span>
                     </div>
                     <div class="col-lg-5 col-sm-12">
                         <div class="input-group mb-3">
@@ -871,16 +889,14 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%))'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
-                            borderWidth: 1
+                            borderWidth: 2
                         }]
                     },
                     options: {
@@ -1002,12 +1018,14 @@
                             label: label,
                             data: Object.values(data),
                             backgroundColor: [
-                                'rgba(0, 157, 84, 0.74)',
-                                'rgba(2, 117, 64, 0.74)',
-                                'rgba(2, 81, 44, 0.74)'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
-                            borderWidth: 1
+                            borderWidth: 2
                         }]
                     },
                     options: {
@@ -1247,16 +1265,14 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%)'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
-                            borderWidth: 1
+                            borderWidth: 2
                         }]
                     },
                     options: {
@@ -1412,13 +1428,11 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%))'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
                             borderWidth: 1
@@ -1577,13 +1591,11 @@
                             label: label,
                             data: values,
                             backgroundColor: [
-                                'rgb(0 157 84 / 74%)',
-                                'rgb(2 117 64 / 74%)',
-                                'rgb(2 81 44 / 74%)',
-                                'rgb(43 205 129 / 74%)',
-                                'rgb(0 177 4 / 74%)',
-                                'rgb(0 127 4 / 74%)',
-                                'rgb(2 117 5 / 74%))'
+                                '#13ab18',
+                                '#d9d405',
+                                '#ff8f00',
+                                '#c71313',
+                                '#3e66ff'
                             ],
                             borderColor: ['#fff'],
                             borderWidth: 1

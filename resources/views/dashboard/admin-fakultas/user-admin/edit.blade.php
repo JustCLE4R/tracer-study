@@ -4,7 +4,7 @@
 <div class="container">
   <div class="main-body">
     <div class="row gutters-sm">
-      <form class="row" action="/dashboard/admin/fakultas/user/{{ $user->id }}" method="POST">
+      <form class="row" action="/dashboard/admin/fakultas/user-admin/{{ $user->id }}" method="POST">
         @csrf
         @method('PATCH')
         <div class="col-md-4 mb-3">
@@ -47,52 +47,6 @@
           <hr>
           <div class="row">
             <div class="col-sm-3">
-          <h6 class="mb-0">Roles</h6>
-            </div>
-            <div class="col-sm-9 text-secondary">
-            <select name="role" id="role" class="form-control">
-            @foreach($roles as $index => $role)
-              @if($index != 0)
-                <option value="{{ $role }}" {{ $user->role == $role ? 'selected' : '' }}>{{ $role }}</option>
-              @endif
-            @endforeach
-            </select>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-          <h6 class="mb-0">Fakultas</h6>
-            </div>
-            <div class="col-sm-9 text-secondary">
-              <select type="text" class="form-control {{ $errors->has('fakultas') ? 'is-invalid' : '' }}" id="fakultas" name="fakultas" onchange="getProgramStudi(this.value)" required>
-                <option value="" selected hidden>Pilih Fakultas</option>
-                <option value="Dakwah dan Komunikasi">Dakwah dan Komunikasi</option>
-                <option value="Kesehatan Masyarakat">Kesehatan Masyarakat</option>
-                <option value="Ilmu Sosial">Ilmu Sosial</option>
-                <option value="Ilmu Tarbiyah dan Keguruan">Ilmu Tarbiyah dan Keguruan</option>
-                <option value="Syariah dan Hukum">Syariah dan Hukum</option>
-                <option value="Sains dan Teknologi">Sains dan Teknologi</option>
-                <option value="Ushuluddin dan Studi Islam">Ushuluddin dan Studi Islam</option>
-                <option value="Pascasarjana">Pascasarjana</option>
-              </select>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-          <h6 class="mb-0">Program Studi</h6>
-            </div>
-            <div class="col-sm-9 text-secondary">
-              <select type="text" class="form-control" id="program_studi" name="program_studi" required disabled>
-                <option value="" selected hidden>Pilih Program Studi</option>
-                {{-- populate by ajax --}}
-              </select>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
           <h6 class="mb-0">Password</h6>
             </div>
             <div class="col-sm-9 text-secondary">
@@ -124,60 +78,6 @@
 
 @push('scripts')
 <script>
-  function getProgramStudi(fakultas, selectedProgramStudi = null) {
-    var prodi = $('#program_studi');
-    prodi.prop('disabled', false);
-    $.ajax({
-        type: 'GET',
-        url: '/json/fakultas.json',
-        data: {
-            fakultas: fakultas
-        },
-        success: function(data) {
-            prodi.empty();
-            prodi.append('<option value="" selected hidden>Pilih Program Studi</option>');
-            data[fakultas].forEach(function(item) {
-                prodi.append('<option value="' + item + '"' + 
-                             (item == selectedProgramStudi ? ' selected' : '') + 
-                             '>' + item + '</option>');
-            });
-            if ($('#role').val() == 'adminfakultas') {
-                prodi.prop('disabled', true);
-            }
-        }
-    });
-  }
-
-  $(document).ready(function() {
-    var selectedFakultas = "{{ old('fakultas', $user->fakultas) }}";
-    var selectedProgramStudi = "{{ old('program_studi', $user->program_studi) }}";
-
-    if (selectedFakultas) {
-        $('#fakultas').val(selectedFakultas);
-        getProgramStudi(selectedFakultas, selectedProgramStudi);
-    }
-});
-
-$('#fakultas').on('change', function() {
-    var fakultas = $(this).val();
-    getProgramStudi(fakultas);
-});
-
-$('#role').on('change', function() {
-    var role = $(this).val();
-    if (role == 'superadmin' || role == 'superadmin2' || role == 'surveyor') {
-        $('#fakultas').prop('disabled', true).val('');
-        $('#program_studi').prop('disabled', true).val('');
-    } else {
-        $('#fakultas').prop('disabled', false);
-        if (role == 'adminfakultas') {
-            $('#program_studi').prop('disabled', true).val('');
-        } else {
-            $('#program_studi').prop('disabled', false);
-        }
-    }
-});
-
   $('#password, #password_confirmation').on('keyup', function () {
     if ($('#password').val() == $('#password_confirmation').val()) {
       $('#password_confirmation').removeClass('is-invalid');
