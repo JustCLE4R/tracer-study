@@ -23,7 +23,7 @@ class PekerjaExport implements FromCollection, WithHeadings, WithMapping, Should
 
     public function collection()
     {
-        return User::with(['pekerja', 'certCheck'])
+        return User::with(['pekerja'])
         ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
         ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
         ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
@@ -98,6 +98,8 @@ class PekerjaExport implements FromCollection, WithHeadings, WithMapping, Should
 
     public function map($user): array
     {
+        $pekerja = $user->pekerja->first();
+
         return [
             $user->nim,
             $user->nama,
@@ -129,20 +131,20 @@ class PekerjaExport implements FromCollection, WithHeadings, WithMapping, Should
             $user->masa_studi_semester,
             $user->lama_mendapatkan_pekerjaan,
 
-            $user->pekerja->first()->is_active,
-            $user->pekerja->first()->status_pekerjaan,
-            $user->pekerja->first()->kriteria_pekerjaan,
-            $user->pekerja->first()->bidang_pekerjaan,
-            $user->pekerja->first()->tingkat_tempat_bekerja,
-            $user->pekerja->first()->jabatan_pekerjaan,
-            $user->pekerja->first()->detail_pekerjaan,
-            $user->pekerja->first()->pendapatan,
-            $user->pekerja->first()->kesesuaian,
-            $user->pekerja->first()->tgl_mulai_kerja,
-            $user->pekerja->first()->tgl_akhir_kerja,
-            $user->pekerja->first()->provinsi_kerja,
-            $user->pekerja->first()->kabupaten_kerja,
-            env('APP_URL') . '/storage/' . $user->pekerja->first()->bukti_bekerja,
+            $pekerja->is_active,
+            $pekerja->status_pekerjaan,
+            $pekerja->kriteria_pekerjaan,
+            $pekerja->bidang_pekerjaan,
+            $pekerja->tingkat_tempat_bekerja,
+            $pekerja->jabatan_pekerjaan,
+            $pekerja->detail_pekerjaan,
+            $pekerja->pendapatan,
+            $pekerja->kesesuaian,
+            $pekerja->tgl_mulai_kerja,
+            $pekerja->tgl_akhir_kerja,
+            $pekerja->provinsi_kerja,
+            $pekerja->kabupaten_kerja,
+            env('APP_URL') . '/storage/' . $pekerja->bukti_bekerja,
         ];
     }
 }

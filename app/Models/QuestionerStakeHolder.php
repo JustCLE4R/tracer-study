@@ -20,11 +20,11 @@ class QuestionerStakeHolder extends Model
      */
     protected function maps($key) {
         $map = [
-            0 => 'Sangat Baik',
-            1 => 'Baik',
+            0 => 'Tidak Baik',
+            1 => 'Kurang Baik',
             2 => 'Cukup',
-            3 => 'Kurang Baik',
-            4 => 'Tidak Baik',
+            3 => 'Baik',
+            4 => 'Sangat Baik', 
         ];
     
         return $map[$key] ?? $key;

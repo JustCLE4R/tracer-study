@@ -38,8 +38,8 @@ class Pekerja extends Model
     protected function getIsActiveAttribute($value)
     {
         $isActive = [
-            0 => "Usaha Tidak Aktif",
-            1 => "Usaha Aktif"
+            0 => "Tidak Aktif Bekerja",
+            1 => "Aktif Bekerja"
         ];
 
         return $isActive[$value] ?? 'Unknown State';

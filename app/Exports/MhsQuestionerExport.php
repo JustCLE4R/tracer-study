@@ -23,17 +23,19 @@ class MhsQuestionerExport implements FromCollection, WithHeadings, WithMapping, 
 
     public function collection()
     {
-        return User::with(['questioner', 'certCheck'])
+        return User::with(['questioner']) // Eager load questioner
         ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
         ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
         ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
-        ->whereHas('certCheck', function ($query) {
+        ->whereHas('certCheck', fn($query) => 
             $query->where('profile_check', true)
-            ->where('perjalanan_karir_check', true)
-            ->where('questioner_check', true);
-        })
+                  ->where('perjalanan_karir_check', true)
+                  ->where('questioner_check', true)
+        )
         ->get();
+    
     }
+    
 
     public function headings(): array
     {
@@ -139,6 +141,8 @@ class MhsQuestionerExport implements FromCollection, WithHeadings, WithMapping, 
 
     public function map($user): array
     {
+        $questioner = $user->questioner;
+
         return [
             $user->nim,
             $user->nama,
@@ -170,72 +174,72 @@ class MhsQuestionerExport implements FromCollection, WithHeadings, WithMapping, 
             $user->masa_studi_semester,
             $user->lama_mendapatkan_pekerjaan,
 
-            $user->questioner->first()->a_1,
-            $user->questioner->first()->a_2,
-            $user->questioner->first()->a_3,
-            $user->questioner->first()->a_4,
-            $user->questioner->first()->a_5,
-            $user->questioner->first()->a_6,
-            $user->questioner->first()->a_7,
-            $user->questioner->first()->a_8,
-            $user->questioner->first()->a_9,
-            $user->questioner->first()->a_10,
-            $user->questioner->first()->a_11,
-            $user->questioner->first()->a_12,
-            $user->questioner->first()->a_13,
-            $user->questioner->first()->a_14,
-            $user->questioner->first()->a_15,
-            $user->questioner->first()->a_16,
-            $user->questioner->first()->a_17,
-            $user->questioner->first()->a_18,
-            $user->questioner->first()->b_1,
-            $user->questioner->first()->b_2,
-            $user->questioner->first()->b_3,
-            $user->questioner->first()->b_4,
-            $user->questioner->first()->b_5,
-            $user->questioner->first()->b_6,
-            $user->questioner->first()->b_7,
-            $user->questioner->first()->b_8,
-            $user->questioner->first()->b_9,
-            $user->questioner->first()->b_10,
-            $user->questioner->first()->b_11,
-            $user->questioner->first()->b_12,
-            $user->questioner->first()->b_13,
-            $user->questioner->first()->b_14,
-            $user->questioner->first()->b_15,
-            $user->questioner->first()->b_16,
-            $user->questioner->first()->b_17,
-            $user->questioner->first()->b_18,
-            $user->questioner->first()->c_1,
-            $user->questioner->first()->d_1,
-            $user->questioner->first()->d_2,
-            $user->questioner->first()->d_3,
-            $user->questioner->first()->d_4,
-            $user->questioner->first()->d_5,
-            $user->questioner->first()->e_1,
-            $user->questioner->first()->e_2,
-            $user->questioner->first()->e_3,
-            $user->questioner->first()->e_4,
-            $user->questioner->first()->e_5,
-            $user->questioner->first()->f_1,
-            $user->questioner->first()->f_2,
-            $user->questioner->first()->f_3,
-            $user->questioner->first()->f_4,
-            $user->questioner->first()->f_5,
-            $user->questioner->first()->f_6,
-            $user->questioner->first()->f_7,
-            $user->questioner->first()->f_8,
-            $user->questioner->first()->f_9,
-            $user->questioner->first()->f_10,
-            $user->questioner->first()->g_1,
-            $user->questioner->first()->g_2,
-            $user->questioner->first()->g_3,
-            $user->questioner->first()->g_4,
-            $user->questioner->first()->g_5,
-            $user->questioner->first()->g_6,
-            $user->questioner->first()->h_1,
-            $user->questioner->first()->i_1,
-            $user->questioner->first()->j_1,
+            $questioner->a_1,
+            $questioner->a_2,
+            $questioner->a_3,
+            $questioner->a_4,
+            $questioner->a_5,
+            $questioner->a_6,
+            $questioner->a_7,
+            $questioner->a_8,
+            $questioner->a_9,
+            $questioner->a_10,
+            $questioner->a_11,
+            $questioner->a_12,
+            $questioner->a_13,
+            $questioner->a_14,
+            $questioner->a_15,
+            $questioner->a_16,
+            $questioner->a_17,
+            $questioner->a_18,
+            $questioner->b_1,
+            $questioner->b_2,
+            $questioner->b_3,
+            $questioner->b_4,
+            $questioner->b_5,
+            $questioner->b_6,
+            $questioner->b_7,
+            $questioner->b_8,
+            $questioner->b_9,
+            $questioner->b_10,
+            $questioner->b_11,
+            $questioner->b_12,
+            $questioner->b_13,
+            $questioner->b_14,
+            $questioner->b_15,
+            $questioner->b_16,
+            $questioner->b_17,
+            $questioner->b_18,
+            $questioner->c_1,
+            $questioner->d_1,
+            $questioner->d_2,
+            $questioner->d_3,
+            $questioner->d_4,
+            $questioner->d_5,
+            $questioner->e_1,
+            $questioner->e_2,
+            $questioner->e_3,
+            $questioner->e_4,
+            $questioner->e_5,
+            $questioner->f_1,
+            $questioner->f_2,
+            $questioner->f_3,
+            $questioner->f_4,
+            $questioner->f_5,
+            $questioner->f_6,
+            $questioner->f_7,
+            $questioner->f_8,
+            $questioner->f_9,
+            $questioner->f_10,
+            $questioner->g_1,
+            $questioner->g_2,
+            $questioner->g_3,
+            $questioner->g_4,
+            $questioner->g_5,
+            $questioner->g_6,
+            $questioner->h_1,
+            $questioner->i_1,
+            $questioner->j_1,
         ];
     }
 }
