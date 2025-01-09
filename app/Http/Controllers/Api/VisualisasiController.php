@@ -15,7 +15,7 @@ use App\Models\QuestionerStakeHolder;
 class VisualisasiController extends Controller
 {
     public function dataWirausaha(Request $request){
-        $wirausaha_data = Wirausaha::with('user')
+        $wirausaha_data = Wirausaha::with(['user'])
                                     ->whereHas('user.certcheck', function($query) {
                                     $query->where('profile_check', true)
                                         ->where('perjalanan_karir_check', true)
@@ -80,7 +80,7 @@ class VisualisasiController extends Controller
     }
 
     public function dataPekerja(Request $request){
-        $pekerja_data = Pekerja::with('user')
+        $pekerja_data = Pekerja::with(['user'])
                                 ->whereHas('user.certcheck', function($query) {
                                 $query->where('profile_check', true)
                                     ->where('perjalanan_karir_check', true)
@@ -106,12 +106,16 @@ class VisualisasiController extends Controller
     }
 
     public function dataPendidikan(Request $request){
-        $pendidikan_data = Pendidikan::with('user')
+        $pendidikan_data = Pendidikan::with(['user.certcheck' => function($query) {
+                                        $query->where('profile_check', true)
+                                            ->where('perjalanan_karir_check', true)
+                                            ->where('questioner_check', true);
+                                    }])
                                     ->whereHas('user.certcheck', function($query) {
-                                    $query->where('profile_check', true)
-                                        ->where('perjalanan_karir_check', true)
-                                        ->where('questioner_check', true)
-                                        ->where('role', 'mahasiswa');
+                                        $query->where('role', 'mahasiswa')
+                                            ->where('profile_check', true)
+                                            ->where('perjalanan_karir_check', true)
+                                            ->where('questioner_check', true);
                                     })
                                     ->get();
 
@@ -138,7 +142,7 @@ class VisualisasiController extends Controller
     }
 
     public function dataQuestioner(Request $request){
-        $questioner_data = Questioner::with('user')
+        $questioner_data = Questioner::with(['user'])
                                     ->whereHas('user.certcheck', function($query) {
                                     $query->where('profile_check', true)
                                         ->where('perjalanan_karir_check', true)

@@ -24,18 +24,30 @@ class StkQuestionerExport implements FromCollection, WithHeadings, WithMapping, 
     public function collection()
     {
         return QuestionerStakeHolder::with([
-            'detailPerusahaan.pekerja.user', // Ensure relationships are correct
+            'detailPerusahaan.pekerja.user', // Only load necessary relationships
         ])
-            ->when($this->tahun, fn($query) => $query->whereHas('detailPerusahaan.pekerja.user', fn($subQuery) => $subQuery->whereYear('tgl_wisuda', $this->tahun)))
-            ->when($this->programStudi, fn($query) => $query->whereHas('detailPerusahaan.pekerja.user', fn($subQuery) => $subQuery->where('program_studi', $this->programStudi)))
-            ->when($this->fakultas, fn($query) => $query->whereHas('detailPerusahaan.pekerja.user', fn($subQuery) => $subQuery->where('fakultas', $this->fakultas)))
-            ->whereHas('detailPerusahaan.pekerja.user.certCheck', function ($query) {
-                $query->where('profile_check', true)
-                    ->where('perjalanan_karir_check', true)
-                    ->where('questioner_check', true);
-            })
-            ->get();
+        ->when($this->tahun || $this->programStudi || $this->fakultas, function ($query) {
+            $query->whereHas('detailPerusahaan.pekerja.user', function ($subQuery) {
+                if ($this->tahun) {
+                    $subQuery->whereYear('tgl_wisuda', $this->tahun);
+                }
+                if ($this->programStudi) {
+                    $subQuery->where('program_studi', $this->programStudi);
+                }
+                if ($this->fakultas) {
+                    $subQuery->where('fakultas', $this->fakultas);
+                }
+            });
+        })
+        ->whereHas('detailPerusahaan.pekerja.user.certCheck', function ($query) {
+            $query->where('profile_check', true)
+                  ->where('perjalanan_karir_check', true)
+                  ->where('questioner_check', true);
+        })
+        ->get();
     }
+    
+    
 
     public function headings(): array
     {
@@ -116,36 +128,38 @@ class StkQuestionerExport implements FromCollection, WithHeadings, WithMapping, 
 
     public function map($stk): array
     {
+        $user = $stk->detailPerusahaan->pekerja->user;
+
         return [
-            $stk->detailPerusahaan->pekerja->user->nim,
-            $stk->detailPerusahaan->pekerja->user->nama,
-            $stk->detailPerusahaan->pekerja->user->role,
-            $stk->detailPerusahaan->pekerja->user->is_bekerja,
-            $stk->detailPerusahaan->pekerja->user->program_studi,
-            $stk->detailPerusahaan->pekerja->user->fakultas,
-            $stk->detailPerusahaan->pekerja->user->strata,
-            $stk->detailPerusahaan->pekerja->user->tahun_masuk,
-            $stk->detailPerusahaan->pekerja->user->tgl_lulus,
-            $stk->detailPerusahaan->pekerja->user->tgl_wisuda,
-            $stk->detailPerusahaan->pekerja->user->tgl_yudisium,
-            $stk->detailPerusahaan->pekerja->user->ipk,
-            $stk->detailPerusahaan->pekerja->user->sks_kumulatif,
-            $stk->detailPerusahaan->pekerja->user->predikat_kelulusan,
-            $stk->detailPerusahaan->pekerja->user->judul_tugas_akhir,
-            $stk->detailPerusahaan->pekerja->user->tempat_lahir,
-            $stk->detailPerusahaan->pekerja->user->tgl_lahir,
-            $stk->detailPerusahaan->pekerja->user->jenis_kelamin,
-            $stk->detailPerusahaan->pekerja->user->kewarganegaraan,
-            $stk->detailPerusahaan->pekerja->user->provinsi,
-            $stk->detailPerusahaan->pekerja->user->kabupaten,
-            $stk->detailPerusahaan->pekerja->user->kecamatan,
-            $stk->detailPerusahaan->pekerja->user->alamat,
-            $stk->detailPerusahaan->pekerja->user->telepon,
-            $stk->detailPerusahaan->pekerja->user->email,
-            $stk->detailPerusahaan->pekerja->user->linkedin,
-            $stk->detailPerusahaan->pekerja->user->facebook,
-            $stk->detailPerusahaan->pekerja->user->masa_studi_semester,
-            $stk->detailPerusahaan->pekerja->user->lama_mendapatkan_pekerjaan,
+            $user->nim,
+            $user->nama,
+            $user->role,
+            $user->is_bekerja,
+            $user->program_studi,
+            $user->fakultas,
+            $user->strata,
+            $user->tahun_masuk,
+            $user->tgl_lulus,
+            $user->tgl_wisuda,
+            $user->tgl_yudisium,
+            $user->ipk,
+            $user->sks_kumulatif,
+            $user->predikat_kelulusan,
+            $user->judul_tugas_akhir,
+            $user->tempat_lahir,
+            $user->tgl_lahir,
+            $user->jenis_kelamin,
+            $user->kewarganegaraan,
+            $user->provinsi,
+            $user->kabupaten,
+            $user->kecamatan,
+            $user->alamat,
+            $user->telepon,
+            $user->email,
+            $user->linkedin,
+            $user->facebook,
+            $user->masa_studi_semester,
+            $user->lama_mendapatkan_pekerjaan,
 
             $stk->c_1,
             $stk->d_1,

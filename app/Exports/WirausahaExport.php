@@ -23,26 +23,27 @@ class WirausahaExport implements FromCollection, WithHeadings, WithMapping, Shou
 
     public function collection()
     {
-        return User::with(['wirausaha', 'certCheck'])
-        ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
-        ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
-        ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
-        ->whereHas('certCheck', function ($query) {
-            $query->where('profile_check', true)
-            ->where('perjalanan_karir_check', true)
-            ->where('questioner_check', true);
-        })
-        ->whereHas('wirausaha', function ($query) {
-            $query->where('is_active', true)
-                ->whereNull('tgl_akhir_usaha')
-                ->orWhere('tgl_akhir_usaha', function ($subQuery) {
-                    $subQuery->selectRaw('MIN(tgl_akhir_usaha)')
-                        ->from('wirausahas')
-                        ->whereColumn('user_id', 'users.id');
-                });
-        })
-        ->get();
+        return User::with(['wirausaha'])
+            ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
+            ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
+            ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
+            ->whereHas('certCheck', fn($query) => $query->where([
+                ['profile_check', true],
+                ['perjalanan_karir_check', true],
+                ['questioner_check', true],
+            ]))
+            ->whereHas('wirausaha', fn($query) => $query->where('is_active', true)
+                ->where(function ($subQuery) {
+                    $subQuery->whereNull('tgl_akhir_usaha')
+                        ->orWhere('tgl_akhir_usaha', function ($minQuery) {
+                            $minQuery->selectRaw('MIN(tgl_akhir_usaha)')
+                                ->from('wirausahas')
+                                ->whereColumn('user_id', 'users.id');
+                        });
+                }))
+            ->get();
     }
+    
 
     public function headings(): array
     {
@@ -97,6 +98,7 @@ class WirausahaExport implements FromCollection, WithHeadings, WithMapping, Shou
 
     public function map($user): array
     {
+        $wirausaha = $user->wirausaha->first();
         return [
             $user->nim,
             $user->nama,
@@ -128,21 +130,21 @@ class WirausahaExport implements FromCollection, WithHeadings, WithMapping, Shou
             $user->masa_studi_semester,
             $user->lama_mendapatkan_pekerjaan,
 
-            $user->wirausaha->first()->is_active,
-            $user->wirausaha->first()->nama_usaha,
-            $user->wirausaha->first()->tingkat_tempat_usaha,
-            $user->wirausaha->first()->bidang_usaha,
-            $user->wirausaha->first()->detail_usaha,
-            $user->wirausaha->first()->omset,
-            $user->wirausaha->first()->pendapatan,
-            $user->wirausaha->first()->pemodal,
-            $user->wirausaha->first()->kesesuaian,
-            $user->wirausaha->first()->tgl_mulai_usaha,
-            $user->wirausaha->first()->tgl_akhir_usaha,
-            $user->wirausaha->first()->provinsi_usaha,
-            $user->wirausaha->first()->kabupaten_usaha,
-            $user->wirausaha->first()->alamat_usaha,
-            env('APP_URL') . '/storage/' . $user->wirausaha->first()->bukti_berusaha,
+            $wirausaha->is_active,
+            $wirausaha->nama_usaha,
+            $wirausaha->tingkat_tempat_usaha,
+            $wirausaha->bidang_usaha,
+            $wirausaha->detail_usaha,
+            $wirausaha->omset,
+            $wirausaha->pendapatan,
+            $wirausaha->pemodal,
+            $wirausaha->kesesuaian,
+            $wirausaha->tgl_mulai_usaha,
+            $wirausaha->tgl_akhir_usaha,
+            $wirausaha->provinsi_usaha,
+            $wirausaha->kabupaten_usaha,
+            $wirausaha->alamat_usaha,
+            env('APP_URL') . '/storage/' . $wirausaha->bukti_berusaha,
         ];
     }
 }

@@ -23,29 +23,21 @@ class PekerjaExport implements FromCollection, WithHeadings, WithMapping, Should
 
     public function collection()
     {
-        return User::with(['pekerja'])
+        return User::with(['pekerja' => function($query) {
+            $query->where('is_active', 1);
+        }])
         ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
         ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
         ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
-        ->whereHas('certCheck', function ($query) {
-            $query->where('profile_check', true)
-            ->where('perjalanan_karir_check', true)
-            ->where('questioner_check', true);
-        })
-        ->whereHas('pekerja', function ($query) {
-            $query->where('is_active', true)
-                ->where(function ($query) {
-                    $query->whereNull('tgl_akhir_kerja')
-                        ->orWhere('tgl_akhir_kerja', function ($subQuery) {
-                            $subQuery->selectRaw('MIN(tgl_akhir_kerja)')
-                                    ->from('pekerjas')
-                                    ->whereColumn('user_id', 'users.id');
-                        });
-                });
-        })
+        ->whereHas('certCheck', fn($query) => $query->where([
+            ['profile_check', true],
+            ['perjalanan_karir_check', true],
+            ['questioner_check', true],
+        ]))
+        ->whereHas('pekerja', fn($query) => $query->where('is_active', 1))
         ->get();
     }
-
+    
     public function headings(): array
     {
         return [

@@ -23,20 +23,19 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
 
     public function collection()
     {
-        return User::with(['pendidikan', 'certCheck'])
-        ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
-        ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
-        ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
-        ->whereHas('certCheck', function ($query) {
-            $query->where('profile_check', true)
-            ->where('perjalanan_karir_check', true)
-            ->where('questioner_check', true);
-        })
-        ->whereHas('pendidikan', function ($query) {
-            $query->where('is_studying', true);
-        })
-        ->get();
+        return User::with(['pendidikan'])
+            ->when($this->tahun, fn($query) => $query->whereYear('tgl_wisuda', $this->tahun))
+            ->when($this->programStudi, fn($query) => $query->where('program_studi', $this->programStudi))
+            ->when($this->fakultas, fn($query) => $query->where('fakultas', $this->fakultas))
+            ->whereHas('certCheck', fn($query) => $query->where([
+                ['profile_check', true],
+                ['perjalanan_karir_check', true],
+                ['questioner_check', true],
+            ]))
+            ->whereHas('pendidikan')
+            ->get()->dd();
     }
+    
 
     public function headings(): array
     {
@@ -88,6 +87,8 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
 
     public function map($user): array
     {
+        $pendidikan = $user->pendidikan->first();
+
         return [
             $user->nim,
             $user->nama,
@@ -119,18 +120,18 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
             $user->masa_studi_semester,
             $user->lama_mendapatkan_pekerjaan,
 
-            $user->pendidikan->first()->tingkat_pendidikan,
-            $user->pendidikan->first()->program_studi,
-            $user->pendidikan->first()->perguruan_tinggi,
-            $user->pendidikan->first()->tgl_surat_penerimaan_pendidikan,
-            $user->pendidikan->first()->tgl_mulai_pendidikan,
-            $user->pendidikan->first()->is_studying,
-            $user->pendidikan->first()->is_linear,
-            $user->pendidikan->first()->negara_pendidikan,
-            $user->pendidikan->first()->provinsi_pendidikan,
-            $user->pendidikan->first()->kabupaten_pendidikan,
-            $user->pendidikan->first()->alamat_pendidikan,
-            env('APP_URL') . '/storage/' . $user->pendidikan->first()->bukti_pendidikan,
+            $pendidikan->tingkat_pendidikan,
+            $pendidikan->program_studi,
+            $pendidikan->perguruan_tinggi,
+            $pendidikan->tgl_surat_penerimaan_pendidikan,
+            $pendidikan->tgl_mulai_pendidikan,
+            $pendidikan->is_studying,
+            $pendidikan->is_linear,
+            $pendidikan->negara_pendidikan,
+            $pendidikan->provinsi_pendidikan,
+            $pendidikan->kabupaten_pendidikan,
+            $pendidikan->alamat_pendidikan,
+            env('APP_URL') . '/storage/' . $pendidikan->bukti_pendidikan,
         ];
     }
 }
