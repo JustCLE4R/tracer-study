@@ -11,6 +11,19 @@ function handlePekerjaan(value) {
         fetchQuestion("wirausaha");
     } else if (value === "belum-kerja") {
         handleStatus.addClass("d-none");
+        // add checkbox that have value saya-belum-memiliki-pekerjaan
+        var checkboxDiv = $("<div>").addClass("form-check");
+        var checkbox = $("<input>")
+            .attr("type", "checkbox")
+            .attr("id", "saya-belum-memiliki-pekerjaan")
+            .attr("name", "saya-belum-memiliki-pekerjaan[]")
+            .addClass("form-check-input");
+        var label = $("<label>")
+            .addClass("form-check-label")
+            .attr("for", "saya-belum-memiliki-pekerjaan")
+            .text("Saya belum memiliki pekerjaan");
+        checkboxDiv.append(checkbox, label);
+        dynamicForm.append(checkboxDiv);
         fetchQuestion("belum-kerja");
     } else if (value === "pekerja") {
         buttonGroup.addClass("d-none");
