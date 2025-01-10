@@ -17,6 +17,10 @@ use App\Http\Controllers\Mahasiswa\WirausahaController;
 class PerjalananKarirController extends Controller
 {
 	public function index(){
+		if (CertCheck::where('user_id', Auth::user()->id)->firstOrCreate(['user_id' => Auth::user()->id])->profile_check == false) {
+			return redirect('/dashboard/profile')->with('warning', 'Lengkapi profil terlebih dahulu!');
+		}
+
 		$user_id = Auth::user()->id;
 
 		$pekerjaans = Pekerja::select(DB::raw("'pekerja' as tipe_kerja"), 'pekerjas.id', 'jabatan_pekerjaan', 'detail_pekerjaan', 'is_active', 'tgl_mulai_kerja as tanggal_mulai', 'tgl_akhir_kerja as tanggal_akhir', 'detail_perusahaans.token')
