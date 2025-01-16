@@ -33,7 +33,7 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
                 ['questioner_check', true],
             ]))
             ->whereHas('pendidikan')
-            ->get()->dd();
+            ->get();
     }
     
 
@@ -113,8 +113,8 @@ class PendidikanExport implements FromCollection, WithHeadings, WithMapping, Sho
             $user->kabupaten,
             $user->kecamatan,
             $user->alamat,
-            $user->telepon
-            ,$user->email,
+            $user->telepon,
+            $user->email,
             $user->linkedin,
             $user->facebook,
             $user->masa_studi_semester,
